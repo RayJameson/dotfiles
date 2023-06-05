@@ -17,24 +17,24 @@ ln -s "$(pwd)/zsh/powerlevel10k" "$(pwd)/zsh/oh-my-zsh/custom/themes"
 ##############################
 #         ASTRONVIM          #
 ##############################
-ln -s "$(pwd)/nvim" "$CONFIG/"
+ln -s "$(pwd)/nvim" "$CONFIG"
 
 ##############################
 #     ASTRONVIM CONFIG       #
 ##############################
-ln -s "$(pwd)/astronvim" "$CONFIG/"
+ln -s "$(pwd)/astronvim" "$CONFIG"
 
 ##############################
 #          LAZYGIT           #
 ##############################
-ln -s "$(pwd)/lazygit" "$CONFIG/"
+ln -s "$(pwd)/lazygit" "$CONFIG"
 
 ##############################
 #          WEZTERM           #
 ##############################
-ln -s "$(pwd)/wezterm" "$CONFIG/"
+ln -s "$(pwd)/wezterm" "$CONFIG"
 
 ##############################
 #           TMUX             #
 ##############################
-ln -s "$(pwd)/tmux" "$CONFIG/"
+ln -s "$(pwd)/tmux" "$CONFIG"
