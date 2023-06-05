@@ -37,4 +37,5 @@ ln -s "$(pwd)/wezterm" "$CONFIG"
 ##############################
 #           TMUX             #
 ##############################
+python3 -m pip install --upgrade libtmux
 ln -s "$(pwd)/tmux" "$CONFIG"
