@@ -104,12 +104,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     poetry
     kubectl
-    fzf-brew
     pip
     docker
     gh
     colored-man-pages
 )
+[[ ! $(command -v uname) == "Darwin" ]] || plugins+=(fzf-brew)
 custom_plugins=(
     davidde/git
     jeffreytse/zsh-vi-mode
