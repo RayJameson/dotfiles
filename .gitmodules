@@ -14,6 +14,6 @@
 	url = git@github.com:romkatv/powerlevel10k.git
 	branch = master
 [submodule "tmux/tpm"]
-	path = tmux/tpm
+	path = tmux/plugins/tpm
 	url = git@github.com:tmux-plugins/tpm.git
 	branch = master
