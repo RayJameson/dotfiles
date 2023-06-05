@@ -10,6 +10,11 @@ CONFIG="$HOME/.config"
 ln -s "$(pwd)/zsh/zshrc" "$HOME/.zshrc"
 
 ##############################
+#       POWERLEVEL10K        #
+##############################
+ln -s "$(pwd)/zsh/powerlevel10k" "$(pwd)/zsh/oh-my-zsh/custom/themes"
+
+##############################
 #         ASTRONVIM          #
 ##############################
 ln -s "$(pwd)/nvim" "$CONFIG/nvim"
