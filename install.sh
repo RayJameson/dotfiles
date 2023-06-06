@@ -39,3 +39,16 @@ ln -s "$(pwd)/wezterm" "$CONFIG"
 ##############################
 python3 -m pip install --upgrade libtmux
 ln -s "$(pwd)/tmux" "$CONFIG"
+
+##############################
+#        FZF-UTILITIES       #
+##############################
+ln -s "$(pwd)/ff" "$HOME"
+ln -s "$(pwd)/fkill" "$HOME"
+ln -s "$(pwd)/frg" "$HOME"
+
+##############################
+#           LUAJ             #
+##############################
+ln -s "$(pwd)/luaj-jse-3.0.2.jar" "$HOME"
+ln -s "$(pwd)/luaj" "$HOME"
