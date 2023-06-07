@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 # Create .config folder if not exists
-[[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
+if [[ ! -d "$HOME/.config" ]]; then
+    mkdir "$HOME/.config"
+else
+    echo "\"$HOME/.config\" already exists, skipping"
+fi
 CONFIG="$HOME/.config"
 
 ##############################
@@ -62,3 +66,12 @@ ln -s "$(pwd)/ptpython" "$CONFIG"
 #          PYLINT            #
 ##############################
 ln -s "$(pwd)/pylintrc" "$CONFIG"
+
+##############################
+#            NVM             #
+##############################
+if [[ ! -d "$HOME/.nvm" ]]; then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+else
+    echo "nvm already installed, skipping"
+fi
