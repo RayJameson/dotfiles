@@ -52,3 +52,9 @@ ln -s "$(pwd)/frg" "$HOME"
 ##############################
 ln -s "$(pwd)/luaj-jse-3.0.2.jar" "$HOME"
 ln -s "$(pwd)/luaj" "$HOME"
+
+##############################
+#         PTPYTHON           #
+##############################
+ln -s "$(pwd)/ptpython" "$CONFIG"
+
