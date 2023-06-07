@@ -177,21 +177,6 @@ alias zshrc="v $ZSHRC"
 alias dotfiles="cd $DOTFILES"
 alias asc=asciinema
 alias make=gmake
-termux_refresh() {
-    # local ip address of android mobile hotspot changes after reboot,
-    # so I wrote this function to refresh it without editing ssh config by hand
-    # simple representation: sed -i "" "s/ip in ssh config/new ip from arp/" "ssh config file"
-    local ssh_config="$HOME/.ssh/config"
-    local host_name_ssh_config="termux"
-    local ip_regex_ssh_config="(\d{3}\.\d{3}\.\d{1,3}\.\d{1,3})"
-    local android_mac_address="f6:9c:69:9:8f:21"
-    local arp_ip_regex="\((.*)\)"
-
-    local pattern=$(rg -A1 -m1 "$host_name_ssh_config" "$ssh_config" | rg -o "$ip_regex_ssh_config")
-    local replace=$(arp -a | rg "$android_mac_address" | rg -or '$1' "$arp_ip_regex")
-
-    sed -i "" "s/$pattern/$replace/" "$ssh_config"
-}
 # User configuratio
 export MANPATH="/usr/local/man:$MANPATH"
 
