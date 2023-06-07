@@ -75,3 +75,9 @@ if [[ ! -d "$HOME/.nvm" ]]; then
 else
     echo "nvm already installed, skipping"
 fi
+
+##############################
+#           PYENV            #
+##############################
+curl https://pyenv.run | bash
+ln -s "$(pwd)/pyenv/default-packages" "$HOME/.pyenv/"
