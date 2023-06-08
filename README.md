@@ -20,11 +20,12 @@ git pull --recurse-submodules
 - [nvim](https://github.com/neovim/neovim) - the only true vim
 - [astronvim](https://github.com/AstroNvim/AstroNvim) - neovim config maintained by cool guys
 - [lazygit](https://github.com/jesseduffield/lazygit) - git TUI without nonsense
+- [gh](https://github.com/cli/cli) - GitHub CLI
 - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) - framework for ZSH config and plugins
 - [tmux](https://github.com/tmux/tmux) - terminal multiplexer
 - [fzf](https://github.com/junegunn/fzf) - fuzzy finder
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - `cd` replacement
-- [exa](https://github.com/ogham/exa) - `ls` replacement
+- [exa](https://github.com/ogham/exa) - `ls` and `tree` replacement
 - [bat](https://github.com/sharkdp/bat) - `cat` replacement
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - `grep` replacement
 - [fd](https://github.com/sharkdp/fd) - `find` replacement
