@@ -127,8 +127,8 @@ alias help="nocorrect run-help"
 alias v=nvim
 alias vim=nvim
 if [[ $(command -v exa) ]]; then
-    alias l="exa --long --icons --header --octal-permissions --all --sort date"
-    alias ls="exa --icons --header --sort name"
+    alias l="exa --long --icons --header --octal-permissions --all --sort date --group-directories-first"
+    alias ls="exa --icons --header --sort name --group-directories-first"
 fi
 alias lg=lazygit
 alias lzd=lazydocker
@@ -220,4 +220,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 function zvm_after_init() {
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 }
+if [[ $(command -v zoxide) ]]; then
+    eval "$(zoxide init zsh)"
+    alias cd="z"
+    alias cdi="zi"
+fi
 export GPG_TTY="$TTY"
