@@ -6,6 +6,9 @@ gui:
   theme:
     selectedLineBgColor:
       - "#7a1b94"
+  authorColors:
+    "Dmitriev Mikhail": "#ff00ff"
+    "Ray Jameson": "#ff00ff"
 git:
   log:
     showGraph: "always"
