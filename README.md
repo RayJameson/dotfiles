@@ -20,6 +20,8 @@ git pull --recurse-submodules
 - [nvim](https://github.com/neovim/neovim) - the only true vim
 - [astronvim](https://github.com/AstroNvim/AstroNvim) - neovim config maintained by cool guys
 - [lazygit](https://github.com/jesseduffield/lazygit) - git TUI without nonsense
+- [lnav](https://github.com/tstack/lnav) - Log file navigator
+- [btop](https://github.com/aristocratos/btop) - htop alternative with additional panes
 - [gh](https://github.com/cli/cli) - GitHub CLI
 - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) - framework for ZSH config and plugins
 - [tmux](https://github.com/tmux/tmux) - terminal multiplexer
