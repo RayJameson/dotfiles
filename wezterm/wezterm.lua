@@ -1,9 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
--- This table will hold the configuration.
 local config = {}
-
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
@@ -25,14 +23,19 @@ config.enable_tab_bar = false
 config.font = wezterm.font("LigaMesloLGSDZ Nerd Font Mono")
 --<!-- -- != := === == != >= >- >=> |-> -> <$> </> #[ |||> |= ~@
 
-config.font_size = 21
+config.font_size = 20
 config.freetype_load_flags = "NO_HINTING"
 
 -- For example, changing the color scheme:
 config.color_scheme = "Dracula (Official)"
 config.colors = {
-  cursor_fg = "white",
+  cursor_fg = "#FFFFFF",
   cursor_bg = "#df7878",
+  -- Specifies the border color of the cursor when the cursor style is set to Block,
+  -- or the color of the vertical or horizontal bar when the cursor style is set to
+  -- Bar or Underline.
+  cursor_border = "#000000",
+  visual_bell = "grey",
 }
 config.window_decorations = "RESIZE"
 config.front_end = "WebGpu"
@@ -49,9 +52,6 @@ config.visual_bell = {
   fade_in_duration_ms = 50,
   fade_out_function = "EaseOut",
   fade_out_duration_ms = 50,
-}
-config.colors = {
-  visual_bell = "grey",
 }
 
 local act = wezterm.action
