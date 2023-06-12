@@ -29,12 +29,6 @@ config.freetype_load_flags = "NO_HINTING"
 -- For example, changing the color scheme:
 config.color_scheme = "Dracula (Official)"
 config.colors = {
-  cursor_fg = "#FFFFFF",
-  cursor_bg = "#df7878",
-  -- Specifies the border color of the cursor when the cursor style is set to Block,
-  -- or the color of the vertical or horizontal bar when the cursor style is set to
-  -- Bar or Underline.
-  cursor_border = "#000000",
   visual_bell = "grey",
 }
 config.window_decorations = "RESIZE"
