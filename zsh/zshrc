@@ -14,6 +14,7 @@ export PATH="$PNPM_HOME:$PATH"
 export LOCAL_BIN="$HOME/.local/bin"
 export PATH="$LOCAL_BIN:$PATH"
 export CONFIG="$HOME/.config"
+export XDG_CONFIG_HOME="$HOME/.config"
 export NVIM_CONFIG="$CONFIG/nvim"
 export ASTRONVIM_CONFIG="$CONFIG/astronvim/lua/user"
 export DOTFILES="$HOME/dotfiles"
@@ -26,13 +27,13 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=bat
 export FZF_DEFAULT_OPTS="--bind ctrl-j:down,ctrl-k:up --no-multi --marker ⇒ --pointer "
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --preview-window 'down,50%,border-rounded,+{2}+3/3,~3'"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH=/opt/homebrew/Cellar/pyenv-virtualenv/1.1.5/shims:$HOME/.pyenv/shims:$HOME/Library/pnpm:$HOME/.local/bin:$HOME/Library/pnpm:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:$HOME/.cargo/bin:$HOME
 
 export HOMEBREW_AUTO_UPDATING=0
 export NVM_LAZY_LOAD=true
-export XDG_CONFIG_HOME="$HOME/.config"
 # Add colors to Terminal
 export LSCOLORS=ExFxBxDxCxegedabagacad
 # Set name of the theme to load --- if set to "random", it will
