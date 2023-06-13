@@ -28,6 +28,12 @@ export VISUAL=nvim
 export PAGER=bat
 export FZF_DEFAULT_OPTS="--bind ctrl-j:down,ctrl-k:up --no-multi --marker ⇒ --pointer "
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --preview-window 'down,50%,border-rounded,+{2}+3/3,~3'"
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH=/opt/homebrew/Cellar/pyenv-virtualenv/1.1.5/shims:$HOME/.pyenv/shims:$HOME/Library/pnpm:$HOME/.local/bin:$HOME/Library/pnpm:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:$HOME/.cargo/bin:$HOME
@@ -131,6 +137,7 @@ if [[ $(command -v exa) ]]; then
     alias l="exa --long --icons --header --octal-permissions --all --sort date --group-directories-first"
     alias ls="exa --icons --header --sort name --group-directories-first"
     alias tree="exa --icons --header --sort name --group-directories-first --tree"
+    export FZF_ALT_C_OPTS="--preview 'exa --icons --header --sort name --group-directories-first --tree {}'"
 fi
 if [[ $(command -v python3 --help) ]]; then
     alias p="python"
