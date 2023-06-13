@@ -1,0 +1,32 @@
+[color]
+	ui = true
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+	sshCommand = ssh -F ~/.ssh/config
+    pager = bat
+	quotepath = false
+	excludesfile = ~/.gitignore_global
+[credential "https://github.qiwi.com"]
+	helper = !/usr/local/bin/gh auth git-credential
+[user]
+	name = Ray Jameson
+	email = 67468725+RayJameson@users.noreply.github.com
+	signingKey = 04CF04D66633E24A
+[commit]
+	gpgSign = true
+[pull]
+	rebase = true
+[fetch]
+    prune = true
+[init]
+    defaultBranch = main
+[alias]
+    clone-all = clone --recurse-submodules
+    pull-all = pull --recurse-submodules
+[includeIf "gitdir:~/qiwi_github/"]
+    path = ~/.gitconfig_work

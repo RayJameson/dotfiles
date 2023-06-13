@@ -81,3 +81,9 @@ fi
 ##############################
 curl https://pyenv.run | bash
 ln -s "$(pwd)/pyenv/default-packages" "$HOME/.pyenv/"
+
+##############################
+#            GIT             #
+##############################
+ln -s "$(pwd)/.gitconfig" "$HOME"
+ln -s "$(pwd)/.gitignore_global" "$HOME"
