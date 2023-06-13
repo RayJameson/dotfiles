@@ -26,7 +26,7 @@ export PATH="$PNPM_HOME:$PATH"
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=bat
-export FZF_DEFAULT_OPTS="--bind ctrl-j:down,ctrl-k:up --no-multi --marker ⇒ --pointer "
+export FZF_DEFAULT_OPTS="--bind ctrl-j:down,ctrl-k:up --no-multi --marker ⇒ --pointer  --reverse"
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --preview-window 'down,50%,border-rounded,+{2}+3/3,~3'"
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
