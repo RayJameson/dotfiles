@@ -9,9 +9,9 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export PNPM_HOME="/Users/$USER/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-export LOCAL_BIN="/Users/$USER/.local/bin"
+export LOCAL_BIN="$HOME/.local/bin"
 export PATH="$LOCAL_BIN:$PATH"
 export CONFIG="$HOME/.config"
 export NVIM_CONFIG="$CONFIG/nvim"
@@ -20,15 +20,15 @@ export DOTFILES="$HOME/dotfiles"
 export ZSH_DOTFILES="$DOTFILES/zsh"
 export ZSHRC="$ZSH_DOTFILES/zshrc"
 export ZSH="$ZSH_DOTFILES/oh-my-zsh"
-export PNPM_HOME="/Users/$USER/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=bat
-export FZF_DEFAULT_OPTS="--bind ctrl-j:down,ctrl-k:up --no-multi"
+export FZF_DEFAULT_OPTS="--bind ctrl-j:down,ctrl-k:up --no-multi --marker ⇒ --pointer "
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH=/opt/homebrew/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/mik.dmitriev/.pyenv/shims:/Users/mik.dmitriev/Library/pnpm:/Users/mik.dmitriev/.local/bin:/Users/mik.dmitriev/Library/pnpm:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:/Users/mik.dmitriev/.cargo/bin:/Users/mik.dmitriev/.emacs.d/bin:/Users/mik.dmitriev
+export PATH=/opt/homebrew/Cellar/pyenv-virtualenv/1.1.5/shims:$HOME/.pyenv/shims:$HOME/Library/pnpm:$HOME/.local/bin:$HOME/Library/pnpm:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:$HOME/.cargo/bin:$HOME
 
 export HOMEBREW_AUTO_UPDATING=0
 export NVM_LAZY_LOAD=true
@@ -187,7 +187,9 @@ alias dmt="cd $HOME/qiwi_github/dm-profiles-test/lua/"
 alias zshrc="v $ZSHRC"
 alias dotfiles="cd $DOTFILES"
 alias asc=asciinema
-alias make=gmake
+if [[ $(command -v gmake) ]]; then
+    alias make=gmake
+fi
 # User configuratio
 export MANPATH="/usr/local/man:$MANPATH"
 
