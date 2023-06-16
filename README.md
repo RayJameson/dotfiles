@@ -36,3 +36,4 @@ git pull --recurse-submodules
 - [ptpython](https://github.com/prompt-toolkit/ptpython) - better python REPL with syntax highlighting and auto-completion (IPython supported)
 - [pyenv](https://github.com/pyenv/pyenv) - python version manager
 - [nvm](https://github.com/nvm-sh/nvm) - node version manager
+- [glow](https://github.com/charmbracelet/glow) - render markdown in terminal
