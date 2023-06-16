@@ -18,6 +18,7 @@ git pull --recurse-submodules
 - [amethyst](https://github.com/ianyh/Amethyst) - tiling window manager for MacOS, inspired by xmonad
 - [wezterm](https://github.com/wez/wezterm) - terminal emulator with config in Lua (I <3 Lua)
 - [nvim](https://github.com/neovim/neovim) - the only true vim
+- [ranger](https://github.com/ranger/ranger) - TUI file manager with vim motions
 - [astronvim](https://github.com/AstroNvim/AstroNvim) - neovim config maintained by cool guys
 - [lazygit](https://github.com/jesseduffield/lazygit) - git TUI without nonsense
 - [lnav](https://github.com/tstack/lnav) - Log file navigator
