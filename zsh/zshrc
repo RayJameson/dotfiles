@@ -154,7 +154,9 @@ alias lzd=lazydocker
 alias pea="pyenv activate"
 alias plc="pyenv local"
 alias c=clear
-alias tm="tmux new -A -t main"
+tm() {
+    tmux attach -t main || tmux new -A -s main
+}
 alias xdg-open=open
 alias pydoc="python3 -m pydoc"
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
