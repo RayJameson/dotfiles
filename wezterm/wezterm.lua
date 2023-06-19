@@ -8,7 +8,8 @@ local config = {}
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
-local enable_tmux_like_keymaps = true
+
+local enable_tmux_like_keymaps = false
 
 -- This is where you actually apply your config choices
 config.window_background_opacity = 0.7
@@ -19,7 +20,7 @@ if wezterm.target_triple:match("darwin") then
 elseif wezterm.target_triple:match("windows") then
   config.win32_system_backdrop = "Acrylic"
   config.term = "" -- Set to empty so FZF works on windows
-  config.default_prog = { "cmd.exe" }
+  config.default_prog = { "pwsh.exe" }
 end
 
 -- config.enable_tab_bar = true
@@ -170,13 +171,23 @@ if enable_tmux_like_keymaps then
       mods = "LEADER",
       action = act.ActivateTabRelative(1),
     },
-  }
-  for i = 1, 9 do
-    table.insert(
-      config.keys,
-      { key = tostring(i), mods = "LEADER", action = act.ActivateTab(i - 1) }
-    )
-  end
+    {
+      key = ";",
+      mods = "CTRL",
+      action = act.ActivatePaneDirection("Next"),
+    },
+    { key = "1", mods = "LEADER", action = act.ActivateTab(0) },
+    { key = "2", mods = "LEADER", action = act.ActivateTab(1) },
+    { key = "3", mods = "LEADER", action = act.ActivateTab(2) },
+    { key = "4", mods = "LEADER", action = act.ActivateTab(3) },
+    { key = "5", mods = "LEADER", action = act.ActivateTab(4) },
+    { key = "6", mods = "LEADER", action = act.ActivateTab(5) },
+    { key = "7", mods = "LEADER", action = act.ActivateTab(6) },
+    { key = "8", mods = "LEADER", action = act.ActivateTab(7) },
+    { key = "9", mods = "LEADER", action = act.ActivateTab(8) },
+  { key = 'PageUp', action = act.ScrollByPage(-0.5) },
+  { key = 'PageDown', action = act.ScrollByPage(0.5) },
+}
   for i = 1, #tmux_keymap do
     table.insert(config.keys, tmux_keymap[i])
   end
