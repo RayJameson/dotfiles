@@ -37,3 +37,4 @@ git pull --recurse-submodules
 - [pyenv](https://github.com/pyenv/pyenv) - python version manager
 - [nvm](https://github.com/nvm-sh/nvm) - node version manager
 - [glow](https://github.com/charmbracelet/glow) - render markdown in terminal
+- [tealdeer](https://github.com/dbrgn/tealdeer) - faster tldr written in certain crab language
