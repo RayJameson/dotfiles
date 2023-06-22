@@ -116,7 +116,7 @@ plugins=(
     gh
     colored-man-pages
 )
-[[ ! $(command -v uname) == "Darwin" ]] || plugins+=(fzf-brew)
+[[ ! $(command -v brew) ]] || plugins+=(fzf-brew)
 custom_plugins=(
     davidde/git
     jeffreytse/zsh-vi-mode
@@ -139,7 +139,7 @@ if [[ $(command -v exa) ]]; then
     alias tree="exa --icons --header --sort name --group-directories-first --tree --ignore-glob __pycache__"
     export FZF_ALT_C_OPTS="--preview 'exa --icons --header --sort name --group-directories-first --tree {}'"
 fi
-if [[ $(command -v python3 --help) ]]; then
+if [[ $(command -v python3) ]]; then
     alias p="python"
     alias p3="python3"
 fi
@@ -151,8 +151,6 @@ if [[ $(command -v bat) ]]; then
 fi
 alias lg=lazygit
 alias lzd=lazydocker
-alias pea="pyenv activate"
-alias plc="pyenv local"
 alias c=clear
 tm() {
     tmux attach -t main || tmux new -A -s main
