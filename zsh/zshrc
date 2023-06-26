@@ -122,11 +122,11 @@ custom_plugins=(
     jeffreytse/zsh-vi-mode
     zdharma-continuum/fast-syntax-highlighting
     Aloxaf/fzf-tab
-    lukechilds/zsh-nvm
 )
 function zvm_config() {
     ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
     ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+    ZVM_TERM=xterm-256color
 }
 source "$ZSH_DOTFILES/install_custom_plugins.zsh"
 source $ZSH/oh-my-zsh.sh
@@ -186,14 +186,10 @@ cdl() {
     cd "$(readlink $1)"
 }
 alias config="cd $CONFIG"
-alias nvim_config="cd $NVIM_CONFIG"
 alias av="cd $ASTRONVIM_CONFIG"
-alias qiwi="cd $HOME/qiwi_github"
-alias pers="cd $HOME/personal_projects"
 alias dm="cd $HOME/qiwi_github/dm-profiles/lua/AF"
 alias dmt="cd $HOME/qiwi_github/dm-profiles-test/lua/"
 alias zshrc="v $ZSHRC"
-alias dotfiles="cd $DOTFILES"
 alias asc=asciinema
 if [[ $(command -v gmake) ]]; then
     alias make=gmake
@@ -247,3 +243,7 @@ if [[ $(command -v zoxide) ]]; then
     alias cdi="zi"
 fi
 export GPG_TTY="$TTY"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
