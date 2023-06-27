@@ -19,6 +19,11 @@ ln -s "$(pwd)/zsh/zshrc" "$HOME/.zshrc"
 ln -s "$(pwd)/zsh/powerlevel10k" "$(pwd)/zsh/oh-my-zsh/custom/themes"
 
 ##############################
+#           VI(M)            #
+##############################
+ln -s "$(pwd)/vi-m/.vimrc" "$HOME"
+
+##############################
 #         ASTRONVIM          #
 ##############################
 ln -s "$(pwd)/nvim" "$CONFIG"
