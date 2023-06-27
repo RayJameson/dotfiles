@@ -194,6 +194,9 @@ alias asc=asciinema
 if [[ $(command -v gmake) ]]; then
     alias make=gmake
 fi
+if [[ $(command -v gtar) ]]; then
+    alias tar=gtar
+fi
 # User configuratio
 export MANPATH="/usr/local/man:$MANPATH"
 
