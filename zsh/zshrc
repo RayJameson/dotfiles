@@ -115,6 +115,12 @@ plugins=(
     docker
     gh
     colored-man-pages
+    gnu-utils
+    copypath
+    encode64
+    fd
+    gpg-agent
+    ripgrep
 )
 [[ ! $(command -v brew) ]] || plugins+=(fzf-brew)
 custom_plugins=(
