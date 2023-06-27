@@ -196,7 +196,7 @@ alias config="cd $CONFIG"
 alias av="cd $ASTRONVIM_CONFIG"
 alias dm="cd $HOME/qiwi_github/dm-profiles/lua/AF"
 alias dmt="cd $HOME/qiwi_github/dm-profiles-test/lua/"
-alias zshrc="v $ZSHRC"
+alias zshrc="$EDITOR $ZSHRC"
 alias asc=asciinema
 # User configuratio
 export MANPATH="/usr/local/man:$MANPATH"
