@@ -186,6 +186,14 @@ pyenv_init() {
     eval "$(pyenv virtualenv-init -)"
 
 }
+check_pyenv_init() {
+    if [ -f .python-version ]; then
+        pyenv_init
+    fi
+}
+# add check_pyenv_init function to precmd_functions array
+autoload -U add-zsh-hook
+add-zsh-hook precmd check_pyenv_init
 luaj() {
     java -cp "$HOME/luaj-jse-3.0.2.jar" lua $1
 }
