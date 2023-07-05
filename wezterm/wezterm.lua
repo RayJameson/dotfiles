@@ -185,9 +185,9 @@ if enable_tmux_like_keymaps then
     { key = "7", mods = "LEADER", action = act.ActivateTab(6) },
     { key = "8", mods = "LEADER", action = act.ActivateTab(7) },
     { key = "9", mods = "LEADER", action = act.ActivateTab(8) },
-  { key = 'PageUp', action = act.ScrollByPage(-0.5) },
-  { key = 'PageDown', action = act.ScrollByPage(0.5) },
-}
+    { key = "PageUp", action = act.ScrollByPage(-0.5) },
+    { key = "PageDown", action = act.ScrollByPage(0.5) },
+  }
   for i = 1, #tmux_keymap do
     table.insert(config.keys, tmux_keymap[i])
   end
