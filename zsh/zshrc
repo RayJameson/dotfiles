@@ -140,7 +140,7 @@ alias help="nocorrect run-help"
 alias v=nvim
 alias vim=nvim
 [[ ! $(command -v gwhich) ]] || alias which=gwhich
-[[ ! $(command -v gawk) ]] || alias which=gawk
+[[ ! $(command -v gawk) ]] || alias awk=gawk
 if [[ $(command -v exa) ]]; then
     alias l="exa --long --icons --header --octal-permissions --all --sort date --group-directories-first"
     alias ls="exa --icons --sort name --group-directories-first"
