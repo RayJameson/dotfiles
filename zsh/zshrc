@@ -159,6 +159,7 @@ if [[ $(command -v bat) ]]; then
 fi
 alias lg=lazygit
 alias lzd=lazydocker
+[[ -n "$TMUX" ]] && alias clear="clear && tmux clear-history"
 alias c=clear
 tm() {
     local session_name=${1:-"main"}
