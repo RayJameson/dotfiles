@@ -9,6 +9,7 @@
 	precomposeunicode = true
 	sshCommand = ssh -F ~/.ssh/config
     pager = bat
+    editor = nvim
 	quotepath = false
 	excludesfile = ~/.gitignore_global
 [credential "https://github.qiwi.com"]
