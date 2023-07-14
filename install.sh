@@ -52,7 +52,6 @@ ln -s "$(pwd)/tmux" "$CONFIG"
 ##############################
 #        FZF-UTILITIES       #
 ##############################
-ln -s "$(pwd)/ff" "$HOME"
 ln -s "$(pwd)/fkill" "$HOME"
 ln -s "$(pwd)/frg" "$HOME"
 
