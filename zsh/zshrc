@@ -24,6 +24,9 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 autoload -Uz compinit; compinit;
+bindkey "^Xa" _expand_alias
+zstyle ':completion:*' completer _expand_alias _complete _ignored
+zstyle ':completion:*' regular true
 
 # Path to your oh-my-zsh installation.
 export PNPM_HOME="$HOME/Library/pnpm"
