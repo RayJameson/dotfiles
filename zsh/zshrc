@@ -221,7 +221,7 @@ pyenv_init() {
 
 }
 check_pyenv_init() {
-    if [ -f .python-version ]; then
+    if [[ -f .python-version ]]; then
         pyenv_init
     fi
 }
