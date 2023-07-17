@@ -2,7 +2,7 @@
 services:
   "github.qiwi.com": "github:github.qiwi.com"
 gui:
-  showIcons: true
+  nerdFontsVersion: "3"
   theme:
     selectedLineBgColor:
       - "#7a1b94"
