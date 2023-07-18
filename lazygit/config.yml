@@ -10,7 +10,7 @@ gui:
   skipRewordInEditorWarning: true
   theme:
     selectedLineBgColor:
-      - "#7a1b94"
+      - "#3e4452"
   authorColors:
     "Dmitriev Mikhail": "#ff00ff"
     "Ray Jameson": "#ff00ff"
