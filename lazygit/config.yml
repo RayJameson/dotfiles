@@ -3,12 +3,28 @@ services:
   "github.qiwi.com": "github:github.qiwi.com"
 gui:
   nerdFontsVersion: "3"
+  showBottomLine: false
+  showCommandLog: false
+  language: "en"
+  border: "rounded"
+  skipRewordInEditorWarning: true
   theme:
     selectedLineBgColor:
       - "#7a1b94"
   authorColors:
     "Dmitriev Mikhail": "#ff00ff"
     "Ray Jameson": "#ff00ff"
+  branchColors:
+    "master": "#c678dd"
+    "feat": "#61afef"
+    "fix": "#ec5f67"
+    "refactor": "#ffcc00"
+    "perf": "#1BF9C4"
+    "docs": "#abb2bf"
+    "chore": "#abb2bf"
+    "test": "#abb2bf"
+os:
+  editPreset: "nvim"
 git:
   overrideGpg: true
   log:
