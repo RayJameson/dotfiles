@@ -10,10 +10,9 @@
 	sshCommand = ssh -F ~/.ssh/config
     pager = bat
     editor = nvim
-	quotepath = false
 	excludesfile = ~/.gitignore_global
-[credential "https://github.qiwi.com"]
-	helper = !/usr/local/bin/gh auth git-credential
+[credential "https://*github*"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [user]
 	name = Ray Jameson
 	email = 67468725+RayJameson@users.noreply.github.com
