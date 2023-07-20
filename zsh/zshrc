@@ -287,10 +287,12 @@ if [[ $(command -v zoxide) ]]; then
     alias cdi="zi"
 fi
 export GPG_TTY="$TTY"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 if [[ $OSTYPE == "darwin"* ]] && [[ -d "$HOME/.terminfo" ]]; then
     export TERMINFO="$HOME/.terminfo" # this saves your santity on MacOS if you are using TMUX
 fi
+
+nvm_init() {
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
