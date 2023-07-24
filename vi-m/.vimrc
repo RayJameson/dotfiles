@@ -33,7 +33,6 @@ inoremap jj <Esc>
 inoremap jk <Esc>
 inoremap JJ <Esc>
 inoremap JK <Esc>
-xnoremap p P
 
 
 """""""""""""""""""""""""""""""""
