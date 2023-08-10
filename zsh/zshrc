@@ -173,8 +173,8 @@ awk() {
     [[ $(command -v gawk) ]] && gawk $@ || awk $@
 }
 if [[ $(command -v exa) ]]; then
-    alias l="exa --long --icons --header --octal-permissions --all --sort date --group-directories-first"
-    alias ls="exa --icons --sort name --group-directories-first"
+    alias l="exa --long --icons --header --octal-permissions --all --sort date --git --group-directories-first"
+    alias ls="exa --icons --sort name --group-directories-first --git"
     alias tree="exa --icons --header --sort name --group-directories-first --tree --ignore-glob __pycache__"
     export FZF_ALT_C_OPTS="--preview 'exa --icons --header --sort name --group-directories-first --tree {}'"
 fi
