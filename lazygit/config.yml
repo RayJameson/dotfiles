@@ -24,8 +24,6 @@ gui:
     "docs": "#abb2bf"
     "chore": "#abb2bf"
     "test": "#abb2bf"
-os:
-  editPreset: "nvim"
 git:
   overrideGpg: true
   log:
