@@ -30,6 +30,9 @@ git:
   log:
     showGraph: "always"
     showWholeGraph: false
+  paging:
+    colorArg: "always"
+    pager: "diff-so-fancy"
 
 customCommands:
   - key: "F"
