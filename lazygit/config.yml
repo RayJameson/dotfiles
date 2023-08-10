@@ -2,6 +2,7 @@
 services:
   "github.qiwi.com": "github:github.qiwi.com"
 gui:
+  mouseEvents: false
   nerdFontsVersion: "3"
   showBottomLine: false
   showCommandLog: false
