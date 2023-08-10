@@ -18,7 +18,8 @@ gui:
   branchColors:
     "master": "#c678dd"
     "feat": "#61afef"
-    "fix": "#ec5f67"
+    "fix": "#7bc99c"
+    "remove": "#ec5f67"
     "refactor": "#ffcc00"
     "perf": "#1BF9C4"
     "docs": "#abb2bf"
