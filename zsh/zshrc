@@ -47,7 +47,6 @@ export ZSH="$ZSH_DOTFILES/oh-my-zsh"
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export EDITOR=nvim
-export VISUAL=neovide
 export PAGER=bat
 export FZF_DEFAULT_OPTS="--bind ctrl-j:down,ctrl-k:up --no-multi --marker ⇒ --pointer  --reverse"
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --preview-window 'down,50%,border-rounded,+{2}+3/3,~3'"
