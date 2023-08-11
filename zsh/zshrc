@@ -58,7 +58,6 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH="opt/homebrew/Cellar/pyenv-virtualenv/1.1.5/shims:$HOME/.pyenv/shims:$HOME/Library/pnpm:$HOME/.local/bin:$HOME/Library/pnpm:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:$HOME/.cargo/bin:$HOME:/$HOME/.config/emacs/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/go/bin"
 
 export HOMEBREW_AUTO_UPDATING=0
-export NVM_LAZY_LOAD=true
 # Add colors to Terminal
 export LSCOLORS=ExFxBxDxCxegedabagacad
 # Set name of the theme to load --- if set to "random", it will
