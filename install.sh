@@ -89,5 +89,5 @@ ln -s "$(pwd)/pyenv/default-packages" "$HOME/.pyenv/"
 ##############################
 #            GIT             #
 ##############################
-ln -s "$(pwd)/.gitconfig" "$HOME"
-ln -s "$(pwd)/.gitignore_global" "$HOME"
+ln -s "$(pwd)/git/.gitconfig" "$HOME"
+ln -s "$(pwd)/git/.gitignore_global" "$HOME"
