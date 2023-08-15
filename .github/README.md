@@ -19,26 +19,27 @@ git pull --recurse-submodules
 
 ### CLI and TUI apps:
 - [zsh](https://zsh.sourceforge.io/) - shell that I use
-- [nvim](https://github.com/neovim/neovim) - the only true vim
-- [ranger](https://github.com/ranger/ranger) - TUI file manager with vim motions
-- [lazygit](https://github.com/jesseduffield/lazygit) - git TUI without nonsense
-- [lazydocker](https://github.com/jesseduffield/lazydocker) - docker TUI
-- [lnav](https://github.com/tstack/lnav) - Log file navigator
-- [btop](https://github.com/aristocratos/btop) - htop alternative with additional panes
-- [gh](https://github.com/cli/cli) - GitHub CLI
 - [tmux](https://github.com/tmux/tmux) - terminal multiplexer
-- [fzf](https://github.com/junegunn/fzf) - fuzzy finder
+- [brew](https://brew.sh/) - package manager
+- [nvim](https://github.com/neovim/neovim) - the only true vim
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - `cd` replacement
 - [exa](https://github.com/ogham/exa) - `ls` and `tree` replacement
 - [bat](https://github.com/sharkdp/bat) - `cat` replacement
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - `grep` replacement
 - [fd](https://github.com/sharkdp/fd) - `find` replacement
 - [ncdu](https://code.blicky.net/yorhel/ncdu/) - `du` replacement
+- [fzf](https://github.com/junegunn/fzf) - fuzzy finder
+- [tealdeer](https://github.com/dbrgn/tealdeer) - faster tldr written in certain crab language
+- [lazygit](https://github.com/jesseduffield/lazygit) - git TUI without nonsense
+- [lazydocker](https://github.com/jesseduffield/lazydocker) - docker TUI
+- [ranger](https://github.com/ranger/ranger) - TUI file manager with vim motions
+- [btop](https://github.com/aristocratos/btop) - htop alternative with additional panes
+- [lnav](https://github.com/tstack/lnav) - Log file navigator
+- [gh](https://github.com/cli/cli) - GitHub CLI
 - [ptpython](https://github.com/prompt-toolkit/ptpython) - better python REPL with syntax highlighting and auto-completion (IPython supported)
 - [pyenv](https://github.com/pyenv/pyenv) - python version manager
 - [nvm](https://github.com/nvm-sh/nvm) - node version manager
 - [glow](https://github.com/charmbracelet/glow) - render markdown in terminal
-- [tealdeer](https://github.com/dbrgn/tealdeer) - faster tldr written in certain crab language
 
 ### Preconfigs
 - [astronvim](https://github.com/AstroNvim/AstroNvim) - neovim config maintained by cool guys
