@@ -1,4 +1,8 @@
 # OS X config
+<img width="1728" alt="image" src="https://github.com/RayJameson/dotfiles/assets/67468725/6b597549-47a6-4e94-854f-7bc01102c2b0">
+<img width="1728" alt="image" src="https://github.com/RayJameson/dotfiles/assets/67468725/f8b354e4-b8f1-475d-929b-2ae001d300f5">
+
+
 
 ### To install config:
 
