@@ -1,3 +1,5 @@
+# OS X config
+
 ### To install config:
 
 ```bash
@@ -15,16 +17,15 @@ git pull --recurse-submodules
 
 ## List of utilities I use
 
-- [amethyst](https://github.com/ianyh/Amethyst) - tiling window manager for MacOS, inspired by xmonad
-- [wezterm](https://github.com/wez/wezterm) - terminal emulator with config in Lua (I <3 Lua)
+### CLI and TUI apps:
+- [zsh](https://zsh.sourceforge.io/) - shell that I use
 - [nvim](https://github.com/neovim/neovim) - the only true vim
 - [ranger](https://github.com/ranger/ranger) - TUI file manager with vim motions
-- [astronvim](https://github.com/AstroNvim/AstroNvim) - neovim config maintained by cool guys
 - [lazygit](https://github.com/jesseduffield/lazygit) - git TUI without nonsense
+- [lazydocker](https://github.com/jesseduffield/lazydocker) - docker TUI
 - [lnav](https://github.com/tstack/lnav) - Log file navigator
 - [btop](https://github.com/aristocratos/btop) - htop alternative with additional panes
 - [gh](https://github.com/cli/cli) - GitHub CLI
-- [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) - framework for ZSH config and plugins
 - [tmux](https://github.com/tmux/tmux) - terminal multiplexer
 - [fzf](https://github.com/junegunn/fzf) - fuzzy finder
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - `cd` replacement
@@ -32,9 +33,38 @@ git pull --recurse-submodules
 - [bat](https://github.com/sharkdp/bat) - `cat` replacement
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - `grep` replacement
 - [fd](https://github.com/sharkdp/fd) - `find` replacement
-- [ncdu](https://dev.yorhel.nl/ncdu) - `du` replacement
+- [ncdu](https://code.blicky.net/yorhel/ncdu/) - `du` replacement
 - [ptpython](https://github.com/prompt-toolkit/ptpython) - better python REPL with syntax highlighting and auto-completion (IPython supported)
 - [pyenv](https://github.com/pyenv/pyenv) - python version manager
 - [nvm](https://github.com/nvm-sh/nvm) - node version manager
 - [glow](https://github.com/charmbracelet/glow) - render markdown in terminal
 - [tealdeer](https://github.com/dbrgn/tealdeer) - faster tldr written in certain crab language
+
+### Preconfigs
+- [astronvim](https://github.com/AstroNvim/AstroNvim) - neovim config maintained by cool guys
+- [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) - framework for ZSH config and plugins
+
+### GUI apps
+- [keepassxc](https://github.com/keepassxreboot/keepassxc) - Cross platform open-source keepass port
+- [maccy](https://github.com/p0deje/Maccy) - Lightweight clipboard manager for MacOS (can't believe it's still not native feature)
+- [amethyst](https://github.com/ianyh/Amethyst) - tiling window manager for MacOS, inspired by xmonad
+- [wezterm](https://github.com/wez/wezterm) - terminal emulator with config in Lua (I <3 Lua)
+- [raycast](https://www.raycast.com/) - Spotlight replacement (closed source)
+- [arc](https://arc.net/) - very cool browser with conceivable toolbar,literally just a border around and nothing else (closed source)
+- [obsidian](https://obsidian.md/) - personal wiki (closed source)
+
+## Brew stuff that need to be installed on a fresh system
+```bash
+# cli apps
+brew install ripgrep fd ncdu bat exa bat btop ranger lnav gh \
+    glow nvm pyenv tealdeer fzf fzy zoxide tmux pipx zsh bash \
+    ncurses coreutils gsed gnu-which gnu-tar git trash terminal-notifier \
+    wget curl tree-sitter sqlite rich openssh openssl \
+    luarocks lua luajit rust clang jq lazydocker gpg-tui asciinema stylua
+# some nightly stuff
+brew install --fetch-HEAD neovim lazygit
+# gui apps
+brew install --cask amethyst wezterm maccy \
+    raycast obsidian keepassxc docker \
+    keycastr yandex-music-unofficial arc
+```
