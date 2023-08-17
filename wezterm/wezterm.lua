@@ -29,6 +29,7 @@ config.tab_max_width = 25
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 
+config.harfbuzz_features = { "zero" } -- zero with dot instead of slashed zero
 config.font = wezterm.font("LigaMesloLGSDZ Nerd Font Mono")
 --<!-- -- != := === == != >= >- >=> |-> -> <$> </> #[ |||> |= ~@
 
