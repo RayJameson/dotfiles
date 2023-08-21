@@ -65,7 +65,8 @@ brew install ripgrep fd ncdu bat exa bat btop ranger lnav gh \
     glow nvm pyenv tealdeer fzf fzy zoxide tmux pipx zsh bash \
     ncurses coreutils gsed gnu-which gnu-tar git trash terminal-notifier \
     wget curl tree-sitter sqlite rich openssh openssl \
-    luarocks lua luajit rust clang jq lazydocker gpg-tui asciinema stylua
+    luarocks lua luajit rust clang jq lazydocker gpg-tui asciinema stylua \
+    man-db
 # some nightly stuff
 brew install --fetch-HEAD neovim lazygit
 # gui apps
