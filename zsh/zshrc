@@ -29,10 +29,7 @@ zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true
 
 # Path to your oh-my-zsh installation.
-export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
 export LOCAL_BIN="$HOME/.local/bin"
-export PATH="$LOCAL_BIN:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export CONFIG="$XDG_CONFIG_HOME"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -45,9 +42,9 @@ export DOTFILES="$HOME/dotfiles"
 export ZSH_DOTFILES="$DOTFILES/zsh"
 export ZSHRC="$ZSH_DOTFILES/zshrc"
 export ZSH="$ZSH_DOTFILES/oh-my-zsh"
-export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
 export EDITOR=nvim
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
+export PATH="$HOME:$LOCAL_BIN:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.pyenv/shims:$XDG_CONFIG_HOME/emacs/bin:$PATH"
 export PAGER=bat
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_TMUX_OPTS='-p80%,60%'
@@ -62,32 +59,18 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH="opt/homebrew/Cellar/pyenv-virtualenv/1.1.5/shims:$HOME/.pyenv/shims:$HOME/Library/pnpm:$HOME/.local/bin:$HOME/Library/pnpm:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:$HOME/.cargo/bin:$HOME:$XDG_CONFIG_HOM/emacs/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/go/bin"
 export PATH="$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
-export PATH="/opt/homebrew/opt/man-db/libexec/bin:/opt/homebrew/opt/gnu-tar/libexec/gnubin:/opt/homebrew/opt/gawk/libexec/gnubin:/opt/homebrew/opt/gnu-which/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="$PATH:/Users/mik.dmitriev/Library/Application Support/Coursier/bin"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
 export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
 export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
 export POETRY_VIRTUALENVS_IN_PROJECT=true
+if [[ $(uname) == "Darwin" ]]; then
+    source "$ZSH_DOTFILES/mac.zsh"
+fi
 
-export HOMEBREW_AUTO_UPDATING=0
 # Add colors to Terminal
 export LSCOLORS=ExFxBxDxCxegedabagacad
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -125,17 +108,6 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
