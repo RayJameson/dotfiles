@@ -75,6 +75,12 @@ config.keys = {
       mods = "SHIFT|CTRL",
     },
   },
+  -- allow tmux to receive <C-'>/<C-;>/<C-,> binding
+  { key = "'", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;39~") },
+  { key = ";", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;59~") },
+  { key = "-", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;45~") },
+  { key = "=", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;61~") },
+  { key = ",", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;44~") },
 }
 
 if enable_tmux_like_keymaps then
