@@ -8,9 +8,6 @@ local config = {}
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
-
-local enable_tmux_like_keymaps = false
-
 -- This is where you actually apply your config choices
 config.window_background_opacity = 0.7
 
@@ -43,6 +40,7 @@ config.colors = {
 }
 config.window_decorations = "RESIZE"
 config.front_end = "WebGpu"
+config.webgpu_power_preference = "HighPerformance"
 config.window_padding = {
   left = "0cell",
   right = "0cell",
@@ -82,123 +80,6 @@ config.keys = {
   { key = "=", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;61~") },
   { key = ",", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;44~") },
 }
-
-if enable_tmux_like_keymaps then
-  config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 50000 }
-  local tmux_keymap = {
-    -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
-    {
-      key = "a",
-      mods = "LEADER|CTRL",
-      action = act.SendKey { key = "a", mods = "CTRL" },
-    },
-    {
-      key = '"',
-      mods = "LEADER",
-      action = act.SplitVertical { domain = "CurrentPaneDomain" },
-    },
-    {
-      key = "%",
-      mods = "LEADER",
-      action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
-    },
-    {
-      key = "-",
-      mods = "LEADER",
-      action = act.SplitVertical { domain = "CurrentPaneDomain" },
-    },
-    {
-      key = "|",
-      mods = "LEADER",
-      action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
-    },
-    { key = "z", mods = "LEADER", action = "TogglePaneZoomState" },
-    {
-      key = "c",
-      mods = "LEADER",
-      action = act.SpawnTab("CurrentPaneDomain"),
-    },
-    {
-      key = "h",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Left"),
-    },
-    {
-      key = "j",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Down"),
-    },
-    {
-      key = "k",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Up"),
-    },
-    {
-      key = "l",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Right"),
-    },
-    {
-      key = "H",
-      mods = "LEADER",
-      action = act.AdjustPaneSize { "Left", 5 },
-    },
-    {
-      key = "J",
-      mods = "LEADER",
-      action = act.AdjustPaneSize { "Down", 5 },
-    },
-    {
-      key = "K",
-      mods = "LEADER",
-      action = act.AdjustPaneSize { "Up", 5 },
-    },
-    {
-      key = "L",
-      mods = "LEADER",
-      action = act.AdjustPaneSize { "Right", 5 },
-    },
-    {
-      key = "&",
-      mods = "LEADER",
-      action = act.CloseCurrentTab { confirm = true },
-    },
-    {
-      key = "x",
-      mods = "LEADER",
-      action = act.CloseCurrentPane { confirm = true },
-    },
-    {
-      key = "p",
-      mods = "LEADER",
-      action = act.ActivateTabRelative(-1),
-    },
-    {
-      key = "n",
-      mods = "LEADER",
-      action = act.ActivateTabRelative(1),
-    },
-    {
-      key = ";",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Next"),
-    },
-    { key = "1", mods = "LEADER", action = act.ActivateTab(0) },
-    { key = "2", mods = "LEADER", action = act.ActivateTab(1) },
-    { key = "3", mods = "LEADER", action = act.ActivateTab(2) },
-    { key = "4", mods = "LEADER", action = act.ActivateTab(3) },
-    { key = "5", mods = "LEADER", action = act.ActivateTab(4) },
-    { key = "6", mods = "LEADER", action = act.ActivateTab(5) },
-    { key = "7", mods = "LEADER", action = act.ActivateTab(6) },
-    { key = "8", mods = "LEADER", action = act.ActivateTab(7) },
-    { key = "9", mods = "LEADER", action = act.ActivateTab(8) },
-    { key = "PageUp", action = act.ScrollByPage(-0.5) },
-    { key = "PageDown", action = act.ScrollByPage(0.5) },
-  }
-  for i = 1, #tmux_keymap do
-    table.insert(config.keys, tmux_keymap[i])
-  end
-end
 
 -- and finally, return the configuration to wezterm
 return config
