@@ -66,11 +66,17 @@ brew install ripgrep fd ncdu bat exa bat btop ranger lnav gh \
     ncurses coreutils gsed gnu-which gnu-tar git trash terminal-notifier \
     wget curl tree-sitter sqlite rich openssh openssl \
     luarocks lua luajit rust clang jq lazydocker gpg-tui asciinema stylua \
-    man-db
+    man-db && \
 # some nightly stuff
-brew install --fetch-HEAD neovim lazygit
+brew install --fetch-HEAD neovim lazygit && \
 # gui apps
 brew install --cask amethyst wezterm maccy \
     raycast obsidian keepassxc docker \
-    keycastr yandex-music-unofficial arc
+    keycastr yandex-music-unofficial arc && \
+# moretutils with gnu parallel
+brew unlink moreutils && \
+brew install parallel && \
+brew link --overwrite moreutils && \
+brew unlink paralle && \
+brew link --overwrite parallel
 ```
