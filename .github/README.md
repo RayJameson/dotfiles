@@ -1,8 +1,7 @@
 # OS X config
+
 <img width="1728" alt="image" src="https://github.com/RayJameson/dotfiles/assets/67468725/6b597549-47a6-4e94-854f-7bc01102c2b0">
 <img width="1728" alt="image" src="https://github.com/RayJameson/dotfiles/assets/67468725/f8b354e4-b8f1-475d-929b-2ae001d300f5">
-
-
 
 ### To install config:
 
@@ -22,6 +21,7 @@ git pull --recurse-submodules
 ## List of utilities I use
 
 ### CLI and TUI apps:
+
 - [zsh](https://zsh.sourceforge.io/) - shell that I use
 - [tmux](https://github.com/tmux/tmux) - terminal multiplexer
 - [brew](https://brew.sh/) - package manager
@@ -46,12 +46,15 @@ git pull --recurse-submodules
 - [glow](https://github.com/charmbracelet/glow) - render markdown in terminal
 
 ### Preconfigs
+
 - [astronvim](https://github.com/AstroNvim/AstroNvim) - neovim config maintained by cool guys
 - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) - framework for ZSH config and plugins
 
 ### GUI apps
+
 - [keepassxc](https://github.com/keepassxreboot/keepassxc) - Cross platform open-source keepass port
-- [maccy](https://github.com/p0deje/Maccy) - Lightweight clipboard manager for MacOS (can't believe it's still not native feature)
+- ~~[maccy](https://github.com/p0deje/Maccy) - Lightweight clipboard manager for MacOS (can't believe it's still not native feature)~~  
+    raycast has same functionality by default
 - [amethyst](https://github.com/ianyh/Amethyst) - tiling window manager for MacOS, inspired by xmonad
 - [wezterm](https://github.com/wez/wezterm) - terminal emulator with config in Lua (I <3 Lua)
 - [raycast](https://www.raycast.com/) - Spotlight replacement (closed source)
@@ -59,6 +62,7 @@ git pull --recurse-submodules
 - [obsidian](https://obsidian.md/) - personal wiki (closed source)
 
 ## Brew stuff that need to be installed on a fresh system
+
 ```bash
 # cli apps
 brew install ripgrep fd ncdu bat exa bat btop ranger lnav gh \
@@ -70,7 +74,7 @@ brew install ripgrep fd ncdu bat exa bat btop ranger lnav gh \
 # some nightly stuff
 brew install --fetch-HEAD neovim lazygit && \
 # gui apps
-brew install --cask amethyst wezterm maccy \
+brew install --cask amethyst wezterm \
     raycast obsidian keepassxc docker \
     keycastr yandex-music-unofficial arc && \
 # moretutils with gnu parallel
