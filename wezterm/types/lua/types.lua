@@ -398,10 +398,10 @@ function Color:triad() end
 ---@field border_top_color? string
 
 ---@class _.wezterm.WindowPadding
----@field left? number
----@field right? number
----@field top? number
----@field bottom? number
+---@field left? number|string
+---@field right? number|string
+---@field top? number|string
+---@field bottom? number|string
 
 ---@class _.wezterm.Pane
 local Pane = {}
@@ -1148,7 +1148,7 @@ function KeyAssignment.SwitchWorkspaceRelative(direction) end
 ---@field visual_bell _.wezterm.VisualBellConfig
 ---@field warn_about_missing_glyphs boolean
 ---@field webgpu_force_fallback_adapter boolean
----@field webgpu_power_preference 'LowPower' | 'HighPower'
+---@field webgpu_power_preference 'LowPower' | 'HighPerformance'
 ---@field webgpu_preferred_adapter _.wezterm.GpuInfo
 ---@field win32_acrylic_accent_color string
 ---@field win32_system_backdrop 'Auto' | 'Disable' | 'Acrylic' | 'Mica' | 'Tabbed'
