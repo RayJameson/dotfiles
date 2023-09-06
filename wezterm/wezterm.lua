@@ -42,10 +42,10 @@ config.window_decorations = "RESIZE"
 config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
 config.window_padding = {
-  left = "0cell",
-  right = "0cell",
-  top = "0.0cell",
-  bottom = "0.0cell",
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
 }
 
 config.audible_bell = "Disabled"
