@@ -8,7 +8,7 @@
 	ignorecase = true
 	precomposeunicode = true
 	sshCommand = ssh -F ~/.ssh/config
-    pager = bat
+	pager = diff-so-fancy | less --tabs=4 -RFX
     editor = nvim
 	excludesfile = ~/.gitignore_global
 [credential "https://*github*"]
@@ -36,3 +36,5 @@
     pull-all = pull --recurse-submodules
 [includeIf "gitdir:~/qiwi_github/"]
     path = ~/.gitconfig_work
+[interactive]
+	diffFilter = diff-so-fancy --patch
