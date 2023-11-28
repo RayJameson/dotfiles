@@ -91,3 +91,8 @@ ln -s "$(pwd)/pyenv/default-packages" "$HOME/.pyenv/"
 ##############################
 ln -s "$(pwd)/git/.gitconfig" "$HOME"
 ln -s "$(pwd)/git/.gitignore_global" "$HOME"
+
+##############################
+#            ARC             #
+##############################
+ln -s "$(pwd)/open_little_arc" "$HOME"
