@@ -8,8 +8,17 @@ local config = {}
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
+local transparency_value = 0.7
+config.window_background_opacity = wezterm.GLOBAL.window_background_opacity or transparency_value
 -- This is where you actually apply your config choices
-config.window_background_opacity = 0.7
+wezterm.on("toggle-transparency", function(window, _)
+  if wezterm.GLOBAL.window_background_opacity == transparency_value or wezterm.GLOBAL.window_background_opacity == nil then
+    wezterm.GLOBAL.window_background_opacity = 1
+  elseif wezterm.GLOBAL.window_background_opacity == 1 then
+    wezterm.GLOBAL.window_background_opacity = transparency_value
+  end
+  wezterm.reload_configuration()
+end)
 
 -- Check current OS and apply background effects
 if wezterm.target_triple:match("darwin") then
@@ -79,6 +88,11 @@ config.keys = {
   { key = "-", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;45~") },
   { key = "=", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;61~") },
   { key = ",", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;44~") },
+  {
+    key = "t",
+    mods = "SUPER|ALT",
+    action = wezterm.action.EmitEvent("toggle-transparency"),
+  },
 }
 
 -- and finally, return the configuration to wezterm
