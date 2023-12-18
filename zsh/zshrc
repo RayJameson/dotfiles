@@ -63,6 +63,7 @@ export FZF_CTRL_R_OPTS="
   --header 'Press CTRL-Y to copy command into clipboard'"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH="$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
 export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
 export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
@@ -148,6 +149,7 @@ function zvm_config() {
 source "$ZSH_DOTFILES/install_custom_plugins.zsh"
 source $ZSH/oh-my-zsh.sh
 alias lvim="NVIM_APPNAME=lvim nvim"
+alias v4="NVIM_APPNAME=v4 nvim"
 alias help="nocorrect run-help"
 alias v=nvim
 alias vim=nvim
