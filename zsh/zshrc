@@ -154,12 +154,12 @@ alias help="nocorrect run-help"
 alias v=nvim
 alias vim=nvim
 # make functions for commands which could be used in piping
-if [[ $(command -v exa) ]]; then
-    alias l="exa --long --icons --header --octal-permissions --all --sort date --git --group-directories-first"
-    alias ls="exa --icons --sort name --group-directories-first --git"
-    alias lo="exa --icons --sort name -1"
-    alias tree="exa --icons --header --sort name --group-directories-first --tree --ignore-glob __pycache__"
-    export FZF_ALT_C_OPTS="--preview 'exa --icons --header --sort name --group-directories-first --tree {}'"
+if [[ $(command -v eza) ]]; then
+    alias l="eza --long --icons --header --octal-permissions --all --sort date --git --group-directories-first"
+    alias ls="eza --icons --sort name --group-directories-first --git"
+    alias lo="eza --icons --sort name -1"
+    alias tree="eza --icons --header --sort name --group-directories-first --tree --ignore-glob __pycache__"
+    export FZF_ALT_C_OPTS="--preview 'eza --icons --header --sort name --group-directories-first --tree {}'"
 fi
 if [[ $(command -v python3) ]]; then
     alias p="python"

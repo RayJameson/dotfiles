@@ -27,7 +27,7 @@ git pull --recurse-submodules
 - [brew](https://brew.sh/) - package manager
 - [nvim](https://github.com/neovim/neovim) - the only true vim
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - `cd` replacement
-- [exa](https://github.com/ogham/exa) - `ls` and `tree` replacement
+- [eza](https://github.com/eza-community/eza) - `ls` and `tree` replacement, successor of `exa
 - [bat](https://github.com/sharkdp/bat) - `cat` replacement
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - `grep` replacement
 - [fd](https://github.com/sharkdp/fd) - `find` replacement
@@ -65,7 +65,7 @@ git pull --recurse-submodules
 
 ```bash
 # cli apps
-brew install ripgrep fd ncdu bat exa bat btop ranger lnav gh \
+brew install ripgrep fd ncdu bat eza bat btop ranger lnav gh \
     glow nvm pyenv tealdeer fzf fzy zoxide tmux pipx zsh bash \
     ncurses coreutils gsed gnu-which gnu-tar git trash terminal-notifier \
     wget curl tree-sitter sqlite rich openssh openssl \
