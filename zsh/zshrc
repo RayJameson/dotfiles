@@ -194,8 +194,9 @@ _fzf_compgen_dir() {
     fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 pyvenv() {
-    pyenv virtualenv $1 $2
-    pyenv local $2
+    venv_name=${2:-$(basename $(pwd))}
+    pyenv virtualenv $1 $venv_name
+    pyenv local $venv_name
     pyenv pyright
 }
 pyenv_init() {
