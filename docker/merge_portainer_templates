@@ -18,7 +18,7 @@ def main() -> Literal[0]:
         "files",
         help="Portainer template files (JSON)",
         nargs="+",
-        type=argparse.FileType("r+"),
+        type=argparse.FileType("r"),
         metavar="FILE",
     )
     parser.add_argument(
