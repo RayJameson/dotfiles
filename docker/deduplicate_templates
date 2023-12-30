@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+import traceback as tb
+from io import TextIOWrapper
+from typing import Literal, cast
+
+
+def main() -> Literal[0]:
+    parser = argparse.ArgumentParser(description="Deduplicate portainer templates")
+    parser.add_argument(
+        "file",
+        help="Portainer template file (JSON)",
+        type=argparse.FileType("r+"),
+    )
+    args = parser.parse_args()
+    args.file = cast(TextIOWrapper, args.file)
+
+    try:
+        data: dict = json.load(args.file)
+        templates: list[dict] = data["templates"]
+        unique_templates: list[dict] = []
+        for t in templates:
+            if t not in unique_templates:
+                unique_templates.append(t)
+
+        if len(templates) == len(unique_templates):
+            print("No duplicates found")
+            raise SystemExit(0)
+
+        print(
+            f"Templates before deduplication: {len(templates)}\nTemplates after deduplication: {len(unique_templates)}",
+        )
+        data["templates"] = unique_templates
+
+        args.file.seek(0)
+        args.file.truncate()
+        json.dump(data, args.file, indent=2)
+    except Exception as e:
+        print("Error occured during deduplication, file closed")
+        raise SystemExit(tb.format_exc()) from e
+    finally:
+        args.file.close()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
