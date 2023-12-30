@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+Merge portainer templates without duplicates
+Example:
+./merge_portainer_templates templates_1.json templates_2.json
+"""
 
 import argparse
 import json
@@ -8,12 +13,23 @@ from typing import Literal, TextIO, cast
 
 
 def main() -> Literal[0]:
-    parser = argparse.ArgumentParser(description="Deduplicate portainer templates")
+    parser = argparse.ArgumentParser(description="Deduplicate portainer templates", add_help=False)
     parser.add_argument(
         "files",
         help="Portainer template files (JSON)",
         nargs="+",
         type=argparse.FileType("r+"),
+        metavar="FILE",
+    )
+    parser.add_argument(
+        "-h",
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help=(
+            "Merge portainer templates without duplicates."
+            "Example: ./merge_portainer_templates templates_1.json templates_2.json"
+        ),
     )
     args = parser.parse_args()
 
