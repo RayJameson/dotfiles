@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+import traceback as tb
+from pathlib import Path
+from typing import Literal, TextIO, cast
+
+
+def main() -> Literal[0]:
+    parser = argparse.ArgumentParser(description="Deduplicate portainer templates")
+    parser.add_argument(
+        "files",
+        help="Portainer template files (JSON)",
+        nargs="+",
+        type=argparse.FileType("r+"),
+    )
+    args = parser.parse_args()
+
+    unique_templates: list[dict] = []
+    version = None
+    try:
+        for f in args.files:
+            f = cast(TextIO, f)
+            data: dict = json.load(f)
+            if version is None:
+                version = data["version"]
+            elif version != data["version"]:
+                print("Templates are not for the same portainer version")
+                raise SystemExit(1)
+
+            templates: list[dict] = data["templates"]
+            for t in templates:
+                if t not in unique_templates:
+                    unique_templates.append(t)
+
+        merged_templates = {
+            "version": version,
+            "templates": unique_templates,
+        }
+        input_file_dir = Path(args.files[0].name).parent
+        output_file = input_file_dir / "merged_templates.json"
+        with open(
+            output_file,
+            "w",
+            encoding="utf-8",
+        ) as f:
+            json.dump(merged_templates, f, indent=2)
+            print(
+                (
+                    f"Merged {len(args.files)} template files\n"
+                    f"Total unique templates: {len(unique_templates)}\n"
+                    f"Output file: {output_file.absolute()}\n"
+                ),
+            )
+    except Exception as e:
+        print("Error occured during deduplication, files closed")
+        raise SystemExit(tb.format_exc()) from e
+    finally:
+        for f in args.files:
+            f.close()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
