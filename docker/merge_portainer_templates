@@ -19,6 +19,7 @@ def merge_unique_templates(files: list[dict]) -> dict:
             print(
                 f"Templates are not for the same portainer version, can't merge v{version} and v{f['version']}",
                 file=sys.stderr,
+                flush=True,
             )
             sys.exit(1)
 
@@ -45,6 +46,7 @@ def save_output(args: argparse.Namespace, merged_templates: dict) -> None:
                 f"Total unique templates: {len(merged_templates['templates'])}\n"
                 f"Output file: {Path(f.name).absolute()}\n"
             ),
+            flush=True,
         )
 
 
@@ -81,7 +83,7 @@ def main() -> Literal[0]:
         os.dup2(devnull, sys.stdout.fileno())
         sys.exit(tb.format_exc())
     except Exception:
-        print("Unknown error occured during merging, files closed", file=sys.stderr)
+        print("Unknown error occured during merging, files closed", file=sys.stderr, flush=True)
         sys.exit(tb.format_exc())
     finally:
         for f in args.files:
