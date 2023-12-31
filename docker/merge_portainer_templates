@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-"""
-Merge portainer templates without duplicates
-Example:
-./merge_portainer_templates templates_1.json templates_2.json
-"""
 
 import argparse
 import json
+import os
+import sys
 import traceback as tb
 from pathlib import Path
 from typing import Literal, TextIO, cast
@@ -19,14 +16,21 @@ def main() -> Literal[0]:
         help="Portainer template files (JSON)",
         nargs="+",
         type=argparse.FileType("r"),
-        metavar="FILE",
+        metavar="INPUT_FILES",
     )
     parser.add_argument(
         "-h",
         "--help",
         action="help",
         default=argparse.SUPPRESS,
-        help="Example: ./merge_portainer_templates templates_1.json templates_2.json",
+        help="Example: ./merge_portainer_templates -o merged.json templates_1.json templates_2.json",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="Output file, by default output to stdout",
+        default=sys.stdout,
+        metavar="OUTPUT_FILE",
     )
     args = parser.parse_args()
 
@@ -51,23 +55,24 @@ def main() -> Literal[0]:
             "version": version,
             "templates": unique_templates,
         }
-        input_file_dir = Path(args.files[0].name).parent
-        output_file = input_file_dir / "merged_templates.json"
-        with open(
-            output_file,
-            "w",
-            encoding="utf-8",
-        ) as f:
-            json.dump(merged_templates, f, indent=2)
+        if args.output in ["-", "/dev/stdout"]:
+            print(json.dumps(merged_templates, indent=2), flush=True)
+        else:
+            with open(args.output, "w", encoding="utf-8") as f:
+                json.dump(merged_templates, f, indent=2)
             print(
                 (
                     f"Merged {len(args.files)} template files\n"
                     f"Total unique templates: {len(unique_templates)}\n"
-                    f"Output file: {output_file.absolute()}\n"
+                    f"Output file: {Path(f.name).absolute()}\n"
                 ),
             )
+    except BrokenPipeError as e:
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stdout.fileno())
+        raise SystemExit(0) from e
     except Exception as e:
-        print("Error occured during deduplication, files closed")
+        print("Error occured during merging, files closed")
         raise SystemExit(tb.format_exc()) from e
     finally:
         for f in args.files:
