@@ -6,7 +6,45 @@ import os
 import sys
 import traceback as tb
 from pathlib import Path
-from typing import Literal, TextIO, cast
+from typing import Literal
+
+
+def merge_unique_templates(files: list[dict]) -> dict:
+    version = None
+    unique_templates = []
+    for f in files:
+        if version is None:
+            version = f["version"]
+        elif version != f["version"]:
+            print(
+                f"Templates are not for the same portainer version, can't merge v{version} and v{f['version']}",
+                file=sys.stderr,
+            )
+            raise SystemExit(1)
+
+        templates: list[dict] = f["templates"]
+        for t in templates:
+            if t not in unique_templates:
+                unique_templates.append(t)
+    return {
+        "version": version,
+        "templates": unique_templates,
+    }
+
+
+def save_output(args: argparse.Namespace, merged_templates: dict) -> None:
+    if args.output in ["-", "/dev/stdout"]:
+        print(json.dumps(merged_templates, indent=2), flush=True)
+    else:
+        with open(args.output, "w", encoding="utf-8") as f:
+            json.dump(merged_templates, f, indent=2)
+        print(
+            (
+                f"Merged {len(args.files)} template files\n"
+                f"Total unique templates: {len(merged_templates['templates'])}\n"
+                f"Output file: {Path(f.name).absolute()}\n"
+            ),
+        )
 
 
 def main() -> Literal[0]:
@@ -34,45 +72,15 @@ def main() -> Literal[0]:
     )
     args = parser.parse_args()
 
-    unique_templates: list[dict] = []
-    version = None
     try:
-        for f in args.files:
-            f = cast(TextIO, f)
-            data: dict = json.load(f)
-            if version is None:
-                version = data["version"]
-            elif version != data["version"]:
-                print("Templates are not for the same portainer version")
-                raise SystemExit(1)
-
-            templates: list[dict] = data["templates"]
-            for t in templates:
-                if t not in unique_templates:
-                    unique_templates.append(t)
-
-        merged_templates = {
-            "version": version,
-            "templates": unique_templates,
-        }
-        if args.output in ["-", "/dev/stdout"]:
-            print(json.dumps(merged_templates, indent=2), flush=True)
-        else:
-            with open(args.output, "w", encoding="utf-8") as f:
-                json.dump(merged_templates, f, indent=2)
-            print(
-                (
-                    f"Merged {len(args.files)} template files\n"
-                    f"Total unique templates: {len(unique_templates)}\n"
-                    f"Output file: {Path(f.name).absolute()}\n"
-                ),
-            )
+        merged_templates = merge_unique_templates([json.load(f) for f in args.files])
+        save_output(args, merged_templates)
     except BrokenPipeError as e:
         devnull = os.open(os.devnull, os.O_WRONLY)
         os.dup2(devnull, sys.stdout.fileno())
         raise SystemExit(0) from e
     except Exception as e:
-        print("Error occured during merging, files closed")
+        print("Error occured during merging, files closed", file=sys.stderr)
         raise SystemExit(tb.format_exc()) from e
     finally:
         for f in args.files:
