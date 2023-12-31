@@ -34,7 +34,8 @@ def merge_unique_templates(files: list[dict]) -> dict:
 
 def save_output(args: argparse.Namespace, merged_templates: dict) -> None:
     if args.output in ["-", "/dev/stdout"]:
-        print(json.dumps(merged_templates, indent=2), flush=True)
+        sys.stdout.writelines(json.dumps(merged_templates, indent=2) + "\n")
+        sys.stdout.flush()
     else:
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(merged_templates, f, indent=2)
@@ -78,9 +79,9 @@ def main() -> Literal[0]:
     except BrokenPipeError:
         devnull = os.open(os.devnull, os.O_WRONLY)
         os.dup2(devnull, sys.stdout.fileno())
-        sys.exit(0)
+        sys.exit(tb.format_exc())
     except Exception:
-        print("Error occured during merging, files closed", file=sys.stderr)
+        print("Unknown error occured during merging, files closed", file=sys.stderr)
         sys.exit(tb.format_exc())
     finally:
         for f in args.files:
