@@ -34,7 +34,7 @@ def merge_unique_templates(files: list[dict]) -> dict:
 
 
 def save_output(args: argparse.Namespace, merged_templates: dict) -> None:
-    if args.output in ["-", "/dev/stdout"]:
+    if args.output in ["-", "/dev/stdout", sys.stdout]:
         sys.stdout.writelines(json.dumps(merged_templates, indent=2) + "\n")
         sys.stdout.flush()
     else:
