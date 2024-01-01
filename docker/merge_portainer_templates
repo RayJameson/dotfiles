@@ -6,7 +6,18 @@ import os
 import sys
 import traceback as tb
 from pathlib import Path
-from typing import Literal
+from typing import Literal, NamedTuple
+
+
+class Color(NamedTuple):
+    SUCCESS = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    ENDC = "\033[0m"
+
+
+def colorize(text: str, color: str) -> str:
+    return f"{color}{text}{Color.ENDC}"
 
 
 def merge_unique_templates(files: list[dict]) -> dict:
@@ -17,7 +28,13 @@ def merge_unique_templates(files: list[dict]) -> dict:
             version = f["version"]
         elif version != f["version"]:
             print(
-                f"Templates are not for the same portainer version, can't merge v{version} and v{f['version']}",
+                colorize(
+                    (
+                        "Templates are not for the same portainer version, "
+                        f"can't merge v{version} and v{f['version']}"
+                    ),
+                    Color.FAIL,
+                ),
                 file=sys.stderr,
                 flush=True,
             )
@@ -41,10 +58,13 @@ def save_output(args: argparse.Namespace, merged_templates: dict) -> None:
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(merged_templates, f, indent=2)
         print(
-            (
-                f"Merged {len(args.files)} template files\n"
-                f"Total unique templates: {len(merged_templates['templates'])}\n"
-                f"Output file: {Path(f.name).absolute()}\n"
+            colorize(
+                (
+                    f"Merged {len(args.files)} template files\n"
+                    f"Total unique templates: {len(merged_templates['templates'])}\n"
+                    f"Output file: {Path(f.name).absolute()}\n"
+                ),
+                Color.SUCCESS,
             ),
             flush=True,
         )
@@ -74,6 +94,14 @@ def main() -> Literal[0]:
         metavar="OUTPUT_FILE",
     )
     args = parser.parse_args()
+    if len(args.files) == 1:
+        print(
+            colorize("\nAt least two template files are required\n", Color.FAIL),
+            file=sys.stderr,
+            flush=True,
+        )
+        parser.print_help()
+        sys.exit(1)
 
     try:
         merged_templates = merge_unique_templates([json.load(f) for f in args.files])
@@ -83,7 +111,11 @@ def main() -> Literal[0]:
         os.dup2(devnull, sys.stdout.fileno())
         sys.exit(tb.format_exc())
     except Exception:
-        print("Unknown error occured during merging, files closed", file=sys.stderr, flush=True)
+        print(
+            colorize("Unknown error occured during merging, files closed\n", Color.FAIL),
+            file=sys.stderr,
+            flush=True,
+        )
         sys.exit(tb.format_exc())
     finally:
         for f in args.files:
