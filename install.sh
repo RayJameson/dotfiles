@@ -22,6 +22,7 @@ ln -s "$(pwd)/zsh/powerlevel10k" "$(pwd)/zsh/oh-my-zsh/custom/themes"
 #           VI(M)            #
 ##############################
 ln -s "$(pwd)/vi-m/.vimrc" "$HOME"
+ln -s "$(pwd)/vi-m/.ideavimrc" "$HOME"
 
 ##############################
 #         ASTRONVIM          #
