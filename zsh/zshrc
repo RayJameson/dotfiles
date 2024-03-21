@@ -172,9 +172,6 @@ fi
 if [[ $(command -v keepassxc-cli) ]]; then
     alias kp="keepassxc-cli"
 fi
-if [[ $(command -v bat) ]]; then
-    alias cat="bat"
-fi
 alias lg=lazygit
 alias lzd=lazydocker
 [[ -n "$TMUX" ]] && alias clear="clear && tmux clear-history"
