@@ -11,15 +11,24 @@
 # It is useful when you creating your query in the fzf prompt.
 # Otherwise it would be empty preview window
 
-QUERY_ARG="$2"
-INITIAL_QUERY="${QUERY_ARG:-.}"
-: | fzf \
-    --print-query \
-    --query "$INITIAL_QUERY" \
-    --preview "bat \
+rm -f /tmp/fjq-last-result
+INITIAL_QUERY="${2:-.}"
+PREVIEW_COMMAND="bat \
         --color=always \
         --plain \
         --language json \
-            <(jq {q} < ${1} 2> /dev/null \
-            || jq '[\"Invalid query. Showing whole file as fallback.\", .]' < ${1})" \
+    <(
+        {
+            output=\$(jq {q} <$1 2>/dev/null)
+            [[ -n \$output ]] \
+                && [[ \$output != 'null' ]] \
+                && tee /tmp/fjq_last_result.json <<<\$output
+            } || {
+            jq </tmp/fjq_last_result.json
+        }
+)"
+: | fzf \
+    --print-query \
+    --query "$INITIAL_QUERY" \
+    --preview "$PREVIEW_COMMAND" \
     --preview-window 'down,95%,border-rounded,+{2}+3/3,~3'
