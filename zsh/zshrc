@@ -202,6 +202,13 @@ pyvenv() {
     pyenv local $venv_name
     pyenv pyright
 }
+pyvenvd() {
+    pyenv virtualenv-delete ${1:-"$(pyenv version-name)"}
+    current_dir="$(pwd)"
+    if [[ $current_dir != "/" ]]; then
+        rm $current_dir/{.python-version,pyrightconfig.json}
+    fi
+}
 pyenv_init() {
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
@@ -220,6 +227,9 @@ luaj() {
 }
 cdl() {
     cd "$(readlink $1)"
+}
+ce() {
+    cargo --explain $1
 }
 alias config="cd $XDG_CONFIG_HOME"
 alias av="cd $ASTRONVIM_CONFIG"
