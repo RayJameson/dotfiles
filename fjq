@@ -1,32 +1,136 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # fjq utility
 # Dependencies: fzf, jq, bat
-# Usage: fjq <json file> [OPTIONAL<query>]
-# Example: fjq test.json '.[].name'
-# Example: fjq test.json -> you will be prompted to enter the query in fzf
-
-# If your query is incorrect, the whole json file will be previewed as fallback
-# And "INVALID QUERY" string will be added to the JSON array
-# It is useful when you creating your query in the fzf prompt.
-# Otherwise it would be empty preview window
+set -o allexport -o errexit -o nounset -o pipefail
 
 [[ -f /tmp/fjq-last-result ]] && rm /tmp/fjq-last-result
+
+### detect clipboard copy command
+case "${OSTYPE:-}$(uname)" in
+    [lL]inux*) ;;
+    [dD]arwin*) mac_os=1 ;;
+    [cC]ygwin) win_os=1 ;;
+    *)
+        echo "Unknown operating system \"${OSTYPE:-}$(uname)\"." >&2
+        false
+        ;;
+esac
+
+is_wayland() { [ "$XDG_SESSION_TYPE" = 'wayland' ]; }
+is_mac() { [ "${mac_os-0}" -ne 0 ]; }
+is_win() { [ "${win_os-0}" -ne 0 ]; }
+
+if is_mac; then
+    _copy() { pbcopy "$@"; exit; }
+elif is_win; then
+    _copy() { putclip "$@"; exit; }
+else
+    if is_wayland; then
+        _copy() { wl-copy "$@"; exit; }
+    else
+        _copy() { xclip -selection clipboard "$@"; exit; }
+    fi
+fi
+
+usage() {
+    echo "Usage: fjq FILE [QUERY]"
+    echo "Examples:"
+    printf "\tfjq test.json '.[0].name'\n"
+    printf "\tfjq test.json -> you will be prompted to enter the query in fzf\n"
+    exit 0
+}
+
+testing() {
+    echo "self call"
+    exit 0
+}
+
+cheatsheet() {
+    echo "\
+┌─────────────────────────────────────────────┬────────────────────────────────────────────────────────────────────────┐
+│Description                                  │Command                                                                 │
+├─────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│Pipe command (like in shell)                 │.car.options[] | .price                                                 │
+│Delete a key                                 │del(.foo)                                                               │
+│All array elements / Get all values of dict  │.[]                                                                     │
+│0 element                                    │.[0]                                                                    │
+│Last element                                 │.[-1]                                                                   │
+│Range of elements                            │.[2:4]                                                                  │
+│From 0 to n                                  │.[:4]                                                                   │
+│From n to last                               │.[8:]                                                                   │
+│Last n elements                              │.[-5:]                                                                  │
+│Select array of int by value                 │map(select(. >= 2))                                                     │
+│Select objects by value                      │.[] | select(.id == \"second\")                                           │
+│Select objects where key is present          │.[] | select(.id != null)                                               │
+│Flatten an array                             │flatten                                                                 │
+│Also can flatten like this                   │.people[].address[]                                                     │
+│Map - map(x) is equivalent to [.[] | .name]  │.countries | map({name, id, people: .population})                       │
+│Group by a key - opposite to flatten         │group_by(.foo)                                                          │
+│Remove duplicates                            │unique OR unique_by(.foo)                                               │
+│Concatenate an array                         │add                                                                     │
+│Add + 1 to all items                         │map(.+1)                                                                │
+│Create new object                            │{\"foo\": .some_object, \"bar\": .some_value, \"baz\": \"new value\"}           │
+│Create new array                             │[\"foo\", \"bar\", \"baz\", .some_object]                                     │
+│If/else                                      │if .age > 30 then \"old\" else \"young\" end;                               │
+│if/elif/else                                 │if .age > 30 then \"old\" elif .age > 20 then \"middle\" else \"young\" end;  │
+└─────────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────┘\
+"
+   exit 0
+}
+
+while [[ $# != 0 ]]; do
+    case $1 in
+        -h | --help)
+            usage
+            ;;
+        -c | --cheatsheet)
+            cheatsheet
+            ;;
+        -t | --testing)
+            testing
+            ;;
+        --internal-copy)
+            _copy "$@"
+            ;;
+        *) break ;;
+    esac
+    # shellcheck disable=SC2317
+    shift
+done
+
+last_file() {
+    if [[ -f /tmp/fjq-last-result ]]; then
+        cat /tmp/fjq-last-result
+    fi
+}
+
+[[ $# == 0 ]] && usage
+FJQ_FILE="$1"
 INITIAL_QUERY="${2:-.}"
 PREVIEW_COMMAND="bat \
         --color=always \
         --plain \
         --language json \
     <(
-        output=\$(jq {q} <$1 2>/dev/null)
-        if [[ -n \$output ]] && [[ \$output != 'null' ]]; then
-            tee /tmp/fjq_last_result.json <<<\$output
-        else
-            jq </tmp/fjq_last_result.json 2>/dev/null
-        fi
-)"
-: | fzf \
-    --print-query \
-    --query "$INITIAL_QUERY" \
-    --preview "$PREVIEW_COMMAND" \
-    --preview-window 'down,95%,border-rounded'
+    output=\$(jq {q} <$FJQ_FILE 2>/dev/null)
+    if [[ -n \$output ]] && [[ \$output != 'null' ]]; then
+        tee /tmp/fjq_last_result.json <<<\$output
+    else
+        jq </tmp/fjq_last_result.json 2>/dev/null
+    fi
+    )"
+
+    : | fzf \
+        --print-query \
+        --header "^y: copy query result into clipboard | enter: output jq command | ^d/^u: scroll | ^t: toggle cheatsheet" \
+        --bind "ctrl-u:preview-up,ctrl-d:preview-down" \
+        --query "$INITIAL_QUERY" \
+        --preview "$PREVIEW_COMMAND" \
+        --prompt "jq> " \
+        --preview-window 'down,95%,border-none,wrap' \
+        --bind 'ctrl-t:transform:[[ ! $FZF_PROMPT =~ cheatsheet ]] &&
+    echo "rebind(change)+change-prompt(cheatsheet> )+change-preview:fjq --cheatsheet" ||
+    echo "rebind(change)+change-prompt(jq> )+become(fjq \$FJQ_FILE \{q})"' \
+        --bind "enter:become(echo \"jq {q} <$FJQ_FILE\")" \
+        --bind "ctrl-y:execute(jq {q} <$FJQ_FILE | fjq --internal-copy)"
