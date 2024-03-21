@@ -36,7 +36,13 @@ config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 
 config.harfbuzz_features = { "zero" } -- zero with dot instead of slashed zero
-config.font = wezterm.font("LigaMesloLGSDZ Nerd Font Mono")
+local font_name = "LigaMesloLGSDZ Nerd Font Mono"
+config.font = wezterm.font(font_name)
+if font_name:match("[Nn]erd") then
+  config.set_environment_variables = {
+    NERD_FONT = font_name,
+  }
+end
 --<!-- -- != := === == != >= >- >=> |-> -> <$> </> #[ |||> |= ~@
 
 config.font_size = 20
