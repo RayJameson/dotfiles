@@ -11,24 +11,22 @@
 # It is useful when you creating your query in the fzf prompt.
 # Otherwise it would be empty preview window
 
-rm -f /tmp/fjq-last-result
+[[ -f /tmp/fjq-last-result ]] && rm /tmp/fjq-last-result
 INITIAL_QUERY="${2:-.}"
 PREVIEW_COMMAND="bat \
         --color=always \
         --plain \
         --language json \
     <(
-        {
-            output=\$(jq {q} <$1 2>/dev/null)
-            [[ -n \$output ]] \
-                && [[ \$output != 'null' ]] \
-                && tee /tmp/fjq_last_result.json <<<\$output
-            } || {
-            jq </tmp/fjq_last_result.json
-        }
+        output=\$(jq {q} <$1 2>/dev/null)
+        if [[ -n \$output ]] && [[ \$output != 'null' ]]; then
+            tee /tmp/fjq_last_result.json <<<\$output
+        else
+            jq </tmp/fjq_last_result.json 2>/dev/null
+        fi
 )"
 : | fzf \
     --print-query \
     --query "$INITIAL_QUERY" \
     --preview "$PREVIEW_COMMAND" \
-    --preview-window 'down,95%,border-rounded,+{2}+3/3,~3'
+    --preview-window 'down,95%,border-rounded'
