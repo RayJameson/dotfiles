@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ARGS=${*:2}
+INITIAL_QUERY="${ARGS:-.}"
+: | fzf-tmux --print-query --query "$INITIAL_QUERY" --preview "cat ${1} | jq {q}"
