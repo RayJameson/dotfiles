@@ -1,5 +1,25 @@
 #!/bin/bash
 
-ARGS=${*:2}
-INITIAL_QUERY="${ARGS:-.}"
-: | fzf-tmux --print-query --query "$INITIAL_QUERY" --preview "cat ${1} | jq {q}"
+# fjq utility
+# Dependencies: fzf, jq, bat
+# Usage: fjq <json file> [OPTIONAL<query>]
+# Example: fjq test.json '.[].name'
+# Example: fjq test.json -> you will be prompted to enter the query in fzf
+
+# If your query is incorrect, the whole json file will be previewed as fallback
+# And "INVALID QUERY" string will be added to the JSON array
+# It is useful when you creating your query in the fzf prompt.
+# Otherwise it would be empty preview window
+
+QUERY_ARG="$2"
+INITIAL_QUERY="${QUERY_ARG:-.}"
+: | fzf \
+    --print-query \
+    --query "$INITIAL_QUERY" \
+    --preview "bat \
+        --color=always \
+        --plain \
+        --language json \
+            <(jq {q} < ${1} 2> /dev/null \
+            || jq '[\"Invalid query. Showing whole file as fallback.\", .]' < ${1})" \
+    --preview-window 'down,95%,border-rounded,+{2}+3/3,~3'
