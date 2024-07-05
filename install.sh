@@ -32,7 +32,7 @@ ln -s "$(pwd)/nvim" "$CONFIG"
 ##############################
 #     ASTRONVIM CONFIG       #
 ##############################
-ln -s "$(pwd)/astronvim" "$CONFIG"
+ln -s "$(pwd)/nvim" "$CONFIG"
 
 ##############################
 #          LAZYGIT           #
