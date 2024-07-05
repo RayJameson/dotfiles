@@ -11,16 +11,13 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
     editor = nvim
 	excludesfile = ~/.gitignore_global
+	symlinks = true
 [credential "https://*github*"]
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [user]
 	name = Ray Jameson
 	email = 67468725+RayJameson@users.noreply.github.com
 	signingKey = 04CF04D66633E24A
-[diff]
-	tool = nvim
-[difftool "nvim"]
-	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 [difftool]
     prompt = false
 [commit]
