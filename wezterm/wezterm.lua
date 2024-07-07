@@ -52,6 +52,7 @@ config.freetype_load_flags = "NO_HINTING"
 config.color_scheme = "Dracula (Official)"
 config.colors = {
   visual_bell = "grey",
+  background = "#1e222a",
 }
 config.window_decorations = "RESIZE"
 config.front_end = "WebGpu"
