@@ -154,7 +154,6 @@ source $ZSH/oh-my-zsh.sh
 alias lvim="NVIM_APPNAME=lvim nvim"
 alias help="nocorrect run-help"
 alias v="nvim"
-alias vim=nvim
 alias venv="source .venv/bin/activate"
 [[ $(command -v ggrep) ]] && alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 # make functions for commands which could be used in piping
