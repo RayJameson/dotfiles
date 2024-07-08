@@ -24,6 +24,7 @@ git pull --recurse-submodules
 
 - [zsh](https://zsh.sourceforge.io/) - shell that I use
 - [tmux](https://github.com/tmux/tmux) - terminal multiplexer
+- [sesh](https://github.com/joshmedeski/sesh) - TMUX session manager (successor of [t-smart-tmux-session-manager](https://github.com/joshmedeski/t-smart-tmux-session-manager))
 - [brew](https://brew.sh/) - package manager
 - [nvim](https://github.com/neovim/neovim) - the only true vim
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - `cd` replacement
