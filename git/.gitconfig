@@ -32,6 +32,7 @@
 [alias]
     clone-all = clone --recurse-submodules
     pull-all = pull --recurse-submodules
+    append = !git add -u && git commit --amend --no-edit && git push --force-with-lease
 [includeIf "gitdir:~/qiwi_github/"]
     path = ~/.gitconfig_work
 [interactive]
