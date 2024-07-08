@@ -79,7 +79,7 @@ customCommands:
     context: "commits"
     loadingText: "Pushing commit..."
     description: "Push a specific commit (and any preceding)"
-    stream: yes
+    stream: true
   - key: "<c-p>"
     description: "Push to a specific remote branch"
     context: "remotes"
