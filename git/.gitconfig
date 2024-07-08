@@ -22,6 +22,7 @@
     prompt = false
 [commit]
 	gpgSign = true
+	verbose = true
 [pull]
 	rebase = true
 [fetch]
