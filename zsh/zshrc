@@ -195,14 +195,6 @@ pyvenv() {
     venv_name=${2:-$(basename $(pwd))}
     pyenv virtualenv $1 $venv_name
     pyenv local $venv_name
-    pyenv pyright
-}
-pyvenvd() {
-    pyenv virtualenv-delete ${1:-"$(pyenv version-name)"}
-    current_dir="$(pwd)"
-    if [[ $current_dir != "/" ]]; then
-        rm $current_dir/{.python-version,pyrightconfig.json}
-    fi
 }
 pyenv_init() {
     eval "$(pyenv init -)"
