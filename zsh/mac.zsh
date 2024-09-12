@@ -9,3 +9,4 @@ export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export HOMEBREW_AUTO_UPDATING=0
 alias xdg-open=open
 export HOMEBREW_CASK_OPTS="--no-quarantine"
+export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
