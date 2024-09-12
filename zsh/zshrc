@@ -286,3 +286,4 @@ nvm_init() {
 alias_source() {
     zsh -ixc : 2>&1 | grep $1
 }
+eval "$(mise activate zsh)"
