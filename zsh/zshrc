@@ -153,6 +153,7 @@ source $ZSH/oh-my-zsh.sh
 alias lvim="NVIM_APPNAME=lvim nvim"
 alias help="nocorrect run-help"
 alias v="nvim"
+alias ng="nvim -c 'Neogit'"
 alias v4="NVIM_APPNAME=v4 nvim"
 alias venv="source .venv/bin/activate"
 [[ $(command -v ggrep) ]] && alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
