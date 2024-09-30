@@ -20,6 +20,8 @@
 	signingKey = 04CF04D66633E24A
 [difftool]
     prompt = false
+[difftool "nvim"]
+	cmd = "nvim -dO \"$LOCAL\" \"$REMOTE\""
 [commit]
 	gpgSign = true
 	verbose = true
