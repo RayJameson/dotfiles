@@ -35,8 +35,10 @@ config.tab_max_width = 25
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 
-config.harfbuzz_features = { "zero" } -- zero with dot instead of slashed zero
-local font_name = "LigaMesloLGSDZ Nerd Font Mono"
+-- config.harfbuzz_features = { "zero" } -- zero with dot instead of slashed zero
+-- local font_name = "LigaMesloLGSDZ Nerd Font Mono"
+--
+local font_name = "Iosevka Nerd Font Mono SemiCondensed Light"
 config.font = wezterm.font(font_name)
 if font_name:match("[Nn]erd") then
   config.set_environment_variables = {
@@ -45,7 +47,7 @@ if font_name:match("[Nn]erd") then
 end
 --<!-- -- != := === == != >= >- >=> |-> -> <$> </> #[ |||> |= ~@
 
-config.font_size = 20
+config.font_size = 24
 config.freetype_load_flags = "NO_HINTING"
 
 -- For example, changing the color scheme:
