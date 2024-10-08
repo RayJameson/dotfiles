@@ -1,0 +1,98 @@
+[buildPlans.Iosevka]
+family = "Iosevka"
+spacing = "term"
+serifs = "sans"
+noCvSs = true
+exportGlyphNames = false
+
+[buildPlans.Iosevka.variants]
+inherits = "ss04"
+
+[buildPlans.Iosevka.variants.design]
+zero = "dotted"
+punctuation-dot = "round"
+tilde = "low"
+underscore = "high"
+caret = "high"
+ascii-grave = "straight"
+paren = "normal"
+guillemet = "straight"
+number-sign = "slanted"
+ampersand = "closed"
+at = "threefold"
+percent = "rings-continuous-slash"
+bar = "force-upright"
+question = "smooth"
+lig-ltgteq = "slanted"
+lig-neq = "slightly-slanted"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+lig-plus-chain = "without-notch"
+lig-double-arrow-bar = "without-notch"
+lig-single-arrow-bar = "without-notch"
+
+[buildPlans.Iosevka.variants.italic]
+zero = "dotted"
+punctuation-dot = "round"
+tilde = "low"
+underscore = "high"
+caret = "high"
+ascii-grave = "straight"
+paren = "normal"
+guillemet = "straight"
+number-sign = "upright"
+ampersand = "closed"
+at = "threefold"
+percent = "rings-continuous-slash"
+bar = "force-upright"
+question = "smooth"
+lig-ltgteq = "slanted"
+lig-neq = "slightly-slanted"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+lig-plus-chain = "without-notch"
+lig-double-arrow-bar = "without-notch"
+lig-single-arrow-bar = "without-notch"
+
+[buildPlans.Iosevka.variants.oblique]
+zero = "dotted"
+punctuation-dot = "round"
+braille-dot = "round"
+tilde = "low"
+underscore = "high"
+caret = "high"
+ascii-grave = "straight"
+paren = "normal"
+guillemet = "straight"
+number-sign = "upright"
+ampersand = "closed"
+at = "threefold"
+percent = "rings-continuous-slash"
+bar = "force-upright"
+question = "smooth"
+lig-ltgteq = "slanted"
+lig-neq = "slightly-slanted"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+lig-plus-chain = "without-notch"
+lig-double-arrow-bar = "without-notch"
+lig-single-arrow-bar = "without-notch"
+
+[buildPlans.Iosevka.ligations]
+inherits = "dlig"
+enables = ["tildeeq", "slasheq", "eqexeq"]
+
+[buildPlans.Iosevka.widths.Condensed]
+shape = 500
+menu = 3
+css = "condensed"
+
+[buildPlans.Iosevka.widths.Normal]
+shape = 600
+menu = 5
+css = "normal"
+
+[buildPlans.Iosevka.widths.SemiCondensed]
+shape = 548
+menu = 4
+css = "semi-condensed"
