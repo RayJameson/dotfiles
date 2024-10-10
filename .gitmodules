@@ -10,3 +10,6 @@
 	path = tmux/plugins/tpm
 	url = git@github.com:tmux-plugins/tpm.git
 	branch = master
+[submodule "nvim"]
+	path = nvim
+	url = git@github.com:RayJameson/astronvim_config.git
