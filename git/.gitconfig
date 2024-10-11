@@ -13,7 +13,7 @@
 	excludesfile = ~/.gitignore_global
 	symlinks = true
 [credential "https://*github*"]
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [user]
 	name = Ray Jameson
 	email = 67468725+RayJameson@users.noreply.github.com
