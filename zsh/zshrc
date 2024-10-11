@@ -273,7 +273,14 @@ fi
 if [[ $(command -v pipx) ]]; then
     eval "$(register-python-argcomplete pipx)"
 fi
-export GPG_TTY="$TTY"
+if [[ $(command -v gpg) ]]; then
+    export GPG_TTY="$TTY"
+    unset SSH_AGENT_PID
+    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+        export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    fi
+fi
+
 if [[ $OSTYPE == "darwin"* ]] && [[ -d "$HOME/.terminfo" ]]; then
     export TERMINFO="$HOME/.terminfo" # this saves your santity on MacOS if you are using TMUX
 fi
