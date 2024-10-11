@@ -51,23 +51,6 @@ python3 -m pip install --upgrade libtmux
 ln -s "$(pwd)/tmux" "$CONFIG"
 
 ##############################
-#        FZF-UTILITIES       #
-##############################
-ln -s "$(pwd)/fkill" "$HOME"
-ln -s "$(pwd)/frg" "$HOME"
-#
-##############################
-#          Scripts           #
-##############################
-ln -s "$(pwd)/he" "$HOME"
-
-##############################
-#           LUAJ             #
-##############################
-ln -s "$(pwd)/luaj-jse-3.0.2.jar" "$HOME"
-ln -s "$(pwd)/luaj" "$HOME"
-
-##############################
 #         PTPYTHON           #
 ##############################
 ln -s "$(pwd)/ptpython" "$CONFIG"
@@ -96,8 +79,3 @@ curl https://pyenv.run | bash && ln -s "$(pwd)/pyenv/default-packages" "$HOME/.p
 ##############################
 ln -s "$(pwd)/git/.gitconfig" "$HOME"
 ln -s "$(pwd)/git/.gitignore_global" "$HOME"
-
-##############################
-#            ARC             #
-##############################
-ln -s "$(pwd)/open_little_arc" "$HOME"
