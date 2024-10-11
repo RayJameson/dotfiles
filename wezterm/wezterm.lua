@@ -23,10 +23,13 @@ end)
 -- Check current OS and apply background effects
 if wezterm.target_triple:match("darwin") then
   config.macos_window_background_blur = 30
+  config.font_size = 24
 elseif wezterm.target_triple:match("windows") then
   config.win32_system_backdrop = "Acrylic"
   config.term = "" -- Set to empty so FZF works on windows
   config.default_prog = { "pwsh.exe" }
+elseif wezterm.target_triple:match("linux") then
+  config.font_size = 16.5
 end
 
 -- config.enable_tab_bar = true
@@ -47,7 +50,6 @@ if font_name:match("[Nn]erd") then
 end
 --<!-- -- != := === == != >= >- >=> |-> -> <$> </> #[ |||> |= ~@
 
-config.font_size = 24
 config.freetype_load_flags = "NO_HINTING"
 
 -- For example, changing the color scheme:
