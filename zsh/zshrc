@@ -45,7 +45,7 @@ export ZSHRC="$ZSH_DOTFILES/zshrc"
 export ZSH="$ZSH_DOTFILES/oh-my-zsh"
 export EDITOR=nvim
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
-export PATH="$HOME:$LOCAL_BIN:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.pyenv/shims:$XDG_CONFIG_HOME/emacs/bin:$PATH"
+export PATH="$HOME:$DOTFILES:$LOCAL_BIN:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.pyenv/shims:$XDG_CONFIG_HOME/emacs/bin:$PATH"
 export PAGER=bat
 export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_TMUX_OPTS="-p80%,60% --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
