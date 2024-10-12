@@ -79,3 +79,19 @@ curl https://pyenv.run | bash && ln -s "$(pwd)/pyenv/default-packages" "$HOME/.p
 ##############################
 ln -s "$(pwd)/git/.gitconfig" "$HOME"
 ln -s "$(pwd)/git/.gitignore_global" "$HOME"
+
+##############################
+#           ROFI             #
+##############################
+# uncomment this on linux
+# git clone --depth=1 https://github.com/adi1090x/rofi.git && \
+# cd rofi && \
+# chmod +x ./setup.sh && \
+# ./setup.sh && \
+# cd .. && \
+# rm -rfi rofi
+
+# git clone https://github.com/lr-tech/rofi-themes-collection.git && \
+# mv rofi-themes-collection/themes "$HOME/.config/rofi" && \
+# cd .. && \
+# rm -rfi rofi-themes-collection
