@@ -230,6 +230,7 @@ alias zshrc="$EDITOR $ZSHRC"
 alias asc=asciinema
 # User configuratio
 export MANPATH="/usr/local/man:$MANPATH"
+[[ $(command -v nvim) ]] && export MANPAGER="nvim +Man! $@"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
