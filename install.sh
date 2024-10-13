@@ -8,6 +8,10 @@ else
 fi
 CONFIG="$HOME/.config"
 
+if [[ ! $(command -v git) ]]; then
+    echo "Git is not installed, please install it"
+    exit 1
+fi
 ##############################
 #           ZSH              #
 ##############################
@@ -83,15 +87,23 @@ ln -s "$(pwd)/git/.gitignore_global" "$HOME"
 ##############################
 #           ROFI             #
 ##############################
-# uncomment this on linux
-# git clone --depth=1 https://github.com/adi1090x/rofi.git && \
-# cd rofi && \
-# chmod +x ./setup.sh && \
-# ./setup.sh && \
-# cd .. && \
-# rm -rfi rofi
+if [[ $(uname) == "Linux" ]]; then
+    git clone --depth=1 --filter=blob:none https://github.com/adi1090x/rofi.git && \
+        cd rofi && \
+        chmod +x ./setup.sh && \
+        ./setup.sh && \
+        cd .. && \
+        rm -rfi rofi
 
-# git clone https://github.com/lr-tech/rofi-themes-collection.git && \
-# mv rofi-themes-collection/themes "$HOME/.config/rofi" && \
-# cd .. && \
-# rm -rfi rofi-themes-collection
+    git clone --depth=1 --filter=blob:none https://github.com/lr-tech/rofi-themes-collection.git && \
+        mv rofi-themes-collection/themes "$HOME/.config/rofi" && \
+        cd .. && \
+        rm -rfi rofi-themes-collection
+##############################
+#             i3             #
+##############################
+ln -s "$(pwd)/i3" "$CONFIG"
+fi
+
+
+
