@@ -6,7 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000000
 export SAVEHIST=10000000
@@ -44,7 +45,6 @@ export ZSH_DOTFILES="$DOTFILES/zsh"
 export ZSHRC="$ZSH_DOTFILES/zshrc"
 export ZSH="$ZSH_DOTFILES/oh-my-zsh"
 export EDITOR=nvim
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
 export PATH="$HOME:$DOTFILES:$LOCAL_BIN:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.pyenv/shims:$XDG_CONFIG_HOME/emacs/bin:$PATH"
 export PAGER=bat
 
@@ -134,7 +134,7 @@ plugins=(
     encode64
     gpg-agent
 )
-[[ ! $(command -v brew) ]] || plugins+=(fzf-brew)
+[[ $(command -v brew) ]] && plugins+=(fzf-brew)
 custom_plugins=(
     davidde/git
     jeffreytse/zsh-vi-mode
@@ -173,12 +173,10 @@ if [[ $(command -v python3) ]]; then
     alias p="python"
     alias p3="python3"
 fi
-if [[ $(command -v keepassxc-cli) ]]; then
-    alias kp="keepassxc-cli"
-fi
+[[ $(command -v keepassxc-cli) ]] && alias kp="keepassxc-cli"
+[[ -n "$TMUX" ]] && alias clear="clear && tmux clear-history"
 alias lg=lazygit
 alias lzd=lazydocker
-[[ -n "$TMUX" ]] && alias clear="clear && tmux clear-history"
 alias c=clear
 tm() {
     local session_name=${1:-"main"}
