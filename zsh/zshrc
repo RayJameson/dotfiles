@@ -121,16 +121,10 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Add wisely, as too many plugins slow down shell startup.
 #
 plugins=(
-    poetry
-    kubectl
-    pip
     docker
     gh
     extract
-    colored-man-pages
     gnu-utils
-    copypath
-    encode64
     gpg-agent
 )
 [[ $(command -v brew) ]] && plugins+=(fzf-brew)
