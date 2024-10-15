@@ -15,7 +15,7 @@ fi
 ##############################
 #           ZSH              #
 ##############################
-ln -s "$(pwd)/zsh/zshrc" "$HOME/.zshrc"
+ln -s "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
 
 ##############################
 #       POWERLEVEL10K        #
