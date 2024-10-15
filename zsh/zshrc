@@ -4,13 +4,16 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000000
 export SAVEHIST=10000000
+# Add colors to Terminal
+export LSCOLORS=ExFxBxDxCxegedabagacad
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -25,101 +28,23 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 setopt GLOBDOTS                  # Add hidden files to completion
+setopt correct
+unsetopt correct_all
+ulimit -n 10240
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+bindkey "^[a" beginning-of-line
+bindkey "^[e" end-of-line
 fpath+=~/.zfunc
 autoload -Uz compinit bashcompinit; compinit; bashcompinit
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true
 
-# Path to your oh-my-zsh installation.
-export LOCAL_BIN="$HOME/.local/bin"
-export XDG_CONFIG_HOME="$HOME/.config"
-export CONFIG="$XDG_CONFIG_HOME"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_DATA_DIRS="/usr/local/share:/usr/share"
-export NVIM_CONFIG="$XDG_CONFIG_HOME/nvim"
-export ASTRONVIM_CONFIG="$XDG_CONFIG_HOME/astronvim/lua/user"
 export DOTFILES="$HOME/dotfiles"
 export ZSH_DOTFILES="$DOTFILES/zsh"
-export ZSHRC="$ZSH_DOTFILES/zshrc"
-export ZSH="$ZSH_DOTFILES/oh-my-zsh"
-export EDITOR=nvim
-export PATH="$HOME:$DOTFILES:$LOCAL_BIN:$HOME/go/bin:$HOME/.cargo/bin:$XDG_CONFIG_HOME/emacs/bin:$PATH"
-export PAGER=bat
-
-source $DOTFILES/detect-clipboard
-export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_TMUX_OPTS="-p80%,60% --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
-  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t=f -t=d"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t=d"
-export FZF_PROMPT_SYMBOL=$([[ -n $NERD_FONT ]] && echo "❯ " ||  echo "> ")
-export FZF_DEFAULT_OPTS="--bind ctrl-u:preview-up,ctrl-d:preview-down --bind ctrl-j:down,ctrl-k:up --no-multi --prompt '$FZF_PROMPT_SYMBOL ' --marker ⇒ --pointer  --reverse --color=dark
-  --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
-  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --preview-window 'down,50%,border-rounded,+{2}+3/3,~3'"
-export FZF_CTRL_R_OPTS="
-  --preview 'echo {}' --preview-window up:3:hidden:wrap
-  --bind 'ctrl-/:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | clipcopy)+abort'
-  --color header:italic
-  --header 'Press CTRL-Y to copy command into clipboard'"
-export PATH="$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-export PATH="$HOME/.kube:$PATH"
-export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
-export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
-export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
-export POETRY_VIRTUALENVS_IN_PROJECT=true
-
-# Add colors to Terminal
-export LSCOLORS=ExFxBxDxCxegedabagacad
+export OMZ="$ZSH_DOTFILES/oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-#
 plugins=(
     docker
     gh
@@ -141,12 +66,53 @@ function zvm_config() {
     ZVM_VI_EDITOR="nvim -c 'set ft=sh'"
 }
 source "$ZSH_DOTFILES/install_custom_plugins.zsh"
-source $ZSH/oh-my-zsh.sh
+source "$OMZ/oh-my-zsh.sh"
 if [[ $(uname) == "Darwin" ]]; then
     source "$ZSH_DOTFILES/mac.zsh"
 elif [[ $(uname) == "Linux" ]]; then
     source "$ZSH_DOTFILES/arch.zsh"
 fi
+source "$ZSH_DOTFILES/common_envs.zsh"
+
+source $DOTFILES/detect-clipboard
+
+if [[ $(command -v fd) ]] || [[ $(command -v fdfind) ]] || [[ $(command -v fd-find) ]]; then
+    export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --hidden --follow --exclude .git'
+    # Use fd (https://github.com/sharkdp/fd) instead of the default find
+    # command for listing path candidates.
+    # - The first argument to the function ($1) is the base path to start traversal
+    # - See the source code (completion.{bash,zsh}) for the details.
+    _fzf_compgen_path() {
+        fd --hidden --follow --exclude ".git" . "$1"
+    }
+
+    # Use fd to generate the list for directory completion
+    _fzf_compgen_dir() {
+        fd --type d --hidden --follow --exclude ".git" . "$1"
+    }
+fi
+export FZF_TMUX_OPTS="-p80%,60% --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t=f -t=d"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t=d"
+export FZF_PROMPT_SYMBOL=$([[ -n $NERD_FONT ]] && echo "❯ " ||  echo "> ")
+export FZF_DEFAULT_OPTS="--bind ctrl-u:preview-up,ctrl-d:preview-down --bind ctrl-j:down,ctrl-k:up --no-multi --prompt '$FZF_PROMPT_SYMBOL ' --marker ⇒ --pointer  --reverse --color=dark
+  --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --preview-window 'down,50%,border-rounded,+{2}+3/3,~3'"
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | clipcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+export PATH="$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
 alias lvim="NVIM_APPNAME=lvim nvim"
 alias help="nocorrect run-help"
 alias v="nvim"
@@ -176,22 +142,8 @@ tm() {
     tmux new -A -s $session_name
 }
 alias pydoc="python3 -m pydoc"
-# Use fd (https://github.com/sharkdp/fd) instead of the default find
-# command for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-    fd --hidden --follow --exclude ".git" . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-    fd --type d --hidden --follow --exclude ".git" . "$1"
-}
 
 if [[ $(command -v pyenv) ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     pyvenv() {
         venv_name=${2:-$(basename $(pwd))}
@@ -221,47 +173,11 @@ cdl() {
 ce() {
     cargo --explain $1
 }
-alias config="cd $XDG_CONFIG_HOME"
-alias av="cd $ASTRONVIM_CONFIG"
 alias zshrc="$EDITOR $ZSHRC"
-alias asc=asciinema
-# User configuratio
-export MANPATH="/usr/local/man:$MANPATH"
-[[ $(command -v nvim) ]] && export MANPAGER="nvim +Man! $@"
+[[ $(command -v asciinema) ]] && alias asc=asciinema
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
-#Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='nvim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-ulimit -n 10240
-unsetopt correct_all
-setopt correct
-bindkey "[D" backward-word
-bindkey "[C" forward-word
-bindkey "^[a" beginning-of-line
-bindkey "^[e" end-of-line
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-[[ ! -f "$XDG_CONFIG_HOME/ptpython/config.py" ]] || export PYTHONSTARTUP="$XDG_CONFIG_HOME/ptpython/config.py"
 
 if [[ $(command -v zoxide) ]]; then
     eval "$(zoxide init zsh)"
