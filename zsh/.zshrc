@@ -36,7 +36,7 @@ bindkey "[C" forward-word
 bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 fpath+=~/.zfunc
-autoload -Uz compinit bashcompinit; compinit; bashcompinit
+# autoload -Uz compinit bashcompinit; compinit; bashcompinit
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true
 
