@@ -173,7 +173,7 @@ cdl() {
 ce() {
     cargo --explain $1
 }
-alias zshrc="$EDITOR $ZSHRC"
+alias zshrc="$EDITOR $DOTFILES/zsh/.zshrc"
 [[ $(command -v asciinema) ]] && alias asc=asciinema
 
 # You may need to manually set your language environment
