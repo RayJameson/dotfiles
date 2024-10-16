@@ -19,7 +19,7 @@ wezterm.on("toggle-transparency", function(window, _)
   end
   wezterm.reload_configuration()
 end)
-local font_name 
+local font_name
 -- Check current OS and apply background effects
 if wezterm.target_triple:match("darwin") then
   config.macos_window_background_blur = 30
@@ -31,7 +31,7 @@ elseif wezterm.target_triple:match("windows") then
   config.term = "" -- Set to empty so FZF works on windows
   config.default_prog = { "pwsh.exe" }
 elseif wezterm.target_triple:match("linux") then
-  config.font_size = 16.5
+  config.font_size = 22
   font_name = "Iosevka Nerd Font Mono Condensed ExtraLight"
 end
 
