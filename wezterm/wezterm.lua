@@ -19,17 +19,20 @@ wezterm.on("toggle-transparency", function(window, _)
   end
   wezterm.reload_configuration()
 end)
-
+local font_name 
 -- Check current OS and apply background effects
 if wezterm.target_triple:match("darwin") then
   config.macos_window_background_blur = 30
   config.font_size = 24
+  font_name = "Iosevka Nerd Font Mono SemiCondensed Light"
 elseif wezterm.target_triple:match("windows") then
+  font_name = "Iosevka Nerd Font Mono SemiCondensed Light"
   config.win32_system_backdrop = "Acrylic"
   config.term = "" -- Set to empty so FZF works on windows
   config.default_prog = { "pwsh.exe" }
 elseif wezterm.target_triple:match("linux") then
   config.font_size = 16.5
+  font_name = "Iosevka Nerd Font Mono Condensed ExtraLight"
 end
 
 -- config.enable_tab_bar = true
@@ -41,7 +44,6 @@ config.hide_tab_bar_if_only_one_tab = true
 -- config.harfbuzz_features = { "zero" } -- zero with dot instead of slashed zero
 -- local font_name = "LigaMesloLGSDZ Nerd Font Mono"
 --
-local font_name = "Iosevka Nerd Font Mono SemiCondensed Light"
 config.font = wezterm.font(font_name)
 if font_name:match("[Nn]erd") then
   config.set_environment_variables = {
