@@ -4,3 +4,5 @@ function zvm_after_init() {
         source <(fzf --zsh)
     fi
 }
+
+[[ $(command -v stderred) ]] && export LD_PRELOAD="/usr/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
