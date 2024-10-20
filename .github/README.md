@@ -85,3 +85,8 @@ brew link --overwrite moreutils && \
 brew unlink paralle && \
 brew link --overwrite parallel
 ```
+
+# Archlinux config
+
+Nice guide
+https://ventureo.codeberg.page/v2024.07.21/
