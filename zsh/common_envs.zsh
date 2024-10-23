@@ -28,7 +28,6 @@ PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 PATH="$HOME/.kube:$PATH"
 PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 
-export MANPATH="/usr/local/man:$MANPATH"
 [[ $(command -v nvim) ]] && export MANPAGER="nvim +Man! $@"
 
 # remove duplicate entries from $PATH
