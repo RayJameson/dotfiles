@@ -8,6 +8,7 @@ gui:
   showCommandLog: false
   language: "en"
   border: "rounded"
+  skipDiscardChangeWarning: true
   skipRewordInEditorWarning: true
   theme:
     selectedLineBgColor:
