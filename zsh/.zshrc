@@ -52,7 +52,6 @@ plugins=(
     gnu-utils
     gpg-agent
 )
-[[ $(command -v brew) ]] && plugins+=(fzf-brew)
 custom_plugins=(
     davidde/git
     jeffreytse/zsh-vi-mode
