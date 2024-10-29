@@ -53,6 +53,7 @@ ln -s "$(pwd)/wezterm" "$CONFIG"
 #           TMUX             #
 ##############################
 python3 -m pip install --upgrade libtmux
+git clone --depth 1 --filter=blob:none https://github.com/tmux-plugins/tpm.git "$(pwd)/tmux/plugins/tpm"
 ln -s "$(pwd)/tmux" "$CONFIG"
 
 ##############################
