@@ -31,7 +31,7 @@ elseif wezterm.target_triple:match("windows") then
   config.term = "" -- Set to empty so FZF works on windows
   config.default_prog = { "pwsh.exe" }
 elseif wezterm.target_triple:match("linux") then
-  config.font_size = 16
+  config.font_size = 20
   font_name = "Iosevka Nerd Font Mono Condensed ExtraLight"
 end
 
