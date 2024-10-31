@@ -118,10 +118,12 @@ alias v="nvim"
 alias ng="nvim -c 'Neogit'"
 alias v4="NVIM_APPNAME=v4 nvim"
 alias venv="source .venv/bin/activate"
+alias watch="watch -cd"
 [[ $(command -v ggrep) ]] && alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 # make functions for commands which could be used in piping
 if [[ $(command -v eza) ]]; then
     alias l="eza --long --icons --header --octal-permissions --all --sort name --git --group-directories-first"
+    alias lr="eza --long --icons --header --octal-permissions --all --sort name --git --group-directories-first --total-size"
     alias ls="eza --icons --sort name --group-directories-first --git"
     alias lo="eza --icons --sort name -1"
     alias tree="eza --icons --header --sort name --group-directories-first --tree --ignore-glob __pycache__"
