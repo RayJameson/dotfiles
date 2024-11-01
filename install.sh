@@ -17,6 +17,8 @@ fi
 ##############################
 ln -s "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
 ln -s "$(pwd)/zsh/.zprofile" "$HOME/.zprofile"
+[[ ! -d "$HOME"/.zfunc ]] && mkdir "$HOME/.zfunc"
+ln -s "$(pwd)/zsh/.zfunc/"* "$HOME/.zfunc/"
 
 ##############################
 #       POWERLEVEL10K        #

@@ -1,0 +1,17 @@
+#compdef rdt
+
+_rdt() {
+  local curcontext="$curcontext" ret=1
+
+  # Check if the first word is 'rdt'
+  if [[ $words[1] == "rdt" && -n "$words[2]" ]]; then
+    _precommand
+    return 0
+  fi
+
+  # Default arguments completion
+  _arguments && ret=0
+  return ret
+}
+
+_rdt "$@"
