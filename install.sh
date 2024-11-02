@@ -17,8 +17,12 @@ fi
 ##############################
 ln -s "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
 ln -s "$(pwd)/zsh/.zprofile" "$HOME/.zprofile"
-[[ ! -d "$HOME"/.zfunc ]] && mkdir "$HOME/.zfunc"
-ln -s "$(pwd)/zsh/.zfunc/"* "$HOME/.zfunc/"
+
+##############################
+#           RDT              #
+##############################
+[[ ! -d $LOCAL_BIN ]] && mkdir -p "$HOME/.local/bin"
+cd rdt && bash ./install.sh "$LOCAL_BIN" && cd - || exit 1
 
 ##############################
 #       POWERLEVEL10K        #
