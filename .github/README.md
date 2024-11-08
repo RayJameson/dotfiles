@@ -108,7 +108,7 @@ sudo pacman -S --needed git \
 ### Apps
 ## CLI
 ```bash
-yay -Syu lazygit tmux sesh-bin zoxide \
+yay -Syu --needed lazygit tmux sesh-bin zoxide \
     eza bat fd ncdu fzf tealdeer \
     btop ptpython python-pipx \
     bob stderred-git syncthing \
@@ -117,7 +117,7 @@ yay -Syu lazygit tmux sesh-bin zoxide \
 ```
 ## GUI
 ```bash
-yay -Syu keepassxc zen-browser-avx2-bin \
+yay -Syu --needed keepassxc zen-browser-avx2-bin \
     wezterm steam copyq telegram-desktop \
     nordvpn-bin qbittorrent-enchanced \
     syncthingtray-qt6 \
@@ -126,13 +126,13 @@ yay -Syu keepassxc zen-browser-avx2-bin \
 ```
 ## Wine/Proton stuff
 ```bash
-yay -Syu steamtinkerlaunch-git \
+yay -Syu --needed steamtinkerlaunch-git \
     wine winecfg winetricks
 ```
 
 ### Audio stuff (Pipewire)
 ```bash
-yay -Syu wireplumber pamixer \
+yay -Syu --needed wireplumber pamixer \
     amixer pipewire-jack carla \
     pipewire-pulse pipewire-alsa \
     pipewire
@@ -140,7 +140,7 @@ yay -Syu wireplumber pamixer \
 
 ### Graphics stuff (nVidia)
 ```bash
-sudo pacman -S nvidia-dkms \
+sudo pacman -S --needed nvidia-dkms \
     nvidia-utils \
     lib32-nvidia-utils \
     nvidia-settings \
