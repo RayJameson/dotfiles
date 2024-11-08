@@ -103,7 +103,7 @@ sudo pacman -S --needed git \
     base-devel yay archlinux-keyring \
     archcraft-i3wm autotiling dex
 ```
-- uncomment the [multilib] section in /etc/pacman.conf
+- uncomment the `[multilib]` and `[extra]` sections in /etc/pacman.conf
 - enable the firewall (profile in gufw dir)
 ### Apps
 ## CLI
