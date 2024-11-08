@@ -90,3 +90,57 @@ brew link --overwrite parallel
 
 Nice guide
 https://ventureo.codeberg.page/v2024.07.21/
+
+## Initial setup
+```bash
+sudo pacman -S --needed git \
+    base-devel yay archlinux-keyring \
+    archcraft-i3wm autotiling dex
+```
+- uncomment the [multilib] section in /etc/pacman.conf
+- enable the firewall (profile in gufw dir)
+### Apps
+## CLI
+```bash
+yay -Syu lazygit tmux sesh-bin zoxide \
+    eza bat fd ncdu fzf tealdeer \
+    btop ptpython python-pipx \
+    bob stderred-git syncthing \
+    diff-so-fancy gpa-git \
+    github-cli nodejs npm
+```
+## GUI
+```bash
+yay -Syu keepassxc zen-browser-avx2-bin \
+    wezterm steam copyq telegram-desktop \
+    nordvpn-bin qbittorrent-enchanced \
+    syncthingtray-qt6 \
+    neovide todoist-nativefier vencord \
+    betterbird-bin
+```
+## Wine/Proton stuff
+```bash
+yay -Syu steamtinkerlaunch-git \
+    wine winecfg winetricks
+```
+
+### Audio stuff (Pipewire)
+```bash
+yay -Syu wireplumber pamixer \
+    amixer pipewire-jack carla \
+    pipewire-pulse pipewire-alsa \
+    pipewire
+```
+
+### Graphics stuff (nVidia)
+```bash
+sudo pacman -S nvidia-dkms \
+    nvidia-utils \
+    lib32-nvidia-utils \
+    nvidia-settings \
+    lib32-opencl-nvidia \
+    opencl-nvidia \
+    libxnvctrl \
+    vulkan-icd-loader \
+    lib32-vulkan-icd-loader
+```
