@@ -59,7 +59,8 @@ git pull --recurse-submodules
 - [amethyst](https://github.com/ianyh/Amethyst) - tiling window manager for MacOS, inspired by xmonad
 - [wezterm](https://github.com/wez/wezterm) - terminal emulator with config in Lua (I <3 Lua)
 - [raycast](https://www.raycast.com/) - Spotlight replacement (closed source)
-- [arc](https://arc.net/) - very cool browser with conceivable toolbar,literally just a border around and nothing else (closed source)
+- ~~[arc](https://arc.net/) - very cool browser with conceivable toolbar,literally just a border around and nothing else (closed source)~~
+- [zen] - I'm using this browser now
 - [obsidian](https://obsidian.md/) - personal wiki (closed source)
 
 ## Brew stuff that need to be installed on a fresh system
@@ -68,26 +69,31 @@ git pull --recurse-submodules
 # cli apps
 brew install ripgrep fd ncdu bat eza bat btop ranger lnav gh \
     glow nvm pyenv tealdeer fzf fzy zoxide tmux pipx zsh bash \
-    ncurses coreutils gsed gnu-which gnu-tar git trash terminal-notifier \
+    ncurses coreutils gsed gnu-which gnu-tar git trash \
     wget curl tree-sitter sqlite rich openssh openssl \
-    luarocks lua luajit rust clang jq lazydocker gpg-tui asciinema stylua \
-    man-db && \
+    luarocks lua luajit clang jq lazydocker gpg-tui asciinema stylua \
+    man-db parallel && \
 # some nightly stuff
-brew install --fetch-HEAD neovim lazygit && \
+brew install --fetch-HEAD lazygit && \
 # gui apps
-brew install --cask amethyst wezterm \
+brew install --cask wezterm \
     raycast obsidian keepassxc docker \
-    keycastr yandex-music-unofficial arc && \
-# moretutils with gnu parallel
-brew unlink moreutils && \
-brew install parallel && \
-brew link --overwrite moreutils && \
-brew unlink paralle && \
-brew link --overwrite parallel
+    keycastr zen-browser && \
+# tiling manager inspired by i3wm
+brew install --cask nikitabobko/tap/aerospace
+```
+
+## Rust
+```bash
+# rust lang and toolchain should be installed via rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+```bash
+# rust applications
+cargo install bob-nvim
 ```
 
 # Archlinux config
-
 Nice guide
 https://ventureo.codeberg.page/v2024.07.21/
 
