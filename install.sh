@@ -113,6 +113,10 @@ if [[ $(uname) == "Linux" ]]; then
     #             i3             #
     ##############################
     ln -sf "$(pwd)/i3" "$CONFIG"
+    ##############################
+    #           xprofile         #
+    ##############################
+    ln -sf "$(pwd)/xprofile/.xprofile" "$HOME"
 fi
 
 
