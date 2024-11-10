@@ -90,10 +90,14 @@ curl https://pyenv.run | bash && ln -s "$(pwd)/pyenv/default-packages" "$HOME/.p
 ln -sf "$(pwd)/git/.gitconfig" "$HOME"
 ln -sf "$(pwd)/git/.gitignore_global" "$HOME"
 
+
 ##############################
-#           ROFI             #
+#            Linux           #
 ##############################
 if [[ $(uname) == "Linux" ]]; then
+    ##############################
+    #           ROFI             #
+    ##############################
     git clone --depth=1 --filter=blob:none https://github.com/adi1090x/rofi.git && \
         cd rofi && \
         chmod +x ./setup.sh && \
@@ -105,10 +109,10 @@ if [[ $(uname) == "Linux" ]]; then
         mv rofi-themes-collection/themes "$HOME/.config/rofi" && \
         cd .. && \
         rm -rfi rofi-themes-collection
-##############################
-#             i3             #
-##############################
-ln -sf "$(pwd)/i3" "$CONFIG"
+    ##############################
+    #             i3             #
+    ##############################
+    ln -sf "$(pwd)/i3" "$CONFIG"
 fi
 
 
