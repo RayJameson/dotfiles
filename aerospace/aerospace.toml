@@ -92,6 +92,8 @@ alt-ctrl-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
+alt-ctrl-shift-h = 'resize smart -50'
+alt-ctrl-shift-l = 'resize smart +50'
 alt-ctrl-minus = 'resize smart -50'
 alt-ctrl-equal = 'resize smart +50'
 
