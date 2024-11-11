@@ -117,7 +117,13 @@ if [[ $(uname) == "Linux" ]]; then
     #           xprofile         #
     ##############################
     ln -sf "$(pwd)/xprofile/.xprofile" "$HOME"
+
+##############################
+#            MacOS           #
+##############################
+elif [[ $(uname) == "Darwin" ]]; then
+    ##############################
+    #         AEROSPACE          #
+    ##############################
+    ln -sf "$(pwd)/aerospace" "$CONFIG"
 fi
-
-
-

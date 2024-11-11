@@ -1,0 +1,151 @@
+# Reference: https://github.com/i3/i3/blob/next/etc/config
+
+# i3 doesn't have "normalizations" feature that why we disable them here.
+# But the feature is very helpful.
+# Normalizations eliminate all sorts of weird tree configurations that don't make sense.
+# Give normalizations a chance and enable them back.
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Mouse follows focus when focused monitor changes
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
+automatically-unhide-macos-hidden-apps = true
+
+start-at-login = true
+
+#---
+# Run Sketchybar together with AeroSpace
+# sketchbar has a built-in detection of already running process,
+# so it won't be run twice on AeroSpace restart
+# after-startup-command = ['exec-and-forget sketchybar']
+
+# Notify Sketchybar about workspace change
+# Notify Sketchybar about workspace change
+# exec-on-workspace-change = ['/bin/bash', '-c',
+#     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+# ]
+
+# [gaps]
+# outer.top = [{ monitor."C27FG7x" = 25 }, 0]
+#---
+
+[mode.main.binding]
+alt-ctrl-enter = 'exec-and-forget wezterm start'
+
+
+# i3 wraps focus by default
+alt-ctrl-h = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-ctrl-j = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-ctrl-k = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-ctrl-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
+alt-ctrl-x = 'join-with down'
+alt-ctrl-v = 'join-with right'
+
+alt-ctrl-f = 'fullscreen'
+
+alt-shift-ctrl-s = 'layout v_accordion' # 'layout stacking' in i3
+alt-shift-ctrl-t = 'layout h_accordion' # 'layout tabbed' in i3
+alt-shift-ctrl-d = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
+alt-ctrl-t = 'layout floating tiling' # 'floating toggle' in i3
+
+# Not supported, because this command is redundant in AeroSpace mental model.
+# See: https://nikitabobko.github.io/AeroSpace/guide#floating-windows
+#alt-space = 'focus toggle_tiling_floating'
+
+# `focus parent`/`focus child` are not yet supported, and it's not clear whether they
+# should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
+# alt-a = 'focus parent'
+
+alt-ctrl-1 = 'workspace 1'
+alt-ctrl-2 = 'workspace 2'
+alt-ctrl-3 = 'workspace 3'
+alt-ctrl-4 = 'workspace 4'
+alt-ctrl-5 = 'workspace 5'
+alt-ctrl-6 = 'workspace 6'
+alt-ctrl-7 = 'workspace 7'
+alt-ctrl-8 = 'workspace 8'
+alt-ctrl-9 = 'workspace 9'
+alt-ctrl-0 = 'workspace 10'
+
+
+alt-ctrl-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+alt-ctrl-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+alt-ctrl-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+alt-ctrl-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-ctrl-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+alt-ctrl-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+alt-ctrl-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+alt-ctrl-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+alt-ctrl-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#resize
+alt-ctrl-minus = 'resize smart -50'
+alt-ctrl-equal = 'resize smart +50'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+alt-ctrl-b = 'workspace-back-and-forth'
+
+alt-ctrl-shift-right = ['move-node-to-workspace next', 'workspace next']
+alt-ctrl-shift-left = ['move-node-to-workspace prev', 'workspace prev']
+
+alt-ctrl-right = 'workspace next'
+alt-ctrl-left = 'workspace prev'
+
+# Layout rules
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ['layout floating']
+
+
+[[on-window-detected]]
+if.app-id = 'org.mozilla.com.zen.browser'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = ['layout tiling', 'move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.neovide.neovide'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = ['layout tiling', 'move-node-to-workspace 7']
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+if.app-id = 'org.keepassxc.keepassxc'
+run = ['move-node-to-workspace 9']
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = ['move-node-to-workspace 10']
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = ['move-node-to-workspace 11']
