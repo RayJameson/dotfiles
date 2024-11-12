@@ -35,6 +35,7 @@ start-at-login = true
 
 [mode.main.binding]
 alt-ctrl-enter = 'exec-and-forget wezterm start'
+alt-ctrl-e = 'exec-and-forget neovide'
 
 
 # i3 wraps focus by default
