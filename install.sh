@@ -82,7 +82,10 @@ fi
 ##############################
 #           PYENV            #
 ##############################
-curl https://pyenv.run | bash && ln -s "$(pwd)/pyenv/default-packages" "$HOME/.pyenv/"
+curl https://pyenv.run | bash && \
+    mkdir "$HOME/.pyenv" && \
+    ln -s "$(pwd)/pyenv/default-packages" "$HOME/.pyenv/" && \
+    git clone https://github.com/jawshooah/pyenv-default-packages "$(pyenv root)/plugins/pyenv-default-packages"
 
 ##############################
 #            GIT             #
