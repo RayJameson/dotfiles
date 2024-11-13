@@ -5,4 +5,4 @@ function zvm_after_init() {
     fi
 }
 
-[[ $(command -v stderred) ]] && export LD_PRELOAD="/usr/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
+[[ $(command -v stderred) ]] && export LD_PRELOAD="/usr/\$LIB/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
