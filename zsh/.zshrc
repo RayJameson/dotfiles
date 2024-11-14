@@ -164,9 +164,6 @@ if [[ $(command -v pyenv) ]]; then
     autoload -Uz add-zsh-hook
     add-zsh-hook precmd check_pyenv_init
 fi
-luaj() {
-    java -cp "$HOME/luaj-jse-3.0.2.jar" lua $1
-}
 cdl() {
     cd "$(readlink $1)"
 }

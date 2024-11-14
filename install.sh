@@ -6,9 +6,11 @@ set -o pipefail
 
 # Create .config folder if not exists
 LOCAL_BIN="$HOME/.local/bin"
+LOCAL_LIB="$HOME/.local/lib"
 CONFIG="$HOME/.config"
 [[ ! -d "$CONFIG" ]] && mkdir "$CONFIG"
 [[ ! -d "$LOCAL_BIN" ]] && mkdir -p "$LOCAL_BIN"
+[[ ! -d "$LOCAL_LIB" ]] && mkdir -p "$LOCAL_LIB"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
@@ -124,6 +126,14 @@ fi
 _symlink "$(pwd)/git/.gitconfig" "$HOME"
 _symlink "$(pwd)/git/.gitignore_global" "$HOME"
 
+
+##############################
+#         bin & lib          #
+##############################
+echo "Force symlinking binaries in $(pwd)/bin to $LOCAL_BIN" && ln -sf "$(pwd)"/bin/* "$LOCAL_BIN"
+ln -sf "$(pwd)"/bin/* "$LOCAL_BIN"
+echo "Force symlinking libraries in $(pwd)/lib to $LOCAL_LIB" && ln -sf "$(pwd)"/lib/* "$LOCAL_LIB"
+ln -sf "$(pwd)"/lib/* "$LOCAL_LIB"
 
 ##############################
 #            Linux           #

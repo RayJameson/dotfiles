@@ -6,6 +6,7 @@
 # [[ -n "$TTY" ]] && return
 
 export LOCAL_BIN="$HOME/.local/bin"
+export LOCAL_LIB="$HOME/.local/lib"
 export XDG_CONFIG_HOME="$HOME/.config"
 export CONFIG="$XDG_CONFIG_HOME"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -23,7 +24,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -f "$XDG_CONFIG_HOME/ptpython/config.py" ]] && export PYTHONSTARTUP="$XDG_CONFIG_HOME/ptpython/config.py"
 
 PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
-PATH="$HOME:$DOTFILES:$LOCAL_BIN:$HOME/go/bin:$HOME/.cargo/bin:$XDG_CONFIG_HOME/emacs/bin:$PATH"
+PATH="$HOME:$LOCAL_BIN:$HOME/go/bin:$HOME/.cargo/bin:$XDG_CONFIG_HOME/emacs/bin:$PATH"
 PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 PATH="$HOME/.kube:$PATH"
 PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+java -cp "$HOME"/.local/lib/luaj/luaj-jse-3.0.2.jar lua "$1"
