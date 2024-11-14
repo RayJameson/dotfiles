@@ -72,8 +72,7 @@ elif [[ $(uname) == "Linux" ]]; then
     source "$ZSH_DOTFILES/arch.zsh"
 fi
 source "$ZSH_DOTFILES/common_envs.zsh"
-
-source $DOTFILES/detect-clipboard
+source $ZSH_DOTFILES/detect-clipboard
 
 if [[ $(command -v fd) ]] || [[ $(command -v fdfind) ]] || [[ $(command -v fd-find) ]]; then
     export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --hidden --follow --exclude .git'
