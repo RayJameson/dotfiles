@@ -4,6 +4,9 @@ fi
 function zvm_after_init() {
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 }
+if [[ -d "$HOME/.terminfo" ]]; then
+    export TERMINFO="$HOME/.terminfo" # this saves your santity on MacOS if you are using TMUX
+fi
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="opt/homebrew/Cellar/pyenv-virtualenv/1.1.5/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:$HOME/.gem/ruby/2.6.0/bin:$PNPM_HOME:$ORACLE_HOME:$PATH"
 export PATH="/opt/homebrew/opt/man-db/libexec/bin:/opt/homebrew/opt/gnu-tar/libexec/gnubin:/opt/homebrew/opt/gawk/libexec/gnubin:/opt/homebrew/opt/gnu-which/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
