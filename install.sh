@@ -1,74 +1,101 @@
 #!/usr/bin/env bash
 
+set -o errexit
+set -o nounset
+set -o pipefail
+
 # Create .config folder if not exists
-if [[ ! -d "$HOME/.config" ]]; then
-    mkdir "$HOME/.config"
-else
-    echo "\"$HOME/.config\" already exists, skipping"
-fi
+LOCAL_BIN="$HOME/.local/bin"
 CONFIG="$HOME/.config"
+[[ ! -d "$CONFIG" ]] && mkdir "$CONFIG"
+[[ ! -d "$LOCAL_BIN" ]] && mkdir -p "$LOCAL_BIN"
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
 if [[ ! $(command -v git) ]]; then
-    echo "Git is not installed, please install it"
+    printf "\nGit is not installed, please install it\n"
     exit 1
 fi
-##############################
-#           ZSH              #
-##############################
-ln -sf "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
-ln -sf "$(pwd)/zsh/.zprofile" "$HOME/.zprofile"
+
+_symlink() {
+    local src=$1
+    local dst=$2
+    printf "Force symlinking: %s -> %s \n" "$src" "$dst"
+    ln -sf "$src" "$dst"
+}
 
 ##############################
-#           RDT              #
+#         OH-MY-ZSH          #
 ##############################
-[[ ! -d $LOCAL_BIN ]] && mkdir -p "$HOME/.local/bin"
-cd rdt && bash ./install.sh "$LOCAL_BIN" && cd - || exit 1
+if [[ ! -d $ZSH ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+    printf "\noh-my-zsh already installed, skipping\n"
+fi
 
 ##############################
 #       POWERLEVEL10K        #
 ##############################
-ln -sf "$(pwd)/zsh/powerlevel10k" "$(pwd)/zsh/oh-my-zsh/custom/themes"
+if [[ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]]; then
+    git clone --depth=1 --filter=blob:none https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM"/themes/powerlevel10k
+    _symlink "$(pwd)/zsh/.p10k.zsh" "$HOME"
+else
+    printf "\npowerlevel10k already installed, skipping\n"
+fi
+
+##############################
+#           ZSH              #
+##############################
+_symlink "$(pwd)/zsh/.zshrc" "$HOME/.zshrc"
+_symlink "$(pwd)/zsh/.zprofile" "$HOME/.zprofile"
+
+##############################
+#           RDT              #
+##############################
+if [[ ! $(command -v rdt) ]]; then
+    cd rdt && bash ./install.sh "$LOCAL_BIN" && cd - || exit 1
+fi
 
 ##############################
 #           VI(M)            #
 ##############################
-ln -sf "$(pwd)/vi-m/.vimrc" "$HOME"
-ln -sf "$(pwd)/vi-m/.ideavimrc" "$HOME"
+_symlink "$(pwd)/vi-m/.vimrc" "$HOME"
+_symlink "$(pwd)/vi-m/.ideavimrc" "$HOME"
 
 ##############################
 #         ASTRONVIM          #
 ##############################
-ln -sf "$(pwd)/nvim" "$CONFIG"
+_symlink "$(pwd)/nvim" "$CONFIG"
 
 ##############################
 #     ASTRONVIM CONFIG       #
 ##############################
-ln -sf "$(pwd)/nvim" "$CONFIG"
+_symlink "$(pwd)/nvim" "$CONFIG"
 
 ##############################
 #          LAZYGIT           #
 ##############################
-ln -sf "$(pwd)/lazygit" "$CONFIG"
+_symlink "$(pwd)/lazygit" "$CONFIG"
 
 ##############################
 #          WEZTERM           #
 ##############################
-ln -sf "$(pwd)/wezterm" "$CONFIG"
+_symlink "$(pwd)/wezterm" "$CONFIG"
 
 ##############################
 #           TMUX             #
 ##############################
-ln -sf "$(pwd)/tmux" "$CONFIG"
+_symlink "$(pwd)/tmux" "$CONFIG"
 
 ##############################
 #         PTPYTHON           #
 ##############################
-ln -sf "$(pwd)/ptpython" "$CONFIG"
+_symlink "$(pwd)/ptpython" "$CONFIG"
 
 ##############################
 #          PYLINT            #
 ##############################
-ln -sf "$(pwd)/pylintrc" "$CONFIG"
+_symlink "$(pwd)/pylintrc" "$CONFIG"
 
 ##############################
 #            NVM             #
@@ -76,22 +103,26 @@ ln -sf "$(pwd)/pylintrc" "$CONFIG"
 if [[ ! -d "$HOME/.nvm" ]]; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 else
-    echo "nvm already installed, skipping"
+    printf "\nnvm already installed, skipping\n"
 fi
 
 ##############################
 #           PYENV            #
 ##############################
+if [[ ! -d "$HOME/.pyenv" ]]; then
 curl https://pyenv.run | bash && \
     mkdir "$HOME/.pyenv" && \
     ln -s "$(pwd)/pyenv/default-packages" "$HOME/.pyenv/" && \
     git clone https://github.com/jawshooah/pyenv-default-packages "$(pyenv root)/plugins/pyenv-default-packages"
+else
+    printf "\npyenv already installed, skipping\n"
+fi
 
 ##############################
 #            GIT             #
 ##############################
-ln -sf "$(pwd)/git/.gitconfig" "$HOME"
-ln -sf "$(pwd)/git/.gitignore_global" "$HOME"
+_symlink "$(pwd)/git/.gitconfig" "$HOME"
+_symlink "$(pwd)/git/.gitignore_global" "$HOME"
 
 
 ##############################
@@ -101,29 +132,20 @@ if [[ $(uname) == "Linux" ]]; then
     ##############################
     #           ROFI             #
     ##############################
-    git clone --depth=1 --filter=blob:none https://github.com/adi1090x/rofi.git && \
-        cd rofi && \
-        chmod +x ./setup.sh && \
-        ./setup.sh && \
-        cd .. && \
-        rm -rfi rofi
+    _symlink "$(pwd)/rofi" "$CONFIG"
 
-    git clone --depth=1 --filter=blob:none https://github.com/lr-tech/rofi-themes-collection.git && \
-        mv rofi-themes-collection/themes "$HOME/.config/rofi" && \
-        cd .. && \
-        rm -rfi rofi-themes-collection
     ##############################
     #             i3             #
     ##############################
-    ln -sf "$(pwd)/i3" "$CONFIG"
+    _symlink "$(pwd)/i3" "$CONFIG"
     ##############################
     #           xprofile         #
     ##############################
-    ln -sf "$(pwd)/xprofile/.xprofile" "$HOME"
+    _symlink "$(pwd)/xprofile/.xprofile" "$HOME"
     ##############################
     #            rofi            #
     ##############################
-    ln -sf "$(pwd)/rofi" "$CONFIG"
+    _symlink "$(pwd)/rofi" "$CONFIG"
 
 ##############################
 #            MacOS           #
@@ -132,5 +154,5 @@ elif [[ $(uname) == "Darwin" ]]; then
     ##############################
     #         AEROSPACE          #
     ##############################
-    ln -sf "$(pwd)/aerospace" "$CONFIG"
+    _symlink "$(pwd)/aerospace" "$CONFIG"
 fi

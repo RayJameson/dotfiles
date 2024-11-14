@@ -42,7 +42,6 @@ zstyle ':completion:*' regular true
 
 export DOTFILES="$HOME/dotfiles"
 export ZSH_DOTFILES="$DOTFILES/zsh"
-export OMZ="$ZSH_DOTFILES/oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
@@ -65,7 +64,7 @@ function zvm_config() {
     ZVM_VI_EDITOR="nvim -c 'set ft=sh'"
 }
 source "$ZSH_DOTFILES/install_custom_plugins.zsh"
-source "$OMZ/oh-my-zsh.sh"
+source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 if [[ $(uname) == "Darwin" ]]; then
     source "$ZSH_DOTFILES/mac.zsh"
 elif [[ $(uname) == "Linux" ]]; then

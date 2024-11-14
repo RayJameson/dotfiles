@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-ZSH_CUSTOM="$DOTFILES/zsh/oh-my-zsh/custom"
+ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
 install_plugin()
 {
