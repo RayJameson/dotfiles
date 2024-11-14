@@ -5,6 +5,7 @@ alias ng="nvim -c 'Neogit'"
 alias v4="NVIM_APPNAME=v4 nvim"
 alias venv="source .venv/bin/activate"
 alias watch="watch -cd"
+[[ $(command -v chezmoi) ]] && alias cz=chezmoi
 [[ $(command -v ggrep) ]] && alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 # make functions for commands which could be used in piping
 if [[ $(command -v eza) ]]; then
@@ -27,3 +28,8 @@ alias c=clear
 alias pydoc="python3 -m pydoc"
 alias zshrc="$EDITOR $DOTFILES/zsh/.zshrc"
 [[ $(command -v asciinema) ]] && alias asc=asciinema
+if [[ $(command -v zoxide) ]]; then
+    eval "$(zoxide init zsh)"
+    alias cd="z"
+    alias cdi="zi"
+fi
