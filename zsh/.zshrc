@@ -64,7 +64,8 @@ function zvm_config() {
     ZVM_VI_EDITOR="nvim -c 'set ft=sh'"
 }
 source "$ZSH_DOTFILES/install_custom_plugins.zsh"
-source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
+export ZSH="$HOME/.oh-my-zsh"
+source "$ZSH/oh-my-zsh.sh"
 if [[ $(uname) == "Darwin" ]]; then
     source "$ZSH_DOTFILES/mac.zsh"
 elif [[ $(uname) == "Linux" ]]; then
