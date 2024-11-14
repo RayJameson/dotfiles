@@ -1,5 +1,7 @@
+#!/usr/env/bin zsh
+
 detect-clipboard () {
-	emulate -L zsh
+	# emulate -L zsh - use it with other shells
 	if [[ "${OSTYPE}" == darwin* ]] && (( ${+commands[pbcopy]} )) && (( ${+commands[pbpaste]} ))
 	then
 		clipcopy () {

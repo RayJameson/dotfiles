@@ -1,3 +1,6 @@
+if [[ ! $(uname) == "Darwin" ]]; then
+    return
+fi
 function zvm_after_init() {
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 }

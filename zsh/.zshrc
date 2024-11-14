@@ -63,16 +63,11 @@ function zvm_config() {
     ZVM_TERM=xterm-256color
     ZVM_VI_EDITOR="nvim -c 'set ft=sh'"
 }
-source "$ZSH_DOTFILES/install_custom_plugins.zsh"
+for file in "$HOME"/.zshrc.d/*(.); do
+    source $file
+done
 export ZSH="$HOME/.oh-my-zsh"
 source "$ZSH/oh-my-zsh.sh"
-if [[ $(uname) == "Darwin" ]]; then
-    source "$ZSH_DOTFILES/mac.zsh"
-elif [[ $(uname) == "Linux" ]]; then
-    source "$ZSH_DOTFILES/arch.zsh"
-fi
-source "$ZSH_DOTFILES/common_envs.zsh"
-source $ZSH_DOTFILES/detect-clipboard
 
 if [[ $(command -v fd) ]] || [[ $(command -v fdfind) ]] || [[ $(command -v fd-find) ]]; then
     export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --hidden --follow --exclude .git'
