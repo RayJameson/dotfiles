@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+# Check commandline arg
+if [ $# -ne 1 ]; then
+    echo "Script run example: $0 <directory-path>"
+    exit 1
+fi
+
+# Check directory existence
+dir_path=$1
+if [ ! -d "$dir_path" ]; then
+    echo "Error: Directory $dir_path does not exist."
+    exit 1
+fi
+
+cd "$dir_path"
+
+# Check .keystore.jks files count
+jks_count=$(ls *.keystore.jks 2>/dev/null | wc -l)
+if [ "$jks_count" -eq 0 ]; then
+    echo "No .jks files found."
+    exit 1
+fi
+
+# Find files .keystore.jks
+for jks_file in *.keystore.jks; do
+    # Get client alias name from .keystore.jks name
+    alias=$(echo $jks_file | cut -d '.' -f 2)
+    
+    # Check password file existence
+    passwd_file="${jks_file%.jks}.passwd"
+    if [ ! -f "$passwd_file" ]; then
+        echo "Warning: Password file $passwd_file not found for $jks_file."
+        continue
+    fi
+
+    keystore_pass=$(<"$passwd_file")
+    
+    # If there is only one .keystore.jks file, then use default names
+    if [ "$jks_count" -eq 1 ]; then
+        root_cert_file="caroot.pem"
+        client_cert_file="certificate.pem"
+        client_key_file="key.pem"
+    else
+        root_cert_file="$alias.caroot.pem"
+        client_cert_file="$alias.pem"
+        client_key_file="$alias.key.pem"
+    fi
+
+    # Get root certificate
+    keytool -exportcert \
+        -alias caroot \
+        -keystore "$jks_file" \
+        -storepass "$keystore_pass" \
+        -rfc -file "$root_cert_file"
+    
+    # Get client certificate
+    keytool -exportcert \
+        -alias "$alias" \
+        -keystore "$jks_file" \
+        -storepass "$keystore_pass" \
+        -rfc -file "$client_cert_file"
+    
+    # Convert JKS into PKCS#12
+    pkcs12_file="${jks_file%.jks}.p12"
+    keytool -importkeystore \
+            -srckeystore "$jks_file" \
+            -destkeystore "$pkcs12_file" \
+            -deststoretype PKCS12 \
+            -srcstorepass "$keystore_pass" \
+            -deststorepass "$keystore_pass" \
+            -srcalias "$alias" \
+            -destalias "$alias"
+    
+    # Get client private key
+    openssl pkcs12 -in "$pkcs12_file" \
+            -nodes -nocerts \
+            -out "$client_key_file" \
+            -passin pass:"$keystore_pass"
+
+    rm -f "$pkcs12_file"
+done
+
+echo "Script successfully completed!"
