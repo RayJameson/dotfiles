@@ -2,3 +2,22 @@ README.md
 LICENSE
 .oh-my-zsh/cache/completions/
 fonts
+
+{{- if ne .chezmoi.os "darwin" }}
+.config/aerospace
+.local/bin/open_little_arc
+{{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
+.config/rofi
+.config/i3
+.config/autostart
+.config/copyq
+.config/systemd
+.config/wireplumber
+.config/pavucontrol.ini
+.config/mimeapps.list
+.config/syncthingtray.ini
+.local/bin/save_i3_layout
+.local/bin/xprop_i3
+{{- end }}
