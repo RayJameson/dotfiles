@@ -22,4 +22,5 @@ fonts
 .local/bin/save_i3_layout
 .local/bin/xprop_i3
 .zshrc.d/30-arch.zsh
+.xprofile
 {{- end }}
