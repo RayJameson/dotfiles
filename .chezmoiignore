@@ -7,6 +7,7 @@ fonts
 .config/aerospace
 .local/bin/open_little_arc
 .zshrc.d/30-mac.zsh
+.gitconfig_work
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
