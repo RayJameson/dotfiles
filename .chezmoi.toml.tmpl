@@ -16,3 +16,8 @@ encryption = "gpg"
     pager = "diff-so-fancy"
     command = "nvim"
     args = ["-dR", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+
+[[textconv]]
+pattern = "**/*.plist"
+command = "plutil"
+args = ["-convert", "xml1", "-o", "-", "-"]
