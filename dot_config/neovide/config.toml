@@ -1,0 +1,11 @@
+fork = false
+frame = "none"
+idle = true
+maximized = false
+no-multigrid = false
+srgb = false
+tabs = false
+theme = "auto"
+title-hidden = true
+vsync = true
+wsl = false
