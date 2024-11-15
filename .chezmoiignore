@@ -6,6 +6,7 @@ fonts
 {{- if ne .chezmoi.os "darwin" }}
 .config/aerospace
 .local/bin/open_little_arc
+.zshrc.d/30-mac.zsh
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
@@ -20,4 +21,5 @@ fonts
 .config/syncthingtray.ini
 .local/bin/save_i3_layout
 .local/bin/xprop_i3
+.zshrc.d/30-arch.zsh
 {{- end }}
