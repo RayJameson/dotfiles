@@ -25,6 +25,7 @@ return {
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.docker" },
+  (vim.fn.executable("chezmoi") == 1 and { import = "astrocommunity.pack.chezmoi" }) or {},
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   { import = "astrocommunity.editing-support.bigfile-nvim" },
