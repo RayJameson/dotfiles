@@ -37,3 +37,10 @@ tm() {
     local session_name=${1:-"main"}
     tmux new -A -s $session_name
 }
+function o() {
+    if [ $# -eq 0 ]; then
+        open .;
+    else
+        open "$@";
+    fi;
+}
