@@ -18,10 +18,14 @@
 	name = Ray Jameson
 	email = 67468725+RayJameson@users.noreply.github.com
 	signingKey = 04CF04D66633E24A
+[diff]
+	tool = meld
 [difftool]
     prompt = false
-[difftool "nvim"]
-	cmd = "nvim -dO \"$LOCAL\" \"$REMOTE\""
+[merge]
+    tool = meld
+[mergetool]
+	prompt = false
 [commit]
 	gpgSign = true
 	verbose = true
