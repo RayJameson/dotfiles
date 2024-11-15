@@ -1,0 +1,40 @@
+[[language]]
+name = "python"
+scope = "source.python"
+injection-regex = "python"
+file-types = [
+  "py",
+  "pyi",
+  "py3",
+  "pyw",
+  "ptl",
+  ".pythonstartup",
+  ".pythonrc",
+  "SConstruct",
+]
+shebangs = ["python"]
+roots = [
+  "pyproject.toml",
+  "setup.py",
+  "setup.cfg",
+  "requirements.txt",
+  "Pipfile",
+  "pyrightconfig.json",
+]
+comment-token = "#"
+language-server = { command = "pylance", args = ["--stdio"] }
+indent = { tab-width = 4, unit = "    " }
+
+[language.config.python.analysis]
+diagnosticMode = "workspace"
+typeCheckingMode = "basic"
+autoImportCompletions = true
+autoImportUserSymbols = true
+importFormat = "relative"
+completeFunctionParens = true
+
+[language.config.python.analysis.inlayHints]
+variableTypes = true
+functionReturnTypes = true
+callArgumentNames = true
+pytestParameters = true
