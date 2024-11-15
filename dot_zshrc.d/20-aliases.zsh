@@ -5,7 +5,20 @@ alias ng="nvim -c 'Neogit'"
 alias v4="NVIM_APPNAME=v4 nvim"
 alias venv="source .venv/bin/activate"
 alias watch="watch -cd"
-[[ $(command -v chezmoi) ]] && alias cz=chezmoi
+if [[ $(command -v chezmoi) ]]; then
+    alias cz='chezmoi'
+    alias czi='chezmoi init'
+    alias czs='chezmoi status'
+    alias czd='chezmoi diff'
+    alias czm='chezmoi merge-all'
+    alias czap='chezmoi apply'
+    alias cza='chezmoi add'
+    alias czra='chezmoi re-add'
+    alias czd='chezmoi cd'
+    alias cze='chezmoi edit'
+    alias czf='chezmoi forget'
+    alias czu='chezmoi update'
+fi
 [[ $(command -v ggrep) ]] && alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 # make functions for commands which could be used in piping
 if [[ $(command -v eza) ]]; then
