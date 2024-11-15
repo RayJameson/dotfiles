@@ -9,7 +9,7 @@ fonts
 .config/sketchybar
 .config/iterm2
 .local/bin/open_little_arc
-.zshrc.d/30-mac.zsh
+.zshrc.d/30-darwin.zsh
 .gitconfig_work
 {{- end }}
 
@@ -25,6 +25,6 @@ fonts
 .config/syncthingtray.ini
 .local/bin/save_i3_layout
 .local/bin/xprop_i3
-.zshrc.d/30-arch.zsh
+.zshrc.d/30-linux.zsh
 .xprofile
 {{- end }}
