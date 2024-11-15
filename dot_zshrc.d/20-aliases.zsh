@@ -26,7 +26,7 @@ alias lg=lazygit
 alias lzd=lazydocker
 alias c=clear
 alias pydoc="python3 -m pydoc"
-alias zshrc="$EDITOR $DOTFILES/zsh/.zshrc"
+alias zshrc="$EDITOR $HOME/.zshrc"
 [[ $(command -v asciinema) ]] && alias asc=asciinema
 if [[ $(command -v zoxide) ]]; then
     eval "$(zoxide init zsh)"
