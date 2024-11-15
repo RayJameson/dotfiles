@@ -6,6 +6,7 @@ fonts
 {{- if ne .chezmoi.os "darwin" }}
 .config/aerospace
 .config/sketchybar
+.config/iterm2
 .local/bin/open_little_arc
 .zshrc.d/30-mac.zsh
 .gitconfig_work
