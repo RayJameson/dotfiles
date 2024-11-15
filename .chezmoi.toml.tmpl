@@ -1,7 +1,11 @@
+encryption = "gpg"
+[gpg]
+    recipient = "04CF04D66633E24A"
+    args = ["--quiet"]
+
 [merge]
     command = "nvim"
     args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
-
 [diff]
     command = "meld"
     args = ["--diff", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
