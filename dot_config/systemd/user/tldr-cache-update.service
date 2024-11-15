@@ -1,0 +1,9 @@
+[Unit]
+Description=Updates `tldr` cache
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tldr --update
+
+[Install]
+WantedBy=multi-user.target

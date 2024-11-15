@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+##
+## launch wezterm with i3 config
+
+# i3 directory
+
+if [ "$1" == "--float" ]; then
+	wezterm start --class 'wezterm-float'
+elif [ "$1" == "--full" ]; then
+	wezterm start --class 'wezterm-fullscreen'
+else
+	wezterm start "${@}"
+fi

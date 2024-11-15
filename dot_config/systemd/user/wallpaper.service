@@ -1,0 +1,10 @@
+[Unit]
+Description=Change wallpaper
+Documentation=man:nitrogen
+
+[Service]
+ExecStart=/home/ray/.config/i3/scripts/nitrogen_wallpaper /home/ray/Pictures/wallpapers/
+Environment="PATH=/usr/bin:/bin"
+
+[Install]
+WantedBy=multi-user.target

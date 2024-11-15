@@ -1,0 +1,41 @@
+[color]
+	ui = true
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+	sshCommand = ssh -F ~/.ssh/config
+	pager = diff-so-fancy | less --tabs=4 -RFX
+    editor = nvim
+	excludesfile = ~/.gitignore_global
+	symlinks = true
+[credential "https://*github*"]
+	helper = !gh auth git-credential
+[user]
+	name = Ray Jameson
+	email = 67468725+RayJameson@users.noreply.github.com
+	signingKey = 04CF04D66633E24A
+[difftool]
+    prompt = false
+[difftool "nvim"]
+	cmd = "nvim -dO \"$LOCAL\" \"$REMOTE\""
+[commit]
+	gpgSign = true
+	verbose = true
+[pull]
+	rebase = true
+[fetch]
+    prune = true
+[init]
+    defaultBranch = main
+[alias]
+    clone-all = clone --recurse-submodules
+    pull-all = !git pull --recurse-submodules --rebase && git submodule foreach --recursive git pull --rebase
+    append = !git add -u && git commit --amend --no-edit && git push --force-with-lease
+[includeIf "gitdir:~/qiwi_github/"]
+    path = ~/.gitconfig_work
+[interactive]
+	diffFilter = diff-so-fancy --patch

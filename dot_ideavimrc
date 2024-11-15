@@ -1,0 +1,128 @@
+"" Source your .vimrc
+"source ~/.vimrc
+set history=10000
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+" Do incremental searching.
+set visualbell
+set clipboard=""
+set incsearch
+set number
+set relativenumber
+
+nnoremap gcc :action CommentByLineComment<CR>
+vnoremap gc :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action CommentByLineComment<CR>gv
+nnoremap gcap vap:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action CommentByLineComment<CR>gv
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+let mapleader=" "
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+map \r <Action>(ReformatCode)
+set showmode
+set gdefault
+set showcmd
+set notimeout
+set hlsearch
+set incsearch
+set timeoutlen=1000
+imap jk <Esc>
+imap jj <Esc>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gr :action FindUsages<CR>
+nnoremap <leader>/ :action CommentByLineComment<CR>
+" Tab navigation
+nnoremap L gt<CR>
+nnoremap H gT<CR>
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+" Pane navigation
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
+nnoremap <A-k> <C-w>k
+nnoremap <A-j> <C-w>j
+" Jump between methods
+nnoremap [[ <Action>(MethodUp)
+nnoremap ]] <Action>(MethodDown)
+vnoremap < <gv
+vnoremap > >gv
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
+" File navigation
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fc <action>(FindInPath)
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fl <action>(RecentLocations)
+map <leader>fs <action>(NewScratchFile)
+nnoremap gy "*y
+xnoremap gy "*y
+nnoremap gY "*y$
+xnoremap gY "*y$
+nnoremap gd "_d
+xnoremap gd "_d
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+
+" Find more examples here: https://jb.gg/share-ideavimrc
+" Fix some vim annoyances
+
+" make Y behave like D and C, yanking till end of line
+map Y y$
+
+" don't overwrite register when pasting over selection
+vnoremap p P
+
+" paste over rest of line
+" nnoremap <leader>p v$<Left>pgvy
+nnoremap <leader>p v$<Left>p
+
+" don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+" clear search highlighting
+nnoremap <leader>h :nohls<return><esc>
+nnoremap <leader>w :w<CR>
+nnoremap gh ^
+nnoremap gl $
+nnoremap gj G
+xnoremap gk gg
+xnoremap gj G
+nnoremap gk gg
+vnoremap gh ^
+vnoremap gl $
+nmap <leader>? :action GotoAction<CR>
+set ignorecase                    " ignore case in search patterns
+set smartcase                     " no ignore case when pattern is uppercase
+set gdefault                      " substitute all occurrences in line per default
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+" Go to code
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gy <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gu <Action>(ShowUsages)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gf <Action>(Back)
+nmap <leader>gb <Action>(Forward)set ideajoin
+
+" Plugins
+Plug 'tpope/vim-surround'
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = "100"
+" let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
+set which-key
+
+sethandler m n-v:ide i:vim

@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+##
+## Autostart Programs
+
+# i3 dir
+idir="$HOME/.config/i3"
+
+# Export desktop session
+export XDG_CURRENT_DESKTOP='i3'
+
+# Kill already running process
+_ps=(xsettingsd ksuperkey autotiling nitrogen_wallpaper)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof -x ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# Lauch xsettingsd daemon
+xsettingsd --config="$idir"/xsettingsd &
+
+# polkit agent
+if [[ ! `pidof xfce-polkit` ]]; then
+	/usr/lib/xfce-polkit/xfce-polkit &
+fi
+
+# Enable power management
+xfce4-power-manager &
+
+# Fix cursor
+xsetroot -cursor_name left_ptr
+
+# Lauch notification daemon
+"$idir"/scripts/i3_dunst
+
+# Lauch polybar
+"$idir"/scripts/i3_bar
+
+# Lauch compositor
+"$idir"/scripts/i3_comp
+
+# Keyboard layout EN, RU and switch on super-space
+setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
+
+# Enable autotiling using https://github.com/nwg-piotr/autotiling
+autotiling
+
+# Start mpd
+exec mpd &

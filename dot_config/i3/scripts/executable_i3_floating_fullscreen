@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+monitor_x=$(xdpyinfo | awk '/dimensions/{print $2}' | cut -d 'x' -f1)
+monitor_y=$(xdpyinfo | awk '/dimensions/{print $2}' | cut -d 'x' -f2)
+i3-msg floating toggle, resize set "$monitor_x" "$monitor_y", move position 0 0

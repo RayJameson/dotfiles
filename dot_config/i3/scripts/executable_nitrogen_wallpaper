@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+export "$("$HOME"/.config/i3/scripts/find_display)"
+export "$("$HOME"/.config/i3/scripts/find_xauthority)"
+
+DIR="$1"
+
+change_wallpaper_fn() {
+    nitrogen --random --set-zoom-fill "$DIR" --save
+}
+
+change_wallpaper_fn

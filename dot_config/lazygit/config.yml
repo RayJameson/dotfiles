@@ -1,0 +1,110 @@
+---
+services:
+  "github.qiwi.com": "github:github.qiwi.com"
+gui:
+  mouseEvents: false
+  nerdFontsVersion: "3"
+  showBottomLine: false
+  showCommandLog: false
+  language: "en"
+  border: "rounded"
+  skipDiscardChangeWarning: true
+  skipRewordInEditorWarning: true
+  theme:
+    selectedLineBgColor:
+      - "#3e4452"
+  authorColors:
+    "Dmitriev Mikhail": "#ff00ff"
+    "Ray Jameson": "#ff00ff"
+  branchColors:
+    "master": "#c678dd"
+    "feat": "#61afef"
+    "fix": "#7bc99c"
+    "remove": "#ec5f67"
+    "refactor": "#ffcc00"
+    "perf": "#1BF9C4"
+    "docs": "#abb2bf"
+    "chore": "#abb2bf"
+    "test": "#abb2bf"
+git:
+  overrideGpg: true
+  log:
+    showGraph: "always"
+    showWholeGraph: false
+  paging:
+    colorArg: "always"
+    pager: "diff-so-fancy"
+
+customCommands:
+  - key: "F"
+    loadingText: "Pruning & Fetching..."
+    description: "prune deleted and fetched remote branches"
+    command: "git fetch --prune"
+    context: "remotes"
+    stream: true
+  - key: "<c-c>"
+    description: "commit as non-default author"
+    command: 'git commit -m "{{index .PromptResponses 0}}" --author="{{index .PromptResponses 1}} <{{index .PromptResponses 2}}>"'
+    context: "files"
+    prompts:
+      - type: "input"
+        title: "Commit Message"
+        initialValue: ""
+      - type: "input"
+        title: "Author Name"
+        initialValue: ""
+      - type: "input"
+        title: "Email Address"
+        initialValue: ""
+    loadingText: "commiting"
+  - key: "<c-a>"
+    description: "Search the whole history (From a ref and down) for an expression in a file"
+    command: "git checkout {{index .PromptResponses 3}}"
+    context: "commits"
+    prompts:
+      - type: "input"
+        title: "Search word:"
+      - type: "input"
+        title: "File/Subtree:"
+      - type: "input"
+        title: "Ref:"
+        initialValue: "{{index .CheckedOutBranch.Name }}"
+      - type: "menuFromCommand"
+        title: "Commits:"
+        command: "git log --oneline {{index .PromptResponses 2}} -S'{{index .PromptResponses 0}}' --all -- {{index .PromptResponses 1}}"
+        filter: "(?P<commit_id>[0-9a-zA-Z]*) *(?P<commit_msg>.*)"
+        valueFormat: "{{ .commit_id }}"
+        labelFormat: "{{ .commit_id | green | bold }} - {{ .commit_msg | yellow }}"
+  - key: "P"
+    command: "git push {{.SelectedRemote.RefName}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.RefName}}"
+    context: "commits"
+    loadingText: "Pushing commit..."
+    description: "Push a specific commit (and any preceding)"
+    stream: true
+  - key: "<c-p>"
+    description: "Push to a specific remote branch"
+    context: "remotes"
+    loadingText: "pushing"
+    prompts:
+      - type: "input"
+        title: "Which branch do you want to push to?"
+    command: "git push origin {{index .PromptResponses 0}}"
+  - key: "r"
+    description: "Checkout a remote branch as FETCH_HEAD"
+    command: "git fetch {{index .PromptResponses 0}} {{index .PromptResponses 1}} && git checkout FETCH_HEAD"
+    context: "remotes"
+    prompts:
+      - type: "input"
+        title: "Remote:"
+        initialValue: "{{index .SelectedRemote.Name }}"
+      - type: "menuFromCommand"
+        title: "Remote branch:"
+        command: "git branch  -r --list {{index .PromptResponses 0}}/*"
+        filter: ".*{{index .PromptResponses 0}}/(?P<branch>.*)"
+        valueFormat: "{{ .branch }}"
+        labelFormat: "{{ .branch | green }}"
+  - key: "E"
+    description: "Add empty commit"
+    context: "commits"
+    command: 'git commit --allow-empty -m "empty commit"'
+    loadingText: "Committing empty commit..."

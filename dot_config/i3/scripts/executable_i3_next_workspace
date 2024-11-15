@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# credits to RavenHeart and Kevin Ferranti https://stackoverflow.com/q/54637049
+# modified it a bit
+
+wsNext=$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + $1))
+shift
+
+while [[ "$#" -gt 0 ]]; do
+    if [[ $1 == -m || $1 == --move ]]; then
+        i3-msg move container to workspace number $wsNext
+        shift
+    fi
+    if [[ $1 == -j || $1 == --jump ]]; then
+        i3-msg workspace number $wsNext
+        shift
+    fi
+    if [[ $1 == -mj || $1 == -jm ]]; then
+        i3-msg move container to workspace number $wsNext
+        i3-msg workspace number $wsNext
+        shift
+    fi
+done

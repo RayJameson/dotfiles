@@ -1,0 +1,5 @@
+#!/bin/env sh
+
+DIR="$HOME/.config/i3/layouts"
+WS="$1"
+i3-msg "workspace --no-auto-back-and-forth $WS; append_layout $DIR/workspace_$WS.json"

@@ -1,0 +1,11 @@
+[Unit]
+Description=Uxplay (Airplay) daemon
+
+[Service]
+Type=simple
+StandardError=journal
+ExecStart=uxplay -n "Arch" -nh -fps 60 -p 44347,44348,44349
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

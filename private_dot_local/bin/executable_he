@@ -1,0 +1,69 @@
+#!/bin/sh
+# he - print brief help about a single option or command
+# Mikel Ward <mikel@mikelward.com>
+
+# Example Usage:
+# he bash continue
+# he rsync -v
+
+scriptname=he
+
+usage()
+{
+    cat <<EOF 1>&2
+Usage: $scriptname <command> [<option|section>]
+Example:
+    $scriptname bash getopts (shows documentation for bash getopts)
+    $scriptname ssh -v       (shows documentation for ssh -v flag)
+    $scriptname select       (shows SYNOPSIS for select(2))
+    $scriptname 'open(2)'    (shows SYNOPSIS for open(2))
+EOF
+}
+
+if test $# -lt 1; then
+    usage
+    exit 2
+fi
+
+manpage="$1"
+# show the SYNOPSIS section if no section or option was given
+option="${2:-SYNOPSIS}"
+
+# handle manpage(number)
+case $manpage in *\(*\))
+    page=${manpage%\(*\)}
+    section=${manpage#$page}
+    section=${section#\(}
+    section=${section%\)}
+    manpage=$page
+    ;;
+esac
+
+man ${section:+-s $section} "$manpage" | perl -n -e '
+BEGIN {
+    $option = "'$option'";
+    $inside_option = 0;
+}
+if (!$inside_option) {
+    if (/^(\s*)\Q$option\E\b/p) {
+        # start of this option
+        $option_indentation = $1;
+        $inside_option = 1;
+        $saw_blank_line = 0;
+        print;
+    }
+} else {
+    if (/^$/) {
+        $saw_blank_line = 1;
+        print;
+    } elsif (/^\Q$option_indentation\E\S/ and $saw_blank_line) {
+        # item at same indentation => start of next option
+        $inside_option = 0;
+    } elsif (/^\S/) {
+        # new heading => start of next section
+        $inside_option = 0;
+    } else {
+        print;
+    }
+}
+'

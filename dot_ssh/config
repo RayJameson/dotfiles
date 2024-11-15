@@ -1,0 +1,15 @@
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/personal_github_key.pub
+    IdentitiesOnly yes
+    AddKeysToAgent yes
+    PreferredAuthentications publickey
+
+Host rasspberry.lan
+    HostName 192.168.0.104
+    User ray
+    IdentityFile ~/.ssh/raspberrypi.pub
+    IdentitiesOnly yes
+    AddKeysToAgent yes
+    PreferredAuthentications publickey

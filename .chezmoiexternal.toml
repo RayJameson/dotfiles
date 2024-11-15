@@ -1,0 +1,43 @@
+[".oh-my-zsh"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/fast-syntax-highlighting"]
+    type = "archive"
+    url = "https://github.com/zdharma-continuum/fast-syntax-highlighting/archive/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/fzf-tab"]
+    type = "archive"
+    url = "https://github.com/Aloxaf/fzf-tab/archive/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-vi-mode"]
+    type = "archive"
+    url = "https://github.com/jeffreytse/zsh-vi-mode/archive/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/themes/powerlevel10k"]
+    type = "archive"
+    url = "https://github.com/romkatv/powerlevel10k/archive/v1.15.0.tar.gz"
+    exact = false
+    stripComponents = 1
+[".config/tmux/plugins/tpm"]
+    type = "archive"
+    url = "https://github.com/tmux-plugins/tpm/archive/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".local/bin/rdt"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/RayJameson/rdt/refs/heads/master/rdt"
+    refreshPeriod = "168h"
+[".zfunc/_rdt"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/RayJameson/rdt/refs/heads/master/completion/zsh/_rdt"
+    refreshPeriod = "168h"

@@ -1,0 +1,10 @@
+[Unit]
+Description=Change wallpaper on timer
+Documentation=man:nitrogen
+
+[Timer]
+# Every 20 minutes
+OnCalendar=*:0/20
+
+[Install]
+WantedBy=timers.target

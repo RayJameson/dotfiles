@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+{
+    printf "Description\tCommand\n"
+    printf "Pipe command (like in shell)\t.car.options[] | .price\n"
+    printf "Delete a key\tdel(.foo)\n"
+    printf "All array elements / Get all values of dict\t.[]\n"
+    printf "0 element\t.[0]\n"
+    printf "Last element\t.[-1]\n"
+    printf "Range of elements\t.[2:4]\n"
+    printf "From 0 to n\t.[:4]\n"
+    printf "From n to last\t.[8:]\n"
+    printf "Last n elements\t.[-5:]\n"
+    printf "Select array of int by value\tmap(select(. >= 2))\n"
+    printf 'Select array of objects by value\t.[] | select(.id == "second")\n'
+    printf "Flatten an array\tflatten\n"
+    printf "Also can flatten like this\t.people[].address[]\n"
+    printf "Map - map(x) is equivalent to [.[] | x]\t.countries | map({name, id, people: .population})\n"
+    printf "Group by a key - opposite to flatten\tgroup_by(.foo)\n"
+    printf "Remove duplicates\t'unique' or 'unique_by(.foo)'\n"
+    printf "Concatenate an array\tadd\n"
+    printf "Add + 1 to all items\tmap(.+1)\n"
+    printf 'Create new object\t{"foo": .some_object, "bar": .some_value, "baz": "new value"}\n'
+    printf 'Create new array\t["foo", "bar", "baz", .some_object]\n'
+    printf 'If/else\tif .age > 30 then "old" else "young" end;\n'
+    printf 'if/elif/else\tif .age > 30 then "old" elif .age > 20 then "middle" else "young" end;\n'
+} | ./prettytable 2 none
