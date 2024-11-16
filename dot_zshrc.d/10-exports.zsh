@@ -3,7 +3,7 @@ export HISTSIZE=10000000
 export SAVEHIST=10000000
 # Add colors to Terminal
 export LSCOLORS=ExFxBxDxCxegedabagacad
-if [[ $(command -v fd) ]] || [[ $(command -v fdfind) ]] || [[ $(command -v fd-find) ]]; then
+if command_exists fd || command_exists fdfind || command_exists fd-find; then
     export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --hidden --follow --exclude .git'
     # Use fd (https://github.com/sharkdp/fd) instead of the default find
     # command for listing path candidates.
@@ -34,7 +34,7 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 export PATH="$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
-if [[ $(command -v gpg) ]]; then
+if command_exists gpg; then
     export GPG_TTY="$TTY"
     unset SSH_AGENT_PID
     if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then

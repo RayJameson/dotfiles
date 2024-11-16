@@ -12,7 +12,7 @@ nvm_init() {
 alias_source() {
     zsh -ixc : 2>&1 | grep $1
 }
-if [[ $(command -v pyenv) ]]; then
+if command_exists pyenv; then
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     pyvenv() {
         venv_name=${2:-$(basename $(pwd))}

@@ -29,7 +29,7 @@ PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 PATH="$HOME/.kube:$PATH"
 PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 
-[[ $(command -v nvim) ]] && export MANPAGER="nvim +Man! $@"
+command_exists nvim && export MANPAGER="nvim +Man! $@"
 
 # remove duplicate entries from $PATH
 # zsh uses $path array along with $PATH 
