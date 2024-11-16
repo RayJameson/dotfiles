@@ -1,5 +1,8 @@
 [packages]
-archlinux = [
+rust = ["bob-nvim"]
+
+[packages.archlinux]
+regular = [
     "amixer",
     "archcraft-i3wm",
     "archlinux-keyring",
@@ -25,8 +28,6 @@ archlinux = [
     "helvum",
     "keepassxc",
     "lazygit",
-    "lib32-nvidia-utils",
-    "lib32-opencl-nvidia",
     "lib32-stderred-git",
     "lib32-vulkan-icd-loader",
     "libxnvctrl",
@@ -36,10 +37,6 @@ archlinux = [
     "nodejs",
     "nordvpn-bin",
     "npm",
-    "nvidia-dkms",
-    "nvidia-settings",
-    "nvidia-utils",
-    "opencl-nvidia",
     "pamac-aur",
     "pamixer",
     "pipewire",
@@ -71,9 +68,15 @@ archlinux = [
     "zen-browser-avx2-bin",
     "zoxide",
 ]
-rust = [
-    "bob-nvim",
+nvidia = [
+    "lib32-nvidia-utils",
+    "lib32-opencl-nvidia",
+    "nvidia-dkms",
+    "nvidia-settings",
+    "nvidia-utils",
+    "opencl-nvidia",
 ]
+
 [packages.darwin]
 brews = [
     "asciinema",
@@ -125,4 +128,3 @@ casks = [
     "wezterm",
     "zen-browser",
 ]
-
