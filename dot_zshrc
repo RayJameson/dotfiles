@@ -25,7 +25,7 @@ function zvm_config() {
     ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
     ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
     ZVM_TERM=xterm-256color
-    ZVM_VI_EDITOR="nvim -c 'set ft=sh'"
+    ZVM_VI_EDITOR="nvim -c 'set ft=zsh'"
 }
 export ZSH="$HOME/.oh-my-zsh"
 source "$ZSH/oh-my-zsh.sh"
