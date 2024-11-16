@@ -16,6 +16,7 @@ if command_exists chezmoi; then
     alias czra='chezmoi re-add'
     alias czcd='chezmoi cd'
     alias cze='chezmoi edit'
+    alias czea='chezmoi edit --apply'
     alias czf='chezmoi forget'
     alias czu='chezmoi update'
 fi
