@@ -40,6 +40,7 @@ archlinux = [
     "nvidia-settings",
     "nvidia-utils",
     "opencl-nvidia",
+    "pamac-aur",
     "pamixer",
     "pipewire",
     "pipewire-alsa",
