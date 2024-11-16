@@ -59,6 +59,6 @@ if [ ! $(uname -s) = 'Darwin' ]; then
     fi
 fi
 # Arch package managers
-alias pari='paru --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "paru -Si {1}" --reverse | xargs -ro paru -S'
-alias yayi='yay --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "yay -Si {1}" --reverse | xargs -ro yay -S'
-alias paci='pacman --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "pacman -Si {1}" --reverse | xargs -ro sudo pacman -S'
+command_exists paru && alias pari='paru --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "paru -Si {1}" --reverse | xargs -ro paru -S'
+command_exists yay && alias yayi='yay --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "yay -Si {1}" --reverse | xargs -ro yay -S'
+command_exists pacman && alias paci='pacman --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "pacman -Si {1}" --reverse | xargs -ro sudo pacman -S'
