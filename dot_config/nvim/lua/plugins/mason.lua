@@ -57,7 +57,7 @@ return {
         -- "prettier",
         "stylua",
       }
-      if vim.fn.executable("python3") == 1 then table.insert(utils, "pyink") end
+      -- if vim.fn.executable("python3") == 1 then table.insert(utils, "pyink") end
       opts.ensure_installed = list_insert_unique(opts.ensure_installed, utils)
       opts.handlers = {
         luacheck = function() end,

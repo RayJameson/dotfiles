@@ -17,11 +17,11 @@ return {
     opts.sources = {
       -- Set a formatternone
       nls.builtins.code_actions.gitsigns,
-      nls.builtins.formatting.pyink.with {
-        extra_args = {
-          "--line-length=120",
-        },
-      },
+      -- nls.builtins.formatting.pyink.with {
+      --   extra_args = {
+      --     "--line-length=120",
+      --   },
+      -- },
       nls.builtins.diagnostics.mypy.with {
         extra_args = function()
           local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
