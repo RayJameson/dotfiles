@@ -14,7 +14,7 @@ if [[ $(command -v chezmoi) ]]; then
     alias czap='chezmoi apply'
     alias cza='chezmoi add'
     alias czra='chezmoi re-add'
-    alias czd='chezmoi cd'
+    alias czcd='chezmoi cd'
     alias cze='chezmoi edit'
     alias czf='chezmoi forget'
     alias czu='chezmoi update'
