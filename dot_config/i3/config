@@ -282,7 +282,7 @@ force_display_urgency_hint 500 ms
 ## To prevent new windows from being focused.
 ##
 ## Syntax: focus_on_window_activation smart|urgent|focus|none
-focus_on_window_activation smart
+focus_on_window_activation focus
 
 #------
 
