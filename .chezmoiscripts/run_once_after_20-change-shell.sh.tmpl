@@ -3,11 +3,23 @@
 
 {{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") }}
 
-if ! ask_user "Change default user's shell to zsh? (homebrew's zsh in MacOS case)"; then
+
+{{ if eq .chezmoi.os "darwin" -}}
+if [[ "$SHELL" = "$(brew --prefix)"/bin/zsh ]]; then
     exit 0
 fi
+{{ end -}}
 
-current_user=$USER
-echo "Changing shell for current user to zsh"
-sudo chsh -s {{ if eq .chezmoi.os "darwin" }}"$(brew --prefix)"/bin/zsh{{ else }}/usr/bin/zsh{{ end }} $current_user
+{{ if eq .chezmoi.os "linux" -}}
+if [[ "$SHELL" = /usr/bin/zsh ]]; then
+    exit 0
+fi
+{{ end -}}
+
+if ask_user "Change default user's shell to zsh? (homebrew's zsh in MacOS case)"; then
+    current_user=$USER
+    echo "Changing shell for current user to zsh"
+    sudo chsh -s {{ if eq .chezmoi.os "darwin" }}"$(brew --prefix)"/bin/zsh{{ else }}/usr/bin/zsh{{ end }} $current_user
+fi
+
 {{ end -}}

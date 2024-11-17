@@ -8,8 +8,6 @@ if ! ask_user "Change MacOS defaults? https://mths.be/macos"; then
     exit 0
 fi
 
-set -v
-
 # Change defaults for MacOS
 
 # credit: @mathiasbynens
@@ -212,7 +210,5 @@ do
 	killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
-
-set +v
 
 {{ end -}}

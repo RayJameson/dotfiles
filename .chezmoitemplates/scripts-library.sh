@@ -1,6 +1,6 @@
 set -euo pipefail
 
-function ask_user() {
+ask_user() {
     printf "$1 [y/n] "
     read answer < /dev/tty
 
@@ -16,4 +16,8 @@ function ask_user() {
             exit 1
             ;;
     esac
+}
+
+command_exists () {
+    command -v "$@" &> /dev/null
 }
