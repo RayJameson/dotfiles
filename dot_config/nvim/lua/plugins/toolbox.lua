@@ -30,6 +30,7 @@ return {
     },
   },
   dependencies = { "nvim-telescope/telescope.nvim" },
+  opts_extend = { "commands" },
   opts = {
     commands = {
       {
