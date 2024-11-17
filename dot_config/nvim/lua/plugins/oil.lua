@@ -92,6 +92,11 @@ return {
   opts = {
     skip_confirm_for_simple_edits = true,
     group = "oil_settings",
+    preview_win = {
+      max_file_size_mb = 10,
+      scratch_buffer = true,
+      limit_scratch_buffer = true,
+    },
     view_options = {
       show_hidden = true,
     },
