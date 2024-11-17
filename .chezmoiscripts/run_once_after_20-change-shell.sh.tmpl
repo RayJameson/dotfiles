@@ -1,5 +1,7 @@
 {{ if (and (eq .chezmoi.os "darwin" "linux") (eq .change_shell true)) -}}
 #!/usr/bin/env bash
 
-chsh -s {{ if eq .chezmoi.os "darwin" }}"$(brew --prefix)"/bin/zsh{{ else }}/usr/bin/zsh{{ end }} $USER
+current_user=$USER
+echo "Changing shell for current user to zsh"
+sudo chsh -s {{ if eq .chezmoi.os "darwin" }}"$(brew --prefix)"/bin/zsh{{ else }}/usr/bin/zsh{{ end }} $current_user
 {{ end -}}
