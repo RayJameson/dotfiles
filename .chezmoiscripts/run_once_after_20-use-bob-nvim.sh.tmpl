@@ -1,6 +1,7 @@
 {{ if (and (eq .chezmoi.os "darwin" "linux") (lookPath "bob")) -}}
 #!/usr/bin/env bash
 
+echo "Installing/Updating neovim via bob"
 bob use latest
 
 {{ end -}}
