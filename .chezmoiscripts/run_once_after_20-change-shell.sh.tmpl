@@ -1,5 +1,5 @@
 {{ if (eq .chezmoi.os "darwin" "linux") -}}
 #!/usr/bin/env bash
 
-chsh --shell {{ if eq .chezmoi.os "darwin" }}"$(brew --prefix)"/bin/zsh{{ else }}/usr/bin/zsh{{ end }}
+chsh -s {{ if eq .chezmoi.os "darwin" }}"$(brew --prefix)"/bin/zsh{{ else }}/usr/bin/zsh{{ end }} $USER
 {{ end -}}
