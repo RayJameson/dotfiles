@@ -59,7 +59,7 @@ regular = [
     "todoist-nativefier",
     "vencord",
     "vulkan-icd-loader",
-    "wezterm",
+    "wezterm-git",
     "wine",
     "winetricks",
     "wireplumber",
