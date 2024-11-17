@@ -1,0 +1,6 @@
+{{ if (and (eq .chezmoi.os "darwin" "linux") (lookPath "bob")) -}}
+#!/usr/bin/env bash
+
+bob use latest
+
+{{ end -}}
