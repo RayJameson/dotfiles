@@ -33,6 +33,11 @@ for file in "$HOME"/.zshrc.d/*(.); do
     source $file
 done
 
+function zvm_vi_yank () {
+    zvm_yank
+    printf %s "${CUTBUFFER}" | clipcopy
+    zvm_exit_visual_mode
+}
 
 zstyle ':omz:update' mode disabled  # disable automatic updates
 if command_exists pipx; then
