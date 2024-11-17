@@ -12,21 +12,6 @@ return {
           },
         },
         mappings = {
-          n = {
-            ["<Leader>;"] = {
-              function()
-                -- HACK: initially there is no vim.g.codeium_enabled variable even if Codeium enabled
-                if vim.g.codeium_enabled == true or vim.g.codeium_enabled == nil then
-                  vim.cmd("CodeiumDisable")
-                  vim.notify("Codeium disabled")
-                else
-                  vim.cmd("CodeiumEnable")
-                  vim.notify("Codeium enabled")
-                end
-              end,
-              desc = "Toggle Codeium",
-            },
-          },
           i = {
             ["<C-g>"] = {
               function() return vim.api.nvim_call_function("codeium#Accept", {}) end,
@@ -43,6 +28,18 @@ return {
               desc = "Codeium clear",
               expr = true,
             },
+          },
+        },
+      },
+    },
+    {
+      "DanWlker/toolbox.nvim",
+      opts_extend = { "commands" },
+      opts = {
+        commands = {
+          {
+            name = "Enable AI suggestions [codeium.vim]",
+            execute = "CodeiumToggle",
           },
         },
       },

@@ -15,10 +15,11 @@ return {
     },
     {
       "DanWlker/toolbox.nvim",
+      opts_extend = { "commands" },
       opts = {
         commands = {
           {
-            name = "Enable `eregex.vim` hijack for / and ?",
+            name = "Enable hijack for / and ? [eregex.vim]",
             execute = function() vim.api.nvim_call_function("eregex#toggle", {}) end,
           },
         },
