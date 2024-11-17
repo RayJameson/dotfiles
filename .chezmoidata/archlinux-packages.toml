@@ -1,6 +1,3 @@
-[packages]
-rust = ["bob-nvim"]
-
 [packages.archlinux]
 regular = [
     "amixer",
@@ -76,56 +73,3 @@ nvidia = [
     "nvidia-utils",
     "opencl-nvidia",
 ]
-
-[packages.darwin]
-brews = [
-    "asciinema",
-    "bash",
-    "bat",
-    "btop",
-    "clang",
-    "coreutils",
-    "eza",
-    "fd",
-    "fzf",
-    "fzy",
-    "gh",
-    "git",
-    "glow",
-    "jq",
-    "lazydocker",
-    "lazygit",
-    "lnav",
-    "lua",
-    "luajit",
-    "luarocks",
-    "man-db",
-    "ncdu",
-    "node",
-    "parallel",
-    "pipx",
-    "ptpython",
-    "pyenv",
-    "rich",
-    "ripgrep",
-    "sesh",
-    "tealdeer",
-    "tmux",
-    "tree-sitter",
-    "zoxide",
-    "zsh",
-]
-casks = [
-    "docker",
-    "keepassxc",
-    "keycastr",
-    "neovide",
-    "obsidian",
-    "raycast",
-    "syncthing",
-    "telegram",
-    "todoist",
-    "wezterm",
-    "zen-browser",
-]
-
