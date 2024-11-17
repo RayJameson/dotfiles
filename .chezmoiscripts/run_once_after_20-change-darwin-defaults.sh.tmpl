@@ -1,5 +1,12 @@
-{{ if (and (eq .chezmoi.os "darwin") (eq .change_darwin_defaults true)) -}}
+{{ if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env bash
+
+
+{{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") }}
+
+if ! ask_user "Change MacOS defaults? https://mths.be/macos"; then
+    exit 0
+fi
 
 set -v
 

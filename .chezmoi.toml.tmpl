@@ -1,7 +1,3 @@
-{{ $install_rustup := promptBoolOnce . "install_rustup" "Install `rustup` using curl?" }}
-{{ $change_shell := promptBoolOnce . "change_shell" "Change default user's shell to `zsh`? (homebrew's zsh in MacOS case)" }}
-{{ $change_darwin_defaults := promptBoolOnce . "change_darwin_defaults" "Change MacOS defaults? https://mths.be/macos" }}
-
 encryption = "gpg"
 [gpg]
     recipient = "04CF04D66633E24A"
@@ -25,8 +21,3 @@ encryption = "gpg"
 pattern = "**/*.plist"
 command = "plutil"
 args = ["-convert", "xml1", "-o", "-", "-"]
-
-[data]
-install_rustup = {{ $install_rustup }}
-change_shell = {{ $change_shell }}
-change_darwin_defaults = {{ $change_darwin_defaults }}

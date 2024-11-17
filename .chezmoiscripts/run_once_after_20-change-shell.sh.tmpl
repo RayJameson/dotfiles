@@ -1,5 +1,11 @@
-{{ if (and (eq .chezmoi.os "darwin" "linux") (eq .change_shell true)) -}}
+{{ if eq .chezmoi.os "darwin" "linux" -}}
 #!/usr/bin/env bash
+
+{{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") }}
+
+if ! ask_user "Change default user's shell to zsh? (homebrew's zsh in MacOS case)"; then
+    exit 0
+fi
 
 current_user=$USER
 echo "Changing shell for current user to zsh"
