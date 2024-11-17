@@ -49,3 +49,6 @@ casks = [
     "wezterm",
     "zen-browser",
 ]
+cargo = [
+    "bob-nvim"
+]

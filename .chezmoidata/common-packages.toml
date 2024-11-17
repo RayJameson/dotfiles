@@ -1,2 +1,0 @@
-[packages.common]
-rust = ["bob-nvim"]
