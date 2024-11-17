@@ -7,4 +7,13 @@ cat <<EOF | xargs -ro yay -S --needed
 {{ end -}}
 EOF
 
+is_nvidia_gpu=$(lspci | grep VGA | grep -i nvidia --quiet)
+if $is_nvidia_gpu; then
+cat <<EOF | xargs -ro yay -S --needed
+{{ range .packages.archlinux.nvidia -}}
+{{ . | quote }}
+{{ end -}}
+EOF
+fi
+
 {{ end -}}
