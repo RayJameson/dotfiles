@@ -1,4 +1,5 @@
 {{ $install_rustup := promptBoolOnce . "install_rustup" "Install `rustup` using curl?" }}
+{{ $change_shell := promptBoolOnce . "change_shell" "Change default user's shell to `zsh`? (homebrew's zsh in MacOS case)" }}
 
 encryption = "gpg"
 [gpg]

@@ -1,4 +1,4 @@
-{{ if (eq .chezmoi.os "darwin" "linux") -}}
+{{ if (and (eq .chezmoi.os "darwin" "linux") (eq .change_shell true)) -}}
 #!/usr/bin/env bash
 
 chsh -s {{ if eq .chezmoi.os "darwin" }}"$(brew --prefix)"/bin/zsh{{ else }}/usr/bin/zsh{{ end }} $USER
