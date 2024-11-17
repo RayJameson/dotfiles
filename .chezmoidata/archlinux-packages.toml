@@ -1,6 +1,5 @@
 [packages.archlinux]
 regular = [
-    "amixer",
     "archcraft-i3wm",
     "archlinux-keyring",
     "autotiling",
@@ -42,7 +41,7 @@ regular = [
     "pipewire-pulse",
     "ptpython",
     "python-pipx",
-    "qbittorrent-enchanced",
+    "qbittorrent-enhanced",
     "ripgrep",
     "seahorse",
     "sesh-bin",
@@ -59,7 +58,6 @@ regular = [
     "vulkan-icd-loader",
     "wezterm",
     "wine",
-    "winecfg",
     "winetricks",
     "wireplumber",
     "zen-browser-avx2-bin",
