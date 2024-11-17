@@ -1,0 +1,10 @@
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch")) -}}
+#!/usr/bin/env bash
+
+cat <<EOF | xargs -ro yay -S --needed
+{{ range .packages.archlinux.regular -}}
+{{ . | quote }}
+{{ end -}}
+EOF
+
+{{ end -}}
