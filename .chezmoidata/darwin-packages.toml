@@ -3,6 +3,7 @@ brews = [
     "asciinema",
     "bash",
     "bat",
+    "bob",
     "btop",
     "coreutils",
     "eza",
@@ -48,7 +49,4 @@ casks = [
     "todoist",
     "wezterm",
     "zen-browser",
-]
-cargo = [
-    "bob-nvim"
 ]
