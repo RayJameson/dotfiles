@@ -64,10 +64,8 @@ regular = [
     "zoxide",
 ]
 nvidia = [
-    "lib32-nvidia-utils",
-    "lib32-opencl-nvidia",
-    "nvidia-dkms",
+    "nvidia",
     "nvidia-settings",
     "nvidia-utils",
-    "opencl-nvidia",
+    "lib32-nvidia-utils",
 ]
