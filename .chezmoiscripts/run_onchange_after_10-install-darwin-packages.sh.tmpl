@@ -5,6 +5,9 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range .packages.darwin.brews -}}
 brew {{ . | quote }}
 {{ end -}}
+{{ range .packages.darwin.brews_head -}}
+brew {{ . | quote }}, args: ["--fetch-HEAD"]
+{{ end -}}
 {{ range .packages.darwin.casks -}}
 cask {{ . | quote }}
 {{ end -}}

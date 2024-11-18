@@ -32,10 +32,12 @@ brews = [
     "ripgrep",
     "sesh",
     "tealdeer",
-    "tmux",
     "tree-sitter",
     "zoxide",
     "zsh",
+]
+brews_head = [
+    "tmux"
 ]
 casks = [
     "docker",
