@@ -8,6 +8,8 @@ if ! ask_user "Change MacOS defaults? https://mths.be/macos"; then
     exit 0
 fi
 
+set -v
+
 # Change defaults for MacOS
 
 # credit: @mathiasbynens
@@ -60,7 +62,7 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Show language menu in the top right corner of the boot screen
@@ -190,25 +192,24 @@ defaults write com.apple.commerce AutoUpdate -bool true
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome Canary" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Photos" \
-	"Safari" \
-	"SizeUp" \
-	"SystemUIServer" \
-	"Terminal";
-do
-	killall "${app}" &> /dev/null
-done
+## for app in "Activity Monitor" \
+## 	"Address Book" \
+## 	"Calendar" \
+## 	"cfprefsd" \
+## 	"Contacts" \
+## 	"Dock" \
+## 	"Finder" \
+## 	"Mail" \
+## 	"Messages" \
+## 	"Photos" \
+## 	"Safari" \
+## 	"SystemUIServer" \
+## 	"Terminal";
+## do
+## 	killall "${app}" &> /dev/null
+## done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+
+set +v
 
 {{ end -}}
