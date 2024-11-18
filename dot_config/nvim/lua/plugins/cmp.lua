@@ -9,7 +9,6 @@ return {
     { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
     { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
     { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
-    { "https://codeberg.org/FelipeLema/cmp-async-path", name = "cmp-path" },
   },
   ---@param opts cmp.ConfigSchema
   opts = function(_, opts)
