@@ -9,7 +9,7 @@ country_if_connected() {
             echo "$country"
             ;;
         Disconnected)
-            echo ""
+            echo "VPN"
             ;;
     esac
 }
