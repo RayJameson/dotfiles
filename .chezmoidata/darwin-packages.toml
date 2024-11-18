@@ -50,6 +50,6 @@ casks = [
     "syncthing",
     "telegram",
     "todoist",
-    "wezterm",
+    "wezterm@nightly",
     "zen-browser",
 ]
