@@ -36,13 +36,13 @@ power_on() {
 # Toggles power state
 toggle_power() {
     if power_on; then
-        bluetoothctl power off
+        bluetoothctl power off &
         show_menu
     else
         if rfkill list bluetooth | grep -q 'blocked: yes'; then
             rfkill unblock bluetooth && sleep 3
         fi
-        bluetoothctl power on
+        bluetoothctl power on &
         show_menu
     fi
 }
@@ -62,7 +62,7 @@ scan_on() {
 toggle_scan() {
     if scan_on; then
         kill $(pgrep -f "bluetoothctl scan on")
-        bluetoothctl scan off
+        bluetoothctl scan off &
         show_menu
     else
         bluetoothctl scan on &
@@ -86,10 +86,10 @@ pairable_on() {
 # Toggles pairable state
 toggle_pairable() {
     if pairable_on; then
-        bluetoothctl pairable off
+        bluetoothctl pairable off &
         show_menu
     else
-        bluetoothctl pairable on
+        bluetoothctl pairable on &
         show_menu
     fi
 }
@@ -108,10 +108,10 @@ discoverable_on() {
 # Toggles discoverable state
 toggle_discoverable() {
     if discoverable_on; then
-        bluetoothctl discoverable off
+        bluetoothctl discoverable off &
         show_menu
     else
-        bluetoothctl discoverable on
+        bluetoothctl discoverable on &
         show_menu
     fi
 }
@@ -129,10 +129,10 @@ device_connected() {
 # Toggles device connection
 toggle_connection() {
     if device_connected "$1"; then
-        bluetoothctl disconnect "$1"
+        bluetoothctl disconnect "$1" &
         device_menu "$device"
     else
-        bluetoothctl connect "$1"
+        bluetoothctl connect "$1" &
         device_menu "$device"
     fi
 }
@@ -152,10 +152,10 @@ device_paired() {
 # Toggles device paired state
 toggle_paired() {
     if device_paired "$1"; then
-        bluetoothctl remove "$1"
+        bluetoothctl remove "$1" &
         device_menu "$device"
     else
-        bluetoothctl pair "$1"
+        bluetoothctl pair "$1" &
         device_menu "$device"
     fi
 }
@@ -175,10 +175,10 @@ device_trusted() {
 # Toggles device connection
 toggle_trust() {
     if device_trusted "$1"; then
-        bluetoothctl untrust "$1"
+        bluetoothctl untrust "$1" &
         device_menu "$device"
     else
-        bluetoothctl trust "$1"
+        bluetoothctl trust "$1" &
         device_menu "$device"
     fi
 }
