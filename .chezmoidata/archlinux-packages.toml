@@ -1,5 +1,6 @@
 [packages.archlinux]
 regular = [
+    "adw-gtk-theme",
     "archcraft-i3wm",
     "archlinux-keyring",
     "autotiling",
