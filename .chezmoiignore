@@ -1,30 +1,33 @@
-README.md
-LICENSE
-.oh-my-zsh/cache/completions/
-fonts
 .config/copyq/copyq.lock
+.github
+.oh-my-zsh/cache/completions/
+LICENSE
+README.md
+fonts
 
 {{- if ne .chezmoi.os "darwin" }}
 .config/aerospace
-.config/sketchybar
 .config/iterm2
+.config/sketchybar
+.gitconfig_work
 .local/bin/open_little_arc
 .zshrc.d/30-darwin.zsh
-.gitconfig_work
+Library/Application Support/KeePassXC/keepassxc.ini
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
-.config/rofi
-.config/i3
 .config/autostart
 .config/copyq
+.config/i3
+.config/keepassxc/keepassxc.ini
+.config/mimeapps.list
+.config/pavucontrol.ini
+.config/rofi
+.config/syncthingtray.ini
 .config/systemd
 .config/wireplumber
-.config/pavucontrol.ini
-.config/mimeapps.list
-.config/syncthingtray.ini
 .local/bin/save_i3_layout
 .local/bin/xprop_i3
-.zshrc.d/30-linux.zsh
 .xprofile
+.zshrc.d/30-linux.zsh
 {{- end }}
