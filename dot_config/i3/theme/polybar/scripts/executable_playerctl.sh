@@ -14,7 +14,7 @@ get_song_name() {
         song_metadata=$(playerctl metadata -i "firefox" -f "-{{ duration(mpris:length - position) }} {{ trunc(artist, 20) }} — {{ trunc(title, 15) }}" 2> /dev/null)
         echo " | $song_metadata"
     else
-        echo "󰎊"
+        echo ""
     fi
 }
 
