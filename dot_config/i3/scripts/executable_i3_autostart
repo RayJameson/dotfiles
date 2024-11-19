@@ -48,4 +48,4 @@ setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 autotiling
 
 # Start mpd
-exec mpd &
+#exec mpd &
