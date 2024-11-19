@@ -1,5 +1,5 @@
 -- Pull in the wezterm API
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") --[[@type Wezterm]]
 local act = wezterm.action
 
 local config = {}
