@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "chrisgrieser/nvim-scissors",
+  lazy = true,
   dependencies = "nvim-telescope/telescope.nvim",
   opts = {
     snippetDir = vim.fn.stdpath("config") .. "/snippets",
@@ -15,16 +16,14 @@ return {
           {
             name = "Edit snippet [scissors.nvim]",
             execute = function()
-              local scissors = require("scissors")
-              local _, err = pcall(scissors.editSnippet)
-              if err ~= nil then
-                if err:find("json could not be read") ~= nil then scissors.addNewSnippet() end
-              end
+              require("scissors").editSnippet()
             end,
           },
           {
             name = "Create new snippet [scissors.nvim]",
-            execute = function() require("scissors").addNewSnippet() end,
+            execute = function()
+              require("scissors").addNewSnippet()
+            end,
           },
         },
       },
