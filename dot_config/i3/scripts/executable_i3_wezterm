@@ -7,9 +7,11 @@
 # i3 directory
 
 if [ "$1" == "--float" ]; then
-	wezterm start --class 'wezterm-float'
+	shift
+	wezterm start --class 'wezterm-float' "${@}"
 elif [ "$1" == "--full" ]; then
-	wezterm start --class 'wezterm-fullscreen'
+	shift
+	wezterm start --class 'wezterm-fullscreen' "${@}"
 else
 	wezterm start "${@}"
 fi
