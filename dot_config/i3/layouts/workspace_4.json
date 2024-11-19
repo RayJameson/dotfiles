@@ -1,0 +1,134 @@
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "marks": [],
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "floating": "auto_off",
+            "layout": "splitv",
+            "marks": [],
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "none",
+                    "current_border_width": 0,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1032,
+                       "width": 1910,
+                       "x": 5,
+                       "y": 43
+                    },
+                    "marks": [],
+                    "name": "KeePassDX Database - KeePassXC",
+                    "percent": 1,
+                    "swallows": [
+                       {
+                       "class": "^KeePassXC$",
+                       "instance": "^keepassxc$",
+                       "machine": "^archcraft$",
+                       "title": ".*"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        },
+        {
+            "border": "normal",
+            "floating": "auto_off",
+            "layout": "splith",
+            "marks": [],
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "normal",
+                    "floating": "auto_off",
+                    "layout": "splitv",
+                    "marks": [],
+                    "percent": 1,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "normal",
+                            "floating": "auto_off",
+                            "layout": "splith",
+                            "marks": [],
+                            "percent": 0.5,
+                            "type": "con",
+                            "nodes": [
+                                {
+                                    "border": "none",
+                                    "current_border_width": 0,
+                                    "floating": "auto_off",
+                                    "geometry": {
+                                       "height": 1040,
+                                       "width": 958,
+                                       "x": 481,
+                                       "y": 20
+                                    },
+                                    "marks": [
+                                       "_last"
+                                    ],
+                                    "name": "Todoist",
+                                    "percent": 1,
+                                    "swallows": [
+                                       {
+                                       "class": "^todoist\\-nativefier\\-\\d+$",
+                                       "instance": "^todoist\\-nativefier\\-\\d+$",
+                                       "machine": "^archcraft$",
+                                       "title": "^.*Todoist$",
+                                       "window_role": "^browser\\-window$"
+                                       }
+                                    ],
+                                    "type": "con"
+                                }
+                            ]
+                        },
+                        {
+                            "border": "normal",
+                            "floating": "auto_off",
+                            "layout": "splith",
+                            "marks": [],
+                            "percent": 0.5,
+                            "type": "con",
+                            "nodes": [
+                                {
+                                    "border": "none",
+                                    "current_border_width": 0,
+                                    "floating": "auto_off",
+                                    "geometry": {
+                                       "height": 1032,
+                                       "width": 1910,
+                                       "x": 5,
+                                       "y": 43
+                                    },
+                                    "marks": [],
+                                    "name": "Cider",
+                                    "percent": 1,
+                                    "swallows": [
+                                       {
+                                       "class": "^Cider$",
+                                       "instance": "^cider$",
+                                       "machine": "^archcraft$",
+                                       "title": "^Cider$",
+                                       "window_role": "^browser\\-window$"
+                                       }
+                                    ],
+                                    "type": "con"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
