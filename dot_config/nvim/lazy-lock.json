@@ -56,7 +56,6 @@
   "mini.ai": { "branch": "main", "commit": "31c149067d38b97720d2a179619f7745a0006ecc" },
   "mini.bufremove": { "branch": "main", "commit": "285bdac9596ee7375db50c0f76ed04336dcd2685" },
   "mini.indentscope": { "branch": "main", "commit": "da9af64649e114aa79480c238fd23f6524bc0903" },
-  "molten-nvim": { "branch": "main", "commit": "2f549c823b5564c87edb645bfc039a406c650e40" },
   "neoconf.nvim": { "branch": "main", "commit": "03189359744e95f8cd150f75ef937b2b7d2ebc32" },
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
   "neogit": { "branch": "master", "commit": "89d13fb9898619774d359a3900959181d60dd02f" },
