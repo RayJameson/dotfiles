@@ -15,8 +15,7 @@ while [[ "$#" -gt 0 ]]; do
         shift
     fi
     if [[ $1 == -mj || $1 == -jm ]]; then
-        i3-msg move container to workspace number $wsNext
-        i3-msg workspace number $wsNext
+        i3-msg "move container to workspace number $wsNext, workspace number $wsNext"
         shift
     fi
 done
