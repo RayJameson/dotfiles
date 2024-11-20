@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 
 i3-msg -t subscribe -m '[ "workspace" ]' \
-    | jq '.current.num' --unbuffered \
+    | jq 'select(.change=="focus").current | select(.focused==false).num' --unbuffered \
     | xargs -L1 "$HOME"/.config/i3/scripts/i3_change_ws
