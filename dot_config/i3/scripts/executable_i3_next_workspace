@@ -2,8 +2,6 @@
 # credits to RavenHeart and Kevin Ferranti https://stackoverflow.com/q/54637049
 # modified it a bit
 
-DIR="$HOME"/.config/i3
-SCRIPTS="$DIR"/scripts
 wsNext=$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + $1))
 shift
 
@@ -13,12 +11,12 @@ while [[ "$#" -gt 0 ]]; do
         shift
     fi
     if [[ $1 == -j || $1 == --jump ]]; then
-        "$SCRIPTS"/i3_change_ws $wsNext
+        i3-msg workspace number $wsNext
         shift
     fi
     if [[ $1 == -mj || $1 == -jm ]]; then
         i3-msg move container to workspace number $wsNext
-        "$SCRIPTS"/i3_change_ws $wsNext
+        i3-msg workspace number $wsNext
         shift
     fi
 done

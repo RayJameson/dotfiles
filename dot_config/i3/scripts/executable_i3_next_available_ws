@@ -2,8 +2,6 @@
 
 # credit to https://github.com/jytrowbridge/i3-next-available-workspace
 # changed this script a bit, so it doesn't require wmctrl
-DIR="$HOME"/.config/i3
-SCRIPTS="$DIR"/scripts
 
 # get workspace numbers
 WS_STRING=$(i3-msg -t get_workspaces   | jq '.[] | (.num)')
@@ -43,10 +41,10 @@ do
         if "$moveContainer"
         then
             i3-msg move container to workspace "$ws"
-            "$SCRIPTS"/i3_change_ws "$ws"
+            i3-msg workspace number "$ws"
         else
             # otherwise, switch to new empty workspace
-            "$SCRIPTS"/i3_change_ws "$ws"
+            i3-msg workspace number "$ws"
         fi
         break
     fi

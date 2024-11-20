@@ -29,6 +29,10 @@ fi
 # Enable power management
 xfce4-power-manager &
 
+# Change foreground for left and right separators for i3 module in polybar
+# When workspace changes to first or last - color of the separator changes
+"$idir"/scripts/i3_hook_polybar &
+
 # Fix cursor
 xsetroot -cursor_name left_ptr
 

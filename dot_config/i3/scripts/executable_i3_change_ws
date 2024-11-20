@@ -2,10 +2,11 @@
 
 # interact with ipc modules in polybar
 # ~/.config/i3/theme/polybar/decor.ini [module/i3LD] [module/i3RD]
+# ~/.config/i3/scripts/i3_autostart
 
 is_last_or_first_ws() {
     ws=$(i3-msg -t get_workspaces)
-    current_ws=$(echo "$ws" | jq '.[] | select(.focused == true).num')
+    current_ws="$1"
     first_ws=$(echo "$ws" | jq 'min_by(.num) | .num')
 
     if [[ $first_ws -eq current_ws ]]; then
@@ -19,7 +20,7 @@ is_last_or_first_ws() {
 }
 
 polybar_hook() {
-    last_or_first=$(is_last_or_first_ws)
+    last_or_first=$(is_last_or_first_ws "$@")
     if [[ $last_or_first = "last" ]]; then
         polybar-msg action i3LD hook 0 & # set left separator color to altbackground
         polybar-msg action i3RD hook 1 & # set right separator color to selected ws color
@@ -33,22 +34,4 @@ polybar_hook() {
     fi
 }
 
-case $1 in
-    prev)
-        i3-msg workspace prev
-        polybar_hook
-        ;;
-    next)
-        i3-msg workspace next
-        polybar_hook
-        ;;
-    back_and_forth)
-        i3-msg workspace back_and_forth
-        polybar_hook
-        ;;
-    [0-9]*)
-        i3-msg workspace number "$1"
-        polybar_hook
-        ;;
-esac
-
+polybar_hook "$1"
