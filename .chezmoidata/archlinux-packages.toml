@@ -56,7 +56,7 @@ regular = [
     "syncthingtray-qt6",
     "tealdeer",
     "telegram-desktop",
-    "tmux",
+    "tmux-git",
     "todoist-nativefier",
     "vencord",
     "vulkan-icd-loader",
