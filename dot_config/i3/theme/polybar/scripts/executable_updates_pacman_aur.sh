@@ -35,5 +35,6 @@ case "$1" in
         ;;
     install_updates)
         install_updates
+        check_updates
         ;;
 esac
