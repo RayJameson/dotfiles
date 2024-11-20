@@ -1,0 +1,54 @@
+#!/usr/bin/bash
+
+# interact with ipc modules in polybar
+# ~/.config/i3/theme/polybar/decor.ini [module/i3LD] [module/i3RD]
+
+is_last_or_first_ws() {
+    ws=$(i3-msg -t get_workspaces)
+    current_ws=$(echo "$ws" | jq '.[] | select(.focused == true).num')
+    first_ws=$(echo "$ws" | jq 'min_by(.num) | .num')
+
+    if [[ $first_ws -eq current_ws ]]; then
+        echo first
+    fi
+
+    last_ws=$(echo "$ws" | jq 'max_by(.num) | .num')
+    if [[ $last_ws -eq current_ws ]]; then
+        echo last
+    fi
+}
+
+polybar_hook() {
+    last_or_first=$(is_last_or_first_ws)
+    if [[ $last_or_first = "last" ]]; then
+        polybar-msg action "#i3LD.hook.0" & # set left separator color to altbackground
+        polybar-msg action "#i3RD.hook.1" & # set right separator color to selected ws color
+    elif [[ $last_or_first = "first" ]]; then
+        polybar-msg action "#i3RD.hook.0" & # set right separator color to altbackground
+        polybar-msg action "#i3LD.hook.1" & # set left separator color to selected ws color
+    else
+        # when selected workspace is between first and last we should reset both separators color
+        polybar-msg action "#i3RD.hook.0" & # set right separator color to altbackground
+        polybar-msg action "#i3LD.hook.0" & # set right separator color to altbackground
+    fi
+}
+
+case $1 in
+    prev)
+        i3-msg workspace prev
+        polybar_hook
+        ;;
+    next)
+        i3-msg workspace next
+        polybar_hook
+        ;;
+    back_and_forth)
+        i3-msg workspace back_and_forth
+        polybar_hook
+        ;;
+    [0-9]*)
+        i3-msg workspace number "$1"
+        polybar_hook
+        ;;
+esac
+
