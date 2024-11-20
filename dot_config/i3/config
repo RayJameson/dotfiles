@@ -326,6 +326,7 @@ exec --no-startup-id dex -as ~/.config/autostart
 
 ##-- Restore workspaces layout ----------------------------------
 set $restore_layout $HOME/.config/i3/scripts/i3_restore_layout
+exec --no-startup-id $restore_layout 1
 exec --no-startup-id $restore_layout 2
 exec --no-startup-id $restore_layout 3
 exec --no-startup-id $restore_layout 4
