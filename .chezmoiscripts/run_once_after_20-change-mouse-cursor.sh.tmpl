@@ -1,0 +1,17 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+{{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") -}}
+
+if grep -q elementary /usr/share/icons/default/index.theme; then
+    exit 0
+fi
+if ask_user "Change default user's cursor to elementary?"; then
+    echo "Changing cursor for current user to elementary"
+    sudo cat <<EOF >> /usr/share/icons/default/index.theme
+[Icon Theme]
+Inherits=elementary
+EOF
+fi
+
+{{ end -}}
