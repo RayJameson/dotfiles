@@ -2,7 +2,7 @@
 
 Net/ThemeName "adw-gtk3-dark"
 Net/IconThemeName "Luv-Folders-Dark"
-Gtk/CursorThemeName "Simple-Dark"
+Gtk/CursorThemeName "elementary"
 Net/EnableEventSounds "0"
 Net/EnableInputFeedbackSounds "0"
 Xft/DPI "-1"
