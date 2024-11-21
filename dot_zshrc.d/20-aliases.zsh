@@ -58,6 +58,7 @@ if [ ! $(uname -s) = 'Darwin' ]; then
         alias open='xdg-open';
     fi
 fi
+alias man='man -L ru.UTF-8'
 # Arch package managers
 command_exists paru && alias pari='paru --color always -Sl --aur | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "paru -Si {1}" --reverse | xargs -ro paru -S'
 command_exists yay && alias yayi='yay --color always -Sl --aur | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "yay -Si {1}" --reverse | xargs -ro yay -S'
