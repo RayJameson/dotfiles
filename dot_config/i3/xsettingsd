@@ -3,6 +3,7 @@
 Net/ThemeName "adw-gtk3-dark"
 Net/IconThemeName "Luv-Folders-Dark"
 Gtk/CursorThemeName "elementary"
+Gtk/DecorationLayout ":"
 Net/EnableEventSounds "0"
 Net/EnableInputFeedbackSounds "0"
 Xft/DPI "-1"
