@@ -1,0 +1,18 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+{{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") -}}
+
+{{ if stat "/usr/share/sddm/themes/archcraft/theme.conf.user" -}}
+    exit 0
+{{ end }}
+
+
+if ask_user "Change accent color for sddm to magenta?"; then
+    sudo cat <<EOF > /usr/share/sddm/themes/archcraft/theme.conf.user
+[General]
+AccentColor="#b874e8"
+EOF
+fi
+
+{{ end -}}
