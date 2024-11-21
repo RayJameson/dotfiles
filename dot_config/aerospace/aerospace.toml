@@ -4,8 +4,8 @@
 # But the feature is very helpful.
 # Normalizations eliminate all sorts of weird tree configurations that don't make sense.
 # Give normalizations a chance and enable them back.
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -52,8 +52,8 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
 # Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
-alt-ctrl-x = 'join-with down'
-alt-ctrl-v = 'join-with right'
+alt-ctrl-x = 'split horizontal'
+alt-ctrl-v = 'split vertical'
 
 alt-ctrl-f = 'fullscreen'
 
