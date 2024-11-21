@@ -62,6 +62,7 @@ regular = [
     "vencord",
     "vulkan-icd-loader",
     "wezterm-git",
+    "wikiman",
     "wine",
     "winetricks",
     "wireplumber",
