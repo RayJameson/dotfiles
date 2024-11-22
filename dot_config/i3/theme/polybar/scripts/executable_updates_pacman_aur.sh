@@ -1,5 +1,15 @@
 #!/bin/sh
 
+sleep_pid=0
+
+refresh_script() {
+    if [ $sleep_pid -ne 0 ]; then
+        kill $sleep_pid
+    fi
+}
+
+trap refresh_script USR1
+
 check_updates() {
     if ! updates_arch=$(checkupdates 2> /dev/null | wc -l ); then
         updates_arch=0
@@ -32,9 +42,12 @@ install_updates() {
 case "$1" in
     check_updates)
         check_updates
+        sleep 5m &
+        sleep_pid=$!
+        wait
         ;;
     install_updates)
         install_updates
-        check_updates
+        pkill -USR1 --full 'updates_pacman_aur.sh check_updates$'
         ;;
 esac
