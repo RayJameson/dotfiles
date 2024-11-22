@@ -37,7 +37,8 @@ brews = [
     "zsh",
 ]
 brews_head = [
-    "tmux"
+    "tmux",
+    "yazi",
 ]
 casks = [
     "docker",

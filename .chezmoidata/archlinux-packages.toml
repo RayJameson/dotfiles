@@ -67,6 +67,7 @@ regular = [
     "wine",
     "winetricks",
     "wireplumber",
+    "yazi-git",
     "zen-browser-avx2-bin",
     "zoxide",
 ]
