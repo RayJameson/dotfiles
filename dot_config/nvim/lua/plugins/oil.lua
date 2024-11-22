@@ -1,8 +1,6 @@
 ---@type LazySpec
 return {
-  -- NOTE: temporary replace `stevearc/oil.nvim` repo with fork until https://github.com/stevearc/oil.nvim/pull/467
-  "jelmansouri/oil.nvim",
-  branch = "feat/scratch-preview",
+  "stevearc/oil.nvim",
   specs = {
     "nvim-tree/nvim-web-devicons",
     {
