@@ -19,7 +19,7 @@
                     "floating": "auto_off",
                     "layout": "splitv",
                     "marks": [],
-                    "percent": 0.5,
+                    "percent": 0.2546875,
                     "type": "con",
                     "nodes": [
                         {
@@ -41,7 +41,7 @@
                                         {
                                             "border": "normal",
                                             "floating": "auto_off",
-                                            "layout": "splith",
+                                            "layout": "splitv",
                                             "marks": [],
                                             "percent": 0.5,
                                             "type": "con",
@@ -76,7 +76,7 @@
                                         {
                                             "border": "normal",
                                             "floating": "auto_off",
-                                            "layout": "splith",
+                                            "layout": "splitv",
                                             "marks": [],
                                             "percent": 0.5,
                                             "type": "con",
@@ -117,32 +117,42 @@
                     "floating": "auto_off",
                     "layout": "splitv",
                     "marks": [],
-                    "percent": 0.5,
+                    "percent": 0.7453125,
                     "type": "con",
                     "nodes": [
                         {
-                            "border": "none",
-                            "current_border_width": 0,
+                            "border": "normal",
                             "floating": "auto_off",
-                            "geometry": {
-                               "height": 1040,
-                               "width": 958,
-                               "x": 481,
-                               "y": 20
-                            },
+                            "layout": "splith",
                             "marks": [],
-                            "name": "Сегодня – Todoist",
                             "percent": 0.5,
-                            "swallows": [
-                               {
-                               "class": "^todoist\\-nativefier\\-409272$",
-                               "instance": "^todoist\\-nativefier\\-409272$",
-                               "machine": "^archcraft$",
-                               "title": "^Сегодня\\ \\–\\ Todoist$",
-                               "window_role": "^browser\\-window$"
-                               }
-                            ],
-                            "type": "con"
+                            "type": "con",
+                            "nodes": [
+                                {
+                                    "border": "none",
+                                    "current_border_width": 0,
+                                    "floating": "auto_off",
+                                    "geometry": {
+                                       "height": 1040,
+                                       "width": 958,
+                                       "x": 481,
+                                       "y": 20
+                                    },
+                                    "marks": [],
+                                    "name": "Сегодня – Todoist",
+                                    "percent": null,
+                                    "swallows": [
+                                       {
+                                       "class": "^todoist\\-nativefier\\-409272$",
+                                       "instance": "^todoist\\-nativefier\\-409272$",
+                                       "machine": "^archcraft$",
+                                       "title": "^Сегодня\\ \\–\\ Todoist$",
+                                       "window_role": "^browser\\-window$"
+                                       }
+                                    ],
+                                    "type": "con"
+                                }
+                            ]
                         },
                         {
                             "border": "normal",
