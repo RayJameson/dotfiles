@@ -142,7 +142,7 @@ return {
         },
         {
           name = "file-run",
-          builder = create_builder(true, "float"),
+          builder = create_builder(true, "float", function() vim.cmd.stopinsert() end),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
@@ -150,7 +150,7 @@ return {
         },
         {
           name = "file-run-tab",
-          builder = create_builder(true, "tab"),
+          builder = create_builder(true, "tab", function() vim.cmd.stopinsert() end),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
