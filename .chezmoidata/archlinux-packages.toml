@@ -59,6 +59,7 @@ regular = [
     "telegram-desktop",
     "tmux-git",
     "todoist-nativefier",
+    "transmission-gtk",
     "vencord",
     "vulkan-icd-loader",
     "wezterm-git",
