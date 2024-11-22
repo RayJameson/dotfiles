@@ -46,7 +46,6 @@ regular = [
     "pipewire-pulse",
     "ptpython",
     "python-pipx",
-    "qbittorrent-enhanced",
     "ripgrep",
     "seahorse",
     "sesh-bin",
