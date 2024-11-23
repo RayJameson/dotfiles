@@ -49,3 +49,4 @@ application/json-patch+json=neovide.desktop
 application/json=neovide.desktop
 application/json5=neovide.desktop
 x-scheme-handler/trash=xfce4-file-manager.desktop
+x-scheme-handler/discord-460807638964371468=discord-460807638964371468.desktop
