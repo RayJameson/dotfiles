@@ -33,6 +33,7 @@ regular = [
     "lib32-vulkan-icd-loader",
     "libxnvctrl",
     "lutris",
+    "nautilus",
     "ncdu",
     "neovide",
     "nodejs",
