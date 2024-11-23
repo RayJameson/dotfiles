@@ -51,6 +51,7 @@ regular = [
     "ripgrep",
     "seahorse",
     "sesh-bin",
+    "selectdefaultapplication-fork-git",
     "stderred-git",
     "steam-native-runtime",
     "steamtinkerlaunch-git",
