@@ -1,7 +1,7 @@
 local Pkg = require("mason-core.package")
 local pip3 = require("mason-core.managers.pip3")
 return Pkg.new {
-  name = "systemd-language-server",
+  name = "systemd_ls",
   desc = [[Fast, feature-rich language support for Python]],
   homepage = "https://github.com/psacawa/systemd-language-server",
   languages = { Pkg.Lang.systemd },
