@@ -5,4 +5,5 @@ Name=dex
 Keywords=Run;Application;Execute;
 Categories=Utility;
 Comment=DesktopEntry Execution, is a program to generate and execute DesktopEntry files of the Application type.
-MimeType=text/plain
+MimeType=application/x-desktop
+Hidden=true
