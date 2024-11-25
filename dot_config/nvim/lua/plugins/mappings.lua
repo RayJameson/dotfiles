@@ -60,10 +60,10 @@ return {
       '<Esc>"fyiw<CR>gv:s/<C-r>f/<C-r>f/g<Left><Left>',
       desc = "Find and replace visual",
     }
-    maps.n["<C-d>"] = { "<C-d>zz", desc = "Scroll half page down" }
-    maps.n["<C-u>"] = { "<C-u>zz", desc = "Scroll half page up" }
-    maps.n["<C-f>"] = { "<C-f>zz", desc = "Scroll page down" }
-    maps.n["<C-b>"] = { "<C-b>zz", desc = "Scroll page up" }
+    maps.n["<C-d>"] = { "<C-d>M", desc = "Scroll half page down", noremap = true }
+    maps.n["<C-u>"] = { "<C-u>M", desc = "Scroll half page up", noremap = true }
+    maps.n["<C-f>"] = { "<C-f>M", desc = "Scroll page down", noremap = true }
+    maps.n["<C-b>"] = { "<C-b>M", desc = "Scroll page up", noremap = true }
     maps.x["<"] = { "<gv", desc = "Deindent line" }
     maps.x[">"] = { ">gv", desc = "Indent line" }
 
