@@ -6,10 +6,10 @@ Host github.com
     AddKeysToAgent yes
     PreferredAuthentications publickey
 
-Host rasspberry.lan
+Host raspberry.lan
     HostName 192.168.0.104
     User ray
-    IdentityFile ~/.ssh/raspberrypi.pub
+    IdentityFile ~/.ssh/raspberry_pi.pub
     IdentitiesOnly yes
     AddKeysToAgent yes
     PreferredAuthentications publickey
