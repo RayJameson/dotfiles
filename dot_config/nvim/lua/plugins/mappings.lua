@@ -50,8 +50,34 @@ return {
     maps.n["q?"] = { "q?i", desc = "Command search up window" }
     --]
 
-    maps.n["<Leader>,"] = { ":lcd %:p:h<CR>", desc = "lcd to current file's dir" }
-    maps.n["<Leader>."] = { ":tcd %:p:h<CR>", desc = "tcd to current file's dir" }
+    maps.n["<Leader>,"] = {
+      function()
+        local ok, _ = pcall(function()
+          vim.cmd.lcd { args = { "%:p:h" } }
+          vim.notify(string.format("Win CWD: %s", vim.fn.expand("%:p:h")), vim.log.levels.INFO)
+        end)
+        if not ok then
+          require("oil.actions").cd.callback { scope = "win", silent = true }
+          local dir = require("oil").get_current_dir(0)
+          vim.notify(string.format("Win CWD: %s", dir), vim.log.levels.INFO)
+        end
+      end,
+      desc = "lcd to current file's dir",
+    }
+    maps.n["<Leader>."] = {
+      function()
+        local ok, _ = pcall(function()
+          vim.cmd.tcd { args = { "%:p:h" } }
+          vim.notify(string.format("Tab CWD: %s", vim.fn.expand("%:p:h")), vim.log.levels.INFO)
+        end)
+        if not ok then
+          require("oil.actions").cd.callback { scope = "tab", silent = true }
+          local dir = require("oil").get_current_dir(0)
+          vim.notify(string.format("Tab CWD: %s", dir), vim.log.levels.INFO)
+        end
+      end,
+      desc = "tcd to current file's dir",
+    }
     maps.n["<Leader>F"] = {
       ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/g<Left><Left>",
       desc = "Find and replace",
