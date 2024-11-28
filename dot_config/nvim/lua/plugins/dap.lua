@@ -1,5 +1,10 @@
 ---@type LazySpec
 return {
+  -- HACK: to ignore crash prompt on MacOS after terminating debugger, run this command:
+  -- defaults write com.apple.CrashReporter DialogType none
+  -- to enable it back, run this:
+  -- defaults write com.apple.CrashReporter DialogType prompt
+  -- credit: https://github.com/mfussenegger/nvim-dap-python/issues/151#issuecomment-2221639990
   "mfussenegger/nvim-dap",
   specs = {
     { "AstroNvim/astroui", opts = { icons = { Debugger = "" } } },
