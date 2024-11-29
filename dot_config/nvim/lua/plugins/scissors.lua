@@ -15,15 +15,11 @@ return {
         commands = {
           {
             name = "Edit snippet [scissors.nvim]",
-            execute = function()
-              require("scissors").editSnippet()
-            end,
+            execute = function() require("scissors").editSnippet() end,
           },
           {
             name = "Create new snippet [scissors.nvim]",
-            execute = function()
-              require("scissors").addNewSnippet()
-            end,
+            execute = function() require("scissors").addNewSnippet() end,
           },
         },
       },

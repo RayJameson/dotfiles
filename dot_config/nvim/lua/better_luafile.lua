@@ -30,8 +30,8 @@ function M.call(fargs, orientation, size, focus)
   -- Write code_output_table to new buffer
   vim.api.nvim_buf_set_lines(new_buffer_number, 0, -1, false, code_output_table)
   -- Disable number and relativenumber for better look
-  vim.api.nvim_set_option_value("number", false, { win = new_window_number})
-  vim.api.nvim_set_option_value("relativenumber", false, { win = new_window_number})
+  vim.api.nvim_set_option_value("number", false, { win = new_window_number })
+  vim.api.nvim_set_option_value("relativenumber", false, { win = new_window_number })
   -- Prevent edit as we only outputting information
   vim.api.nvim_set_option_value("modifiable", false, { buf = new_buffer_number })
   -- Set filetype to lua

@@ -100,7 +100,6 @@ return {
       ---@param on_create? function
       ---@return fun(): overseer.TaskDefinition
       local function create_builder(run_in_foreground, direction, on_create)
-
         ---@return overseer.TaskDefinition
         local function builder()
           local file = vim.fn.expand("%:p")

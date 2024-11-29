@@ -45,8 +45,7 @@ return {
               "dap-repl",
             },
             desc = "Disable `ufo` folds for certain filetypes",
-            callback = function(args)
-              require("ufo").detach(args.buf) end,
+            callback = function(args) require("ufo").detach(args.buf) end,
           },
         },
       },

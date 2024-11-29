@@ -134,9 +134,7 @@ return {
       fallthrough = false, -- pick the correct winbar based on condition
       -- inactive winbar
       {
-        condition = function()
-          return not status.condition.is_active()
-        end,
+        condition = function() return not status.condition.is_active() end,
         -- show the path to the file relative to the working directory
         status.component.separated_path { path_func = path_func },
         -- add the file name and icon
@@ -175,14 +173,10 @@ return {
         },
         status.component.fill { hl = { bg = "winbar_bg" } }, -- fill the rest of the tabline with background color
         { -- tab list
-          condition = function()
-            return #vim.api.nvim_list_tabpages() >= 2
-          end, -- only show tabs if there are more than one
+          condition = function() return #vim.api.nvim_list_tabpages() >= 2 end, -- only show tabs if there are more than one
           status.heirline.make_tablist { -- component for each tab
             provider = tabnr(),
-            hl = function(self)
-              return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true)
-            end,
+            hl = function(self) return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true) end,
           },
         },
       },

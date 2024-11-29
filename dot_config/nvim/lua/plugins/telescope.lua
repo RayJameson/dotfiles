@@ -23,14 +23,18 @@ return {
               vim.cmd.tcd(selection.path)
             end,
           },
-          ["<C-x>"] = { action = function(selection)
-            vim.cmd.split(selection.path)
-            vim.cmd.lcd(selection.path)
-          end },
-          ["<C-v>"] = { action = function(selection)
-            vim.cmd.vsplit(selection.path)
-            vim.cmd.lcd(selection.path)
-          end },
+          ["<C-x>"] = {
+            action = function(selection)
+              vim.cmd.split(selection.path)
+              vim.cmd.lcd(selection.path)
+            end,
+          },
+          ["<C-v>"] = {
+            action = function(selection)
+              vim.cmd.vsplit(selection.path)
+              vim.cmd.lcd(selection.path)
+            end,
+          },
         },
       },
       undo = {

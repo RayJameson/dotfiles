@@ -27,15 +27,15 @@ return {
             diagnostics = {
               styleLints = {
                 enable = true,
-              }
+              },
             },
             inlayHints = {
               implicitDrops = {
                 enable = true,
-              }
+              },
             },
             cargo = {
-              features = "all"
+              features = "all",
             },
             completion = {
               postfix = {
