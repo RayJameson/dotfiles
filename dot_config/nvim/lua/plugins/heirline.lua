@@ -70,6 +70,17 @@ return {
         end,
       }
     end
+    local function tabnr()
+      return function(self)
+        if not self or not self.tabnr then return "" end
+        if self.is_active then
+          return "%" .. self.tabnr .. "T[" .. self.tabnr .. "]%T"
+        else
+          return "%" .. self.tabnr .. "T " .. self.tabnr .. " %T"
+        end
+      end
+    end
+
     local overseer = function()
       return status.component.builder {
         condition = function() return package.loaded.overseer end,
@@ -116,6 +127,66 @@ return {
       status.component.nav(),
     }
     opts.tabline = {}
+    local path_func = status.provider.filename { modify = ":.:h", fallback = "" }
+    opts.winbar = {
+      -- store the current buffer number
+      init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
+      fallthrough = false, -- pick the correct winbar based on condition
+      -- inactive winbar
+      {
+        condition = function()
+          return not status.condition.is_active()
+        end,
+        -- show the path to the file relative to the working directory
+        status.component.separated_path { path_func = path_func },
+        -- add the file name and icon
+        status.component.file_info {
+          file_icon = { hl = status.hl.file_icon("winbar"), padding = { left = 0 } },
+          filename = {},
+          filetype = false,
+          file_modified = false,
+          file_read_only = false,
+          hl = status.hl.get_attributes("winbarnc", true),
+          surround = false,
+          update = "BufEnter",
+        },
+      },
+      -- active winbar
+      {
+        -- show the path to the file relative to the working directory
+        status.component.separated_path { path_func = path_func },
+        -- add the file name and icon
+        status.component.file_info { -- add file_info to breadcrumbs
+          file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
+          filename = {},
+          filetype = false,
+          file_modified = false,
+          file_read_only = false,
+          hl = status.hl.get_attributes("winbar", true),
+          surround = false,
+          update = "BufEnter",
+        },
+        -- show the breadcrumbs
+        status.component.breadcrumbs {
+          icon = { hl = true },
+          hl = status.hl.get_attributes("winbar", true),
+          prefix = true,
+          padding = { left = 0 },
+        },
+        status.component.fill { hl = { bg = "winbar_bg" } }, -- fill the rest of the tabline with background color
+        { -- tab list
+          condition = function()
+            return #vim.api.nvim_list_tabpages() >= 2
+          end, -- only show tabs if there are more than one
+          status.heirline.make_tablist { -- component for each tab
+            provider = tabnr(),
+            hl = function(self)
+              return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true)
+            end,
+          },
+        },
+      },
+    }
     return opts
   end,
 }

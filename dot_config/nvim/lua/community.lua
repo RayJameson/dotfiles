@@ -16,7 +16,6 @@ return {
   { import = "astrocommunity.completion.cmp-under-comparator" },
   --{ import = "astrocommunity.completion.blink-cmp" }, -- very fast, but I'm lazy to redo my cmp config
   { import = "astrocommunity.completion.magazine-nvim" }, -- this one is fast too
-  { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   (vim.fn.executable("rustc") and { import = "astrocommunity.pack.rust" }) or {},
   (vim.fn.executable("go") == 1 and { import = "astrocommunity.pack.go" }) or {},
   { import = "astrocommunity.pack.lua" },
