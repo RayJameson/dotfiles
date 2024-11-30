@@ -24,6 +24,7 @@ brews = [
     "man-db",
     "ncdu",
     "node",
+    "nushell",
     "parallel",
     "pipx",
     "ptpython",
