@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
 command_exists () {
-    command -v "$@" &> /dev/null
+    if [[ -n $(echo $commands["$@"]) ]]; then
+        return 0
+    else
+        return 1
+    fi
 }
