@@ -7,5 +7,5 @@ if [[ -d "$1" ]]; then
 elif [[ "$category" = text ]]; then
 	bat --decorations=never --color=always "$1"
 else
-	exit 1
+	lesspipe.sh "%s"
 fi
