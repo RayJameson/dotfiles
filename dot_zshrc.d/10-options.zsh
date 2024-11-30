@@ -13,6 +13,10 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 export LESSOPEN='|~/.config/less/.lessfilter %s'
 zstyle ':fzf-tab:complete:*:options' fzf-preview 
 zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
+# apply to all command
+zstyle ':fzf-tab:complete:*:argument-rest' popup-min-size 50 8
+# only apply to 'diff'
+zstyle ':fzf-tab:complete:diff:*' popup-min-size 80 12
 
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons --color=always $realpath'
