@@ -3,6 +3,7 @@ regular = [
     "adw-gtk-theme",
     "archcraft-i3wm",
     "archlinux-keyring",
+    "asciinema",
     "autotiling",
     "base-devel",
     "bat",
