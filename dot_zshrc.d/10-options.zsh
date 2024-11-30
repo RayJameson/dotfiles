@@ -1,4 +1,5 @@
 fpath+=~/.zfunc
+compinit
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 # zstyle ':completion:*' regular true
 # # disable sort when completing `git checkout`
