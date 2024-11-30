@@ -1,0 +1,16 @@
+#compdef pw-cli
+
+# zsh completions for 'pw-cli'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {-h,--help}'[show this help]'
+  '--version[show version]'
+  {-d,--daemon}'[start as daemon (Default false)]'
+  {-r,--remote}'[remote daemon name]'
+  {-m,--monitor}'[monitor activity]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

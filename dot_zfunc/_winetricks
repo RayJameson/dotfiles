@@ -1,0 +1,29 @@
+#compdef winetricks
+
+# zsh completions for 'winetricks'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '--country[set country code to CC and dont detect your IP address]'
+  {-f,--force}'[dont check whether packages were already installed]'
+  '--gui[show gui diagnostics even when driven by commandline]'
+  '--gui[set OPT to kdialog or zenity to override GUI engine]'
+  '--isolate[install each app or game in its own bottle (WINEPREFIX)]'
+  '--self-update[update this application to the last version]'
+  '--update-rollback[the last self update]'
+  {-k,--keep}'[_isos       Cache isos (allows later installation without disc)]'
+  '--no-clean[dont delete temp directories (useful during debugging)]'
+  '--optin[opt in to reporting which verbs you use to the Winetricks maintainers]'
+  '--optout[opt out of reporting which verbs you use to the Winetricks maintainers]'
+  {-q,--unattended}'[dont ask any questions, just install automatically]'
+  {-r,--ddrescue}'[retry hard when caching scratched discs]'
+  {-t,--torify}'[run downloads under torify, if available]'
+  '--verify[run (automated) GUI tests for verbs, if available]'
+  {-v,--verbose}'[echo all commands as they are executed]'
+  {-h,--help}'[display this message and exit]'
+  {-V,--version}'[display version and exit]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
