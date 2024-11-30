@@ -30,6 +30,9 @@ PATH="$HOME/.kube:$PATH"
 PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 
 command_exists nvim && export MANPAGER="nvim +Man! $@"
+if command_exists pipx; then
+    eval "$(register-python-argcomplete pipx)"
+fi
 
 # remove duplicate entries from $PATH
 # zsh uses $path array along with $PATH 

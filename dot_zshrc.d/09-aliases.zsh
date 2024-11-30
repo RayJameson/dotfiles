@@ -20,7 +20,6 @@ if command_exists chezmoi; then
     alias czf='chezmoi forget'
     alias czu='chezmoi update'
 fi
-command_exists ggrep && alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 # make functions for commands which could be used in piping
 if command_exists eza; then
     alias l="eza --long --icons --header --octal-permissions --all --sort name --git --group-directories-first"

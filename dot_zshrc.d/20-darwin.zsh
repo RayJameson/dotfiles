@@ -1,9 +1,6 @@
 if [[ ! $(uname) == "Darwin" ]]; then
     return
 fi
-function zvm_after_init() {
-    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-}
 if [[ -d "$HOME/.terminfo" ]]; then
     export TERMINFO="$HOME/.terminfo" # this saves your santity on MacOS if you are using TMUX
 fi
@@ -18,3 +15,4 @@ export HOMEBREW_AUTO_UPDATING=0
 alias xdg-open=open
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
+command_exists ggrep && alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"

@@ -1,11 +1,6 @@
 if [[ ! $(uname) == "Linux" ]]; then
     return
 fi
-function zvm_after_init() {
-    if command_exists fzf; then
-        source <(fzf --zsh)
-    fi
-}
 export SUDO_ASKPASS="$HOME/.config/i3/scripts/rofi_askpass"
 alias sudo='sudo -A'
 alias sudoedit='sudoedit -A'
