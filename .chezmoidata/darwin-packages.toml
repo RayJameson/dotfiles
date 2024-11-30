@@ -16,7 +16,6 @@ brews = [
     "jq",
     "lazydocker",
     "lazygit",
-    "lesspipe",
     "llvm",
     "lnav",
     "lua",
