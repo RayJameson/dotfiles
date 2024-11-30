@@ -18,12 +18,11 @@ if command_exists fd || command_exists fdfind || command_exists fd-find; then
         fd --type d --hidden --follow --exclude ".git" . "$1"
     }
 fi
-export FZF_TMUX_OPTS="-p80%,60% --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
-  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t=f -t=d"
+export FZF_TMUX_OPTS="-p80%,60%"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t=f"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t=d"
 export FZF_PROMPT_SYMBOL=$([[ -n $NERD_FONT ]] && echo "❯ " ||  echo "> ")
-export FZF_DEFAULT_OPTS="--bind ctrl-u:preview-up,ctrl-d:preview-down --bind ctrl-j:down,ctrl-k:up --no-multi --prompt '$FZF_PROMPT_SYMBOL ' --marker ⇒ --pointer  --reverse --color=dark
+export FZF_DEFAULT_OPTS="--ansi --bind ctrl-u:preview-up,ctrl-d:preview-down --bind ctrl-j:down,ctrl-k:up --no-multi --prompt '$FZF_PROMPT_SYMBOL ' --marker ⇒ --pointer  --reverse --color=dark
   --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
   --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --preview-window 'down,50%,border-rounded,+{2}+3/3,~3'"
