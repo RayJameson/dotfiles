@@ -169,5 +169,16 @@ return {
         }
       end
     end
+    for k in string.gmatch("AaBbCcDdFfEeGgHIiJjhKkLlMmNnOoPpQqRrSsTtUuWwXxYyZz'./", ".") do
+      local mapping = maps.n["<Leader>f" .. k]
+      if mapping then
+        local prefix = "Find "
+        if vim.startswith(mapping.desc, prefix) then
+          assert(type(mapping.desc) == "string")
+          mapping.desc = mapping.desc:sub(#prefix + 1)
+          mapping.desc = mapping.desc:sub(1, 1):upper() .. mapping.desc:sub(2)
+        end
+      end
+    end
   end,
 }
