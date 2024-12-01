@@ -1,21 +1,20 @@
 encryption = "gpg"
+progress = true
 [gpg]
     recipient = "04CF04D66633E24A"
     args = ["--quiet"]
 
-# [merge]
-#     command = "meld"
-#     args = ["--diff", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
-# [diff]
-#     command = "meld"
-#     args = ["--diff", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 [merge]
     command = "nvim"
     args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 [diff]
+    reverse = true
     pager = "diff-so-fancy"
     command = "nvim"
     args = ["-dR", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+[edit]
+apply = true
+watch = true
 
 [[textconv]]
 pattern = "**/*.plist"
