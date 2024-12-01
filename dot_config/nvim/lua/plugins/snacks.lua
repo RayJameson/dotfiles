@@ -14,9 +14,34 @@ return {
       },
       dashboard = {
         enabled = true,
+        preset = {
+          ---@type snacks.dashboard.Item[]
+          keys = {
+            { icon = " ", key = "f", desc = "Find files", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "n", desc = "New file", action = ":ene | startinsert" },
+            { icon = " ", key = "w", desc = "Find words", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            {
+              icon = " ",
+              key = "z",
+              desc = "Find directories zoxide",
+              action = ":Telescope zoxide list",
+              enabled = function() return pcall(require, "telescope._extensions.zoxide") end,
+            },
+            { icon = " ", key = "r", desc = "Recent files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            {
+              icon = " ",
+              key = "c",
+              desc = "Config",
+              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+            },
+            { icon = " ", key = "s", desc = "Restore last session", section = "session" },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
+        },
         sections = {
           { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-          { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+          { icon = " ", title = "Recent files", section = "recent_files", indent = 2, padding = 1 },
           { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
         },
       },
@@ -31,9 +56,16 @@ return {
       scratch = {
         win = {
           keys = {
-            run = {
-              "r",
-              "<Cmd>OverseerRun file-run<CR>",
+            source = {
+              "<CR>",
+              function(self)
+                if vim.bo[self.buf].filetype == "lua" then
+                  local name = "scratch." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.buf), ":e")
+                  Snacks.debug.run { buf = self.buf, name = name }
+                else
+                  vim.cmd([[<Cmd>OverseerRun file-run<CR>]])
+                end
+              end,
               desc = "Run code",
               mode = { "n", "x" },
             },
@@ -88,7 +120,7 @@ return {
           end,
         }
         maps.n["<Leader>un"] = { function() Snacks.notifier.hide() end, desc = "Dismiss all notifications" }
-        maps.n["<Leader>fn"] = { function() Snacks.notifier.show_history() end, desc = "Find notifications" }
+        maps.n["<Leader>fn"] = { function() Snacks.notifier.show_history() end, desc = "Notifications" }
         maps.n["<Leader>c"] = { function() Snacks.bufdelete.delete() end, desc = "Delete current buffer" }
         maps.n["<Leader>a"] = { function() Snacks.bufdelete.all() end, desc = "Delete all buffers" }
         maps.n["<Leader>C"] = { function() Snacks.bufdelete.other() end, desc = "Delete all other buffers" }
