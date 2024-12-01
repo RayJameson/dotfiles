@@ -11,7 +11,7 @@ fonts
 .config/sketchybar
 .gitconfig_work
 .local/bin/open_little_arc
-.zshrc.d/30-darwin.zsh
+.zshrc.d/20-darwin.zsh
 Library/Application Support/KeePassXC/keepassxc.ini
 {{- end }}
 
@@ -29,5 +29,5 @@ Library/Application Support/KeePassXC/keepassxc.ini
 .local/bin/save_i3_layout
 .local/bin/xprop_i3
 .xprofile
-.zshrc.d/30-linux.zsh
+.zshrc.d/20-linux.zsh
 {{- end }}
