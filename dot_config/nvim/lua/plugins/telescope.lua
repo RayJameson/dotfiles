@@ -114,7 +114,7 @@ return {
   keys = {
     { prefix .. "u", function() require("telescope").extensions.undo.undo() end, desc = "Show undo history" },
     { prefix .. "s", function() require("telescope.builtin").spell_suggest() end, desc = "Show spell suggestions" },
-    { prefix .. "g", function() require("telescope.builtin").git_files() end, desc = "Find git files" },
+    { prefix .. "g", function() require("telescope.builtin").git_files() end, desc = "Git files" },
   },
   ---@type LazySpec
   specs = {
