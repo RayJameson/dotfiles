@@ -7,7 +7,7 @@ return {
   )
     local maps = opts.mappings
     local is_available = require("astrocore").is_available
-    -- disbale defaults:
+    -- disable defaults:
     maps.n["<Leader>b"] = false
     for _, char in ipairs { "b", "d", "C", "c", "l", "r", "s", "p", "\\", "|" } do
       maps.n["<Leader>b" .. char] = false
