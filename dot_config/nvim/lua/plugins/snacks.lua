@@ -6,6 +6,7 @@ return {
   ---@param opts snacks.Config
   opts = function(_, opts)
     local astrocore = require("astrocore")
+    local Snacks = require("snacks")
     return astrocore.extend_tbl(opts, {
       bigfile = { enabled = not vim.tbl_get(astrocore.config, "autocmds", "large_buf_settings") },
       notifier = {
