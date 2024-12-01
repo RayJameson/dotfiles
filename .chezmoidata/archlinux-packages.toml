@@ -4,6 +4,7 @@ regular = [
     "archcraft-i3wm",
     "archlinux-keyring",
     "asciinema",
+    "asciinema-agg-bin",
     "autotiling",
     "base-devel",
     "bat",
