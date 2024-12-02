@@ -37,8 +37,7 @@ elseif wezterm.target_triple:match("windows") then
   config.term = "" -- Set to empty so FZF works on windows
   config.default_prog = { "pwsh.exe" }
 elseif wezterm.target_triple:match("linux") then
-  font_attributes.scale = 0.92
-  config.font_size = 20
+  config.font_size = 18.5
 end
 
 config.use_fancy_tab_bar = false
