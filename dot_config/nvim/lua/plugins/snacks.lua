@@ -130,7 +130,7 @@ return {
         maps.n["<Leader>a"] = { function() Snacks.bufdelete.all() end, desc = "Delete all buffers" }
         maps.n["<Leader>C"] = { function() Snacks.bufdelete.other() end, desc = "Delete all other buffers" }
         maps.n["<Leader>rb"] = {
-          function() Snacks.scratch.open { ft = vim.bo[vim.api.nvim_get_current_buf()].filetype } end,
+          function() Snacks.scratch.open { ft = vim.bo[vim.api.nvim_get_current_buf()].filetype, template = "" } end,
           desc = "Open scratch buffer with current ft",
         }
         maps.n["<Leader>rl"] = {
