@@ -51,7 +51,7 @@ return {
         },
       },
       quickfile = { enabled = true },
-      statuscolumn = { enabled = true },
+      statuscolumn = { enabled = false },
       words = { enabled = not astrocore.is_available("vim-illuminate") },
       styles = {
         notification = {
