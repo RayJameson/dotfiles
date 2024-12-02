@@ -13,6 +13,10 @@ return {
         enabled = not astrocore.is_available("nvim-notify"),
         timeout = 3000,
       },
+      win = {
+        border = "rounded",
+        backdrop = false,
+      },
       dashboard = {
         enabled = true,
         preset = {
