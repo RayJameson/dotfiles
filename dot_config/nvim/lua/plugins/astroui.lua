@@ -12,6 +12,7 @@ return {
         Cursor = { bg = "#ffffff" },
         TermCursor = { bg = "#ffffff" },
         CursorLineNr = { fg = C.blue_1 },
+        CursorLine = { bg = C.bg },
         FoldColumn = { fg = C.grey_9, bg = C.none },
         LineNrAbove = { fg = C.pale_red },
         LineNrBelow = { fg = C.pale_green },
