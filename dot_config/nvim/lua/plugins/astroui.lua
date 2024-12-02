@@ -28,6 +28,8 @@ return {
         Exception = { fg = C.purple, bg = C.none, italic = true }, -- try, catch, throw,
         Boolean = { fg = C.bright_turquoise, bg = C.none }, -- a boolean constant: TRUE, false,
         NormalFloat = { bg = C.bg },
+        NormalNC = { link = "Normal" },
+        WinbarNC = { link = "Winbar" },
         TabLine = { bg = C.bg },
         MatchParen = { fg = C.bright_turquoise, bg = C.none, bold = true },
         DiagnosticFloatingOk = { link = "DiagnosticOk" },
