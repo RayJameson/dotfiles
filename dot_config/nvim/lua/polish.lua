@@ -58,15 +58,14 @@ require("autocmds")
 if vim.g.neovide then
   local copy_shortcuts = { "<C-S-C>" }
   local paste_shortcuts = { "<C-S-V>" }
-  vim.g.neovide_scale_factor = 1.6
   if jit.os == "OSX" then
     table.insert(copy_shortcuts, "<D-c>")
     table.insert(paste_shortcuts, "<D-v>")
     vim.g.neovide_input_macos_option_key_is_meta = "both"
-    vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h16"
+    vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h24.5"
   else
-    vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h14"
-    vim.g.neovide_scale_factor = 1.4
+    -- vim.g.neovide_scale_factor = 1.4
+    vim.o.guifont = "Iosevka Nerd Font Mono Condensed ExtraLight:h20"
   end
   for _, paste_shortcut in ipairs(paste_shortcuts) do
     for _, mode in ipairs { "n", "i", "x", "v", "t", "c" } do
