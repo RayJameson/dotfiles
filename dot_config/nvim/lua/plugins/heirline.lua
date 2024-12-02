@@ -106,14 +106,21 @@ return {
       }
     end
 
+    local condition = require("astroui.status.condition")
+    local hl = require("astroui.status.hl")
     opts.statusline = {
       -- statusline
       hl = { fg = "fg", bg = "bg" },
-      status.component.mode(),
+      status.component.mode {
+        surround = { separator = "none", color = hl.mode_bg, update = { "ModeChanged", pattern = "*:*" } },
+      },
       status.component.file_info {
         filetype = false,
         filename = false,
         file_icon = false,
+        surround = false,
+        file_modified = { condition = condition.file_modified },
+        file_read_only = { condition = condition.file_read_only },
       },
       grapple(),
       status.component.diagnostics(),
