@@ -68,11 +68,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_augroup("DynamicColorColumn", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "lua",
-  group = "DynamicColorColumn",
-  callback = function() vim.wo.colorcolumn = "120" end,
-})
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "dockerfile", "make" },
