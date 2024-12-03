@@ -81,7 +81,7 @@ return {
             }
             maps.n[prefix .. "T"] = {
               function() trouble.toggle { mode = "todo", focus = true } end,
-              desc = "[T]rouble (all)",
+              desc = "All comments [T]",
             }
           end
           opts.autocmds.TroubleView = {
