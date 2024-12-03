@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "kevinhwang91/nvim-ufo",
+  optional = true,
   opts = function(_, opts)
     local handler = function(virtText, lnum, endLnum, width, truncate)
       local newVirtText = {}
