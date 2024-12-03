@@ -5,6 +5,8 @@ alias ng="nvim -c 'Neogit'"
 alias v4="NVIM_APPNAME=v4 nvim"
 alias venv="source .venv/bin/activate"
 alias watch="watch -cd"
+alias clc=clipcopy
+alias clp=clippaste
 if command_exists chezmoi; then
     alias cz='chezmoi'
     alias czi='chezmoi init'
