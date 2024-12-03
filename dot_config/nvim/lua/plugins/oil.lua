@@ -8,6 +8,16 @@ return {
       optional = true,
       dependencies = { "AstroNvim/astroui", opts = { status = { winbar = { enabled = { filetype = { "^oil$" } } } } } },
       opts = function(_, opts)
+        local function tabnr()
+          return function(self)
+            if not self or not self.tabnr then return "" end
+            if self.is_active then
+              return "%" .. self.tabnr .. "T[" .. self.tabnr .. "]%T"
+            else
+              return "%" .. self.tabnr .. "T " .. self.tabnr .. " %T"
+            end
+          end
+        end
         if opts.winbar then
           local status = require("astroui.status")
           table.insert(opts.winbar, 1, {
@@ -17,6 +27,14 @@ return {
               max_depth = false,
               suffix = false,
               path_func = function(self) return require("oil").get_current_dir(self.bufnr) end,
+            },
+            status.component.fill { hl = { bg = "winbar_bg" } }, -- fill the rest of the tabline with background color
+            { -- tab list
+              condition = function() return #vim.api.nvim_list_tabpages() >= 2 end, -- only show tabs if there are more than one
+              status.heirline.make_tablist { -- component for each tab
+                provider = tabnr(),
+                hl = function(self) return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true) end,
+              },
             },
           })
         end
@@ -95,8 +113,19 @@ return {
     preview_win = {
       preview_method = "fast_scratch",
     },
+    columns = {
+      "icon",
+      "permissions",
+    },
     view_options = {
       show_hidden = true,
+    },
+    delete_to_trash = false,
+    watch_for_changes = true,
+    lsp_file_methods = {
+      enabled = true,
+      timeout_ms = 3000,
+      autosave_changes = "unmodified",
     },
     keymaps = {
       ["gx"] = {
