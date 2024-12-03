@@ -29,7 +29,7 @@ return {
         -- set to true or false etc.
         signcolumn = "yes:1", -- sets vim.opt.signcolumn to auto
         swapfile = false,
-        colorcolumn = "80",
+        colorcolumn = "120",
         mouse = "",
         tabstop = 4,
         guicursor="n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor",
