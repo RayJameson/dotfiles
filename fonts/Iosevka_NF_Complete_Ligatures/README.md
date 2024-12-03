@@ -4,7 +4,7 @@
 
 - Font inherits `Menlo` style
 - All ligatures available in Iosevka customizer are turned on
-- Spacing: Terminal
+- Spacing: Normal
 - Dot-zero (enabled harfbuzz features change it to slashed zero)
 - All ligatures with `=` or `-` without notches
 
@@ -21,8 +21,8 @@ git clone --depth 1 https://github.com/be5invis/Iosevka.git
 copy [private-build-plans.toml](./private-build-plans.toml) to cloned repo dir
 
 ```bash
-# only `ttf`, but there are other options, check link above
-npm run build -- ttf::Iosevka
+# only `ttf` without hinting, but there are other options, check link above
+npm run build -- ttf-unhinted::Iosevka --jCmd=8
 ```
 
 ## Further modifications with [Ligaturizer](https://github.com/ToxicFrog/Ligaturizer)
