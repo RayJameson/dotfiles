@@ -2,9 +2,27 @@
 return {
   "echasnovski/mini.indentscope",
   optional = true,
-  opts = {
-    options = {
-      border = "top",
+  opts = {},
+  specs = {
+    "AstroNvim/astrocore",
+    ---@type AstroCoreOpts
+    opts = {
+      autocmds = {
+        MiniIndentcopePython = {
+          {
+            event = "FileType",
+            pattern = "python",
+            desc = "Set borders to 'top' for python in mini.indentscope",
+            callback = function()
+              vim.b.miniindentscope_config = {
+                options = {
+                  border = "top",
+                },
+              }
+            end,
+          },
+        },
+      },
     },
   },
 }
