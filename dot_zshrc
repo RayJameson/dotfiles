@@ -17,6 +17,7 @@ plugins=(
     gnu-utils
     gpg-agent
     git
+    gitfast
     zsh-vi-mode
     fast-syntax-highlighting
     fzf-tab
