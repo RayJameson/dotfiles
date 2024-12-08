@@ -15,7 +15,7 @@ country_if_connected() {
 }
 
 connect() {
-    nordvpn connect
+    nordvpn connect "$@"
 }
 
 disconnect() {
@@ -30,7 +30,7 @@ toggle() {
             disconnect
             ;;
         Disconnected)
-            connect
+            connect "$@"
             ;;
     esac
 }
@@ -40,12 +40,12 @@ case "$1" in
         country_if_connected
         ;;
     connect)
-        connect
+        connect "$2"
         ;;
     disconnect)
         disconnect
         ;;
     toggle)
-        toggle
+        toggle "$2"
         ;;
 esac
