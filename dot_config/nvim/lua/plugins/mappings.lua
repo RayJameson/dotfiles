@@ -161,7 +161,7 @@ return {
       for _, mode in ipairs { "x", "o" } do
         maps[mode]["i" .. char] = {
           string.format(":<C-u>silent! normal! f%sF%slvt%s<CR>", char, char, char),
-          desc = "between " .. char,
+          desc = "inside " .. char,
         }
         maps[mode]["a" .. char] = {
           string.format(":<C-u>silent! normal! f%sF%svf%s<CR>", char, char, char),
