@@ -1,6 +1,12 @@
 #!/usr/bin/bash
 
-ps -u 1000 -o pid= |
-  xargs -I{} cat /proc/{}/environ 2>/dev/null |
-  tr '\0' '\n' |
-  grep -m1 '^DISPLAY='
+find_display() {
+  ps -u "$(id -u)" -o pid= |
+    xargs -I{} cat /proc/{}/environ 2>/dev/null |
+    tr '\0' '\n' |
+    grep -m1 '^DISPLAY='
+}
+
+until find_display; do
+  sleep 0.5
+done
