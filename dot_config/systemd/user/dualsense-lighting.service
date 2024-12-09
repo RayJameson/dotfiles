@@ -6,4 +6,4 @@ Environment="DISPLAY=:0"
 ExecStart=/usr/bin/dualsensectl monitor add '/usr/bin/dualsensectl lightbar 100 0 255 && /usr/bin/dualsensectl player-leds 0'
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target

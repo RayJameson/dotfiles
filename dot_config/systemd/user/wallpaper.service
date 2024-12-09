@@ -7,4 +7,4 @@ ExecStart=/home/ray/.config/i3/scripts/nitrogen_wallpaper /home/ray/Pictures/wal
 Environment="PATH=/usr/bin:/bin"
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
