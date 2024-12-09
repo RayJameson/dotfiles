@@ -114,14 +114,6 @@ return {
       status.component.mode {
         surround = { separator = "none", color = hl.mode_bg, update = { "ModeChanged", pattern = "*:*" } },
       },
-      status.component.file_info {
-        filetype = false,
-        filename = false,
-        file_icon = false,
-        surround = false,
-        file_modified = { condition = condition.file_modified },
-        file_read_only = { condition = condition.file_read_only },
-      },
       grapple(),
       status.component.diagnostics(),
       overseer(),
@@ -166,11 +158,10 @@ return {
           file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
           filename = {},
           filetype = false,
-          file_modified = false,
-          file_read_only = false,
+          file_modified = { condition = condition.file_modified },
+          file_read_only = { condition = condition.file_read_only },
           hl = status.hl.get_attributes("winbar", true),
           surround = false,
-          update = "BufEnter",
         },
         -- show the breadcrumbs
         status.component.breadcrumbs {
