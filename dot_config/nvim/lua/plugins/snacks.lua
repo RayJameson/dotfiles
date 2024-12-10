@@ -9,6 +9,10 @@ return {
     local astrocore = require("astrocore")
     local Snacks = require("snacks")
     return astrocore.extend_tbl(opts, {
+      input = { enabled = true },
+      quickfile = { enabled = true },
+      statuscolumn = { enabled = false },
+      words = { enabled = not astrocore.is_available("vim-illuminate") },
       bigfile = { enabled = not vim.tbl_get(astrocore.config, "autocmds", "large_buf_settings") },
       notifier = {
         enabled = not astrocore.is_available("nvim-notify"),
@@ -50,9 +54,6 @@ return {
           { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
         },
       },
-      quickfile = { enabled = true },
-      statuscolumn = { enabled = false },
-      words = { enabled = not astrocore.is_available("vim-illuminate") },
       styles = {
         notification = {
           wo = { wrap = true }, -- Wrap notifications
