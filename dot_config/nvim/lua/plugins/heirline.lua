@@ -182,6 +182,13 @@ return {
           padding = { left = 0 },
         },
         status.component.fill { hl = { bg = "winbar_bg" } }, -- fill the rest of the tabline with background color
+        status.component.git_diff {
+          surround = { separator = "right", color = "winbar_bg", condition = condition.git_changed },
+          on_click = false,
+        },
+        status.component.git_branch {
+          on_click = false,
+          surround = { separator = "right", color = "winbar_bg", condition = condition.is_git_repo },
         },
         tabline(),
       },
