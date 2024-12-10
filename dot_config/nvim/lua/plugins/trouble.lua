@@ -133,7 +133,7 @@ return {
           end
         end,
       },
-      { "lewis6991/gitsigns.nvim", opts = { trouble = true } },
+      { "lewis6991/gitsigns.nvim", opts = { trouble = true }, optional = true },
       {
         "folke/edgy.nvim",
         optional = true,
