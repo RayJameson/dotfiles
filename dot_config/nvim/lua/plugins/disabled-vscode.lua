@@ -5,7 +5,6 @@ return vim.tbl_map(function(plugin) return { plugin, enabled = vim.g.vscode } en
   "folke/todo-comments.nvim",
   "max397574/better-escape.nvim",
   "hrsh7th/nvim-cmp",
-  "Exafunction/codeium.vim",
   "mfussenegger/nvim-dap",
   "linrongbin16/gitlinker.nvim",
   "cbochs/grapple.nvim",
