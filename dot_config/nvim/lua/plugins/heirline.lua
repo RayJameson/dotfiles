@@ -105,6 +105,17 @@ return {
         pad(OverseerTasksForStatus("FAILURE")),
       }
     end
+    local tabs_exists = function() return #vim.api.nvim_list_tabpages() >= 2 end
+    local tabline = function()
+      return status.component.builder {
+        condition = tabs_exists,
+        surround = { separator = "right", color = "winbar_bg", condition = tabs_exists },
+        status.heirline.make_tablist { -- component for each tab
+          provider = tabnr(),
+          hl = function(self) return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true) end,
+        },
+      }
+    end
 
     local condition = require("astroui.status.condition")
     local hl = require("astroui.status.hl")
@@ -171,13 +182,8 @@ return {
           padding = { left = 0 },
         },
         status.component.fill { hl = { bg = "winbar_bg" } }, -- fill the rest of the tabline with background color
-        { -- tab list
-          condition = function() return #vim.api.nvim_list_tabpages() >= 2 end, -- only show tabs if there are more than one
-          status.heirline.make_tablist { -- component for each tab
-            provider = tabnr(),
-            hl = function(self) return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true) end,
-          },
         },
+        tabline(),
       },
     }
     return opts
