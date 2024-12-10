@@ -146,6 +146,15 @@ return {
       }
       maps.x["<Leader>fc"] =
         { function() require("telescope.builtin").grep_string() end, desc = "Find visually selected text" }
+      maps.n["<Leader>fp"] = {
+        function()
+          require("telescope.builtin").find_files {
+            ---@diagnostic disable-next-line: param-type-mismatch
+            cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
+          }
+        end,
+        desc = "Find plugins files",
+      }
     end,
   },
 }
