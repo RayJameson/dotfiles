@@ -73,6 +73,7 @@ return {
       },
     })
     opts.mapping["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+    opts.mapping["<C-x><C-o>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
     return opts
   end,
 }
