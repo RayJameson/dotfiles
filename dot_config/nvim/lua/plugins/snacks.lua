@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 ---@type LazySpec
 return {
   "folke/snacks.nvim",
@@ -20,7 +21,6 @@ return {
       dashboard = {
         enabled = true,
         preset = {
-          ---@type snacks.dashboard.Item[]
           keys = {
             { icon = " ", key = "f", desc = "Find files", action = ":lua Snacks.dashboard.pick('files')" },
             { icon = " ", key = "n", desc = "New file", action = ":ene | startinsert" },
@@ -77,7 +77,7 @@ return {
           },
         },
       },
-    } --[[ @type snacks.Config ]])
+    } --[[@as snacks.plugins.Config]])
   end,
   specs = {
     { "rcarriga/nvim-notify", enabled = false },
