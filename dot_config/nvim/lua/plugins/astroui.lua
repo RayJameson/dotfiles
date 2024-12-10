@@ -114,6 +114,7 @@ return {
       Search = "",
       Selected = "",
       TabClose = "",
+      Environment = "󰌠",
     },
     status = {
       separators = {
