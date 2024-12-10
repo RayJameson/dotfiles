@@ -27,7 +27,7 @@ return {
         wrap = false, -- sets vim.opt.wrap
         showtabline = 0,
         -- set to true or false etc.
-        signcolumn = "yes:1", -- sets vim.opt.signcolumn to auto
+        signcolumn = "auto:2", -- sets vim.opt.signcolumn to auto
         swapfile = false,
         colorcolumn = "120",
         mouse = "",
