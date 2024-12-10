@@ -7,5 +7,6 @@ return {
     { prefix .. "R", function() require("gitsigns").reset_buffer() end, desc = "Reset Git buffer" },
     { prefix .. "r", function() require("gitsigns").reset_hunk() end, desc = "Reset Git hunk" },
     { prefix .. "D", function() require("gitsigns").toggle_deleted() end, desc = "Toggle deleted lines" },
+    { prefix .. "w", function() require("gitsigns").toggle_word_diff() end, desc = "Toggle word diff" },
   },
 }
