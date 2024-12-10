@@ -22,6 +22,14 @@ return {
             end,
           },
         },
+        MiniIndentcopeTrouble = {
+          {
+            event = "FileType",
+            pattern = "trouble",
+            desc = "Disable in trouble window",
+            callback = function() vim.b.miniindentscope_disable = true end,
+          },
+        },
       },
     },
   },
