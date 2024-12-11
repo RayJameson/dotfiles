@@ -156,6 +156,20 @@ return {
         end,
         desc = "Plugins files",
       }
+      maps.n["<Leader>fw"] = { multigrep.search, desc = "Words" }
+      maps.n["<Leader>fW"] = {
+        function() multigrep.search { all_files = true, prompt_title = "Live Grep (with shortcuts) in all files" } end,
+        desc = "Words in all files",
+      }
+      maps.n["<Leader>fP"] = {
+        function()
+          multigrep.search {
+            ---@diagnostic disable-next-line: param-type-mismatch
+            cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
+            prompt_title = "Live Grep (with shortcuts) in plugins files",
+          }
+        end,
+        desc = "Words in plugins files",
       }
     end,
   },
