@@ -2,7 +2,9 @@
 return {
   "echasnovski/mini.indentscope",
   optional = true,
-  opts = {},
+  opts = {
+    symbol = "│",
+  },
   specs = {
     "AstroNvim/astrocore",
     ---@type AstroCoreOpts
