@@ -33,7 +33,6 @@ return {
     maps.n["gD"] = { '"_d', desc = "Delete noregister" }
     maps.x["gd"] = { '"_d', desc = "Delete noregister" }
     maps.x["gp"] = { "P", desc = "Paste noregister" }
-    maps.n["p"] = { "P", desc = "Paste noregister" }
     maps.n["S"] = { "0Di", desc = "S+" }
     --]
 
