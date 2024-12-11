@@ -121,39 +121,41 @@ return {
     "AstroNvim/astrocore",
     opts = function(_, opts)
       local maps = opts.mappings
+      local t_builtin = require("telescope.builtin")
+      local multigrep = require("telescope-multigrep")
       maps.n["<Leader>ls"] = {
-        desc = "Search symbols",
+        desc = "Find symbols",
       }
       maps.n["<Leader>lsa"] = {
-        function() require("telescope.builtin").lsp_document_symbols() end,
-        desc = "Search all symbols",
+        function() t_builtin.lsp_document_symbols() end,
+        desc = "Find all symbols",
       }
       maps.n["<Leader>lsf"] = {
-        function() require("telescope.builtin").lsp_document_symbols { symbols = { "function" } } end,
-        desc = "Search functions symbols",
+        function() t_builtin.lsp_document_symbols { symbols = { "function" } } end,
+        desc = "Find functions symbols",
       }
       maps.n["<Leader>lsm"] = {
-        function() require("telescope.builtin").lsp_document_symbols { symbols = { "method" } } end,
-        desc = "Search method symbols",
+        function() t_builtin.lsp_document_symbols { symbols = { "method" } } end,
+        desc = "Find method symbols",
       }
       maps.n["<Leader>lsv"] = {
-        function() require("telescope.builtin").lsp_document_symbols { symbols = { "variable" } } end,
-        desc = "Search variable symbols",
+        function() t_builtin.lsp_document_symbols { symbols = { "variable" } } end,
+        desc = "Find variable symbols",
       }
       maps.n["<Leader>lsc"] = {
-        function() require("telescope.builtin").lsp_document_symbols { symbols = { "class" } } end,
-        desc = "Search class symbols",
+        function() t_builtin.lsp_document_symbols { symbols = { "class" } } end,
+        desc = "Find class symbols",
       }
-      maps.x["<Leader>fc"] =
-        { function() require("telescope.builtin").grep_string() end, desc = "Find visually selected text" }
+      maps.x["<Leader>fc"] = { function() t_builtin.grep_string() end, desc = "Visually selected text" }
       maps.n["<Leader>fp"] = {
         function()
-          require("telescope.builtin").find_files {
+          t_builtin.find_files {
             ---@diagnostic disable-next-line: param-type-mismatch
             cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
           }
         end,
-        desc = "Find plugins files",
+        desc = "Plugins files",
+      }
       }
     end,
   },
