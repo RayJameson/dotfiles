@@ -8,7 +8,7 @@ export PNPM_HOME="$HOME/Library/pnpm"
 if command_exists /opt/homebrew/bin/brew; then
     export HOMEBREW_CASK_OPTS="--no-quarantine"
     export HOMEBREW_AUTO_UPDATING=0
-    export HOMEBREW_PREFIX="$(brew --prefix)"
+    export HOMEBREW_PREFIX=/opt/homebrew
     export LDFLAGS="-L$HOMEBREW_PREFIX/opt/curl/lib"
     export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/curl/include"
     PATH="$HOMEBREW_PREFIX/Cellar/pyenv-virtualenv/1.1.5/shims/$HOMEBREW_PREFIX/bin:$PATH"
