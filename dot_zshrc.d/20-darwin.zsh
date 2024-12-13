@@ -11,7 +11,6 @@ if command_exists /opt/homebrew/bin/brew; then
     export HOMEBREW_PREFIX=/opt/homebrew
     export LDFLAGS="-L$HOMEBREW_PREFIX/opt/curl/lib"
     export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/curl/include"
-    PATH="$HOMEBREW_PREFIX/Cellar/pyenv-virtualenv/1.1.5/shims/$HOMEBREW_PREFIX/bin:$PATH"
     PATH="$HOMEBREW_PREFIX/bin:$PATH"
     PATH="$HOMEBREW_PREFIX/sbin:$PATH"
     PATH="$HOMEBREW_PREFIX/sbin:$PATH"
