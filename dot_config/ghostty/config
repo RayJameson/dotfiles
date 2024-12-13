@@ -1,0 +1,59 @@
+theme = Dracula
+cursor-color = #ffffff
+background-opacity = 0.7
+background-blur-radius = 20
+copy-on-select = true
+
+# Font
+font-size = 24
+freetype-load-flags = false
+font-synthetic-style = false
+
+font-family = Iosevka Nerd Font Mono
+font-style = Condensed ExtraLight
+
+font-family-bold = Iosevka Nerd Font Mono
+font-style-bold = Condensed Medium
+
+font-family-italic = Iosevka Nerd Font Mono
+font-style-italic = Condensed Oblique
+
+font-family-bold-italic = Iosevka Nerd Font Mono
+font-style-bold-italic = Condensed Medium Oblique
+
+# MacOS specific stuff
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+macos-auto-secure-input = true
+
+# Tabs and Splits
+keybind = ctrl+a>c=new_tab
+keybind = ctrl+a>\=new_split:down
+keybind = ctrl+a>|=new_split:right
+keybind = ctrl+shift+n=new_window
+keybind = ctrl+a>x=close_surface
+
+# Resize splits
+keybind = ctrl+a>equal=equalize_splits
+keybind = ctrl+shift+h=resize_split:left,20
+keybind = ctrl+shift+k=resize_split:up,20
+keybind = ctrl+shift+j=resize_split:down,20
+keybind = ctrl+shift+l=resize_split:right,20
+## Tabs
+keybind = ctrl+a>+one=goto_tab:1
+keybind = ctrl+a>+two=goto_tab:2
+keybind = ctrl+a>+three=goto_tab:3
+keybind = ctrl+a>+four=goto_tab:4
+keybind = ctrl+a>+five=goto_tab:5
+keybind = ctrl+a>+six=goto_tab:6
+keybind = ctrl+a>+seven=goto_tab:7
+keybind = ctrl+a>+eight=goto_tab:8
+keybind = ctrl+a>+nine=goto_tab:9
+
+keybind = shift+page_up=scroll_page_up
+keybind = shift+page_down=scroll_page_down
+keybind = ctrl+a>n=next_tab
+keybind = ctrl+a>p=previous_tab
+
+keybind = ctrl+shift+plus=increase_font_size:1
+keybind = ctrl+shift+minus=decrease_font_size:1
