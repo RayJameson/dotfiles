@@ -29,7 +29,7 @@ local font_attributes = {
   freetype_load_flags = "NO_HINTING",
 }
 if wezterm.target_triple:match("darwin") then
-  config.macos_window_background_blur = 30
+  config.macos_window_background_blur = 20
   config.font_size = 24.5
 elseif wezterm.target_triple:match("windows") then
   ---@diagnostic disable-next-line: assign-type-mismatch
