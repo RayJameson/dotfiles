@@ -8,7 +8,7 @@
 	ignorecase = true
 	precomposeunicode = true
 	sshCommand = ssh -F ~/.ssh/config
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy || less | less --tabs=4 -RFX
     editor = nvim
 	excludesfile = ~/.gitignore_global
 	symlinks = true
