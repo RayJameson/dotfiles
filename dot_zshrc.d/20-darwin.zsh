@@ -5,7 +5,7 @@ if [[ $TERM_PROGRAM != ghostty ]] && [[ -d "$HOME/.terminfo" ]]; then
     export TERMINFO="$HOME/.terminfo" # this saves your santity on MacOS if you are using TMUX
 fi
 export PNPM_HOME="$HOME/Library/pnpm"
-if command_exists brew; then
+if command_exists /opt/homebrew/bin/brew; then
     export HOMEBREW_CASK_OPTS="--no-quarantine"
     export HOMEBREW_AUTO_UPDATING=0
     export HOMEBREW_PREFIX="$(brew --prefix)"
