@@ -1,7 +1,7 @@
 if [[ ! $(uname) == "Darwin" ]]; then
     return
 fi
-if [[ -d "$HOME/.terminfo" ]]; then
+if [[ $TERM_PROGRAM != ghostty ]] && [[ -d "$HOME/.terminfo" ]]; then
     export TERMINFO="$HOME/.terminfo" # this saves your santity on MacOS if you are using TMUX
 fi
 export PNPM_HOME="$HOME/Library/pnpm"
