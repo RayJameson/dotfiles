@@ -19,10 +19,16 @@ return {
           j = {
             k = esc_fn,
           },
+          ["о"] = {
+            ["л"] = esc_fn,
+          },
         },
         c = {
           j = {
             k = esc_fn,
+          },
+          ["о"] = {
+            ["л"] = esc_fn,
           },
         },
         t = disabled,
