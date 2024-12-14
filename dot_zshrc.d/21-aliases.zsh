@@ -60,3 +60,6 @@ if [ ! $(uname -s) = 'Darwin' ]; then
     fi
 fi
 alias man='man -L ru.UTF-8'
+if [[ $TERM_PROGRAM = ghostty ]]; then
+    alias imgcat='kitten icat'
+fi
