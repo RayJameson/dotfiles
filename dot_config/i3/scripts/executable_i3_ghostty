@@ -19,7 +19,7 @@ elif [ "$1" == "--full" ]; then
 	fi
 else
 	if [[ $# -gt 0 ]]; then
-		ghostty --class='ghostty' .e "${@}"
+		ghostty --class='ghostty' -e "${@}"
 	else
 		ghostty --class='ghostty'
 	fi
