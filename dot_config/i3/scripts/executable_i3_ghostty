@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+## launch wezterm with i3 config
+
+# i3 directory
+
+if [ "$1" == "--float" ]; then
+	shift
+	if [[ $# -gt 0 ]]; then
+		ghostty --class='ghostty.float' -e "${@}"
+	else
+		ghostty --class='ghostty.float'
+	fi
+elif [ "$1" == "--full" ]; then
+	shift
+	if [[ $# -gt 0 ]]; then
+		ghostty --class='ghostty.fullscreen' -e "${@}"
+	else
+		ghostty --class='ghostty.fullscreen'
+	fi
+else
+	if [[ $# -gt 0 ]]; then
+		ghostty --class='ghostty' .e "${@}"
+	else
+		ghostty --class='ghostty'
+	fi
+fi
