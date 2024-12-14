@@ -15,31 +15,35 @@ return {
         end
       end,
     },
-    "https://github.com/leafo/magick",
+    "leafo/magick",
   },
   opts = {
     backend = "kitty",
+    window_overlap_clear_enabled = true,
+    editor_only_render_when_focused = true,
+    tmux_show_only_in_active_window = true,
     integrations = {
       markdown = {
         enabled = true,
-        clear_in_insert_mode = false,
+        clear_in_insert_mode = true,
         download_remote_images = true,
         only_render_image_at_cursor = true,
+        floating_windows = true,
         filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
       },
       neorg = {
         enabled = true,
         clear_in_insert_mode = false,
         download_remote_images = true,
-        only_render_image_at_cursor = false,
+        only_render_image_at_cursor = true,
         filetypes = { "norg" },
       },
+      html = {
+        enabled = true,
+      },
+      css = {
+        enabled = true,
+      },
     },
-    max_width = nil,
-    max_height = nil,
-    max_width_window_percentage = nil,
-    max_height_window_percentage = 50,
-    kitty_method = "normal",
-    hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
   },
 }
