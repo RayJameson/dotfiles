@@ -8,10 +8,10 @@
 
 if [ "$1" == "--float" ]; then
 	shift
-	wezterm start --class 'wezterm-float' "${@}"
+	wezterm start --class='wezterm.float' "${@}"
 elif [ "$1" == "--full" ]; then
 	shift
-	wezterm start --class 'wezterm-fullscreen' "${@}"
+	wezterm start --class='wezterm.fullscreen' "${@}"
 else
-	wezterm start "${@}"
+	wezterm start --class='wezterm' "${@}"
 fi
