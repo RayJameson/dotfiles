@@ -4,7 +4,7 @@
         "separator": " "
     },
     "logo": {
-        "source": "~/personal_projects/ghostty/images/icons/icon_512.png",
+        "source": "~/personal_projects/ghostty/images/icons/icon_256.png",
         "type": "kitty"
     },
     "modules": [
