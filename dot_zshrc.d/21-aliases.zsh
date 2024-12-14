@@ -48,7 +48,9 @@ if command_exists zoxide; then
     alias cd="z"
     alias cdi="zi"
 fi
-
+if command_exists fastfetch; then
+    alias ff='fastfetch'
+fi
 # Normalize `open` across Linux, macOS, and Windows.
 # This is needed to make the `o` function
 if [ ! $(uname -s) = 'Darwin' ]; then
