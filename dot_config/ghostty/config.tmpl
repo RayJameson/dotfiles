@@ -5,13 +5,10 @@ background-blur-radius = 20
 copy-on-select = true
 adjust-underline-thickness = -2
 adjust-cursor-thickness = -2
+gtk-titlebar = false
 
 # Font
-{{ if eq .chezmoi.os "linux" -}}
-font-size = 19
-{{ else if .chezmoi.os "darwin" -}}
-font-size = 24
-{{ end -}}
+font-size = {{ if eq .chezmoi.os "linux" }}19{{ else if .chezmoi.os "darwin" }}24{{ end }}
 freetype-load-flags = false
 font-synthetic-style = false
 
@@ -63,4 +60,3 @@ keybind = ctrl+a>p=previous_tab
 
 keybind = ctrl+shift+plus=increase_font_size:1
 keybind = ctrl+shift+minus=decrease_font_size:1
-gtk-titlebar = false
