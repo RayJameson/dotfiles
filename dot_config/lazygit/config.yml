@@ -2,6 +2,7 @@
 services:
   "github.qiwi.com": "github:github.qiwi.com"
 gui:
+  showNumstatInFilesView: true
   mouseEvents: false
   nerdFontsVersion: "3"
   showBottomLine: false
