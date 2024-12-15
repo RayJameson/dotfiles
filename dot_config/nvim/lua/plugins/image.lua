@@ -1,7 +1,8 @@
 ---@type LazySpec
 return {
   "3rd/image.nvim",
-  cond = vim.fn.executable("magick") == 1,
+  cond = not vim.g.neovide,
+  enabled = vim.fn.executable("magick") == 1,
   event = "VeryLazy",
   ft = { "markdown", "vimwiki", "norg" },
   dependencies = {
