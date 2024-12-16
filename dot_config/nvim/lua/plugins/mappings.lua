@@ -88,6 +88,8 @@ return {
     maps.n["<C-u>"] = { "<C-u>M", desc = "Scroll half page up", noremap = true }
     maps.n["<C-f>"] = { "<C-f>M", desc = "Scroll page down", noremap = true }
     maps.n["<C-b>"] = { "<C-b>M", desc = "Scroll page up", noremap = true }
+    maps.n["<M-l>"] = { "10zl", desc = "Scroll horizontally right", noremap = true }
+    maps.n["<M-h>"] = { "10zh", desc = "Scroll horizontally left", noremap = true }
     maps.x["<"] = { "<gv", desc = "Deindent line" }
     maps.x[">"] = { ">gv", desc = "Indent line" }
 
