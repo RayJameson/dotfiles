@@ -10,7 +10,7 @@ gtk-titlebar = false
 gtk-single-instance = true
 
 # Font
-font-size = {{ if eq .chezmoi.os "linux" }}19{{ else if .chezmoi.os "darwin" }}24{{ end }}
+font-size = {{ if eq .chezmoi.os "linux" }}19{{ else if eq .chezmoi.os "darwin" }}24{{ end }}
 freetype-load-flags = false
 font-synthetic-style = false
 
