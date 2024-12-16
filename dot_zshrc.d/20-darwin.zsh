@@ -11,6 +11,7 @@ if command_exists /opt/homebrew/bin/brew; then
     export HOMEBREW_PREFIX=/opt/homebrew
     export LDFLAGS="-L$HOMEBREW_PREFIX/opt/curl/lib"
     export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/curl/include"
+    export DYLD_FALLBACK_LIBRARY_PATH="$HOMEBREW_PREFIX/lib:$DYLD_FALLBACK_LIBRARY_PATH"
     PATH="$HOMEBREW_PREFIX/bin:$PATH"
     PATH="$HOMEBREW_PREFIX/sbin:$PATH"
     PATH="$HOMEBREW_PREFIX/sbin:$PATH"
