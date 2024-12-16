@@ -8,6 +8,7 @@ adjust-cursor-thickness = -2
 adjust-box-thickness = -2
 gtk-titlebar = false
 gtk-single-instance = true
+window-decoration = false
 
 # Font
 font-size = {{ if eq .chezmoi.os "linux" }}19{{ else if eq .chezmoi.os "darwin" }}24{{ end }}
@@ -27,7 +28,6 @@ font-family-bold-italic = Iosevka Nerd Font Mono
 font-style-bold-italic = Condensed Medium Oblique
 
 # MacOS specific stuff
-macos-titlebar-style = hidden
 macos-option-as-alt = true
 macos-auto-secure-input = true
 
