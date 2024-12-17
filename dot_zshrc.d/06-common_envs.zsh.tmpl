@@ -29,10 +29,12 @@ PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 PATH="$HOME/.kube:$PATH"
 PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 
-command_exists nvim && export MANPAGER="nvim +Man! $@"
-if command_exists pipx; then
-    eval "$(register-python-argcomplete pipx)"
-fi
+{{ if lookPath "nvim" -}}
+export MANPAGER="nvim +Man! $@"
+{{ end -}}
+{{ if lookPath "pipx" -}}
+eval "$(register-python-argcomplete pipx)"
+{{ end -}}
 
 # remove duplicate entries from $PATH
 # zsh uses $path array along with $PATH 
