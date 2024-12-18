@@ -1,7 +1,8 @@
 ---@type LazySpec
 return {
   -- override nvim-cmp plugin
-  "hrsh7th/nvim-cmp",
+  "iguanacucumber/magazine.nvim",
+  name = "nvim-cmp",
   optional = true,
   keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
   dependencies = {
