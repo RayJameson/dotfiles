@@ -29,4 +29,6 @@ Library/Application Support/KeePassXC/keepassxc.ini
 .local/bin/xprop_i3
 .xprofile
 .zshrc.d/20-linux.zsh
+.zfunc/_winetricks
+.zfunc/_pw-cli
 {{- end }}
