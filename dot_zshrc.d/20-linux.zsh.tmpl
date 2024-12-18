@@ -21,3 +21,4 @@ alias paci='pacman --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\
 {{- if lookPath "stderred" -}}
 export LD_PRELOAD="/usr/\$LIB/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 {{- end }}
+alias man='man -L ru.UTF-8'

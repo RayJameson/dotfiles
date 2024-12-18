@@ -25,6 +25,9 @@ PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 {{ if lookPath "ggrep" -}}
 alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
 {{- end}}
+{{ if lookPath "gman" -}}
+alias man='gman -L ru.UTF-8'
+{{- end}}
 export PNPM_HOME="$HOME/Library/pnpm"
 PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:$HOME/.gem/ruby/2.6.0/bin:$PNPM_HOME:$ORACLE_HOME:$PATH"
 PATH="$PATH:/Users/mik.dmitriev/Library/Application Support/Coursier/bin"
