@@ -32,6 +32,7 @@ regular = [
     "lib32-stderred-git",
     "lib32-vulkan-icd-loader",
     "libxnvctrl",
+    "luarocks",
     "lutris",
     "nautilus",
     "ncdu",
