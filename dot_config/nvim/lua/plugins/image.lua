@@ -3,8 +3,7 @@ return {
   "3rd/image.nvim",
   cond = not vim.g.neovide,
   enabled = vim.fn.executable("magick") == 1,
-  event = "VeryLazy",
-  ft = { "markdown", "vimwiki", "norg" },
+  ft = { "markdown", "vimwiki", "norg", "html", "css" },
   dependencies = {
     {
       "nvim-treesitter/nvim-treesitter",
