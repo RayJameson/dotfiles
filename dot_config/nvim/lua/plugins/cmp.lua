@@ -13,6 +13,11 @@ return {
   },
   ---@param opts cmp.ConfigSchema
   opts = function(_, opts)
+    ---@diagnostic disable-next-line: missing-fields
+    opts.performance = {
+      debounce = 0,
+      throttle = 0,
+    }
     local formatter = opts.formatting.format
     opts.formatting.format = function(entry, vim_item)
       -- your before function, just goes here
@@ -38,6 +43,7 @@ return {
       -- save the kind text
       local kind_text = vim_item.kind
       -- run the default formatter
+      assert(formatter)
       vim_item = formatter(entry, vim_item)
       -- add the kind text after the symbol
       vim_item.kind = (vim_item.kind or "") .. " " .. kind_text
