@@ -36,7 +36,7 @@ check_updates() {
 install_updates() {
     # i3 directory
     DIR="$HOME/.config/i3"
-    "$DIR"/scripts/i3_ghostty --float yay
+    "$DIR"/scripts/i3_ghostty --float -e yay
 }
 
 case "$1" in
