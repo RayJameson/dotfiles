@@ -15,7 +15,6 @@ brews = [
     "glow",
     "jq",
     "lazydocker",
-    "lazygit",
     "llvm",
     "lnav",
     "lua",
@@ -40,6 +39,7 @@ brews = [
 brews_head = [
     "tmux",
     "yazi",
+    "lazygit",
 ]
 casks = [
     "docker",
