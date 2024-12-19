@@ -174,6 +174,34 @@ return {
           condition = { filetype = "python" },
           desc = "Run with `-m` flag",
         },
+        {
+          name = "pyenv-virtualenv",
+          desc = "Setup pyenv environment for project",
+          params = function()
+            local stdout = vim.system({ "pyenv", "versions", "--bare", "--skip-aliases", "--skip-envs" }):wait().stdout
+            assert(stdout)
+            local versions = vim.split(stdout, "\n", { trimempty = true })
+            return {
+              version = {
+                desc = "Python version to use for venv",
+                type = "enum",
+                choices = versions,
+              },
+            } --[[@as overseer.Params]]
+          end,
+          builder = function(params)
+            return {
+              cmd = {},
+              strategy = {
+                "orchestrator",
+                tasks = {
+                  { cmd = { "pyenv" }, args = { "virtualenv", params.version, vim.fn.expand("%:p:h:t") } },
+                  { cmd = { "pyenv" }, args = { "local", vim.fn.expand("%:p:h:t") } },
+                },
+              },
+            }
+          end,
+        },
       })
     end,
   },
