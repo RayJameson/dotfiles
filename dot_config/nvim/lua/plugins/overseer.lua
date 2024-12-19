@@ -197,7 +197,28 @@ return {
               },
             }
           end,
-        },
+        } --[[@as overseer.TemplateDefinition]],
+        {
+          name = "setup-python-dev",
+          desc = "Setup python venv and install packages",
+          builder = function()
+            return {
+              name = "setup-python-dev",
+              strategy = {
+                "orchestrator",
+                tasks = {
+                  { "pyenv-virtualenv" },
+                  {
+                    cmd = 'eval "$(pyenv init -)" && '
+                      .. 'eval "$(pyenv virtualenv-init -)" && '
+                      .. "pyenv activate && "
+                      .. "poetry install --no-root",
+                  },
+                },
+              },
+            }
+          end,
+        } --[[@as overseer.TemplateDefinition]],
       })
     end,
   },
