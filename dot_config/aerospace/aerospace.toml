@@ -120,14 +120,6 @@ if.app-id = 'org.mozilla.com.zen.browser'
 run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-run = ['layout tiling', 'move-node-to-workspace 2']
-
-[[on-window-detected]]
-if.app-id = 'com.neovide.neovide'
-run = ['layout tiling', 'move-node-to-workspace 3']
-
-[[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = ['move-node-to-workspace 4']
 
@@ -140,17 +132,9 @@ if.app-id = 'md.obsidian'
 run = ['layout tiling', 'move-node-to-workspace 7']
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = ['move-node-to-workspace 8']
-
-[[on-window-detected]]
 if.app-id = 'org.keepassxc.keepassxc'
 run = ['move-node-to-workspace 9']
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = ['move-node-to-workspace 10']
-
-[[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
-run = ['move-node-to-workspace 11']
