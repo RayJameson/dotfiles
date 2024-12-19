@@ -36,6 +36,7 @@ M.search = function(opts)
       ["g"] = "*.go",
       ["p"] = "*.py",
       ["j"] = "*.json",
+      ["y"] = "*.{yml,yaml}",
     }
   opts.prompt_title = opts.prompt_title or "Live Grep (with shortcuts)"
   opts.pattern = opts.pattern or "%s"
