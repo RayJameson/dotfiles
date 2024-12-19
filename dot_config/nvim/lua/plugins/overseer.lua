@@ -119,11 +119,7 @@ return {
               { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
             },
           }
-          if run_in_foreground then
-            task.strategy.open_on_start = true
-          else
-            task.strategy.open_on_start = false
-          end
+          task.strategy.open_on_start = run_in_foreground and true or false
           return task
         end
 
