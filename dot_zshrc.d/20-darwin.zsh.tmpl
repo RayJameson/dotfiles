@@ -31,6 +31,9 @@ alias man='gman -L ru.UTF-8'
 export PNPM_HOME="$HOME/Library/pnpm"
 PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Library/Apple/usr/bin:/usr/local/opt/fzf/bin:$HOME/.gem/ruby/2.6.0/bin:$PNPM_HOME:$ORACLE_HOME:$PATH"
 PATH="$PATH:/Users/mik.dmitriev/Library/Application Support/Coursier/bin"
+{{ if stat "/opt/oracle/instantclient_18_1" -}}
+PATH="/opt/oracle/instantclient_18_1:$PATH"
+{{- end }}
 alias xdg-open=open
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
 typeset -U PATH path
