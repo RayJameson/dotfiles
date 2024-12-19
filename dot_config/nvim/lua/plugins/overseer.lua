@@ -187,7 +187,7 @@ return {
           end,
           builder = function(params)
             return {
-              cmd = {},
+              name = "pyenv-virtualenv",
               strategy = {
                 "orchestrator",
                 tasks = {
