@@ -183,6 +183,11 @@ return {
                 type = "enum",
                 choices = versions,
               },
+              virtualenv_name = {
+                desc = "Name for virtual environment, default: project dir name",
+                type = "string",
+                default = vim.fn.expand("%:p:h:t"),
+              },
             } --[[@as overseer.Params]]
           end,
           builder = function(params)
@@ -191,8 +196,8 @@ return {
               strategy = {
                 "orchestrator",
                 tasks = {
-                  { cmd = { "pyenv" }, args = { "virtualenv", params.version, vim.fn.expand("%:p:h:t") } },
-                  { cmd = { "pyenv" }, args = { "local", vim.fn.expand("%:p:h:t") } },
+                  { cmd = { "pyenv" }, args = { "virtualenv", params.version, params.virtualenv_name } },
+                  { cmd = { "pyenv" }, args = { "local", params.virtualenv_name } },
                 },
               },
             }
