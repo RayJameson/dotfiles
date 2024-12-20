@@ -40,11 +40,11 @@ return {
       undo = {
         use_delta = false,
         use_custom_command = (
-          vim.fn.executable("diff-so-fancy") == 1 and { "bash", "-c", "echo '$DIFF' | diff-so-fancy" }
+          vim.fn.executable("diff-so-fancy") == 1 and { "bash", "-c", "echo '$DIFF' | diff-so-fancy | tail -n +6 " }
         ) or nil,
         layout_strategy = "vertical",
         layout_config = {
-          preview_height = 0.7,
+          preview_height = 0.5,
           preview_cutoff = 0.3,
         },
         mappings = {
