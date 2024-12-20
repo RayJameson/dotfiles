@@ -8,6 +8,13 @@ return {
     { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
   },
   opts = {},
+  config = function(_, opts)
+    -- NOTE: do not update dap python path, we do it lazily in dap config
+    local venv_selector_path = require("venv-selector.path")
+    ---@diagnostic disable-next-line: duplicate-set-field
+    venv_selector_path.update_python_dap = function() end
+    require("venv-selector").setup(opts)
+  end,
   cmd = "VenvSelect",
   specs = {
     "AstroNvim/astrocore",
