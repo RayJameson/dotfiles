@@ -117,24 +117,30 @@ run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.com.zen.browser'
+if.during-aerospace-startup = true
 run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
+if.during-aerospace-startup = true
 run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
+if.during-aerospace-startup = true
 run = ['move-node-to-workspace 5']
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
+if.during-aerospace-startup = true
 run = ['layout tiling', 'move-node-to-workspace 7']
 
 [[on-window-detected]]
 if.app-id = 'org.keepassxc.keepassxc'
+if.during-aerospace-startup = true
 run = ['move-node-to-workspace 9']
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
+if.during-aerospace-startup = true
 run = ['move-node-to-workspace 10']
