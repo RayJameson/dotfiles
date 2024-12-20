@@ -7,7 +7,6 @@ return {
   ---@param opts snacks.Config
   opts = function(_, opts)
     local astrocore = require("astrocore")
-    local Snacks = require("snacks")
     return astrocore.extend_tbl(opts, {
       input = { enabled = true },
       quickfile = { enabled = true },
@@ -67,7 +66,7 @@ return {
               function(self)
                 if vim.bo[self.buf].filetype == "lua" then
                   local name = "scratch." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.buf), ":e")
-                  Snacks.debug.run { buf = self.buf, name = name }
+                  require("snacks").debug.run { buf = self.buf, name = name }
                 else
                   vim.cmd([[OverseerRun file-run]])
                 end
@@ -92,12 +91,9 @@ return {
         end
       end,
     },
-  },
-  dependencies = {
     {
       "AstroNvim/astrocore",
       opts = function(_, opts)
-        local Snacks = require("snacks")
         local maps = opts.mappings
 
         opts.autocmds.snacks_toggle = {
@@ -105,42 +101,29 @@ return {
           pattern = "VeryLazy",
           callback = function()
             -- Setup some globals for debugging (lazy-loaded)
-            _G.dd = function(...) Snacks.debug.inspect(...) end
-            _G.bt = function() Snacks.debug.backtrace() end
+            _G.dd = function(...) require("snacks").debug.inspect(...) end
+            _G.bt = function() require("snacks").debug.backtrace() end
             vim.print = _G.dd -- Override print to use snacks for `:=` command
-
-            -- Create some toggle mappings
-            Snacks.toggle.option("spell", { name = "Spelling" }):map("<Leader>us")
-            Snacks.toggle.option("wrap", { name = "Wrap" }):map("<Leader>uw")
-            Snacks.toggle.option("relativenumber", { name = "Relative number" }):map("<Leader>uL")
-            Snacks.toggle.diagnostics():map("<Leader>ud")
-            Snacks.toggle.line_number():map("<Leader>ul")
-            Snacks.toggle
-              .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-              :map("<Leader>uc")
-            Snacks.toggle.treesitter():map("<Leader>uT")
-            Snacks.toggle
-              .option("background", { off = "light", on = "dark", name = "Dark background" })
-              :map("<Leader>ub")
-            Snacks.toggle.inlay_hints():map("<Leader>uh")
           end,
         }
-        maps.n["<Leader>un"] = { function() Snacks.notifier.hide() end, desc = "Dismiss all notifications" }
-        maps.n["<Leader>fn"] = { function() Snacks.notifier.show_history() end, desc = "Notifications" }
-        maps.n["<Leader>c"] = { function() Snacks.bufdelete.delete() end, desc = "Delete current buffer" }
-        maps.n["<Leader>a"] = { function() Snacks.bufdelete.all() end, desc = "Delete all buffers" }
-        maps.n["<Leader>C"] = { function() Snacks.bufdelete.other() end, desc = "Delete all other buffers" }
+        maps.n["<Leader>un"] = { function() require("snacks").notifier.hide() end, desc = "Dismiss all notifications" }
+        maps.n["<Leader>fn"] = { function() require("snacks").notifier.show_history() end, desc = "Notifications" }
+        maps.n["<Leader>c"] = { function() require("snacks").bufdelete.delete() end, desc = "Delete current buffer" }
+        maps.n["<Leader>a"] = { function() require("snacks").bufdelete.all() end, desc = "Delete all buffers" }
+        maps.n["<Leader>C"] = { function() require("snacks").bufdelete.other() end, desc = "Delete all other buffers" }
         maps.n["<Leader>rb"] = {
-          function() Snacks.scratch.open { ft = vim.bo[vim.api.nvim_get_current_buf()].filetype, template = "" } end,
+          function()
+            require("snacks").scratch.open { ft = vim.bo[vim.api.nvim_get_current_buf()].filetype, template = "" }
+          end,
           desc = "Open scratch buffer with current ft",
         }
         maps.n["<Leader>rl"] = {
-          function() Snacks.scratch.select() end,
+          function() require("snacks").scratch.select() end,
           desc = "Select scratch buffer",
         }
-        maps.n["<Leader>R"] = { function() Snacks.rename.rename_file() end, desc = "Rename current file" }
-        maps.n["]r"] = { function() Snacks.words.jump(vim.v.count1) end, desc = "Next reference" }
-        maps.n["[r"] = { function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev reference" }
+        maps.n["<Leader>R"] = { function() require("snacks").rename.rename_file() end, desc = "Rename current file" }
+        maps.n["]r"] = { function() require("snacks").words.jump(vim.v.count1) end, desc = "Next reference" }
+        maps.n["[r"] = { function() require("snacks").words.jump(-vim.v.count1) end, desc = "Prev reference" }
       end,
     },
   },

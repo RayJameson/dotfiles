@@ -49,14 +49,14 @@ return {
         },
         mappings = {
           i = {
-            ["<cr>"] = require("telescope-undo.actions").restore,
-            ["<S-cr>"] = require("telescope-undo.actions").yank_additions,
-            ["<C-cr>"] = require("telescope-undo.actions").yank_deletions,
+            ["<cr>"] = function() require("telescope-undo.actions").restore() end,
+            ["<S-cr>"] = function() require("telescope-undo.actions").yank_additions() end,
+            ["<C-cr>"] = function() require("telescope-undo.actions").yank_deletions() end,
           },
           n = {
-            ["y"] = require("telescope-undo.actions").yank_additions,
-            ["Y"] = require("telescope-undo.actions").yank_deletions,
-            ["u"] = require("telescope-undo.actions").restore,
+            ["y"] = function() require("telescope-undo.actions").yank_additions() end,
+            ["Y"] = function() require("telescope-undo.actions").yank_deletions() end,
+            ["u"] = function() require("telescope-undo.actions").restore() end,
           },
         },
       },
@@ -121,49 +121,53 @@ return {
     "AstroNvim/astrocore",
     opts = function(_, opts)
       local maps = opts.mappings
-      local t_builtin = require("telescope.builtin")
-      local multigrep = require("telescope-multigrep")
       maps.n["<Leader>ls"] = {
         desc = "Find symbols",
       }
       maps.n["<Leader>lsa"] = {
-        function() t_builtin.lsp_document_symbols() end,
+        function() require("telescope.builtin").lsp_document_symbols() end,
         desc = "Find all symbols",
       }
       maps.n["<Leader>lsf"] = {
-        function() t_builtin.lsp_document_symbols { symbols = { "function" } } end,
+        function() require("telescope.builtin").lsp_document_symbols { symbols = { "function" } } end,
         desc = "Find functions symbols",
       }
       maps.n["<Leader>lsm"] = {
-        function() t_builtin.lsp_document_symbols { symbols = { "method" } } end,
+        function() require("telescope.builtin").lsp_document_symbols { symbols = { "method" } } end,
         desc = "Find method symbols",
       }
       maps.n["<Leader>lsv"] = {
-        function() t_builtin.lsp_document_symbols { symbols = { "variable" } } end,
+        function() require("telescope.builtin").lsp_document_symbols { symbols = { "variable" } } end,
         desc = "Find variable symbols",
       }
       maps.n["<Leader>lsc"] = {
-        function() t_builtin.lsp_document_symbols { symbols = { "class" } } end,
+        function() require("telescope.builtin").lsp_document_symbols { symbols = { "class" } } end,
         desc = "Find class symbols",
       }
-      maps.x["<Leader>fc"] = { function() t_builtin.grep_string() end, desc = "Visually selected text" }
+      maps.x["<Leader>fc"] =
+        { function() require("telescope.builtin").grep_string() end, desc = "Visually selected text" }
       maps.n["<Leader>fp"] = {
         function()
-          t_builtin.find_files {
+          require("telescope.builtin").find_files {
             ---@diagnostic disable-next-line: param-type-mismatch
             cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
           }
         end,
         desc = "Plugins files",
       }
-      maps.n["<Leader>fw"] = { multigrep.search, desc = "Words" }
+      maps.n["<Leader>fw"] = { function() require("telescope-multigrep").search() end, desc = "Words" }
       maps.n["<Leader>fW"] = {
-        function() multigrep.search { all_files = true, prompt_title = "Live Grep (with shortcuts) in all files" } end,
+        function()
+          require("telescope-multigrep").search {
+            all_files = true,
+            prompt_title = "Live Grep (with shortcuts) in all files",
+          }
+        end,
         desc = "Words in all files",
       }
       maps.n["<Leader>fP"] = {
         function()
-          multigrep.search {
+          require("telescope-multigrep").search {
             ---@diagnostic disable-next-line: param-type-mismatch
             cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
             prompt_title = "Live Grep (with shortcuts) in plugins files",
