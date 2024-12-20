@@ -2,7 +2,6 @@
 return {
   "3rd/image.nvim",
   cond = not vim.g.neovide,
-  enabled = vim.fn.executable("magick") == 1,
   ft = { "markdown", "vimwiki", "norg", "html", "css" },
   dependencies = {
     {
