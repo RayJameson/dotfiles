@@ -11,6 +11,8 @@ gtk-single-instance = true
 gtk-tabs-location = bottom
 gtk-wide-tabs = false
 window-decoration = false
+quick-terminal-position = bottom
+quick-terminal-animation-duration = 0.0
 
 # Font
 font-size = {{ if eq .chezmoi.os "linux" }}19{{ else if eq .chezmoi.os "darwin" }}24{{ end }}
@@ -64,5 +66,6 @@ keybind = alt+b>+six=goto_tab:6
 keybind = alt+b>+seven=goto_tab:7
 keybind = alt+b>+eight=goto_tab:8
 keybind = alt+b>+nine=goto_tab:9
+keybind = alt+b>+q=toggle_quick_terminal
 
 # vim: ft=ghostty
