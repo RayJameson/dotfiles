@@ -11,8 +11,8 @@ return {
       input = { enabled = true },
       quickfile = { enabled = true },
       statuscolumn = { enabled = false },
-      words = { enabled = not astrocore.is_available("vim-illuminate") },
-      bigfile = { enabled = not vim.tbl_get(astrocore.config, "autocmds", "large_buf_settings") },
+      words = { enabled = true },
+      bigfile = { enabled = true },
       notifier = {
         enabled = not astrocore.is_available("nvim-notify"),
         timeout = 3000,
