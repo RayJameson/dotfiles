@@ -27,7 +27,6 @@ return {
   (vim.fn.executable("chezmoi") == 1 and { import = "astrocommunity.pack.chezmoi" }) or {},
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
-  { import = "astrocommunity.editing-support.bigfile-nvim" },
   { import = "astrocommunity.quickfix.nvim-bqf" },
   { import = "astrocommunity.quickfix.quicker-nvim" },
   {
