@@ -28,6 +28,7 @@ regular = [
     "gpa-git",
     "helvum",
     "keepassxc",
+    "kitty",
     "lazygit-git",
     "lib32-stderred-git",
     "lib32-vulkan-icd-loader",
