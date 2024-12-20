@@ -6,16 +6,6 @@ return {
   ft = "python",
   dependencies = {
     { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
-    {
-      "AstroNvim/astrocore",
-      opts = {
-        mappings = {
-          n = {
-            ["<Leader>lv"] = { "<Cmd>VenvSelect<CR>", desc = "Select VirtualEnv" },
-          },
-        },
-      },
-    },
   },
   opts = {},
   cmd = "VenvSelect",
@@ -23,6 +13,11 @@ return {
     "AstroNvim/astrocore",
     ---@type AstroCoreOpts
     opts = {
+      mappings = {
+        n = {
+          ["<Leader>lv"] = { "<Cmd>VenvSelect<CR>", desc = "Select VirtualEnv" },
+        },
+      },
       autocmds = {
         VenvSelector = {
           {

@@ -3,15 +3,6 @@ return {
   cmd = "Neogit",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    { "AstroNvim/astroui", opts = { icons = { Neogit = "󰰔" } } },
-    {
-      "AstroNvim/astrocore",
-      opts = function(_, opts)
-        local maps = opts.mappings
-        local prefix = "<Leader>g"
-        maps.n[prefix .. "n"] = { "<Cmd>Neogit<CR>", desc = require("astroui").get_icon("Neogit", 1, true) .. "Neogit" }
-      end,
-    },
   },
   specs = {
     {
@@ -24,6 +15,7 @@ return {
       ---@type AstroCoreOpts
       "AstroNvim/astrocore",
       opts = {
+        mappings = { n = { ["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" } } },
         autocmds = {
           NeogitLogRefresh = {
             {

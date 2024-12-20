@@ -8,7 +8,7 @@ return {
     local function dap_ui_component()
       return {
         status.component.builder {
-          condition = function() return require("dap").session() ~= nil end,
+          condition = function() return package.loaded.dap and require("dap").session() ~= nil end,
           static = {
             symbols = {
               RUNNING = "",
@@ -31,10 +31,7 @@ return {
 
     local function grapple()
       return status.component.builder {
-        condition = function()
-          if not require("astrocore").is_available("grapple.nvim") then return false end
-          return require("grapple").exists()
-        end,
+        condition = function() return package.loaded.grapple and require("grapple").exists() end,
         { provider = " " },
         { provider = function() return require("grapple").statusline() end },
       }

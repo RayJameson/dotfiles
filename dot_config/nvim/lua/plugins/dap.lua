@@ -14,22 +14,21 @@ return {
         _,
         opts --[[@as AstroCoreOpts]]
       )
-        local dap = require("dap")
         local maps = opts.mappings
         maps.n["<Leader>d"] = { desc = require("astroui").get_icon("Debugger", 1, false) .. "Debugger" }
-        maps.n["<F8>"] = { function() dap.toggle_breakpoint() end, desc = "Toggle Breakpoint" }
-        maps.n["<F9>"] = { function() dap.step_over() end, desc = "Step Over" }
-        maps.n["<F10>"] = { function() dap.step_into() end, desc = "Step Into" }
-        maps.n["<S-F10>"] = { function() dap.step_out() end, desc = "Step Out (S-F10)" } -- Shift+F10
-        maps.n["<Leader>db"] = { function() dap.toggle_breakpoint() end, desc = "Toggle Breakpoint (F8)" }
-        maps.n["<Leader>di"] = { function() dap.step_into() end, desc = "Step Into (F10)" }
-        maps.n["<Leader>dO"] = { function() dap.step_out() end, desc = "Step Out (S-F10)" }
-        maps.n["<Leader>do"] = { function() dap.step_over() end, desc = "Step Over (F9)" }
-        maps.n["<Leader>da"] = { function() dap.step_back() end, desc = "Step Back (S-F9)" }
-        maps.n["<S-F9>"] = { function() dap.step_back() end, desc = "Step Back (S-F9)" }
-        maps.n["<Leader>dd"] = { function() dap.disconnect() end, desc = "Disconnect" }
-        maps.n["<C-F5>"] = { function() dap.restart_frame() end, desc = "Restart" } -- Control+F5
-        maps.n["<S-F5>"] = { function() dap.terminate() end, desc = "Stop" } -- Shift+F5
+        maps.n["<F8>"] = { function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" }
+        maps.n["<F9>"] = { function() require("dap").step_over() end, desc = "Step Over" }
+        maps.n["<F10>"] = { function() require("dap").step_into() end, desc = "Step Into" }
+        maps.n["<S-F10>"] = { function() require("dap").step_out() end, desc = "Step Out (S-F10)" } -- Shift+F10
+        maps.n["<Leader>db"] = { function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint (F8)" }
+        maps.n["<Leader>di"] = { function() require("dap").step_into() end, desc = "Step Into (F10)" }
+        maps.n["<Leader>dO"] = { function() require("dap").step_out() end, desc = "Step Out (S-F10)" }
+        maps.n["<Leader>do"] = { function() require("dap").step_over() end, desc = "Step Over (F9)" }
+        maps.n["<Leader>da"] = { function() require("dap").step_back() end, desc = "Step Back (S-F9)" }
+        maps.n["<S-F9>"] = { function() require("dap").step_back() end, desc = "Step Back (S-F9)" }
+        maps.n["<Leader>dd"] = { function() require("dap").disconnect() end, desc = "Disconnect" }
+        maps.n["<C-F5>"] = { function() require("dap").restart_frame() end, desc = "Restart" } -- Control+F5
+        maps.n["<S-F5>"] = { function() require("dap").terminate() end, desc = "Stop" } -- Shift+F5
         maps.n["<Leader>dh"] = {
           ---@diagnostic disable-next-line: missing-fields
           function() require("dapui").eval(nil, { enter = true }) end,
