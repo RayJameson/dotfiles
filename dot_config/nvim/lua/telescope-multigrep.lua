@@ -24,7 +24,7 @@ local M = {}
 ---@field all_files? boolean
 ---@field prompt_title? string
 
----@param opts MultiGrepOpts
+---@param opts? MultiGrepOpts
 M.search = function(opts)
   opts = opts or {}
   opts.cwd = opts.cwd and vim.fn.expand(opts.cwd) or (vim.uv.cwd() or vim.loop.cwd())
