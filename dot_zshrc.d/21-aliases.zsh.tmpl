@@ -23,6 +23,7 @@ alias czu='chezmoi update'
 # make functions for commands which could be used in piping
 {{- if lookPath "eza" -}}
 alias l="eza --long --icons --header --octal-permissions --all --sort name --git --group-directories-first"
+alias la="eza --icons --header --all --sort name --git --group-directories-first"
 alias lr="eza --long --icons --header --octal-permissions --all --sort name --git --group-directories-first --total-size"
 alias ls="eza --icons --sort name --group-directories-first --git"
 alias lo="eza --icons --sort name -1"
