@@ -49,8 +49,8 @@ function o() {
     fi;
 }
 function czde() {
-    chezmoi destroy --interactive $(chezmoi managed --path-style absolute | fzf --multi --header='Destroy: remove from source (chezmoi) and destination (home)')
+    chezmoi destroy --interactive $(chezmoi managed --path-style absolute | fzf-tmux $FZF_TMUX_OPTS --multi --header='Destroy: remove from source (chezmoi) and destination (home)')
 }
 function czf() {
-    chezmoi forget --interactive $(chezmoi managed --path-style absolute | fzf --multi --header='Forget: remove only in source (chezmoi)')
+    chezmoi forget --interactive $(chezmoi managed --path-style absolute | fzf-tmux $FZF_TMUX_OPTS --multi --header='Forget: remove only in source (chezmoi)')
 }
