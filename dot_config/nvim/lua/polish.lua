@@ -18,18 +18,6 @@ vim.opt.langmap = vim.fn.join({
   escape(ru) .. ";" .. escape(en),
 }, ",")
 
-if jit.os == "OSX" then
-  vim.cmd([[
-      " function OpenMarkdownPreview (url)
-      "     execute "silent ! open -a 'Brave Browser' -n --args --new-window " . a:url
-      " endfunction
-      function OpenMarkdownPreview (url)
-          execute "silent ! open_little_arc " . a:url
-      endfunction
-      let g:mkdp_browserfunc = 'OpenMarkdownPreview'
-    ]])
-end
-
 -----------------------------------------------------------------------------//
 -- Multiple Cursor Replacement
 -- http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
