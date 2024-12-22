@@ -1,0 +1,60 @@
+---@type LazySpec
+return {
+  "AstroNvim/astrocommunity",
+  { import = "astrocommunity.pack.lua" },
+  {{ if lookPath "rustc" -}} { import = "astrocommunity.pack.rust" }, {{- end }} -- rust
+  {{ if lookPath "go" -}} { import = "astrocommunity.pack.go" }, {{- end }} -- go
+  {{ if lookPath "docker" -}} { import = "astrocommunity.pack.docker" }, {{- end }} -- docker
+  {{ if lookPath "chezmoi" -}} { import = "astrocommunity.pack.chezmoi" }, {{- end }} -- chezmoi
+  {{ if lookPath "npm" -}}
+  { import = "astrocommunity.pack.yaml" }, -- npm
+  { import = "astrocommunity.pack.toml" }, -- npm
+  { import = "astrocommunity.pack.markdown" }, -- npm
+  { import = "astrocommunity.pack.json" }, -- npm
+  {{ end -}}
+  { import = "astrocommunity.completion.blink-cmp" },
+  { import = "astrocommunity.editing-support.todo-comments-nvim" },
+  { import = "astrocommunity.quickfix.nvim-bqf" },
+  { import = "astrocommunity.quickfix.quicker-nvim" },
+  {
+    "nvim-bqf",
+    optional = true,
+    opts = {
+      preview = {
+        winblend = 0,
+        auto_resize_height = true,
+        win_height = 999,
+      },
+    },
+  },
+  {
+    "todo-comments.nvim",
+    optional = true,
+    opts = {
+      keywords = {
+        TEST = {
+          icon = " ",
+          color = "test",
+          alt = { "TESTING", "TEST PASSED", "TEST FAILED" },
+        },
+        NOTE = {
+          icon = "󱞁 ",
+          color = "hint",
+          alt = { "INFO" },
+        },
+        PERF = { icon = "󱁤 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      },
+      colors = {
+        error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+        warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
+        info = "#61afef",
+        hint = "#10B981",
+        default = "#c882e7",
+        test = "#cbcb41",
+      },
+    },
+  },
+  { import = "astrocommunity.indent.mini-indentscope" },
+  { import = "astrocommunity.color.nvim-highlight-colors" },
+  { import = "astrocommunity.neovim-lua-development.helpview-nvim" },
+}
