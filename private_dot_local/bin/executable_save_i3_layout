@@ -4,5 +4,5 @@ DIR="$HOME/.config/i3/layouts"
 WS="$1"
 FILE_NAME="$DIR/workspace_$WS.json"
 
-i3-save-tree --workspace "$WS" > "$FILE_NAME" && \
+i3-save-tree --workspace="$WS" > "$FILE_NAME" && \
     sed -i 's|^\(\s*\)// "|\1"|g; /^\s*\/\//d' "$FILE_NAME"
