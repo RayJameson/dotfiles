@@ -1,86 +1,57 @@
 {
+    "border": "none",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+        "height": 1032,
+        "width": 1625,
+        "x": 5,
+        "y": 43
+    },
+    "marks": [],
+    "name": "Steam",
+    "percent": 0.85,
+    "swallows": [
+        {
+            "class": "^steam$",
+            "instance": "^steamwebhelper$",
+            "machine": ".*",
+            "title": "^Steam$"
+        }
+    ],
+    "type": "con"
+}
+
+{
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
     "marks": [],
-    "percent": 1,
+    "percent": 0.15,
     "type": "con",
     "nodes": [
         {
-            "border": "normal",
+            "border": "none",
+            "current_border_width": 0,
             "floating": "auto_off",
-            "layout": "splith",
+            "geometry": {
+                "height": 1032,
+                "width": 281,
+                "x": 1634,
+                "y": 43
+            },
             "marks": [],
-            "percent": 1,
-            "type": "con",
-            "nodes": [
+            "name": "Friends List",
+            "percent": null,
+            "swallows": [
                 {
-                    "border": "normal",
-                    "floating": "auto_off",
-                    "layout": "splith",
-                    "marks": [],
-                    "percent": 0.841145833333333,
-                    "type": "con",
-                    "nodes": [
-                        {
-                            "border": "none",
-                            "current_border_width": 0,
-                            "floating": "user_off",
-                            "geometry": {
-                                "height": 1032,
-                                "width": 1625,
-                                "x": 5,
-                                "y": 43
-                            },
-                            "marks": [],
-                            "name": "Steam",
-                            "percent": null,
-                            "swallows": [
-                                {
-                                    "class": "^steam$",
-                                    "instance": "^steamwebhelper$",
-                                    "machine": ".*",
-                                    "title": "^Steam$"
-                                }
-                            ],
-                            "type": "con"
-                        }
-                    ]
-                },
-                {
-                    "border": "normal",
-                    "floating": "auto_off",
-                    "layout": "splitv",
-                    "marks": [],
-                    "percent": 0.158854166666667,
-                    "type": "con",
-                    "nodes": [
-                        {
-                            "border": "none",
-                            "current_border_width": 0,
-                            "floating": "user_off",
-                            "geometry": {
-                                "height": 1032,
-                                "width": 281,
-                                "x": 1634,
-                                "y": 43
-                            },
-                            "marks": [],
-                            "name": "Friend list",
-                            "percent": 1,
-                            "swallows": [
-                                {
-                                    "class": "^steam$",
-                                    "instance": "^steamwebhelper$",
-                                    "machine": ".*",
-                                    "title": "^Список\\ друзей$|^Friends\\ List$"
-                                }
-                            ],
-                            "type": "con"
-                        }
-                    ]
+                    "class": "^steam$",
+                    "instance": "^steamwebhelper$",
+                    "machine": ".*",
+                    "title": "^Friends\\ List$|^Список\\ друзей$"
                 }
-            ]
+            ],
+            "type": "con"
         }
     ]
 }
