@@ -49,8 +49,8 @@ function o() {
     fi;
 }
 function czde() {
-    chezmoi destroy --interactive $(chezmoi managed --path-style absolute | fzf --multi)
+    chezmoi destroy --interactive $(chezmoi managed --path-style absolute | fzf --multi --header='Destroy: remove from source (chezmoi) and destination (home)')
 }
 function czf() {
-    chezmoi forget --interactive $(chezmoi managed --path-style absolute | fzf --multi)
+    chezmoi forget --interactive $(chezmoi managed --path-style absolute | fzf --multi --header='Forget: remove only in source (chezmoi)')
 }
