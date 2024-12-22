@@ -75,15 +75,13 @@ return {
           if type(runner) == "string" then
             return { runner, file }
           elseif type(runner) == "table" then
-            return vim.list_extend(runner, { file })
+            return vim.iter({ runner, { file } }):flatten():totable()
           end
         end
       end
 
       local filetype_to_cmd = {
-        python = function(file)
-          return run_with("python")(file), { env = { PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":") } }
-        end,
+        python = run_with("python"),
         sh = run_with("sh"),
         zsh = run_with("zsh"),
         bash = run_with("bash"),
