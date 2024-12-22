@@ -48,3 +48,9 @@ function o() {
         open "$@";
     fi;
 }
+function czde() {
+    chezmoi destroy --interactive $(chezmoi managed --path-style absolute | fzf --multi)
+}
+function czf() {
+    chezmoi forget --interactive $(chezmoi managed --path-style absolute | fzf --multi)
+}
