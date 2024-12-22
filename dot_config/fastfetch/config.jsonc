@@ -4,7 +4,7 @@
         "separator": " "
     },
     "logo": {
-        {{ if eq .chezmoi.os "linux" -}} "source": "/usr/share/icons/hicolor/256x256/apps/com.mitchellh.ghostty.png", {{- end}}
+        "source": "~/.config/ghostty/256x256_icon.png",
         "type": "kitty"
     },
     "modules": [
