@@ -47,9 +47,9 @@ return {
         direction = "bottom",
         max_height = { 100, 0.99 },
         height = 100,
-        max_width = { 100, 0.2 },
+        max_width = { 40, 0.4 },
         min_width = { 10, 0.1 },
-        width = 20,
+        width = 40,
         bindings = {
           ["<C-l>"] = false,
           ["<C-h>"] = false,
