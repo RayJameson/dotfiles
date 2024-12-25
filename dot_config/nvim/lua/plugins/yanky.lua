@@ -5,46 +5,50 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   event = "UIEnter",
-  opts = function()
-    local utils = require("yanky.utils")
-    local mapping = require("yanky.telescope.mapping")
-    return {
-      highlight = {
-        on_put = true,
-        on_yank = true,
-        timer = 100,
-      },
-      ring = {
-        history_length = 1000,
-        storage = "shada",
-        sync_with_numbered_registers = true,
-        cancel_event = "update",
-        ignore_registers = { "_" },
-      },
-      system_clipboard = {
-        sync_with_ring = false,
-      },
-      picker = {
-        telescope = {
-          use_default_mappings = false,
-          mappings = {
-            default = mapping.put("p"),
-            i = {
-              ["<c-p>"] = mapping.put("p"),
-              ["<c-x>"] = mapping.delete(),
-              ["<c-r>"] = mapping.set_register(utils.get_default_register()),
-            },
-            n = {
-              p = mapping.put("p"),
-              P = mapping.put("P"),
-              d = mapping.delete(),
-              r = mapping.set_register(utils.get_default_register()),
-            },
+  opts = {
+    highlight = {
+      on_put = true,
+      on_yank = true,
+      timer = 100,
+    },
+    ring = {
+      history_length = 1000,
+      storage = "shada",
+      sync_with_numbered_registers = true,
+      cancel_event = "update",
+      ignore_registers = { "_" },
+    },
+    system_clipboard = {
+      sync_with_ring = false,
+    },
+    picker = {
+      telescope = {
+        use_default_mappings = false,
+        mappings = {
+          default = function(prompt_bufnr) return require("yanky.telescope.mapping").put("p")(prompt_bufnr) end,
+          i = {
+            ["<c-p>"] = function(prompt_bufnr) return require("yanky.telescope.mapping").put("p")(prompt_bufnr) end,
+            ["<c-x>"] = function(prompt_bufnr) require("yanky.telescope.mapping").delete()(prompt_bufnr) end,
+            ["<c-r>"] = function(prompt_bufnr)
+              require("yanky.telescope.mapping").set_register(require("yanky.utils").get_default_register())(
+                prompt_bufnr
+              )
+            end,
+          },
+          n = {
+            p = function(prompt_bufnr) return require("yanky.telescope.mapping").put("p")(prompt_bufnr) end,
+            P = function(prompt_bufnr) return require("yanky.telescope.mapping").put("P")(prompt_bufnr) end,
+            d = function(prompt_bufnr) require("yanky.telescope.mapping").delete()(prompt_bufnr) end,
+            r = function(prompt_bufnr)
+              require("yanky.telescope.mapping").set_register(require("yanky.utils").get_default_register())(
+                prompt_bufnr
+              )
+            end,
           },
         },
       },
-    }
-  end,
+    },
+  },
   keys = {
     { "y", "<Plug>(YankyYank)", desc = "Yank", mode = { "n", "x" } },
     { "p", "<Plug>(YankyPutAfter)", desc = "Put after", mode = { "n", "x" } },
