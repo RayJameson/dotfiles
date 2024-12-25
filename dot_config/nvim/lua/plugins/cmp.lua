@@ -53,4 +53,11 @@ return {
     opts.mapping["<C-x><C-o>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
     return opts
   end,
+  specs = {
+    "AstroNvim/astrolsp",
+    opts = function(_, opts)
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      opts.capabilities = cmp_nvim_lsp.default_capabilities()
+    end,
+  },
 }
