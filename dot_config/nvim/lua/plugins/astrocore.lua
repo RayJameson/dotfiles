@@ -63,8 +63,10 @@ return {
         },
       },
       g = { -- vim.g.<key>
-        node_host_prog = vim.env.HOME .. "/.nvm/versions/node/v20.3.0/bin/node",
-        python3_host_prog = vim.env.HOME .. "/.pyenv/versions/neovim_base_venv/bin/python3",
+        loaded_perl_provider = false,
+        loaded_ruby_provider = false,
+        loaded_node_provider = false,
+        loaded_python3_provider = false,
         rustaceanvim = {
           tools = {
             float_win_config = {
