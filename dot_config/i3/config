@@ -144,7 +144,7 @@ smart_borders on
 ## preventing this from happening and must be used in combination with [command_criteria].
 ##
 ## Syntax: no_focus <criteria>
-#no_focus [window_role="pop-up"]
+no_focus [window_role="pop-up"]
 
 #------
 
