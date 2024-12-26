@@ -9,6 +9,7 @@ return {
         ["q"] = "close",
         ["<C-E>"] = "close",
       },
+      win = { wo = { colorcolumn = "" } },
       preview = {
         scratch = false,
       },
