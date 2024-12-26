@@ -8,7 +8,6 @@ return {
     "nvim-neotest/neotest-go",
     "nvim-neotest/neotest-python",
     "rouge8/neotest-rust",
-    "antoinemadec/FixCursorHold.nvim",
   },
   opts = function()
     return {
