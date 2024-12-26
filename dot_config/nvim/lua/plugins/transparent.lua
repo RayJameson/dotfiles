@@ -83,9 +83,11 @@ return {
       "NotifyTRACEBody",
       "NotifyLogTime",
       "NotifyLogTitle",
+      "RenderMarkdownCode",
     },
     -- table: groups you don't want to clear
     exclude_groups = {},
+    on_clear = function() vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = require("colors").bg_1 }) end,
   },
   keys = {
     { prefix .. "T", "<cmd>TransparentToggle<CR>", desc = "Toggle transparency" },
