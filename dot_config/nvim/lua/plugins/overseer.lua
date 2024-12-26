@@ -33,6 +33,7 @@ return {
                 [prefix .. "s"] = { "<Cmd>OverseerRun shell<CR>", desc = "Run shell" },
                 [prefix .. "f"] = { "<Cmd>OverseerRun file-run<CR>", desc = "Run file" },
                 [prefix .. "F"] = { "<Cmd>OverseerRun file-run-background<CR>", desc = "Run file in background" },
+                [prefix .. "h"] = { "<Cmd>OverseerRun file-run-horizontal-split<CR>", desc = "Run file in horizontal split" },
                 [prefix .. "t"] = { "<Cmd>OverseerRun file-run-tab<CR>", desc = "Run file in new tab" },
                 [prefix .. "l"] = { "<Cmd>OverseerLoadBundle<CR>", desc = "Load task bundle" },
               },
@@ -148,6 +149,14 @@ return {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
           desc = "Run single file in a new tab",
+        },
+        {
+          name = "file-run-horizontal-split",
+          builder = create_builder(true, "horizontal", function() vim.cmd.stopinsert() end),
+          condition = {
+            filetype = vim.tbl_keys(filetype_to_cmd),
+          },
+          desc = "Run single file in a horizontal split",
         },
         {
           name = "python run module",
