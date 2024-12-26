@@ -73,7 +73,7 @@ regular = [
     "winetricks",
     "wireplumber",
     "yazi-git",
-    "zen-browser-avx2-bin",
+    "zen-browser-bin",
     "zoxide",
 ]
 nvidia = [
