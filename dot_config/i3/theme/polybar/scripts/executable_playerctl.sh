@@ -11,7 +11,7 @@ status_ok() {
 
 get_song_name() {
     if status_ok; then
-        song_metadata=$(playerctl metadata -i "firefox" -f "{{ trunc(artist, 20) }} — {{ trunc(title, 15) }}" 2> /dev/null)
+        song_metadata=$(playerctl metadata -i "firefox" -i "brave" -f "{{ trunc(artist, 20) }} — {{ trunc(title, 15) }}" 2> /dev/null)
         echo "$song_metadata"
     else
         echo ""
