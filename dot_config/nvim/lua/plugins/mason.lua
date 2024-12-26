@@ -12,6 +12,10 @@ return {
         "lua:custom-registry", -- custom user registry
         "github:mason-org/mason-registry", -- make sure to add the default registry
       },
+      ui = {
+        border = "rounded",
+        height = 0.8,
+      },
     },
     config = function(_, opts)
       require("mason").setup(opts)
