@@ -13,6 +13,7 @@ brews = [
     "gh",
     "git",
     "glow",
+    "gping",
     "jq",
     "lazydocker",
     "llvm",

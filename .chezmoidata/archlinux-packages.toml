@@ -26,6 +26,7 @@ regular = [
     "git",
     "github-cli",
     "gpa-git",
+    "gping",
     "helvum",
     "keepassxc",
     "kitty",
