@@ -57,7 +57,6 @@ return {
       "TabLineSel",
       "Title",
       "Pmenu",
-      "PmenuSel",
       "PmenuSbar",
       "TabLine",
       "TreesitterContextLineNumber",
