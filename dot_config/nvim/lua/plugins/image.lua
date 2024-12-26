@@ -2,7 +2,8 @@
 return {
   "3rd/image.nvim",
   cond = not vim.g.neovide,
-  ft = { "markdown", "vimwiki", "norg", "html", "css" },
+  ft = { "vimwiki", "norg", "html", "css" },
+  event = "BufEnter *.md",
   dependencies = {
     {
       "nvim-treesitter/nvim-treesitter",
