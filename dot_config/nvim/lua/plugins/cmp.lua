@@ -24,7 +24,6 @@ return {
     local any_word = [[\k\+]]
     local cmp = require("cmp")
     local cmdline_mapping = cmp.mapping.preset.cmdline {
-      ["<CR>"] = { c = cmp.mapping.confirm { select = true } },
       ["<C-y>"] = { c = cmp.mapping.confirm { select = true } },
     }
     cmp.setup.cmdline("/", {
@@ -53,6 +52,7 @@ return {
         },
       },
     })
+    opts.mapping["<C-y>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i", "c" })
     opts.mapping["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
     opts.mapping["<C-x><C-o>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" })
     return opts
