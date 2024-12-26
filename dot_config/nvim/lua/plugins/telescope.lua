@@ -100,10 +100,10 @@ return {
 
     for _, mode in ipairs { "i", "n" } do
       opts.defaults.mappings[mode] = extend_tbl(opts.defaults.mappings[mode], {
-        ["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
-        ["<M-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-        ["<C-l>"] = actions.smart_add_to_loclist + actions.open_loclist,
-        ["<M-l>"] = actions.smart_send_to_loclist + actions.open_loclist,
+        ["<M-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
+        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+        ["<M-l>"] = actions.smart_add_to_loclist + actions.open_loclist,
+        ["<C-l>"] = actions.smart_send_to_loclist + actions.open_loclist,
         ["<CR>"] = select_one_or_multi,
         ["<C-y>"] = yank_path_or_content(":."),
         ["<C-Y>"] = yank_path_or_content(),
