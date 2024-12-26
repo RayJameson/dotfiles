@@ -34,6 +34,10 @@ font-style-bold-italic = Condensed Medium Oblique
 # MacOS specific stuff
 macos-option-as-alt = true
 macos-auto-secure-input = true
+{{ if eq .chezmoi.os "darwin" -}}
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+{{- end }}
 
 # Resize splits
 keybind = ctrl+shift+h=resize_split:left,20
