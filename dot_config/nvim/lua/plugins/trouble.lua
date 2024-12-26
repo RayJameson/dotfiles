@@ -4,6 +4,7 @@ return {
     "folke/trouble.nvim",
     cmd = "Trouble",
     opts = {
+      auto_refresh = false,
       keys = {
         ["<ESC>"] = "close",
         ["q"] = "close",
