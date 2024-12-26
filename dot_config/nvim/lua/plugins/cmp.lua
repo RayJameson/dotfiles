@@ -23,8 +23,12 @@ return {
     end
     local any_word = [[\k\+]]
     local cmp = require("cmp")
+    local cmdline_mapping = cmp.mapping.preset.cmdline {
+      ["<CR>"] = { c = cmp.mapping.confirm { select = true } },
+      ["<C-y>"] = { c = cmp.mapping.confirm { select = true } },
+    }
     cmp.setup.cmdline("/", {
-      mapping = cmp.mapping.preset.cmdline(),
+      mapping = cmdline_mapping,
       sources = {
         {
           name = "buffer",
@@ -34,7 +38,7 @@ return {
       },
     })
     cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
+      mapping = cmdline_mapping,
       sources = {
         {
           name = "path",
