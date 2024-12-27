@@ -47,3 +47,5 @@
     path = ~/.gitconfig_work
 [interactive]
 	diffFilter = diff-so-fancy --patch
+[rebase]
+	updateRefs = true
