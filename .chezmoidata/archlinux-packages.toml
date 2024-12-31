@@ -49,7 +49,7 @@ regular = [
     "pipewire-alsa",
     "pipewire-jack",
     "pipewire-pulse",
-    "protonup-qt",
+    "protonup-qt-bin",
     "ptpython",
     "python-pipx",
     "ripgrep",
