@@ -58,6 +58,7 @@ regular = [
     "sesh-bin",
     "stderred-git",
     "steam-native-runtime",
+    "steamtinkerlaunch-git",
     "syncthing",
     "syncthingtray-qt6",
     "tealdeer",
