@@ -41,11 +41,21 @@ tm() {
     local session_name=${1:-"main"}
     tmux new -A -s $session_name
 }
+# Normalize `open` across Linux, macOS, and Windows.
+# This is needed to make the `o` function
+if [ ! $(uname -s) = 'Darwin' ]; then
+    if grep -q Microsoft /proc/version; then
+        # Ubuntu on Windows using the Linux subsystem
+        alias open='explorer.exe'
+    else
+        alias open='xdg-open'
+    fi
+fi
 function o() {
     if [ $# -eq 0 ]; then
-        open .;
+        open .
     else
-        open "$@";
+        open "$@"
     fi;
 }
 function czde() {
