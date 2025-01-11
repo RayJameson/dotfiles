@@ -25,6 +25,7 @@ regular = [
     "fzy",
     "git",
     "github-cli",
+    "ghostty",
     "gpa-git",
     "gping",
     "helvum",
