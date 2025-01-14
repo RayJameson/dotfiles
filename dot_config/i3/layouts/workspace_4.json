@@ -33,14 +33,14 @@
                                "y": 43
                             },
                             "marks": [],
-                            "name": "KeePassDX Database - KeePassXC",
+                            "name": "KeePassXC",
                             "percent": null,
                             "swallows": [
                                {
                                "class": "^KeePassXC$",
                                "instance": "^keepassxc$",
                                "machine": "^archcraft$",
-                               "title": "^KeePassDX\\ Database\\ \\-\\ KeePassXC$"
+                               "title": ".*"
                                }
                             ],
                             "type": "con"
