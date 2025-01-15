@@ -124,7 +124,10 @@ return {
       status.component.cmd_info(),
       status.component.fill(),
       dap_ui_component(),
-      status.component.virtual_env { hl = { fg = "orange" } },
+      status.component.virtual_env {
+        hl = { fg = "orange" },
+        condition = function() return condition.has_virtual_env() and condition.buffer_matches { filetype = "python" } end,
+      },
       status.component.lsp(),
       status.component.treesitter(),
       status.component.nav(),
