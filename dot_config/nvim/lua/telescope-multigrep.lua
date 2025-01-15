@@ -28,16 +28,15 @@ local M = {}
 M.search = function(opts)
   opts = opts or {}
   opts.cwd = opts.cwd and vim.fn.expand(opts.cwd) or (vim.uv.cwd() or vim.loop.cwd())
-  opts.shortcuts = opts.shortcuts
-    or {
-      ["l"] = "*.lua",
-      ["v"] = "*.vim",
-      ["r"] = "*.rs",
-      ["g"] = "*.go",
-      ["p"] = "*.py",
-      ["j"] = "*.json",
-      ["y"] = "*.{yml,yaml}",
-    }
+  opts.shortcuts = vim.tbl_deep_extend("force", {
+    ["l"] = "*.lua",
+    ["v"] = "*.vim",
+    ["r"] = "*.rs",
+    ["g"] = "*.go",
+    ["p"] = "*.py",
+    ["j"] = "*.json",
+    ["y"] = "*.{yml,yaml}",
+  }, opts.shortcuts or {})
   opts.prompt_title = opts.prompt_title or "Live Grep (with shortcuts)"
   opts.pattern = opts.pattern or "%s"
 
@@ -50,7 +49,6 @@ M.search = function(opts)
       local args = { "rg" }
       if opts.all_files then vim.list_extend(args, { "--hidden", "--no-ignore" }) end
       if prompt_split[1] then vim.list_extend(args, { "-e", prompt_split[1] }) end
-
 
       if prompt_split[2] then
         table.insert(args, "-g")
@@ -70,7 +68,8 @@ M.search = function(opts)
           args,
           { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
         })
-        :flatten():totable()
+        :flatten()
+        :totable()
     end,
     entry_maker = make_entry.gen_from_vimgrep(opts),
     cwd = opts.cwd,
