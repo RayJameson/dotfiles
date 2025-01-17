@@ -19,7 +19,10 @@ return {
         maps.n[prefix] = { desc = require("astroui").get_icon("Grapple", 1, true) .. "Grapple" }
         maps.n[prefix .. "e"] = { "<Cmd>Grapple toggle_tags<CR>", desc = "Select from tags" }
         maps.n[prefix .. "t"] = {
-          "<Cmd>Grapple toggle<CR>",
+          function()
+            require("grapple").toggle()
+            vim.cmd.redrawstatus()
+          end,
           desc = "Toggle a file",
         }
         maps.n[prefix .. "s"] = {
