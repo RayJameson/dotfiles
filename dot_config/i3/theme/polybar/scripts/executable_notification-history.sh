@@ -28,6 +28,10 @@ function close_history {
     dunstctl close-all
 }
 
+function toggle_notifications {
+    dunstctl set-paused toggle
+}
+
 case $command in
 
     "display_history")
@@ -36,6 +40,10 @@ case $command in
 
     "close_history")
         close_history
+    ;;
+
+    "toggle_notifications")
+        toggle_notifications
     ;;
 
     *)
