@@ -45,7 +45,6 @@ return {
   },
   ---@param opts GrugFarOptionsOverride
   opts = function(_, opts)
-    opts.windowCreationCommand = "tabnew %"
     if not opts.icons then opts.icons = {} end
     opts.icons.enabled = vim.g.icons_enabled
     if not vim.g.icons_enabled then
