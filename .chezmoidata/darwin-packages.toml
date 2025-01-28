@@ -49,6 +49,7 @@ casks = [
     "kitty",
     "neovide",
     "obsidian",
+    "postman",
     "raycast",
     "syncthing",
     "telegram",
