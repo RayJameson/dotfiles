@@ -9,8 +9,6 @@ return {
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = { -- a table of overrides/changes when applying the astrotheme theme
-        Cursor = { bg = "#ffffff" },
-        TermCursor = { bg = "#ffffff" },
         CursorLineNr = { fg = C.blue_1 },
         CursorLine = { bg = C.bg },
         FoldColumn = { fg = C.grey_9, bg = C.none },
