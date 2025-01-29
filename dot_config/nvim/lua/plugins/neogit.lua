@@ -51,7 +51,6 @@ return {
       },
     },
   },
-  event = "User AstroGitFile",
   opts = function(_, opts)
     local utils = require("astrocore")
     local disable_builtin_notifications = utils.is_available("nvim-notify") or utils.is_available("noice.nvim")
