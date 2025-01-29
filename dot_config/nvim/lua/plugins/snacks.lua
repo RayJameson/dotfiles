@@ -21,38 +21,6 @@ return {
         border = "rounded",
         backdrop = false,
       },
-      dashboard = {
-        enabled = true,
-        preset = {
-          keys = {
-            { icon = " ", key = "f", desc = "Find files", action = ":lua Snacks.dashboard.pick('files')" },
-            { icon = " ", key = "n", desc = "New file", action = ":ene | startinsert" },
-            { icon = " ", key = "w", desc = "Find words", action = ":lua Snacks.dashboard.pick('live_grep')" },
-            {
-              icon = " ",
-              key = "z",
-              desc = "Find directories zoxide",
-              action = ":Telescope zoxide list",
-              enabled = function() return pcall(require, "telescope._extensions.zoxide") end,
-            },
-            { icon = " ", key = "r", desc = "Recent files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-            {
-              icon = " ",
-              key = "c",
-              desc = "Config",
-              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-            },
-            { icon = " ", key = "s", desc = "Restore last session", section = "session" },
-            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-          },
-        },
-        sections = {
-          { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-          { icon = " ", title = "Recent files", section = "recent_files", indent = 2, padding = 1 },
-          { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-        },
-      },
       styles = {
         notification = {
           wo = { wrap = true }, -- Wrap notifications
