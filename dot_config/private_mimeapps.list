@@ -28,7 +28,7 @@ application/x-extension-xhtml=zen-beta.desktop;zen.desktop;
 application/x-extension-xht=zen-beta.desktop;zen.desktop;
 
 [Default Applications]
-application/zip=thunar.desktop
+application/zip=org.gnome.FileRoller.desktop
 x-scheme-handler/http=zen.desktop
 x-scheme-handler/https=zen.desktop
 x-scheme-handler/chrome=zen.desktop
@@ -119,3 +119,4 @@ image/jpeg=viewnior.desktop
 image/png=viewnior.desktop
 application/x-desktop=dex.desktop
 x-scheme-handler/discord-424004941485572097=discord-424004941485572097.desktop
+x-scheme-handler/hydralauncher=hydralauncher.desktop
