@@ -62,7 +62,7 @@ regular = [
     "steam-native-runtime",
     "steamtinkerlaunch-git",
     "syncthing",
-    "syncthingtray-qt6",
+    "syncthing-gtk",
     "tealdeer",
     "telegram-desktop",
     "tmux-git",
