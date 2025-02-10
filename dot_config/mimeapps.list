@@ -120,3 +120,4 @@ image/png=viewnior.desktop
 application/x-desktop=dex.desktop
 x-scheme-handler/discord-424004941485572097=discord-424004941485572097.desktop
 x-scheme-handler/hydralauncher=hydralauncher.desktop
+x-scheme-handler/discord=vesktop.desktop
