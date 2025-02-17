@@ -29,7 +29,10 @@ return {
         -- control auto formatting on save
         enabled = false, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
+          "json",
+          "yaml",
+          "toml",
+          "markdown",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
