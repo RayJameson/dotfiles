@@ -13,6 +13,7 @@ return {
       statuscolumn = { enabled = false },
       words = { enabled = true },
       bigfile = { enabled = false },
+      image = { enabled = true },
       notifier = {
         enabled = not astrocore.is_available("nvim-notify"),
         timeout = 3000,
