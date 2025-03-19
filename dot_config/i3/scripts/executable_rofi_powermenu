@@ -70,7 +70,7 @@ confirm_exit() {
 confirm_run () {	
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
-        ${1} && ${2} && ${3}
+        ${1} && ${2} && ${3} && ${4}
     else
         exit
     fi	
@@ -83,9 +83,9 @@ run_cmd() {
 	elif [[ "$1" == '--opt2' ]]; then
 		confirm_run 'i3-msg exit'
 	elif [[ "$1" == '--opt3' ]]; then
-		confirm_run 'systemctl suspend'
+		confirm_run 'killall -q picom' 'systemctl suspend' 'betterlockscreen --lock dimblur -- --nofork' "$DIR/scripts/i3_comp"
 	elif [[ "$1" == '--opt4' ]]; then
-		confirm_run 'systemctl hibernate'
+		confirm_run 'killall -q picom' 'systemctl hibernate' 'betterlockscreen --lock dimblur -- --nofork' "$DIR/scripts/i3_comp"
 	elif [[ "$1" == '--opt5' ]]; then
 		confirm_run 'systemctl reboot'
 	elif [[ "$1" == '--opt6' ]]; then
