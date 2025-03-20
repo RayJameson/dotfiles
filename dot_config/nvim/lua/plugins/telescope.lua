@@ -7,7 +7,6 @@ return {
   optional = true,
   -- the first parameter is the plugin specification
   -- the second is the table of options as set up in Lazy with the `opts` key
-  dependencies = { "debugloop/telescope-undo.nvim" },
   opts = function(_, opts)
     opts.extensions = {
       zoxide = {
@@ -38,29 +37,6 @@ return {
           },
         },
       },
-      undo = {
-        use_delta = false,
-        use_custom_command = (
-          vim.fn.executable("diff-so-fancy") == 1 and { "bash", "-c", "echo '$DIFF' | diff-so-fancy | tail -n +6 " }
-        ) or nil,
-        layout_strategy = "vertical",
-        layout_config = {
-          preview_height = 0.5,
-          preview_cutoff = 0.3,
-        },
-        mappings = {
-          i = {
-            ["<cr>"] = function() require("telescope-undo.actions").restore() end,
-            ["<S-cr>"] = function() require("telescope-undo.actions").yank_additions() end,
-            ["<C-cr>"] = function() require("telescope-undo.actions").yank_deletions() end,
-          },
-          n = {
-            ["y"] = function() require("telescope-undo.actions").yank_additions() end,
-            ["Y"] = function() require("telescope-undo.actions").yank_deletions() end,
-            ["u"] = function() require("telescope-undo.actions").restore() end,
-          },
-        },
-      },
     }
   end,
   config = function(plugin, opts)
@@ -68,7 +44,6 @@ return {
     require("astronvim.plugins.configs.telescope")(plugin, opts)
     local telescope = require("telescope")
     local conditional_func = require("astrocore").conditional_func
-    conditional_func(telescope.load_extension, pcall(require, "telescope-undo"), "undo")
     conditional_func(telescope.load_extension, pcall(require, "telescope._extensions.zoxide"), "zoxide")
 
     local actions = require("telescope.actions")
@@ -113,7 +88,6 @@ return {
     end
   end,
   keys = {
-    { prefix .. "u", function() require("telescope").extensions.undo.undo() end, desc = "Undo history" },
     { prefix .. "s", function() require("telescope.builtin").spell_suggest() end, desc = "Spell suggestions" },
     { prefix .. "g", function() require("telescope.builtin").git_files() end, desc = "Git files" },
   },
