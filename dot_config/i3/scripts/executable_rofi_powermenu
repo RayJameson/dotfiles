@@ -79,13 +79,13 @@ confirm_run () {
 # Execute Command
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
-		betterlockscreen --lock dimblur
+		betterlockscreen --lock dimblur --show-layout
 	elif [[ "$1" == '--opt2' ]]; then
 		confirm_run 'i3-msg exit'
 	elif [[ "$1" == '--opt3' ]]; then
-		confirm_run 'killall -q picom' 'systemctl suspend' 'betterlockscreen --lock dimblur -- --nofork' "$DIR/scripts/i3_comp"
+		confirm_run 'killall -q picom' 'systemctl suspend' 'betterlockscreen --lock dimblur --show-layout -- --nofork' "$DIR/scripts/i3_comp"
 	elif [[ "$1" == '--opt4' ]]; then
-		confirm_run 'killall -q picom' 'systemctl hibernate' 'betterlockscreen --lock dimblur -- --nofork' "$DIR/scripts/i3_comp"
+		confirm_run 'killall -q picom' 'systemctl hibernate' 'betterlockscreen --lock dimblur --show-layout -- --nofork' "$DIR/scripts/i3_comp"
 	elif [[ "$1" == '--opt5' ]]; then
 		confirm_run 'systemctl reboot'
 	elif [[ "$1" == '--opt6' ]]; then
