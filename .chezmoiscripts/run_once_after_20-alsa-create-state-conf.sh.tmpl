@@ -1,0 +1,7 @@
+{{ if (and (eq .chezmoi.os "linux") (lookPath "alsactl")) -}}
+#!/usr/bin/env bash
+
+echo "Creating /etc/alsa/state-daemon.conf"
+sudo touch /etc/alsa/state-daemon.conf
+
+{{ end -}}
