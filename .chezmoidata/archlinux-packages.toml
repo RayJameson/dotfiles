@@ -27,6 +27,7 @@ regular = [
     "ghostty",
     "git",
     "github-cli",
+    "glfw",
     "gpa-git",
     "gping",
     "helvum",
@@ -36,6 +37,8 @@ regular = [
     "lib32-stderred-git",
     "lib32-vulkan-icd-loader",
     "libxnvctrl",
+    "linux-headers",
+    "linux-zen-headers",
     "luarocks",
     "lutris",
     "nautilus",
@@ -80,7 +83,7 @@ regular = [
     "zoxide",
 ]
 nvidia = [
-    "nvidia",
+    "nvidia-open-dkms",
     "nvidia-settings",
     "nvidia-utils",
     "lib32-nvidia-utils",
