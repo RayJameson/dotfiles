@@ -83,9 +83,9 @@ run_cmd() {
 	elif [[ "$1" == '--opt2' ]]; then
 		confirm_run 'i3-msg exit'
 	elif [[ "$1" == '--opt3' ]]; then
-		confirm_run 'killall -q picom' 'systemctl suspend' 'betterlockscreen --lock dimblur --show-layout -- --nofork' "$DIR/scripts/i3_comp"
+		confirm_run 'killall -q picom' 'systemctl suspend' 'betterlockscreen --lock dimblur --show-layout 1 -- --nofork' "$DIR/scripts/i3_comp"
 	elif [[ "$1" == '--opt4' ]]; then
-		confirm_run 'killall -q picom' 'systemctl hibernate' 'betterlockscreen --lock dimblur --show-layout -- --nofork' "$DIR/scripts/i3_comp"
+		confirm_run 'killall -q picom' 'systemctl hibernate' 'betterlockscreen --lock dimblur --show-layout 1 -- --nofork' "$DIR/scripts/i3_comp"
 	elif [[ "$1" == '--opt5' ]]; then
 		confirm_run 'systemctl reboot'
 	elif [[ "$1" == '--opt6' ]]; then
