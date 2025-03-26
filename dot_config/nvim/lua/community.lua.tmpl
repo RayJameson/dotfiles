@@ -5,7 +5,6 @@ return {
   {{ if lookPath "rustc" -}} { import = "astrocommunity.pack.rust" }, {{- end }} -- rust
   {{ if lookPath "go" -}} { import = "astrocommunity.pack.go" }, {{- end }} -- go
   {{ if lookPath "docker" -}} { import = "astrocommunity.pack.docker" }, {{- end }} -- docker
-  {{ if lookPath "chezmoi" -}} { import = "astrocommunity.pack.chezmoi" }, {{- end }} -- chezmoi
   {{ if lookPath "npm" -}}
   { import = "astrocommunity.pack.yaml" }, -- npm
   { import = "astrocommunity.pack.toml" }, -- npm
@@ -16,10 +15,6 @@ return {
   { import = "astrocommunity.editing-support.undotree" },
   { import = "astrocommunity.quickfix.nvim-bqf" },
   { import = "astrocommunity.quickfix.quicker-nvim" },
-  { import = "astrocommunity.completion.cmp-under-comparator" },
-  { import = "astrocommunity.completion.cmp-git" },
-  { import = "astrocommunity.completion.cmp-nerdfont" },
-  { import = "astrocommunity.completion.nvim-cmp-buffer-lines" },
   {
     "nvim-bqf",
     optional = true,
@@ -60,6 +55,5 @@ return {
       },
     },
   },
-  { import = "astrocommunity.indent.mini-indentscope" },
   { import = "astrocommunity.color.nvim-highlight-colors" },
 }

@@ -43,7 +43,7 @@ return {
         FloatShadow = { bg = C.bg },
         FloatShadowThrough = { bg = C.bg },
         TreesitterContextLineNumber = { fg = C.pale_red, bg = C.bg },
-        TelescopeSelection = { fg = C.fg, bg = C.surface1 },
+        SnacksPickerListCursorLine = { fg = C.fg, bg = C.surface1 },
         Type = { fg = C.cyan },
         ["@lsp.typemod.function.global"] = { fg = C.blue_1 },
         ["@method"] = { fg = C.cyan, bg = C.none },

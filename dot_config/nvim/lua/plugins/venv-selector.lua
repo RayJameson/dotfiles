@@ -4,9 +4,6 @@ return {
   branch = "regexp",
   enabled = vim.fn.executable("fd") == 1 or vim.fn.executable("fdfind") == 1 or vim.fn.executable("fd-find") == 1,
   ft = "python",
-  dependencies = {
-    { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
-  },
   opts = {},
   config = function(_, opts)
     -- NOTE: do not update dap python path, we do it lazily in dap config

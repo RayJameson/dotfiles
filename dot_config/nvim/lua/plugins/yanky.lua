@@ -1,9 +1,6 @@
 ---@type LazySpec
 return {
   "gbprod/yanky.nvim",
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-  },
   event = "UIEnter",
   opts = {
     highlight = {
@@ -20,33 +17,6 @@ return {
     },
     system_clipboard = {
       sync_with_ring = false,
-    },
-    picker = {
-      telescope = {
-        use_default_mappings = false,
-        mappings = {
-          default = function(prompt_bufnr) return require("yanky.telescope.mapping").put("p")(prompt_bufnr) end,
-          i = {
-            ["<c-p>"] = function(prompt_bufnr) return require("yanky.telescope.mapping").put("p")(prompt_bufnr) end,
-            ["<c-x>"] = function(prompt_bufnr) require("yanky.telescope.mapping").delete()(prompt_bufnr) end,
-            ["<c-r>"] = function(prompt_bufnr)
-              require("yanky.telescope.mapping").set_register(require("yanky.utils").get_default_register())(
-                prompt_bufnr
-              )
-            end,
-          },
-          n = {
-            p = function(prompt_bufnr) return require("yanky.telescope.mapping").put("p")(prompt_bufnr) end,
-            P = function(prompt_bufnr) return require("yanky.telescope.mapping").put("P")(prompt_bufnr) end,
-            d = function(prompt_bufnr) require("yanky.telescope.mapping").delete()(prompt_bufnr) end,
-            r = function(prompt_bufnr)
-              require("yanky.telescope.mapping").set_register(require("yanky.utils").get_default_register())(
-                prompt_bufnr
-              )
-            end,
-          },
-        },
-      },
     },
   },
   keys = {
@@ -65,23 +35,6 @@ return {
     { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before filter", mode = "n" },
   },
   specs = {
-    {
-      "nvim-telescope/telescope.nvim",
-      opts = function() require("telescope").load_extension("yank_history") end,
-      specs = {
-        "AstroNvim/astrocore",
-        opts = {
-          mappings = {
-            n = {
-              ["<Leader>fy"] = {
-                function() require("telescope").extensions.yank_history.yank_history() end,
-                desc = "Yank history",
-              },
-            },
-          },
-        },
-      },
-    },
     {
       "AstroNvim/astroui",
       ---@type AstroUIOpts

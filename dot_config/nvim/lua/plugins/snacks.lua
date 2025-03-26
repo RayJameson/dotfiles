@@ -11,6 +11,8 @@ return {
       input = { enabled = true },
       quickfile = { enabled = true },
       statuscolumn = { enabled = false },
+      dashboard = { enabled = false },
+      indent = { indent = { char = "│" }, scope = { char = "│" } },
       words = { enabled = true },
       bigfile = { enabled = false },
       image = { enabled = true },
