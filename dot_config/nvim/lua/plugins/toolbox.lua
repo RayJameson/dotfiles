@@ -65,6 +65,10 @@ return {
         execute = [[:s/\v]],
         require_input = true,
       },
+      {
+        name = "Toggle markdown render in current buffer",
+        execute = "RenderMarkdown buf_toggle",
+      },
     },
   },
 }
