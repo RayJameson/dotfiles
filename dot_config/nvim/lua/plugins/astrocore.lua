@@ -8,13 +8,13 @@ return {
       large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
       highlighturl = true, -- highlight URLs at start
+      diagnostics = { virtual_lines = true, virtual_text = false },
       notifications = true, -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-      underline = true,
+      underline = false,
       update_in_insert = false,
     },
     -- vim options can be configured here
@@ -32,7 +32,7 @@ return {
         colorcolumn = "120",
         mouse = "",
         tabstop = 4,
-        guicursor="n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor",
+        guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor",
         softtabstop = 4,
         shiftwidth = 4,
         foldlevelstart = 99,
