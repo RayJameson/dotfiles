@@ -9,10 +9,11 @@ return {
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
       highlighturl = true, -- highlight URLs at start
-      diagnostics = { virtual_lines = true, virtual_text = false },
+      diagnostics = true,
       notifications = true, -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
+    ---@type vim.diagnostics.Opts.VirtualText
     diagnostics = {
       underline = false,
       update_in_insert = false,
