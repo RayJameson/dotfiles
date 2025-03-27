@@ -2,7 +2,6 @@
 return {
   "stevearc/oil.nvim",
   specs = {
-    "nvim-tree/nvim-web-devicons",
     {
       "rebelot/heirline.nvim",
       optional = true,
