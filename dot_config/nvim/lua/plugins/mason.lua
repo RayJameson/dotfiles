@@ -1,10 +1,39 @@
-if vim.fn.executable("npm") == 0 then return {} end
+---@return fun(): boolean
+local function is_executable(binary)
+  return function() return vim.fn.executable(binary) == 1 end
+end
+if not is_executable("npm")() then return {} end
 
 local list_insert_unique = require("astrocore").list_insert_unique
 -- customize mason plugins
 ---@type LazySpec
 return {
-  -- use mason-lspconfig to configure LSP installations
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = {
+        -- servers
+        "bash-language-server",
+        "json-lsp",
+        "lua-language-server",
+        "vim-language-server",
+        "yaml-language-server",
+        "marksman",
+        { "goimports", condition = is_executable("go") },
+        { "basedpyright", condition = is_executable("python3") },
+        { "gopls", condition = is_executable("go") },
+        { "ruff", condition = is_executable("python3") },
+        -- linters
+        "hadolint",
+        -- formatters
+        "stylua",
+        { "pyink", condition = is_executable("python3") },
+        -- debuggers
+        { "debugpy", condition = is_executable("python3") },
+        { "delve", condition = is_executable("go") },
+      },
+    },
+  },
   {
     "williamboman/mason.nvim",
     opts = {
@@ -37,33 +66,9 @@ return {
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    -- overrides `require("mason-lspconfig").setup(...)`
-    opts = function(_, opts)
-      -- add more things to the ensure_installed table protecting against community packs modifying it
-      local servers = {
-        "lua_ls",
-        "vimls",
-        "jsonls",
-        "yamlls",
-      }
-      if vim.fn.executable("python3") == 1 then list_insert_unique(servers, { "ruff", "basedpyright" }) end
-      if vim.fn.executable("go") == 1 then list_insert_unique(servers, { "gopls" }) end
-      opts.ensure_installed = list_insert_unique(opts.ensure_installed, servers)
-    end,
-  },
-  -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
-  {
     "jay-babu/mason-null-ls.nvim",
     -- overrides `require("mason-null-ls").setup(...)`
     opts = function(_, opts)
-      -- add more things to the ensure_installed table protecting against community packs modifying it
-      local utils = {
-        -- "prettier",
-        "stylua",
-      }
-      -- if vim.fn.executable("python3") == 1 then table.insert(utils, "pyink") end
-      opts.ensure_installed = list_insert_unique(opts.ensure_installed, utils)
       opts.handlers = {
         luacheck = function() end,
         stylua = function() end,
@@ -83,7 +88,6 @@ return {
     },
     init = function() end,
     opts = function(_, opts)
-      if vim.fn.executable("python3") == 1 then list_insert_unique(opts.ensure_installed, { "python" }) end
       opts.handlers = {
         python = function(config)
           config.configurations = list_insert_unique(config.configurations, {
