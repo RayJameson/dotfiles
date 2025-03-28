@@ -79,6 +79,18 @@ return {
         }
         maps.n["<Leader>un"] = { function() require("snacks").notifier.hide() end, desc = "Dismiss all notifications" }
         maps.n["<Leader>fn"] = { function() require("snacks").notifier.show_history() end, desc = "Notifications" }
+        maps.n["<Leader>fP"] = {
+          function()
+            require("snacks").picker.grep { ft = { "lua", "vim" }, dirs = { vim.fn.stdpath("data") .. "/lazy" } }
+          end,
+          desc = "Words in plugins",
+        }
+        maps.n["<Leader>fp"] = {
+          function()
+            require("snacks").picker.files { ft = { "lua", "vim" }, dirs = { vim.fn.stdpath("data") .. "/lazy" } }
+          end,
+          desc = "Plugins",
+        }
         maps.n["<Leader>c"] = { function() require("snacks").bufdelete.delete() end, desc = "Delete current buffer" }
         maps.n["<Leader>a"] = { function() require("snacks").bufdelete.all() end, desc = "Delete all buffers" }
         maps.n["<Leader>C"] = { function() require("snacks").bufdelete.other() end, desc = "Delete all other buffers" }
