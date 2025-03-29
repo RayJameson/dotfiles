@@ -8,18 +8,15 @@ return {
   opts = function(_, opts)
     local astrocore = require("astrocore")
     return astrocore.extend_tbl(opts, {
-      input = { enabled = true },
-      quickfile = { enabled = true },
+      input = {},
+      quickfile = {},
+      words = {},
+      image = {},
+      notifier = {},
       statuscolumn = { enabled = false },
       dashboard = { enabled = false },
       indent = { indent = { char = "│" }, scope = { char = "│" } },
-      words = { enabled = true },
       bigfile = { enabled = false },
-      image = { enabled = true },
-      notifier = {
-        enabled = true,
-        timeout = 3000,
-      },
       win = {
         border = "rounded",
         backdrop = false,
