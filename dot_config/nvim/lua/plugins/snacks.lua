@@ -11,7 +11,7 @@ return {
       input = {},
       quickfile = {},
       words = {},
-      image = {},
+      image = { doc = { enabled = true } },
       notifier = {},
       statuscolumn = { enabled = false },
       dashboard = { enabled = false },
