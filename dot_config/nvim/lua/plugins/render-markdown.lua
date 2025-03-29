@@ -14,6 +14,10 @@ return {
     },
   },
   opts = {
+    completions = {
+      blink = { enabled = true },
+      lsp = { enabled = true },
+    },
     render_modes = { "n", "c", "i", "v" },
     win_options = {
       conceallevel = {
