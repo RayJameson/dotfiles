@@ -17,7 +17,7 @@ return {
       bigfile = { enabled = false },
       image = { enabled = true },
       notifier = {
-        enabled = not astrocore.is_available("nvim-notify"),
+        enabled = true,
         timeout = 3000,
       },
       win = {
@@ -51,7 +51,6 @@ return {
     } --[[@as snacks.plugins.Config]])
   end,
   specs = {
-    { "rcarriga/nvim-notify", enabled = false },
     { "RRethy/vim-illuminate", enabled = false },
     {
       "rebelot/heirline.nvim",
