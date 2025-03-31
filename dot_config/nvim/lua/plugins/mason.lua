@@ -46,23 +46,6 @@ return {
         backdrop = 100,
       },
     },
-    config = function(_, opts)
-      require("mason").setup(opts)
-
-      local cmd = vim.api.nvim_create_user_command
-      cmd("MasonUpdate", function(options) require("astrocore.mason").update(options.fargs) end, {
-        nargs = "*",
-        desc = "Update Mason Package",
-        complete = function(arg_lead)
-          local _ = require("mason-core.functional")
-          return _.sort_by(
-            _.identity,
-            _.filter(_.starts_with(arg_lead), require("mason-registry").get_installed_package_names())
-          )
-        end,
-      })
-      cmd("MasonUpdateAll", function() require("astrocore.mason").update_all() end, { desc = "Update Mason Packages" })
-    end,
   },
   {
     "jay-babu/mason-null-ls.nvim",
