@@ -33,9 +33,58 @@ return {
                 [prefix .. "s"] = { "<Cmd>OverseerRun shell<CR>", desc = "Run shell" },
                 [prefix .. "f"] = { "<Cmd>OverseerRun file-run<CR>", desc = "Run file" },
                 [prefix .. "F"] = { "<Cmd>OverseerRun file-run-background<CR>", desc = "Run file in background" },
-                [prefix .. "h"] = { "<Cmd>OverseerRun file-run-horizontal-split<CR>", desc = "Run file in horizontal split" },
+                [prefix .. "h"] = {
+                  "<Cmd>OverseerRun file-run-horizontal-split<CR>",
+                  desc = "Run file in horizontal split",
+                },
                 [prefix .. "t"] = { "<Cmd>OverseerRun file-run-tab<CR>", desc = "Run file in new tab" },
                 [prefix .. "l"] = { "<Cmd>OverseerLoadBundle<CR>", desc = "Load task bundle" },
+              },
+            },
+            commands = {
+              Make = {
+                function(params)
+                  -- Insert args at the '$*' in the makeprg
+                  local cmd, num_subs = vim.o.makeprg:gsub("%$%*", params.args)
+                  if num_subs == 0 then cmd = cmd .. " " .. params.args end
+                  local task = require("overseer").new_task {
+                    cmd = vim.fn.expandcmd(cmd),
+                    components = {
+                      { "on_output_quickfix", open = not params.bang, open_height = 8 },
+                      "default",
+                    },
+                  }
+                  task:start()
+                end,
+                desc = "Run your makeprg as an Overseer task",
+                nargs = "*",
+                bang = true,
+              },
+              Grep = {
+                function(params)
+                  -- Insert args at the '$*' in the grepprg
+                  local cmd, num_subs = vim.o.grepprg:gsub("%$%*", params.args)
+                  if num_subs == 0 then cmd = cmd .. " " .. params.args end
+                  local task = require("overseer").new_task {
+                    cmd = vim.fn.expandcmd(cmd),
+                    components = {
+                      {
+                        "on_output_quickfix",
+                        errorformat = vim.o.grepformat,
+                        open = not params.bang,
+                        open_height = 8,
+                        items_only = true,
+                      },
+                      -- We don't care to keep this around as long as most tasks
+                      { "on_complete_dispose", timeout = 30 },
+                      "default",
+                    },
+                  }
+                  task:start()
+                end,
+                nargs = "*",
+                bang = true,
+                complete = "file",
               },
             },
           })
