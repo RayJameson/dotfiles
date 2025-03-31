@@ -217,6 +217,7 @@ return {
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
               strategy = {
                 "toggleterm",
+                on_create = function() vim.cmd.stopinsert() end,
                 open_on_start = true,
                 direction = "tab",
                 hidden = true,
