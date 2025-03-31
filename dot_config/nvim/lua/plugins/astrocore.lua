@@ -31,6 +31,7 @@ return {
         signcolumn = "auto:2", -- sets vim.opt.signcolumn to auto
         swapfile = false,
         colorcolumn = "120",
+        foldcolumn = "1",
         mouse = "",
         tabstop = 4,
         guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor",
@@ -78,6 +79,97 @@ return {
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+      },
+    },
+    autocmds = {
+      bufferline = false,
+      RememberFolds = {
+        {
+          event = "BufWinLeave",
+          pattern = ".+",
+          callback = vim.cmd.mkview,
+        },
+        {
+          event = "BufWinEnter",
+          pattern = ".+",
+          callback = vim.cmd.loadview,
+        },
+      },
+      TermNumbers = {
+        {
+          event = "TermOpen",
+          callback = function()
+            vim.opt_local.number = false
+            vim.opt_local.relativenumber = false
+            vim.opt_local.foldcolumn = "0"
+            vim.opt_local.signcolumn = "no"
+          end,
+        },
+      },
+      RelativeNumberSwitch = {
+        {
+          event = "InsertEnter",
+          callback = function() vim.opt_local.relativenumber = false end,
+        },
+        {
+          event = "InsertLeave",
+          callback = function() vim.opt_local.relativenumber = true end,
+        },
+      },
+      QuickFix = {
+        {
+          event = "FileType",
+          pattern = "qf",
+          callback = function()
+            vim.opt_local.colorcolumn = ""
+            vim.opt_local.signcolumn = "auto:9"
+            vim.opt_local.relativenumber = true
+            vim.opt_local.list = false
+          end,
+        },
+      },
+      DynamicColorColumn = {
+        {
+          event = "FileType",
+          pattern = { "markdown", "dockerfile", "make" },
+          callback = function() vim.opt_local.colorcolumn = "" end,
+        },
+        {
+          event = "FileType",
+          pattern = "gitcommit",
+          callback = function() vim.opt_local.colorcolumn = "71" end,
+        },
+      },
+      FileSceletons = (function()
+        local result = {}
+        for file_extension, command in pairs {
+          sh = "bash",
+          zsh = "zsh",
+          fish = "fish",
+          ksh = "ksh",
+          awk = "awk",
+        } do
+          table.insert(result, {
+            event = "BufNewFile",
+            pattern = "*." .. file_extension,
+            callback = function()
+              vim.api.nvim_buf_set_lines(0, 0, 0, true, {
+                "#!/usr/bin/env " .. command,
+              })
+            end,
+          })
+        end
+        return result
+      end)(),
+      HelpPages = {
+        {
+          event = "BufEnter",
+          callback = function(args)
+            if vim.bo[args.buf].buftype == "help" or vim.bo[args.buf].filetype == "man" then
+              vim.cmd.wincmd { "T", mods = { silent = true } }
+            end
+          end,
+        },
       },
     },
   },

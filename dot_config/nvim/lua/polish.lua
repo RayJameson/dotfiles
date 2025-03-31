@@ -85,7 +85,6 @@ vim.api.nvim_create_user_command(
   function(opts) better_luafile.call(opts.fargs, "horizontal", 15, true) end,
   { nargs = "?" }
 )
-require("autocmds")
 
 if vim.g.neovide then
   local copy_shortcuts = { "<C-S-C>" }
