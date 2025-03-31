@@ -15,8 +15,6 @@ return {
     -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
     opts.diagnostics_format = "#{m} [#{c}] "
     opts.sources = {
-      -- Set a formatternone
-      nls.builtins.code_actions.gitsigns,
       -- nls.builtins.formatting.pyink.with {
       --   extra_args = {
       --     "--line-length=120",
