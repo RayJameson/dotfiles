@@ -63,15 +63,26 @@ return {
       opts = function(_, opts)
         local maps = opts.mappings
 
-        opts.autocmds.snacks_toggle = {
-          event = "User",
-          pattern = "VeryLazy",
-          callback = function()
-            -- Setup some globals for debugging (lazy-loaded)
-            _G.dd = function(...) require("snacks").debug.inspect(...) end
-            _G.bt = function() require("snacks").debug.backtrace() end
-            vim.print = _G.dd -- Override print to use snacks for `:=` command
-          end,
+        opts.autocmds.Snacks = {
+          {
+            event = "User",
+            pattern = "VeryLazy",
+            callback = function()
+              -- Setup some globals for debugging (lazy-loaded)
+              _G.dd = function(...) require("snacks").debug.inspect(...) end
+              _G.bt = function() require("snacks").debug.backtrace() end
+              vim.print = _G.dd -- Override print to use snacks for `:=` command
+            end,
+          },
+          {
+            event = "User",
+            pattern = "OilActionsPost",
+            callback = function(event)
+              if event.data.actions.type == "move" then
+                require("snacks").rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
+              end
+            end,
+          },
         }
         maps.n["<Leader>un"] = { function() require("snacks").notifier.hide() end, desc = "Dismiss all notifications" }
         maps.n["<Leader>fn"] = { function() require("snacks").notifier.show_history() end, desc = "Notifications" }
