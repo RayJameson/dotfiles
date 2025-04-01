@@ -68,7 +68,6 @@ return {
       -- defaults write com.apple.CrashReporter DialogType prompt
       -- credit: https://github.com/mfussenegger/nvim-dap-python/issues/151#issuecomment-2221639990
     },
-    init = function() end,
     opts = function(_, opts)
       opts.handlers = {
         python = function(config)
