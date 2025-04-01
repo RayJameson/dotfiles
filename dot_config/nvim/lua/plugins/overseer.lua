@@ -42,6 +42,12 @@ return {
               },
             },
             commands = {
+              C = {
+                function(opts) vim.cmd { cmd = "OverseerRunCmd", args = opts.fargs } end,
+                nargs = "*",
+                desc = "Async run shell command",
+                complete = "shellcmdline",
+              },
               Make = {
                 function(params)
                   -- Insert args at the '$*' in the makeprg
