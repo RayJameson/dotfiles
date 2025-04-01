@@ -36,6 +36,26 @@ return {
             function() trouble.toggle { mode = "lsp_references", focus = true, auto_jump = true } end,
             desc = "LSP references [T]",
           }
+          maps.n.go = {
+            function() trouble.toggle { mode = "lsp_incoming_calls", focus = true, auto_jump = true } end,
+            desc = "LSP incoming calls [T]",
+          }
+          maps.n.gO = {
+            function() trouble.toggle { mode = "lsp_outgoing_calls", focus = true, auto_jump = true } end,
+            desc = "LSP outgoing calls [T]",
+          }
+          maps.n["<Leader>li"] = {
+            function() trouble.toggle { mode = "lsp_incoming_calls", focus = true, auto_jump = true } end,
+            desc = "LSP incoming calls [T]",
+          }
+          maps.n["<Leader>lI"] = {
+            function() trouble.toggle { mode = "lsp_implementations", focus = true, auto_jump = true } end,
+            desc = "LSP implementations [T]",
+          }
+          maps.n["<Leader>lo"] = {
+            function() trouble.toggle { mode = "lsp_outgoing_calls", focus = true, auto_jump = true } end,
+            desc = "LSP outgoing calls [T]",
+          }
           maps.n["<Leader>lR"] = {
             function() trouble.toggle { mode = "lsp_references", focus = true, auto_jump = true } end,
             desc = "LSP references [T]",
