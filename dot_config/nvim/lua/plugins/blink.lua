@@ -3,6 +3,7 @@ return {
   "Saghen/blink.cmp",
   version = "*",
   opts = {
+    cmdline = { enabled = true },
     completion = {
       ghost_text = {
         enabled = false,
