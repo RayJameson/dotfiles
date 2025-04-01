@@ -52,6 +52,10 @@ return {
             function() trouble.toggle { mode = "lsp_implementations", focus = true, auto_jump = true } end,
             desc = "LSP implementations [T]",
           }
+          maps.n["<Leader>lt"] = {
+            function() trouble.toggle { mode = "lsp_type_definitions", focus = true, auto_jump = true } end,
+            desc = "LSP type definitions [T]",
+          }
           maps.n["<Leader>lo"] = {
             function() trouble.toggle { mode = "lsp_outgoing_calls", focus = true, auto_jump = true } end,
             desc = "LSP outgoing calls [T]",

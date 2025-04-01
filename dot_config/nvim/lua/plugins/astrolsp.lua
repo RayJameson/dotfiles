@@ -18,6 +18,7 @@ return {
       if maps.n.gD then maps.n.gD = false end
       if maps.n.gI then maps.n.gI[1] = function() vim.lsp.buf.implementation() end end
       maps.n["<Leader>lI"] = { function() vim.lsp.buf.implementation() end, desc = "LSP implementations" }
+      maps.n["<Leader>lt"] = { function() vim.lsp.buf.type_definition() end, desc = "LSP type definition" }
       maps.n["<Leader>li"] = { function() vim.lsp.buf.incoming_calls() end, desc = "LSP incoming calls" }
       maps.n["<Leader>lo"] = { function() vim.lsp.buf.outgoing_calls() end, desc = "LSP outgoing calls" }
       -- Configuration table of features provided by AstroLSP
