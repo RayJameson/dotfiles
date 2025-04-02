@@ -31,45 +31,44 @@ return {
           opts --[[@as AstroLSPOpts]]
         )
           local maps = opts.mappings
-          local trouble = require("trouble")
           maps.n.gr = {
-            function() trouble.toggle { mode = "lsp_references", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_references", focus = true, auto_jump = true } end,
             desc = "LSP references [T]",
           }
           maps.n.go = {
-            function() trouble.toggle { mode = "lsp_incoming_calls", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_incoming_calls", focus = true, auto_jump = true } end,
             desc = "LSP incoming calls [T]",
           }
           maps.n.gO = {
-            function() trouble.toggle { mode = "lsp_outgoing_calls", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_outgoing_calls", focus = true, auto_jump = true } end,
             desc = "LSP outgoing calls [T]",
           }
           maps.n["<Leader>li"] = {
-            function() trouble.toggle { mode = "lsp_incoming_calls", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_incoming_calls", focus = true, auto_jump = true } end,
             desc = "LSP incoming calls [T]",
           }
           maps.n["<Leader>lI"] = {
-            function() trouble.toggle { mode = "lsp_implementations", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_implementations", focus = true, auto_jump = true } end,
             desc = "LSP implementations [T]",
           }
           maps.n["<Leader>lt"] = {
-            function() trouble.toggle { mode = "lsp_type_definitions", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_type_definitions", focus = true, auto_jump = true } end,
             desc = "LSP type definitions [T]",
           }
           maps.n["<Leader>lo"] = {
-            function() trouble.toggle { mode = "lsp_outgoing_calls", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_outgoing_calls", focus = true, auto_jump = true } end,
             desc = "LSP outgoing calls [T]",
           }
           maps.n["<Leader>lR"] = {
-            function() trouble.toggle { mode = "lsp_references", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_references", focus = true, auto_jump = true } end,
             desc = "LSP references [T]",
           }
           maps.n.gd = {
-            function() trouble.toggle { mode = "lsp_definitions", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_definitions", focus = true, auto_jump = true } end,
             desc = "LSP definitions [T]",
           }
           maps.n.gI = {
-            function() trouble.toggle { mode = "lsp_implementations", focus = true, auto_jump = true } end,
+            function() require("trouble").toggle { mode = "lsp_implementations", focus = true, auto_jump = true } end,
             desc = "LSP implementations [T]",
           }
         end,
@@ -82,31 +81,30 @@ return {
         )
           local maps = opts.mappings
           local prefix = "<Leader>x"
-          local trouble = require("trouble")
           maps.n[prefix] = { desc = require("astroui").get_icon("Trouble", 1, true) .. "Trouble" }
           maps.n[prefix .. "X"] = {
-            function() trouble.toggle { mode = "diagnostics", focus = true } end,
+            function() require("trouble").toggle { mode = "diagnostics", focus = true } end,
             desc = "Workspace Diagnostics [T]",
           }
           maps.n[prefix .. "x"] = {
-            function() trouble.toggle { mode = "diagnostics", focus = true, filter = { buf = 0 } } end,
+            function() require("trouble").toggle { mode = "diagnostics", focus = true, filter = { buf = 0 } } end,
             desc = "Document Diagnostics [T]",
           }
           maps.n[prefix .. "L"] = {
-            function() trouble.toggle { mode = "loclist", focus = true } end,
+            function() require("trouble").toggle { mode = "loclist", focus = true } end,
             desc = "Location List [T]",
           }
           maps.n[prefix .. "Q"] = {
-            function() trouble.toggle { mode = "quickfix", focus = true } end,
+            function() require("trouble").toggle { mode = "quickfix", focus = true } end,
             desc = "Quickfix List [T]",
           }
           if require("astrocore").is_available("todo-comments.nvim") then
             maps.n[prefix .. "t"] = {
-              function() trouble.toggle { mode = "todo", focus = true, filter = { tag = { "TODO" } } } end,
+              function() require("trouble").toggle { mode = "todo", focus = true, filter = { tag = { "TODO" } } } end,
               desc = "Todo [T]",
             }
             maps.n[prefix .. "T"] = {
-              function() trouble.toggle { mode = "todo", focus = true } end,
+              function() require("trouble").toggle { mode = "todo", focus = true } end,
               desc = "All comments [T]",
             }
           end
@@ -118,7 +116,7 @@ return {
                 if vim.bo[args.buf].filetype == "trouble" then
                   local cursor_pos = vim.api.nvim_win_get_cursor(0)
                   ---@diagnostic disable-next-line: missing-parameter
-                  if cursor_pos[1] == 1 and cursor_pos[2] == 0 then vim.schedule(function() trouble.next() end) end
+                  if cursor_pos[1] == 1 and cursor_pos[2] == 0 then vim.schedule(function() require("trouble").next() end) end
                 end
               end,
             },
@@ -131,12 +129,12 @@ return {
               callback = function()
                 maps.n["j"] = {
                   ---@diagnostic disable-next-line: missing-parameter
-                  function() trouble.next() end,
+                  function() require("trouble").next() end,
                   desc = "Jump to next entry",
                 }
                 maps.n["k"] = {
                   ---@diagnostic disable-next-line: missing-parameter
-                  function() trouble.prev() end,
+                  function() require("trouble").prev() end,
                   desc = "Jump to previous entry",
                 }
                 require("astrocore").set_mappings(maps, { buffer = 0 })
