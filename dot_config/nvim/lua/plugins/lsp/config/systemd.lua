@@ -2,11 +2,12 @@ if not vim.fn.executable("systemd_ls") then return {} end
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
-  ---@param opts AstroLSPOpts
-  opts = function(_, opts)
-    opts.servers = opts.servers or {}
-    table.insert(opts.servers, "systemd_ls")
-    opts.config = require("astrocore").extend_tbl(opts.config or {}, {
+  opts_extends = { "servers" },
+  ---@type AstroLSPOpts
+  opts = {
+    servers = { "systemd_ls" },
+    ---@diagnostic disable-next-line: missing-fields
+    config = {
       systemd_ls = {
         cmd = { "systemd_ls" },
         filetypes = { "systemd" },
@@ -23,6 +24,6 @@ I tested it with python 3.10.15
 ]],
         },
       },
-    })
-  end,
+    },
+  },
 }
