@@ -15,6 +15,7 @@ return {
         -- servers
         "bash-language-server",
         "json-lsp",
+        "taplo",
         "lua-language-server",
         "vim-language-server",
         "yaml-language-server",
@@ -22,9 +23,14 @@ return {
         { "goimports", condition = is_executable("go") },
         { "basedpyright", condition = is_executable("python3") },
         { "gopls", condition = is_executable("go") },
+        { "gofumpt", condition = is_executable("go") },
+        { "goimports", condition = is_executable("go") },
+        { "gomodifytags", condition = is_executable("go") },
         { "ruff", condition = is_executable("python3") },
         -- linters
         "hadolint",
+        "luacheck",
+        "selene",
         -- formatters
         "stylua",
         -- debuggers
