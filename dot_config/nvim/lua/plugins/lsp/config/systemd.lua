@@ -2,7 +2,7 @@ if not vim.fn.executable("systemd_ls") then return {} end
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
-  opts_extends = { "servers" },
+  opts_extend = { "servers" },
   ---@type AstroLSPOpts
   opts = {
     servers = { "systemd_ls" },
