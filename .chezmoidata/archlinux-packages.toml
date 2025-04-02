@@ -70,7 +70,7 @@ regular = [
     "telegram-desktop",
     "timg",
     "tmux-git",
-    "todoist-nativefier",
+    "todoist-appimage",
     "transmission-gtk",
     "vencord",
     "vulkan-icd-loader",
