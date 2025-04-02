@@ -9,7 +9,7 @@ return Pkg.new {
   install = function(ctx)
     -- NOTE: using my fork, opened PR upstream https://github.com/psacawa/systemd-language-server/pull/4
     pip3.install({ "git+https://github.com/RayJameson/systemd-language-server.git" }):with_receipt() -- very easy way to install this...
-    ctx:link_bin("systemd-language-server", "venv/bin/systemd-language-server")
+    ctx:link_bin("systemd_ls", "venv/bin/systemd-language-server")
 
     -- pip3.install { "systemd-language-server" }:with_receipt() -- very easy way to install this...
 
