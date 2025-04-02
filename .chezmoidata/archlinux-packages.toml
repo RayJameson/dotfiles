@@ -5,6 +5,7 @@ regular = [
     "archlinux-keyring",
     "asciinema",
     "asciinema-agg-bin",
+    "ast-grep-bin",
     "autotiling",
     "base-devel",
     "bat",

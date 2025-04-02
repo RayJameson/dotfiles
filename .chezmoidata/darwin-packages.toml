@@ -1,6 +1,7 @@
 [packages.darwin]
 brews = [
     "asciinema",
+    "ast-grep",
     "bash",
     "bat",
     "bob",
