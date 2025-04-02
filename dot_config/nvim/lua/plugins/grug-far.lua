@@ -13,16 +13,40 @@ return {
       ---@param opts AstroCoreOpts
       opts = function(_, opts)
         if not opts.mappings then opts.mappings = require("astrocore").empty_map_table() end
-        local maps, prefix = opts.mappings, "<Leader>s"
+        local maps, prefix = opts.mappings, "<Leader>s" ---@cast maps -nil
 
-        maps.n[prefix] = {
+        maps.n[prefix] = { desc = require("astroui").get_icon("GrugFar", 1, true) .. "Search and Replace" }
+        maps.x[prefix] = { desc = require("astroui").get_icon("GrugFar", 1, true) .. "Search and Replace" }
+
+        maps.n[prefix .. "s"] = {
           function() require("grug-far").open { transient = true } end,
-          desc = require("astroui").get_icon("GrugFar", 1, true) .. "Search and Replace",
+          desc = "Default search",
         }
-
-        maps.x[prefix] = {
-          function() require("grug-far").open { transient = true, startCursorRow = 4 } end,
-          desc = require("astroui").get_icon("GrugFar", 1, true) .. "Search and Replace (current word)",
+        maps.x[prefix .. "s"] = {
+          function() require("grug-far").open { transient = true, startCursorRow = 3 } end,
+          desc = "Default search",
+        }
+        maps.n[prefix .. "a"] = {
+          function() require("grug-far").open { transient = true, engine = "astgrep" } end,
+          desc = "AST search",
+        }
+        maps.n[prefix .. "b"] = {
+          function() require("grug-far").open { transient = true, prefills = { paths = vim.fn.expand("%") } } end,
+          desc = "Current buffer",
+        }
+        maps.x[prefix .. "b"] = {
+          function() require("grug-far").open { transient = true, prefills = { paths = vim.fn.expand("%") } } end,
+          desc = "Current buffer",
+        }
+        maps.n[prefix .. "w"] = {
+          function()
+            require("grug-far").open {
+              transient = true,
+              prefills = { search = vim.fn.expand("<cword>") },
+              startCursorRow = 3,
+            }
+          end,
+          desc = "Current word",
         }
       end,
     },
