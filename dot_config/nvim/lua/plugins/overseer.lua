@@ -43,7 +43,13 @@ return {
             },
             commands = {
               C = {
-                function(params) vim.cmd { cmd = "OverseerRunCmd", args = params.fargs } end,
+                function(params)
+                  local tmpl_params = { cmd = params.args ~= "" and params.args or nil }
+                  require("overseer").run_template {
+                    name = "shell",
+                    params = tmpl_params,
+                  }
+                end,
                 nargs = "*",
                 desc = "Async run shell command",
                 complete = "shellcmdline",
