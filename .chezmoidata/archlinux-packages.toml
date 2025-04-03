@@ -67,7 +67,7 @@ regular = [
     "tealdeer",
     "telegram-desktop",
     "timg",
-    "tmux-git",
+    "tmux",
     "todoist-appimage",
     "transmission-gtk",
     "vencord",
@@ -77,7 +77,7 @@ regular = [
     "wine",
     "winetricks",
     "wireplumber",
-    "yazi-git",
+    "yazi-nightly-bin",
     "zen-browser-bin",
     "zoxide",
 ]
