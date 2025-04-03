@@ -43,7 +43,7 @@ return {
             },
             commands = {
               C = {
-                function(opts) vim.cmd { cmd = "OverseerRunCmd", args = opts.fargs } end,
+                function(params) vim.cmd { cmd = "OverseerRunCmd", args = params.fargs } end,
                 nargs = "*",
                 desc = "Async run shell command",
                 complete = "shellcmdline",
