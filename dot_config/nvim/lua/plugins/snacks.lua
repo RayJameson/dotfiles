@@ -9,6 +9,7 @@ return {
     local astrocore = require("astrocore")
     local custom_ivy_split = require("snacks.picker.config.layouts").ivy_split
     custom_ivy_split.layout[1].border = "rounded" -- input field with rounded border
+    custom_ivy_split.layout.height = 0.5
     return astrocore.extend_tbl(opts, {
       input = {},
       quickfile = {},
