@@ -108,7 +108,7 @@ return {
           desc = "Plugins",
         }
         maps.n["<Leader>fu"] = {
-          function() require("snacks").picker.undo():set_layout("left") end,
+          function() require("snacks").picker.undo { layout = "left" } end,
           desc = "Undo",
         }
         maps.n["<Leader>c"] = { function() require("snacks").bufdelete.delete() end, desc = "Delete current buffer" }
