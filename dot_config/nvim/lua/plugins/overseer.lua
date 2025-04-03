@@ -45,6 +45,7 @@ return {
               C = {
                 function(params)
                   local tmpl_params = { cmd = params.args ~= "" and params.args or nil }
+                  if not tmpl_params.cmd then return end
                   require("overseer").run_template {
                     name = "shell",
                     params = tmpl_params,
