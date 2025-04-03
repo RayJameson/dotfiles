@@ -13,6 +13,7 @@ return {
       words = {},
       notifier = {},
       statuscolumn = {},
+      picker = { layout = "ivy_split" },
       image = { doc = { enabled = true } },
       dashboard = { enabled = false },
       indent = { indent = { char = "│" }, scope = { char = "│" } },
