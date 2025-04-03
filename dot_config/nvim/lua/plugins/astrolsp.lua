@@ -21,6 +21,17 @@ return {
       maps.n["<Leader>lt"] = { function() vim.lsp.buf.type_definition() end, desc = "LSP type definition" }
       maps.n["<Leader>li"] = { function() vim.lsp.buf.incoming_calls() end, desc = "LSP incoming calls" }
       maps.n["<Leader>lo"] = { function() vim.lsp.buf.outgoing_calls() end, desc = "LSP outgoing calls" }
+      maps.n["<Leader>ls"] = {
+        function()
+          local aerial_avail, aerial = pcall(require, "aerial")
+          if aerial_avail and aerial.snacks_picker then
+            aerial.snacks_picker { layout = "right" }
+          else
+            require("snacks").picker.lsp_symbols()
+          end
+        end,
+        desc = "Search symbols",
+      }
       -- Configuration table of features provided by AstroLSP
       opts.features = extend_tbl(opts.features, {
         autoformat = false, -- enable or disable auto formatting on start
