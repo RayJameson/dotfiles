@@ -93,6 +93,14 @@ return {
           end,
           desc = "Words in plugins",
         }
+        maps.n["<Leader>f/"] = {
+          function() require("snacks").picker.grep { glob = vim.fn.expand("%") } end,
+          desc = "Words in current buf",
+        }
+        maps.n["<Leader>fz"] = {
+          function() require("snacks").picker.zoxide() end,
+          desc = "Zoxide",
+        }
         maps.n["<Leader>fp"] = {
           function()
             require("snacks").picker.files { ft = { "lua", "vim" }, dirs = { vim.fn.stdpath("data") .. "/lazy" } }
