@@ -18,6 +18,7 @@ return {
         {
           event = { "CursorMoved", "DiagnosticChanged" },
           callback = function()
+            if vim.bo.filetype == "lazy" then return end
             if og_virt_line == nil then og_virt_line = vim.diagnostic.config().virtual_lines end
 
             -- ignore if virtual_lines.current_line is disabled
@@ -40,7 +41,13 @@ return {
             end
           end,
         },
-        { event = "ModeChanged", callback = function() pcall(vim.diagnostic.show) end },
+        {
+          event = "ModeChanged",
+          callback = function()
+            if vim.bo.filetype == "lazy" then return end
+            pcall(vim.diagnostic.show)
+          end,
+        },
       },
     },
   },
