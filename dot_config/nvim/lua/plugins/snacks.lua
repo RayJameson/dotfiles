@@ -111,6 +111,10 @@ return {
           function() require("snacks").picker.undo { layout = "left" } end,
           desc = "Undo",
         }
+        maps.n["<Leader>fH"] = {
+          function() require("snacks").picker.highlights { confirm = { "yank", "close" }, layout = "default" } end,
+          desc = "Highlights",
+        }
         maps.n["<Leader>c"] = { function() require("snacks").bufdelete.delete() end, desc = "Delete current buffer" }
         maps.n["<Leader>a"] = { function() require("snacks").bufdelete.all() end, desc = "Delete all buffers" }
         maps.n["<Leader>C"] = { function() require("snacks").bufdelete.other() end, desc = "Delete all other buffers" }
