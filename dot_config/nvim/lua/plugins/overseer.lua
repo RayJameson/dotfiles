@@ -44,7 +44,20 @@ return {
             commands = {
               C = {
                 function(params)
-                  local tmpl_params = { cmd = params.args ~= "" and params.args or nil }
+                  ---@type overseer.Param
+                  local tmpl_params = {
+                    cmd = params.args ~= "" and params.args or nil,
+                    components = {
+                      "on_output_summarize",
+                      { "on_complete_dispose", timeout = 30 },
+                      "default",
+                    },
+                    strategy = {
+                      "toggleterm",
+                      open_on_start = params.bang,
+                      on_create = function() vim.cmd.stopinsert() end,
+                    },
+                  }
                   if not tmpl_params.cmd then return end
                   require("overseer").run_template {
                     name = "shell",
@@ -52,6 +65,7 @@ return {
                   }
                 end,
                 nargs = "*",
+                bang = true,
                 desc = "Async run shell command",
                 complete = "shellcmdline",
               },
