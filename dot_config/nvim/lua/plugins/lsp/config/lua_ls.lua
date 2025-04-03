@@ -11,6 +11,11 @@ return {
             format = {
               enable = false,
             },
+            hover = {
+              expandAlias = false,
+              previewFields = 100,
+              enumsLimit = 100,
+            },
             hint = {
               enable = true,
               arrayIndex = "Disable",
