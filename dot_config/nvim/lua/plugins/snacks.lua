@@ -7,13 +7,15 @@ return {
   ---@param opts snacks.Config
   opts = function(_, opts)
     local astrocore = require("astrocore")
+    local custom_ivy_split = require("snacks.picker.config.layouts").ivy_split
+    custom_ivy_split.layout[1].border = "rounded" -- input field with rounded border
     return astrocore.extend_tbl(opts, {
       input = {},
       quickfile = {},
       words = {},
       notifier = {},
       statuscolumn = {},
-      picker = { layout = "ivy_split" },
+      picker = { layout = custom_ivy_split },
       image = { doc = { enabled = true } },
       dashboard = { enabled = false },
       indent = { indent = { char = "│" }, scope = { char = "│" } },
