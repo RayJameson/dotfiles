@@ -98,6 +98,10 @@ return {
           end,
           desc = "Plugins",
         }
+        maps.n["<Leader>fu"] = {
+          function() require("snacks").picker.undo():set_layout("left") end,
+          desc = "Undo",
+        }
         maps.n["<Leader>c"] = { function() require("snacks").bufdelete.delete() end, desc = "Delete current buffer" }
         maps.n["<Leader>a"] = { function() require("snacks").bufdelete.all() end, desc = "Delete all buffers" }
         maps.n["<Leader>C"] = { function() require("snacks").bufdelete.other() end, desc = "Delete all other buffers" }
