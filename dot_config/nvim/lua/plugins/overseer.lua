@@ -118,7 +118,7 @@ return {
       },
     },
     opts = {
-      strategy = "terminal",
+      strategy = "toggleterm",
       task_list = {
         direction = "bottom",
         max_height = { 100, 0.99 },
