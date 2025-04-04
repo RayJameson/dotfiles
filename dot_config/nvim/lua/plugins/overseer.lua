@@ -44,7 +44,6 @@ return {
             commands = {
               C = {
                 function(params)
-                  ---@type overseer.Param
                   local tmpl_params = {
                     cmd = params.args ~= "" and params.args or nil,
                     components = {
