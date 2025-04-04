@@ -4,53 +4,57 @@ return {
   "folke/snacks.nvim",
   priority = 10000,
   lazy = false,
-  ---@param opts snacks.Config
-  opts = function(_, opts)
-    local astrocore = require("astrocore")
-    local custom_ivy_split = require("snacks.picker.config.layouts").ivy_split
-    custom_ivy_split.layout[1].border = "rounded" -- input field with rounded border
-    custom_ivy_split.layout.height = 0.5
-    return astrocore.extend_tbl(opts, {
-      input = {},
-      quickfile = {},
-      words = {},
-      notifier = {},
-      statuscolumn = {},
-      picker = { layout = custom_ivy_split },
-      image = { doc = { enabled = true } },
-      dashboard = { enabled = false },
-      indent = { indent = { char = "│" }, scope = { char = "│" } },
-      bigfile = { enabled = false },
+  ---@type snacks.Config
+  opts = {
+    input = {},
+    quickfile = {},
+    words = {},
+    notifier = {},
+    statuscolumn = {},
+    picker = {
+      layouts = {
+        custom_ivy_split = (function()
+          local custom_ivy_split = vim.deepcopy(require("snacks.picker.config.layouts").ivy_split)
+          custom_ivy_split.layout[1].border = "rounded" -- input field with rounded border
+          custom_ivy_split.layout.height = 0.5  -- list area +0.1
+          return custom_ivy_split
+        end)(),
+      },
+      layout = { preset = function(source) return source == "select" and "select" or "custom_ivy_split" end },
+    },
+    image = { doc = { enabled = true } },
+    dashboard = { enabled = false },
+    indent = { indent = { char = "│" }, scope = { char = "│" } },
+    bigfile = { enabled = false },
+    win = {
+      border = "rounded",
+      backdrop = false,
+    },
+    styles = {
+      notification = {
+        wo = { wrap = true }, -- Wrap notifications
+      },
+    },
+    scratch = {
       win = {
-        border = "rounded",
-        backdrop = false,
-      },
-      styles = {
-        notification = {
-          wo = { wrap = true }, -- Wrap notifications
-        },
-      },
-      scratch = {
-        win = {
-          keys = {
-            source = {
-              "<CR>",
-              function(self)
-                if vim.bo[self.buf].filetype == "lua" then
-                  local name = "scratch." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.buf), ":e")
-                  require("snacks").debug.run { buf = self.buf, name = name }
-                else
-                  vim.cmd([[OverseerRun file-run]])
-                end
-              end,
-              desc = "Run code",
-              mode = { "n", "x" },
-            },
+        keys = {
+          source = {
+            "<CR>",
+            function(self)
+              if vim.bo[self.buf].filetype == "lua" then
+                local name = "scratch." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.buf), ":e")
+                require("snacks").debug.run { buf = self.buf, name = name }
+              else
+                vim.cmd([[OverseerRun file-run]])
+              end
+            end,
+            desc = "Run code",
+            mode = { "n", "x" },
           },
         },
       },
-    } --[[@as snacks.plugins.Config]])
-  end,
+    },
+  }, --[[@as snacks.plugins.Config]]
   specs = {
     { "RRethy/vim-illuminate", enabled = false },
     {
