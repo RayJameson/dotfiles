@@ -67,7 +67,7 @@ regular = [
     "tealdeer",
     "telegram-desktop",
     "timg",
-    "tmux",
+    "tmux-git",
     "todoist-appimage",
     "transmission-gtk",
     "vencord",
