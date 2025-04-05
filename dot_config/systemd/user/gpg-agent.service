@@ -1,0 +1,9 @@
+[Unit]
+Description=GnuPG cryptographic agent and passphrase cache
+Documentation=man:gpg-agent(1)
+Requires=gpg-agent.socket
+
+[Service]
+ExecSearchPath=/usr/bin
+ExecStart=gpg-agent --supervised
+ExecReload=gpgconf --reload gpg-agent
