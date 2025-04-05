@@ -39,6 +39,12 @@ return {
       },
     },
   },
-  opts = {},
+  opts = {
+    request = {
+      hooks = {
+        user_agent = "Mozilla/5.0 (U; Linux x86_64) AppleWebKit/533.48 (KHTML, like Gecko) Chrome/55.0.1978.323 Safari/600",
+      },
+    },
+  },
   config = function(_, opts) vim.g.rest_nvim = require("astrocore").extend_tbl(opts, vim.g.rest_nvim) end,
 }
