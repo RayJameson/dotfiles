@@ -3,7 +3,8 @@ Description=Updates `tldr` cache
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/tldr --update
+ExecSearchPath=/usr/bin
+ExecStart=tldr --update
 
 [Install]
 WantedBy=multi-user.target

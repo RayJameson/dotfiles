@@ -3,7 +3,8 @@ Description=Cleans pacman cache
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/pacman -Scc --noconfirm
+ExecSearchPath=/usr/bin
+ExecStart=pacman -Scc --noconfirm
 
 [Install]
 WantedBy=multi-user.target
