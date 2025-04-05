@@ -81,6 +81,13 @@ return {
     },
     autocmds = {
       bufferline = false,
+      JsonFormatprg = {
+        {
+          event = "FileType",
+          pattern = "json",
+          callback = function() vim.opt_local.formatprg = vim.fn.executable("jq") == 1 and "jq" or "" end,
+        },
+      },
       RememberFolds = {
         {
           event = "BufWinLeave",
