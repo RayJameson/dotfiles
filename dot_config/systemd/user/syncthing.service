@@ -6,6 +6,7 @@ StartLimitBurst=4
 
 [Service]
 ExecSearchPath=/usr/bin
+StandardError=journal
 ExecStart=syncthing serve --no-browser --no-restart --logflags=0
 Restart=on-failure
 RestartSec=1

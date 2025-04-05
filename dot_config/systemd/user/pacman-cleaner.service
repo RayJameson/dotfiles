@@ -5,6 +5,7 @@ Description=Cleans pacman cache
 Type=oneshot
 ExecSearchPath=/usr/bin
 ExecStart=pacman -Scc --noconfirm
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target

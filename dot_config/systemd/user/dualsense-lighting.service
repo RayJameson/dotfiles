@@ -5,6 +5,7 @@ Description=Disable player led and change lightbar color to purple on connection
 ExecSearchPath=/usr/bin
 Environment="DISPLAY=:0"
 ExecStart=dualsensectl monitor add 'dualsensectl lightbar 100 0 255 && dualsensectl player-leds 0'
+StandardError=journal
 
 [Install]
 WantedBy=default.target
