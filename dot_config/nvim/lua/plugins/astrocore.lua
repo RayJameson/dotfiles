@@ -146,7 +146,7 @@ return {
       DynamicColorColumn = {
         {
           event = "FileType",
-          pattern = { "markdown", "dockerfile", "make" },
+          pattern = { "markdown", "dockerfile", "make", "http" },
           callback = function() vim.opt_local.colorcolumn = "" end,
         },
         {
