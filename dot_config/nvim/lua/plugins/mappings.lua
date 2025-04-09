@@ -27,10 +27,11 @@ return {
 
     --[ register + clipboard
     for _, mode in ipairs { "n", "x" } do
-      maps[mode]["Y"] = { '"+y', desc = "yank +clipboard" }
+      maps[mode]["gy"] = { '"+y', desc = "yank +clipboard" }
+      maps[mode]["gY"] = { '"+y$', desc = "Yank +clipboard (y$)" }
     end
-    maps.n["D"] = { '"_d', desc = "Delete noregister" }
-    maps.x["D"] = { '"_d', desc = "Delete noregister" }
+    maps.n["gD"] = { '"_d', desc = "Delete noregister" }
+    maps.x["gd"] = { '"_d', desc = "Delete noregister" }
     maps.x["gp"] = { "P", desc = "Paste noregister" }
     maps.n["S"] = { "0Di", desc = "S+" }
     --]
