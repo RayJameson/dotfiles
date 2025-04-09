@@ -1,7 +1,7 @@
 {
   "#type: ignore": {
     "body": "  # type: ignore",
-    "prefix": "#type: ignore"
+    "prefix": "ignore"
   },
   "setup": {
     "body": "#!/usr/bin/env python3",
