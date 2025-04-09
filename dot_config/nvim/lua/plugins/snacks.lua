@@ -114,6 +114,10 @@ return {
           end,
           desc = "Plugins",
         }
+        maps.n["<Leader>fS"] = {
+          function() require("snacks").picker.spelling() end,
+          desc = "Spelling",
+        }
         maps.n["<Leader>fu"] = {
           function() require("snacks").picker.undo { layout = "left" } end,
           desc = "Undo",
