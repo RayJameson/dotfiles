@@ -10,7 +10,7 @@ return {
     quickfile = {},
     words = {},
     notifier = {},
-    statuscolumn = {},
+    statuscolumn = { enabled = false },
     picker = {
       layouts = {
         custom_ivy_split = (function()
