@@ -31,7 +31,7 @@ return {
         signcolumn = "auto:2", -- sets vim.opt.signcolumn to auto
         swapfile = false,
         colorcolumn = "120",
-        foldcolumn = "1",
+        foldcolumn = "auto:1",
         mouse = "",
         tabstop = 4,
         guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor",
