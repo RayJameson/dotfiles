@@ -27,7 +27,8 @@ return {
                   n = {
                     [prefix .. "r"] = { "<Cmd>Rest run<CR>", desc = "Send request" },
                     [prefix .. "o"] = { "<Cmd>Rest open<CR>", desc = "Open result pane" },
-                    [prefix .. "c"] = { "<Cmd>Rest cookies<CR>", desc = "Edit cookies file" },
+                    [prefix .. "c"] = { "<Cmd>Rest curl yank<CR>", desc = "Yank curl to clipboard" },
+                    [prefix .. "C"] = { "<Cmd>Rest cookies<CR>", desc = "Edit cookies file" },
                     [prefix .. "e"] = { "<Cmd>Rest env show<CR>", desc = "Show currently used .env file" },
                     [prefix .. "s"] = { "<Cmd>Rest env select<CR>", desc = "Select .env file to use" },
                   },
