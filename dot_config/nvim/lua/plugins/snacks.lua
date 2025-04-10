@@ -92,6 +92,7 @@ return {
             end,
           },
         }
+        maps.n["<Leader>h"] = false
         maps.n["<Leader>un"] = { function() require("snacks").notifier.hide() end, desc = "Dismiss all notifications" }
         maps.n["<Leader>fn"] = { function() require("snacks").notifier.show_history() end, desc = "Notifications" }
         maps.n["<Leader>fP"] = {
