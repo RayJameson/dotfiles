@@ -39,6 +39,31 @@ return {
         },
       },
     },
+    {
+      "rebelot/heirline.nvim",
+      optional = true,
+      dependencies = {
+        "AstroNvim/astroui",
+        opts = { status = { statusline = { enabled = { filetype = { "^http$" } } } } },
+      },
+      opts = function(_, opts)
+        if opts.statusline then
+          local status = require("astroui.status")
+          table.insert(opts.statusline, 10, {
+            condition = function(self) return status.condition.buffer_matches({ filetype = "^http$" }, self.bufnr) end,
+            status.component.fill { hl = { bg = "winbar_bg" } },
+            {
+              condition = function() return vim.b._rest_nvim_env_file ~= nil end,
+              status.component.builder {
+                { provider = "" },
+                { provider = function() return vim.fn.fnamemodify(vim.b._rest_nvim_env_file, ":t") end },
+                hl = { fg = "orange" },
+              },
+            },
+          })
+        end
+      end,
+    },
   },
   opts = {
     request = {
