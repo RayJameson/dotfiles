@@ -3,3 +3,4 @@
 #https://codeberg.org/derat/xsettingsd#settings
 #https://codeberg.org/derat/xsettingsd/issues/36
 export GTK_THEME=
+export __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1
