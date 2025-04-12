@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
+  opts_extend = { "options.opt.diffopt" },
   ---@type AstroCoreOpts
   opts = {
     -- Configure core features of AstroNvim
@@ -32,6 +33,7 @@ return {
         swapfile = false,
         colorcolumn = "120",
         foldcolumn = "auto:1",
+        diffopt = { "vertical" },
         mouse = "",
         tabstop = 4,
         guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor",
