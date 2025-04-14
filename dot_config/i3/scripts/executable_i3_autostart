@@ -52,7 +52,7 @@ hsetroot -cover "$idir"/theme/wallpaper
 setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 
 # Enable autotiling using https://github.com/nwg-piotr/autotiling
-i3-auto-layout &
+autotiling
 
 # Start mpd
 #exec mpd &
