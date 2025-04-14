@@ -16,6 +16,7 @@ README.md
 {{- if ne .chezmoi.os "linux" }}
 .config/autostart
 .config/copyq
+.config/MangoHud
 .config/i3
 .config/keepassxc/keepassxc.ini
 .config/mimeapps.list
