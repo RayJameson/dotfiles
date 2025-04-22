@@ -1,9 +1,6 @@
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = {
-    "gbprod/none-ls-luacheck.nvim",
-  },
   opts = function(_, opts)
     -- config variable is the default configuration table for the setup function call
     local nls = require("null-ls")
@@ -44,38 +41,48 @@ return {
           return args
         end,
       },
-      require("none-ls-luacheck.diagnostics.luacheck").with {
-        args = function(params)
-          local args = {
-            "--formatter",
-            "plain",
-            "--codes",
-            "--ranges",
-            "--quiet",
-          }
-          if u.root_pattern(".luacheckrc")(params.root) then
-            table.insert(args, "$ROOT")
-          else
-            vim.list_extend(args, { "--filename", "$FILENAME", "-" })
-          end
-          return args
-        end,
-        method = nls.methods.DIAGNOSTICS_ON_SAVE,
-        generator_opts = require("astrocore").extend_tbl(
-          require("none-ls-luacheck.diagnostics.luacheck"),
-          { multiple_files = true }
-        ),
-        on_output = h.diagnostics.from_pattern(
-          [[([^:]+):(%d+):(%d+)-(%d+): %((%a)(%d+)%) (.*)]],
-          { "filename", "row", "col", "end_col", "severity", "code", "message" },
-          {
-            severities = {
-              E = h.diagnostics.severities["error"],
-              W = h.diagnostics.severities["warning"],
-            },
-            offsets = { end_col = 1 },
-          }
-        ),
+      h.make_builtin {
+        name = "luacheck",
+        meta = {
+          url = "https://github.com/lunarmodules/luacheck",
+          description = "A tool for linting and static analysis of Lua code.",
+        },
+        method = nls.methods.DIAGNOSTICS,
+        filetypes = { "lua" },
+        generator_opts = {
+          command = "luacheck",
+          to_stdin = true,
+          from_stderr = true,
+          multiple_files = true,
+          args = function(params)
+            local args = {
+              "--formatter",
+              "plain",
+              "--codes",
+              "--ranges",
+              "--quiet",
+            }
+            if u.root_pattern(".luacheckrc")(params.root) then
+              table.insert(args, "$ROOT")
+            else
+              vim.list_extend(args, { "--filename", vim.fn.expand(params.bufname, "t"), "-" })
+            end
+            return args
+          end,
+          format = "line",
+          on_output = h.diagnostics.from_pattern(
+            [[([^:]+):(%d+):(%d+)-(%d+): %((%a)(%d+)%) (.*)]],
+            { "filename", "row", "col", "end_col", "severity", "code", "message" },
+            {
+              severities = {
+                E = h.diagnostics.severities["error"],
+                W = h.diagnostics.severities["warning"],
+              },
+              offsets = { end_col = 1 },
+            }
+          ),
+        },
+        factory = h.generator_factory,
       },
     }
     return opts -- return final config table
