@@ -66,6 +66,11 @@ return {
     },
   },
   opts = {
+    custom_dynamic_variables = {
+      timestamp = function() return tostring(math.floor(os.time())) end,
+      timestamp_ms = function() return tostring(math.floor(os.time() * 1000)) end,
+      current_dttm = function() return os.date("%Y-%m-%d %H:%M:%S.000000") end,
+    },
     request = {
       hooks = {
         user_agent = "Mozilla/5.0 (U; Linux x86_64) AppleWebKit/533.48 (KHTML, like Gecko) Chrome/55.0.1978.323 Safari/600",
