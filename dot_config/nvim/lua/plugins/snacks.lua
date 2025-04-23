@@ -16,7 +16,7 @@ return {
         custom_ivy_split = (function()
           local custom_ivy_split = vim.deepcopy(require("snacks.picker.config.layouts").ivy_split)
           custom_ivy_split.layout[1].border = "rounded" -- input field with rounded border
-          custom_ivy_split.layout.height = 0.5  -- list area +0.1
+          custom_ivy_split.layout.height = 0.5 -- list area +0.1
           return custom_ivy_split
         end)(),
       },
@@ -94,7 +94,9 @@ return {
         }
         maps.n["<Leader>h"] = false
         maps.n["<Leader>un"] = { function() require("snacks").notifier.hide() end, desc = "Dismiss all notifications" }
-        maps.n["<Leader>fn"] = { function() require("snacks").notifier.show_history() end, desc = "Notifications" }
+        maps.n["<Leader>fN"] =
+          { function() require("snacks").notifier.show_history() end, desc = "Notifications buffer" }
+        maps.n["<Leader>fn"] = { function() require("snacks").picker.notifications() end, desc = "Notifications" }
         maps.n["<Leader>fP"] = {
           function()
             require("snacks").picker.grep { ft = { "lua", "vim" }, dirs = { vim.fn.stdpath("data") .. "/lazy" } }
