@@ -9,4 +9,5 @@ RASI="$DIR/theme/rofi/launcher-type-1-style-5.rasi"
 # Run
 rofi \
     -show drun \
+    -drun-use-desktop-cache \
 	-theme ${RASI}
