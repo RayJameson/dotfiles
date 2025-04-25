@@ -23,8 +23,23 @@ return {
           desc = "Default search",
         }
         maps.x[prefix .. "s"] = {
-          function() require("grug-far").open { transient = true, startCursorRow = 3 } end,
+          function()
+            require("grug-far").open {
+              transient = true,
+              startCursorRow = 3,
+              visualSelectionUsage = "operate-within-range",
+            }
+          end,
           desc = "Default search",
+        }
+        maps.x[prefix .. "m"] = {
+          function()
+            require("grug-far").open {
+              transient = true,
+              startCursorRow = 3,
+            }
+          end,
+          desc = "Multiline search",
         }
         maps.n[prefix .. "a"] = {
           function() require("grug-far").open { transient = true, engine = "astgrep" } end,
