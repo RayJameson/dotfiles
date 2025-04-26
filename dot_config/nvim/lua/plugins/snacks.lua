@@ -103,6 +103,10 @@ return {
           end,
           desc = "Words in plugins",
         }
+        maps.x["<Leader>fw"] = {
+          function() require("snacks").picker.grep_word() end,
+          desc = "Words within selection",
+        }
         maps.n["<Leader>f/"] = {
           function() require("snacks").picker.grep { glob = vim.fn.expand("%:t"), dirs = { vim.fn.expand("%:h") } } end,
           desc = "Words in current buf",
