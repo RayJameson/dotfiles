@@ -90,6 +90,8 @@ return {
     maps.n["<C-b>"] = { "<C-b>M", desc = "Scroll page up", noremap = true }
     maps.n["<M-l>"] = { "10zl", desc = "Scroll horizontally right", noremap = true }
     maps.n["<M-h>"] = { "10zh", desc = "Scroll horizontally left", noremap = true }
+    maps.n["[b"] = { "<Cmd>bprev<CR>", desc = "Previous buffer" }
+    maps.n["]b"] = { "<Cmd>bnext<CR>", desc = "Next buffer" }
     maps.x["<"] = { "<gv", desc = "Deindent line" }
     maps.x[">"] = { ">gv", desc = "Indent line" }
 
