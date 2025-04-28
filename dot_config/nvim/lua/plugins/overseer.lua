@@ -79,6 +79,10 @@ return {
                       { "on_output_quickfix", open = not params.bang, open_height = 8 },
                       "default",
                     },
+                    strategy = {
+                      "toggleterm",
+                      open_on_start = false,
+                    },
                   }
                   task:start()
                 end,
@@ -104,6 +108,10 @@ return {
                       -- We don't care to keep this around as long as most tasks
                       { "on_complete_dispose", timeout = 30 },
                       "default",
+                    },
+                    strategy = {
+                      "toggleterm",
+                      open_on_start = false,
                     },
                   }
                   task:start()
