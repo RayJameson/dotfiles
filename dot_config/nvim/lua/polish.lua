@@ -76,6 +76,7 @@ vim.filetype.add {
     -- ["~/%.config/foo/.*"] = "fooscript",
     ["%.gitconfig.*"] = "gitconfig",
     [".*/%.vscode/.+%.json"] = "jsonc",
+    [".*/i3/config%.d/.+%.conf"] = "i3config",
   },
 }
 
