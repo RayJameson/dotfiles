@@ -145,6 +145,7 @@ smart_borders on
 ##
 ## Syntax: no_focus <criteria>
 no_focus [window_role="pop-up"]
+no_focus [window_role="^PictureInPicture$"]
 
 #------
 
