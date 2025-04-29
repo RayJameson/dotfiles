@@ -9,4 +9,7 @@ return {
     { prefix .. "D", function() require("gitsigns").preview_hunk_inline() end, desc = "Toggle deleted lines" },
     { prefix .. "w", function() require("gitsigns").toggle_word_diff() end, desc = "Toggle word diff" },
   },
+  opts = {
+    sign_priority = 50,
+  },
 }
