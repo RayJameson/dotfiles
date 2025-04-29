@@ -14,8 +14,8 @@ return {
       adapters = {
         require("neotest-go"),
         require("neotest-rust"),
-        require("neotest-python"){
-          args = { "-vv", "-s" }
+        require("neotest-python") {
+          args = function(runner) return runner == "pytest" and { "-vv", "-s" } or {} end,
         },
       },
     }
