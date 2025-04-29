@@ -50,5 +50,7 @@ case "$1" in
         ;;
     select_and_connect)
         selected="$(nordvpn countries | tr -s " \n" "\n" | rofi -theme "$XDG_CONFIG_HOME/i3/theme/rofi/networkmenu.rasi" -normal-window -dmenu -i -p VPN)"
-        connect "$selected"
+        if [[ -n $selected ]]; then
+            connect "$selected"
+        fi
 esac
