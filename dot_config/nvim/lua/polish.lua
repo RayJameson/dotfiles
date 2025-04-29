@@ -119,7 +119,7 @@ if vim.g.neovide then
   vim.g.neovide_floating_shadow = false
 end
 
-vim.api.nvim_create_user_command("Scratch", function(opts)
+vim.api.nvim_create_user_command("S", function(opts)
   local cmd = [[
       15split
       noswapfile hide enew
