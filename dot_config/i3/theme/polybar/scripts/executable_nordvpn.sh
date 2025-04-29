@@ -49,7 +49,7 @@ case "$1" in
         toggle "$2"
         ;;
     select_and_connect)
-        selected="$(nordvpn countries | tr -s " \n" "\n" | rofi -theme "$XDG_CONFIG_HOME/i3/theme/rofi/networkmenu.rasi" -normal-window -dmenu -i -p VPN)"
+        selected="$(nordvpn countries | tr -s " \n" "\n" | rofi -theme "$XDG_CONFIG_HOME/i3/theme/rofi/nordvpn.rasi" -normal-window -dmenu -i -p VPN)"
         if [[ -n $selected ]]; then
             connect "$selected"
         fi
