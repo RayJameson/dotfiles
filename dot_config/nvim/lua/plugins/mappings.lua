@@ -133,6 +133,16 @@ return {
       ui_notify(("lazy redraw %s"):format(bool2str(vim.opt.lazyredraw:get())))
     end
 
+    maps.n["<Leader>N"] = { desc = " Notes" }
+    maps.n["<Leader>Nn"] = {
+      function()
+        vim.ui.input({ prompt = "Enter note name, use / for directories" }, function(input)
+          if input == nil then return end
+          vim.cmd.edit(vim.fn.stdpath("data") .. "/notes/" .. vim.fn.fnameescape(input))
+        end)
+      end,
+      desc = "New note",
+    }
     maps.n["<Leader>ur"] = { toggle_lazyreadraw, desc = "Toggle lazyredraw" }
 
     maps.n["<Leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }

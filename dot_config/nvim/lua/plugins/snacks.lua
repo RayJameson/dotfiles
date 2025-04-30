@@ -98,10 +98,20 @@ return {
           { function() require("snacks").notifier.show_history() end, desc = "Notifications buffer" }
         maps.n["<Leader>fn"] = { function() require("snacks").picker.notifications() end, desc = "Notifications" }
         maps.n["<Leader>fP"] = {
-          function()
-            require("snacks").picker.grep { ft = { "lua", "vim" }, dirs = { vim.fn.stdpath("data") .. "/lazy" } }
-          end,
+          function() require("snacks").picker.grep { ft = { "lua", "vim" }, cwd = vim.fn.stdpath("data") .. "/lazy" } end,
           desc = "Words in plugins",
+        }
+        maps.n["<Leader>Nw"] = {
+          function()
+            require("snacks").picker.grep {
+              cwd = vim.fn.stdpath("data") .. "/notes/",
+            }
+          end,
+          desc = "Words in notes",
+        }
+        maps.n["<Leader>Nf"] = {
+          function() require("snacks").picker.files { cwd = vim.fn.stdpath("data") .. "/notes/" } end,
+          desc = "Notes",
         }
         maps.x["<Leader>fw"] = {
           function() require("snacks").picker.grep_word() end,
@@ -116,9 +126,7 @@ return {
           desc = "Zoxide",
         }
         maps.n["<Leader>fp"] = {
-          function()
-            require("snacks").picker.files { ft = { "lua", "vim" }, dirs = { vim.fn.stdpath("data") .. "/lazy" } }
-          end,
+          function() require("snacks").picker.files { ft = { "lua", "vim" }, cwd = vim.fn.stdpath("data") .. "/lazy" } end,
           desc = "Plugins",
         }
         maps.n["<Leader>fS"] = {

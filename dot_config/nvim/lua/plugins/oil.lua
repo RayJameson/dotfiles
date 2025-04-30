@@ -42,6 +42,15 @@ return {
     {
       "AstroNvim/astrocore",
       opts = {
+        mappings = {
+          n = {
+            ["<Leader>No"] = {
+              function() require("oil").open(vim.fn.stdpath("data") .. "/notes") end,
+              desc = "Open notes directory",
+            },
+            ["-"] = { function() require("oil").open() end, desc = "Open parent directory" },
+          },
+        },
         autocmds = {
           oil_settings = {
             {
@@ -68,13 +77,6 @@ return {
           },
         },
       },
-    },
-  },
-  keys = {
-    {
-      "-",
-      function() return require("oil").open() end,
-      desc = "Open parent directory",
     },
   },
   init = function()
