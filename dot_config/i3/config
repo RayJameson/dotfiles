@@ -25,6 +25,10 @@
 
 ## To list all loaded configuration files, run `i3 --moreversion`
 
+
+##-- Mod Keys ----------------------------------
+set $MOD Mod4
+set $ALT Mod1
 #------
 
 ## Load i3 config files
@@ -32,10 +36,6 @@ include ~/.config/i3/config.d/*.conf
 
 ## Enable/Disable i3 bar
 # include ~/.config/i3/i3status/statusbar.conf
-
-##-- Mod Keys ----------------------------------
-set $MOD Mod4
-set $ALT Mod1
 
 ##-- General Settings --------------------------
 
@@ -307,7 +307,7 @@ show_marks yes
 ## Syntax:
 #tiling_drag off
 #tiling_drag modifier|titlebar [modifier|titlebar]
-tiling_drag modifier titlebar
+tiling_drag modifier
 
 ##-- Autostart --------------------------------------------------
 
