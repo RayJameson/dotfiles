@@ -17,7 +17,7 @@ return {
       ---@type AstroCoreOpts
       opts = {
         autocmds = {
-          RestLocalMappings = {
+          RestLocalConfig = {
             {
               event = "FileType",
               pattern = "http",
