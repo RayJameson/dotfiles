@@ -26,7 +26,6 @@ return {
           function()
             require("grug-far").open {
               transient = true,
-              startCursorRow = 3,
               visualSelectionUsage = "operate-within-range",
             }
           end,
