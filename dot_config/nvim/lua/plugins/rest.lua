@@ -17,11 +17,32 @@ return {
       ---@type AstroCoreOpts
       opts = {
         autocmds = {
-          RestLocalMappings = {
+          RestRememberFolds = {
+            {
+              event = "BufWinLeave",
+              pattern = "*.http",
+              callback = function(args)
+                if require("astrocore.buffer").is_valid(args.buf) then
+                  vim.cmd { cmd = "mkview", mods = { silent = true } }
+                end
+              end,
+            },
+            {
+              event = "BufWinEnter",
+              pattern = "*.http",
+              callback = function(args)
+                if require("astrocore.buffer").is_valid(args.buf) then
+                  vim.cmd { cmd = "loadview", mods = { silent = true } }
+                end
+              end,
+            },
+          },
+          RestLocalConfig = {
             {
               event = "FileType",
               pattern = "http",
               callback = function(args)
+                vim.opt_local.foldmethod = "manual"
                 local prefix = "<LocalLeader>"
                 require("astrocore").set_mappings({
                   n = {
