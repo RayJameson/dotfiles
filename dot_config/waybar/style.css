@@ -82,23 +82,6 @@ window#waybar.empty #window {
     background-color: transparent;
 }
 
-#cpu {
-    color: #94e2d5;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-#custom-gpu {
-    color: #94e2d5;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-#memory {
-    margin-left: 0;
-    color: #cba6f7;
-}
-
 #clock {
     color: #74c7ec;
 }
