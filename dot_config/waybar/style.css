@@ -30,7 +30,7 @@ window#waybar.hidden {
     min-height: 0;
     margin: 3px 3px;
     border-radius: 8px;
-    background-color: #181825;
+    background-color: #292e39;
     color: #cdd6f4;
 }
 
@@ -70,7 +70,8 @@ window#waybar.hidden {
     padding: 2px 10px;
     border-radius: 8px;
     margin: 3px 3px;
-    background-color: #181825;
+    /* background-color: #181825; */
+    background-color: #292e39;
 }
 
 #custom-sep {
