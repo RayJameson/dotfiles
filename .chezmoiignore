@@ -16,6 +16,9 @@ README.md
 {{- if ne .chezmoi.os "linux" }}
 .config/autostart
 .config/copyq
+.config/swaync
+.config/waybar
+.config/hypr
 .config/MangoHud
 .config/i3
 .config/keepassxc/keepassxc.ini
