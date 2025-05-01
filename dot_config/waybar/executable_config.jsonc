@@ -20,11 +20,11 @@
         "pulseaudio",
         "pulseaudio#microphone",
         "tray",
-        "hyprland/language",
         "clock",
         "clock#date",
         "custom/notification",
         "custom/sep",
+        "hyprland/language",
         "custom/power",
     ],
     "custom/music-player": {
@@ -142,8 +142,8 @@
     },
     "hyprland/language": {
         "format": "{}",
-        "format-en": "us",
-        "format-ru": "ru",
+        "format-en": "US",
+        "format-ru": "RU",
     },
     "custom/notification": {
         "tooltip": false,

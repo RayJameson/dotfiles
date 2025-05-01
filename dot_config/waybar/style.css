@@ -63,7 +63,6 @@ window#waybar.hidden {
 #custom-screen-recorder,
 #bluetooth,
 #network,
-#language,
 #custom-notification,
 #custom-gpu {
     min-height: 0;
@@ -120,6 +119,12 @@ window#waybar.empty #window {
     padding-right: 5px;
     font-size: 18px;
     background-color: transparent;
+}
+
+#language {
+    background-color: transparent;
+    min-height: 0;
+    padding-left: 5px;
 }
 
 @keyframes blink {
