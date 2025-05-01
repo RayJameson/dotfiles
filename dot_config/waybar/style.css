@@ -48,6 +48,7 @@ window#waybar.hidden {
 
 #workspaces button.urgent {
     background-color: #e06c75;
+    color: #1e1e2e;
 }
 
 #clock,
