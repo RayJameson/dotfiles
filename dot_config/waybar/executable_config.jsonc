@@ -23,7 +23,6 @@
         "hyprland/language",
         "clock",
         "clock#date",
-        "custom/lang",
         "custom/notification",
         "custom/sep",
         "custom/power",
