@@ -134,7 +134,8 @@ window#waybar.empty #window {
 #custom-power {
     color: #f38ba8;
     padding-right: 5px;
-    font-size: 14px;
+    font-size: 18px;
+    background-color: transparent;
 }
 
 @keyframes blink {
