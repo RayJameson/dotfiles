@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+current_ws=$(hyprctl activeworkspace -j | jq '.id')
+switch_to_ws=$(( $current_ws + $1 ))
+shift
+
+while [[ "$#" -gt 0 ]]; do
+    if [[ $1 == -m || $1 == --move ]]; then
+        hyprctl dispatch movetoworkspacesilent $switch_to_ws
+        shift
+    fi
+    if [[ $1 == -j || $1 == --jump ]]; then
+        hyprctl dispatch workspace $switch_to_ws
+        shift
+    fi
+    if [[ $1 == -mj || $1 == -jm ]]; then
+        hyprctl dispatch movetoworkspace $switch_to_ws
+        shift
+    fi
+done
