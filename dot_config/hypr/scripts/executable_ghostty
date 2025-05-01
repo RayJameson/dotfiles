@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+## launch ghostty with i3 config
+
+if [ "$1" == "--float" ]; then
+	shift
+	if [[ $# -gt 0 ]]; then
+		ghostty --class='ghostty.float' "${@}"
+	else
+		ghostty --class='ghostty.float'
+	fi
+elif [ "$1" == "--full" ]; then
+	shift
+	if [[ $# -gt 0 ]]; then
+		ghostty --class='ghostty.fullscreen' "${@}"
+	else
+		ghostty --class='ghostty.fullscreen'
+	fi
+else
+	if [[ $# -gt 0 ]]; then
+		ghostty "${@}"
+	else
+		ghostty
+	fi
+fi
