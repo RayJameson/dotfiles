@@ -63,6 +63,7 @@ window#waybar.hidden {
 #bluetooth,
 #network,
 #language,
+#custom-notification,
 #custom-gpu {
     min-height: 0;
     padding: 2px 10px;
@@ -149,4 +150,10 @@ tooltip {
 #tray menu {
     background: rgb(24, 24, 37);
     color: white;
+}
+
+#custom-notification {
+    color: #e5c07b;
+    font-family: "NotoSansMono Nerd Font";
+    font-size: 18px;
 }
