@@ -37,6 +37,7 @@ regular = [
     "kitty",
     "lazygit-git",
     "lib32-vulkan-icd-loader",
+    "libxml2-legacy",
     "libva",
     "libxnvctrl",
     "linux-headers",
