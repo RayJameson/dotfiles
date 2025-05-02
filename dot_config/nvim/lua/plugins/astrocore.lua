@@ -110,7 +110,7 @@ return {
           pattern = "?*",
           callback = function(args)
             if require("astrocore.buffer").is_valid(args.buf) then
-              vim.cmd { cmd = "mkview", mods = { silent = true, emsg_silent = true } }
+              vim.cmd.mkview { mods = { silent = true, emsg_silent = true } }
             end
           end,
         },
@@ -119,7 +119,7 @@ return {
           pattern = "?*",
           callback = function(args)
             if require("astrocore.buffer").is_valid(args.buf) then
-              vim.cmd { cmd = "loadview", mods = { silent = true, emsg_silent = true } }
+              vim.cmd.loadview { mods = { silent = true, emsg_silent = true } }
             end
           end,
         },
