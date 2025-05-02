@@ -248,6 +248,7 @@ scale slider {
   font-weight: 500;
   color: @theme_fg_secondary;
   margin-left: 12px;
+  margin-right: 35px;
 }
 .control-center .close-button {
   background-color: @close_button_bg;
@@ -255,12 +256,13 @@ scale slider {
   min-width: 24px;
   min-height: 24px;
   transition: background-color 0.15s ease;
+  margin-right: 0px; /* Adjust this value for desired spacing */
 }
 .control-center .close-button:hover {
   background-color: @close_button_hover_bg;
 }
 .control-center .close-button image {
-    margin-right: 12px; /* Adjust this value for desired spacing */
+  margin-right: 0px; /* Adjust this value for desired spacing */
   color: @icon_secondary;
 }
 
@@ -297,6 +299,7 @@ scale slider {
   font-size: 15px;
   color: @icon_secondary;
   margin-left: 10px;
+  margin-right: 35px;
 }
 .floating-notifications .notification image {
   min-width: 48px;
@@ -310,12 +313,12 @@ scale slider {
   min-width: 28px;
   min-height: 28px;
   transition: background-color 0.15s ease;
+  margin-right: 0px; /* Adjust this value for desired spacing */
 }
 .floating-notifications .close-button:hover {
   background-color: @close_button_hover_bg;
 }
 .floating-notifications .close-button image {
-    margin-right: 12px; /* Adjust this value for desired spacing */
   color: @icon_secondary;
 }
 .floating-notifications .notification-alt-actions {
