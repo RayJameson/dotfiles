@@ -98,7 +98,11 @@ shotwin () {
 }
 
 shotarea () {
-	cd ${dir} && grim -g "$(slurp -b 20262CCC -c B4A1DBff -s B4A1DB0D -w 2 && sleep 1)" - | tee "$file" | wl-copy
+	area="$(slurp -b 20262CCC -c B4A1DBff -s B4A1DB0D -w 2 && sleep 1)"
+	if [[ -z $area ]]; then
+		return
+	fi
+	cd ${dir} && grim -g $area - | tee "$file" | wl-copy
 	notify_view
 }
 
