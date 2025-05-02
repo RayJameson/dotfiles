@@ -16,9 +16,9 @@ function M.call(fargs, orientation, size, focus)
   local code_output_table = vim.split(code_run_output, "\n", {})
   -- Make new window
   if orientation == "horizontal" then
-    vim.cmd(("%i split"):format(size))
+    vim.cmd.split { range = { size } }
   elseif orientation == "vertical" then
-    vim.cmd(("%i vsplit"):format(size))
+    vim.cmd.vsplit { range = { size } }
   else
     local error_msg = ("Wrong orientation settings: '%s'\nShould be 'vertical' or 'horizontal'"):format(orientation)
     return vim.schedule(function() vim.notify(error_msg, error, { title = "BetterLuafile" }) end)
