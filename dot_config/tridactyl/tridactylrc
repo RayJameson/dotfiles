@@ -18,6 +18,8 @@ bind --mode=ex <C-j> ex.next_completion
 bind --mode=ex <C-k> ex.prev_completion
 bind --mode=hint <C-c> hint.reset
 bind --mode=insert <C-c> composite unfocus | mode normal
+unbind --mode=normal <C-f>
+unbind --mode=normal <C-b>
 
 " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
 " vim: set filetype=tridactyl
