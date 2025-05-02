@@ -121,15 +121,4 @@ if vim.g.neovide then
   vim.g.neovide_floating_shadow = false
 end
 
-vim.api.nvim_create_user_command("S", function(opts)
-  local cmd = [[
-      15split
-      noswapfile hide enew
-      setlocal buftype=nofile
-      setlocal bufhidden=hide
-      setlocal nobuflisted
-    ]]
-  if opts.args then cmd = cmd .. "\nset filetype=" .. opts.args end
-  vim.cmd(cmd)
-end, { nargs = "?" })
 vim.tbl_map(function(v) vim.api.nvim_del_keymap("n", "gr" .. v) end, { "r", "a", "n", "i" })

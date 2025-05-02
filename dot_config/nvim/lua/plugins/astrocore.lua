@@ -82,6 +82,19 @@ return {
         -- This can be found in the `lua/lazy_setup.lua` file
       },
     },
+    commands = {
+      S = {
+        function(params)
+          vim.cmd.split { range = { 15 } }
+          vim.cmd.enew { mods = { hide = true, noswapfile = true } }
+          vim.opt_local.buftype = "nofile"
+          vim.opt_local.buflisted = false
+          vim.opt_local.bufhidden = "wipe"
+          if params.args then vim.opt_local.filetype = params.args end
+        end,
+        nargs = "?",
+      },
+    },
     autocmds = {
       bufferline = false,
       JsonFormatprg = {
