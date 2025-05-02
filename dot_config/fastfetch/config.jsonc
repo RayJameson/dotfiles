@@ -27,7 +27,7 @@
             "type": "physicaldisk",
             "key": "├─ Disk:",
             "keyColor": "green",
-            "format": "{name} - {size} - [{type}]"
+            "format": "{name} - {size} - [{physical-type}]"
         },
         {
             "type": "memory",
