@@ -5,7 +5,7 @@
     },
     "logo": {
         "source": "~/.config/ghostty/256x256_icon.png",
-        "type": "kitty"
+        "type": "kitty-icat"
     },
     "modules": [
         {

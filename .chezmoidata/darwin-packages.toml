@@ -48,6 +48,7 @@ casks = [
     "docker",
     "keepassxc",
     "keycastr",
+    "kitty",
     "neovide",
     "obsidian",
     "postman",
