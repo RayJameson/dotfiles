@@ -7,6 +7,12 @@ cat <<EOF | xargs -ro yay -S --needed
 {{ end -}}
 EOF
 
+cat <<EOF | xargs -ro yay -Syu --needed --rebuild --rebuildall --rebuildtree --noconfirm
+{{ range .packages.archlinux.clean_build -}}
+{{ . | quote }}
+{{ end -}}
+EOF
+
 is_nvidia_gpu=$(lspci | grep VGA | grep -i nvidia --quiet)
 if $is_nvidia_gpu; then
 cat <<EOF | xargs -ro yay -S --needed
