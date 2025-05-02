@@ -45,7 +45,7 @@ return {
                 local name = "scratch." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.buf), ":e")
                 require("snacks").debug.run { buf = self.buf, name = name }
               else
-                vim.cmd([[OverseerRun file-run]])
+                vim.cmd { cmd = "OverseerRun", args = { "file-run" } }
               end
             end,
             desc = "Run code",
