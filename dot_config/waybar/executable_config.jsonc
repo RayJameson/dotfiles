@@ -25,6 +25,7 @@
         "custom/notification",
         "custom/sep",
         "hyprland/language",
+        "idle_inhibitor",
         "custom/power",
     ],
     "custom/music-player": {
@@ -169,5 +170,12 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true,
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰒳",
+            "deactivated": "󰒲",
+        },
     },
 }

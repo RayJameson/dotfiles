@@ -67,7 +67,7 @@ window#waybar.hidden {
 #custom-gpu {
     min-height: 0;
     padding: 2px 10px;
-    border-radius: 18;
+    border-radius: 18px;
     margin: 3px 3px;
     /* background-color: #181825; */
     background-color: #292e39;
@@ -117,14 +117,24 @@ window#waybar.empty #window {
 #custom-power {
     color: #f38ba8;
     padding-right: 5px;
+    padding-left: 2px;
     font-size: 18px;
     background-color: transparent;
+}
+
+#idle_inhibitor {
+    background-color: transparent;
+    min-height: 0;
+    padding-right: 6px;
+    font-size: 18px;
+    color: #89b4fa;
 }
 
 #language {
     background-color: transparent;
     min-height: 0;
     padding-left: 5px;
+    padding-right: 5px;
 }
 
 @keyframes blink {
