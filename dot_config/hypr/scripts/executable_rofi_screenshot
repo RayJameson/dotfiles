@@ -102,6 +102,7 @@ shotarea () {
 	if [[ -z "$area" ]]; then
 		return
 	fi
+	sleep 0.1
 	cd ${dir} && grim -g "$area" - | tee "$file" | wl-copy
 	notify_view
 }
