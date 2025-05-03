@@ -13,6 +13,7 @@ regular = [
     "betterlockscreen",
     "blue-recorder-git",
     "btop",
+    "brightnessctl",
     "carla",
     "copyq",
     "cpio",
