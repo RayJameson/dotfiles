@@ -114,6 +114,7 @@ clean_build = [
     "hyprland-qtutils-git",
     "hyprlang-git",
     "hyprlock-git",
+    "hypridle-git",
     "hyprpaper-git",
     "hyprpicker-git",
     "hyprpolkitagent-git",
