@@ -129,7 +129,10 @@ window#waybar.empty #window {
     font-size: 18px;
     color: #89b4fa;
 }
-
+#keyboard-state {
+    background-color: transparent;
+    min-height: 0;
+}
 #language {
     background-color: transparent;
     min-height: 0;
