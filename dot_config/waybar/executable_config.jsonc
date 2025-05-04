@@ -87,7 +87,7 @@
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": "  muted",
+    "format-muted": " ",
     "format-icons": {
       "headphone": " ",
       "hands-free": "󰂑",
@@ -108,9 +108,9 @@
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": " {volume}%",
-    "format-source-muted": "",
-    "on-click": "pavucontrol -t 4",
-    "on-click-middle": "~/.config/hypr/scripts/volume.sh --toggle-mic",
+    "format-source-muted": " ",
+    "on-click": "~/.config/hypr/scripts/volume.sh --toggle-mic",
+    "on-click-right": "pavucontrol -t 4",
     "on-scroll-up": "~/.config/hypr/scripts/volume.sh --mic-inc",
     "on-scroll-down": "~/.config/hypr/scripts/volume.sh --mic-dec",
     "tooltip-format": "{source_desc} | {source_volume}%",
