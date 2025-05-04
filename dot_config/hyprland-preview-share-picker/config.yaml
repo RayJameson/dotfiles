@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=./json_schema.json
+stylesheets:
+  - style.css
+hide_token_restore: true
+outputs:
+  show_label: true

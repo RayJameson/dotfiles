@@ -72,6 +72,7 @@ regular = [
     "slurp",
     "steam-native-runtime",
     "steamtinkerlaunch-git",
+    "hyprland-preview-share-picker-git",
     "swaync",
     "syncthing",
     "syncthing-gtk",

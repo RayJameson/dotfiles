@@ -1,0 +1,253 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Config",
+  "type": "object",
+  "properties": {
+    "classes": {
+      "description": "config for customizing widget css classes",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Classes config"
+        }
+      ]
+    },
+    "debug": {
+      "description": "enable debug logs by default",
+      "default": false,
+      "type": "boolean"
+    },
+    "default_page": {
+      "description": "notebook page which is selected by default",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Page"
+        }
+      ]
+    },
+    "hide_token_restore": {
+      "description": "hide the token restore checkbox and use the default value instead",
+      "default": false,
+      "type": "boolean"
+    },
+    "image": {
+      "description": "all config related to images",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Image config"
+        }
+      ]
+    },
+    "outputs": {
+      "description": "config related to the outputs page",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Outputs config"
+        }
+      ]
+    },
+    "region": {
+      "description": "config related to the region page",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Region config"
+        }
+      ]
+    },
+    "stylesheets": {
+      "description": "paths to all stylesheets which should be loaded\n\nthe paths are relative to the location of the config file",
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "window": {
+      "description": "all config related to the application window",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Window config"
+        }
+      ]
+    },
+    "windows": {
+      "description": "config related to the windows page",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Windows config"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Classes config": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "description": "class applied to the image widget",
+          "default": "image",
+          "type": "string"
+        },
+        "image_card": {
+          "description": "class applied to the card holding the image and label",
+          "default": "card",
+          "type": "string"
+        },
+        "image_card_loading": {
+          "description": "class applied to the card holding the image and label when the image is being loaded",
+          "default": "card-loading",
+          "type": "string"
+        },
+        "image_label": {
+          "description": "class applied to the image label widget",
+          "default": "image-label",
+          "type": "string"
+        },
+        "notebook": {
+          "description": "class applied to the notebook widget",
+          "default": "notebook",
+          "type": "string"
+        },
+        "notebook_page": {
+          "description": "class applied to the container of a single page of the notebook",
+          "default": "page",
+          "type": "string"
+        },
+        "region_button": {
+          "description": "class applied to the button which triggers the region selection",
+          "default": "region-button",
+          "type": "string"
+        },
+        "restore_button": {
+          "description": "class applied to the button containing the session restore checkbox and label",
+          "default": "restore-button",
+          "type": "string"
+        },
+        "tab_label": {
+          "description": "class applied to the label of the notebook tabs",
+          "default": "tab-label",
+          "type": "string"
+        },
+        "window": {
+          "description": "class applied to the application window",
+          "default": "window",
+          "type": "string"
+        }
+      }
+    },
+    "Image config": {
+      "type": "object",
+      "properties": {
+        "resize_size": {
+          "description": "internally downscale every image to this height\n\nif the image's height is already smaller than this height, nothing happens",
+          "default": 200,
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "widget_size": {
+          "description": "target height of the widget containing the image",
+          "default": 150,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Outputs config": {
+      "type": "object",
+      "properties": {
+        "clicks": {
+          "description": "number of clicks to trigger selection",
+          "default": 2,
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "respect_output_scaling": {
+          "description": "size the output cards respectively to their scaling\n\n**note**: when having too weird of a layout this should probably be disabled",
+          "default": true,
+          "type": "boolean"
+        },
+        "show_label": {
+          "description": "show the output name label",
+          "default": false,
+          "type": "boolean"
+        },
+        "spacing": {
+          "description": "spacing in pixels between the outputs in the layout\n\n**note**: the spacing is applied to both sides (the effective gap is `spacing * 2`)",
+          "default": 6,
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      }
+    },
+    "Page": {
+      "type": "string",
+      "enum": [
+        "windows",
+        "outputs",
+        "region"
+      ]
+    },
+    "Region config": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "description": "command to use for the region selection\n\nthe command should return a value in the following format: <output>@<x>,<y>,<w>,<h> (e.g. DP-3@2789,436,756,576)",
+          "default": "slurp -f '%o@%x,%y,%w,%h'",
+          "type": "string"
+        }
+      }
+    },
+    "Window config": {
+      "type": "object",
+      "properties": {
+        "height": {
+          "description": "target height of the application window",
+          "default": 500,
+          "type": "integer",
+          "format": "int32"
+        },
+        "width": {
+          "description": "target width of the application window",
+          "default": 1000,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Windows config": {
+      "type": "object",
+      "properties": {
+        "clicks": {
+          "description": "number of clicks to trigger selection",
+          "default": 2,
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "max_per_row": {
+          "description": "minimum amount of cards per row",
+          "default": 4,
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "min_per_row": {
+          "description": "minimum amount of cards per row",
+          "default": 3,
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "spacing": {
+          "description": "spacing in pixels between the window cards",
+          "default": 12,
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      }
+    }
+  }
+}
