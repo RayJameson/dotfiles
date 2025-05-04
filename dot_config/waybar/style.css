@@ -161,3 +161,16 @@ tooltip {
     font-family: "NotoSansMono Nerd Font";
     font-size: 17px;
 }
+
+#mpris {
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    background-color: #292e39;
+    color: #c8ccd4;
+    border-radius: 18px;
+    min-height: 0;
+    padding: 2px 10px;
+    border-radius: 18px;
+    margin: 3px 3px;
+    font-weight: bold;
+}

@@ -12,7 +12,7 @@
     "hyprland/window"
   ],
   "modules-center": [
-    "custom/music-player"
+    "mpris",
   ],
   "modules-right": [
     "network",
@@ -30,14 +30,18 @@
     "idle_inhibitor",
     "custom/power",
   ],
-  "custom/music-player": {
-    "interval": 1,
-    "format": "{}",
-    "return-type": "json",
-    "exec": "~/.config/waybar/modules/music_player.sh grep",
-    "on-click": "~/.config/waybar/modules/music_player.sh previous",
-    "on-click-middle": "~/.config/waybar/modules/music_player.sh pause",
-    "on-click-right": "~/.config/waybar/modules/music_player.sh next",
+  "mpris": {
+    "format": "<span foreground=\"#e06c75\">{player_icon}</span>  {artist} — {title}",
+    "format-paused": "{status_icon} {artist} — {title}",
+    "artist-len": 20,
+    "title-len": 20,
+    "player-icons": {
+      "default": "",
+    },
+    "status-icons": {
+      "paused": ""
+    },
+    "ignored-players": ["firefox"]
   },
   "wlr/workspaces": {
     "on-click": "activate",
