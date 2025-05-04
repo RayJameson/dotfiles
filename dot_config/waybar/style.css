@@ -132,9 +132,11 @@ window#waybar.empty #window {
 #keyboard-state {
     background-color: transparent;
     min-height: 0;
+    color: #c8ccd4;
 }
 #language {
     background-color: transparent;
+    color: #c8ccd4;
     min-height: 0;
     padding-left: 5px;
     padding-right: 5px;
