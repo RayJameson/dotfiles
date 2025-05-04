@@ -176,3 +176,12 @@ tooltip {
     margin: 3px 3px;
     font-weight: bold;
 }
+
+#privacy-item.audio-in {
+    color: #98c379;
+}
+
+#privacy-item.screenshare {
+    color: #ff9640;
+    padding-left: 5px;
+}
