@@ -1,7 +1,8 @@
+{{- if eq .chezmoi.os "darwin" -}}
 # Early exit, because we don't want to source same file twice (zshrc)
 # On MacOS zprofile is read every interactive shell login, so I put sourcing behind condition
 [[ -n "$TTY" ]] && return
-
+{{- end -}}
 source "$HOME/.zshrc"
 if command_exists gpg; then
     unset SSH_AGENT_PID
@@ -9,4 +10,3 @@ if command_exists gpg; then
         export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
     fi
 fi
-
