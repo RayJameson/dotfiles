@@ -20,6 +20,7 @@ README.md
 .config/waybar
 .config/hypr
 .config/MangoHud
+.config/hyprland-preview-share-picker
 .config/i3
 .config/keepassxc/keepassxc.ini
 .config/mimeapps.list
