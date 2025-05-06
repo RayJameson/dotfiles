@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-notify='notify-send -u low -h string:wayland-notify-tag:hyprland-gamemode'
+media="$HOME/.local/share/chezmoi/.media"
+notify="notify-send -u low -i $media/hyprland_logo.png -h string:wayland-notify-tag:hyprland-gamemode"
 
 HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
 if [ "$HYPRGAMEMODE" = 1 ] ; then
