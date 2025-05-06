@@ -2,7 +2,7 @@
 # Early exit, because we don't want to source same file twice (zshrc)
 # On MacOS zprofile is read every interactive shell login, so I put sourcing behind condition
 [[ -n "$TTY" ]] && return
-{{- end -}}
+{{- end }}
 source "$HOME/.zshrc"
 if command_exists gpg; then
     unset SSH_AGENT_PID
