@@ -1,0 +1,15 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+{{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") -}}
+
+{{ if stat "/usr/share/sddm/themes/archcraft/" -}}
+    exit 0
+{{ end }}
+
+
+if ask_user "Link archcraft theme to /usr/share/sddm/themes/ ?"; then
+    sudo ln -s "$HOME/.local/share/chezmoi/.assets/sddm/themes/archcraft/" /usr/share/sddm/themes/
+fi
+
+{{ end -}}

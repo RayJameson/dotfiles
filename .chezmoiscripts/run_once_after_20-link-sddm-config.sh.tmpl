@@ -1,0 +1,15 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+{{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") -}}
+
+{{ if stat "/etc/sddm.conf.d/kde_settings.conf" -}}
+    exit 0
+{{ end }}
+
+
+if ask_user "Link sddm config to /etc/sddm.conf.d/kde_settings.conf ?"; then
+    sudo ln -s "$HOME/.local/share/chezmoi/.assets/sddm/kde_settings.conf" /etc/sddm.conf.d/
+fi
+
+{{ end -}}
