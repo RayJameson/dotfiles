@@ -1,9 +1,11 @@
 if [[ ! $(uname) == "Linux" ]]; then
     return
 fi
-export SUDO_ASKPASS="$HOME/.config/i3/scripts/rofi_askpass"
-alias sudo='sudo -A'
-alias sudoedit='sudoedit -A'
+if [[ -n $DISPLAY ]]; then
+    export SUDO_ASKPASS="$CONFIG/i3/scripts/rofi_askpass"
+    alias sudo='sudo -A'
+    alias sudoedit='sudoedit -A'
+fi
 alias lrun='systemd-run --user --scope --property CPUQuota=80% --property MemoryMax=31G --property MemoryHigh=28G'
 alias lrunbg='systemd-run --user --property CPUQuota=80% --property MemoryMax=31G --property MemoryHigh=28G'
 alias wm='wikiman'
