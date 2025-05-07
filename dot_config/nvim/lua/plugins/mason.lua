@@ -33,6 +33,7 @@ return {
         "selene",
         -- formatters
         "stylua",
+        "kulala-fmt",
         -- debuggers
         { "debugpy", condition = is_executable("python3") },
         { "delve", condition = is_executable("go") },
