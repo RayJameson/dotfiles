@@ -37,7 +37,7 @@ xfce4-power-manager &
 xsetroot -cursor_name left_ptr
 
 # Restore wallpaper
-hsetroot -cover "$HOME"/.local/share/chezmoi/.media/wallpaper
+hsetroot -cover "$HOME"/.local/share/chezmoi/.assets/wallpaper
 
 # Lauch notification daemon
 "$idir"/scripts/i3_dunst
