@@ -6,8 +6,15 @@
   "exclusive": true,
   "passthrough": false,
   "fixed-center": true,
-  "modules-left": ["hyprland/workspaces", "custom/sep", "hyprland/window"],
-  "modules-center": ["mpris"],
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/sep",
+    "hyprland/window",
+    "hyprland/submap",
+  ],
+  "modules-center": [
+    "mpris"
+  ],
   "modules-right": [
     "network",
     "bluetooth",
@@ -36,7 +43,9 @@
     "status-icons": {
       "paused": "",
     },
-    "ignored-players": ["firefox"],
+    "ignored-players": [
+      "firefox"
+    ],
   },
   "wlr/workspaces": {
     "on-click": "activate",
@@ -90,7 +99,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [" ", " ", " "],
+      "default": [
+        " ",
+        " ",
+        " "
+      ],
     },
     "on-click": "pamixer -t",
     "on-click-right": "pavucontrol",
@@ -126,7 +139,19 @@
     "on-click-right": "blueman-manager",
     "format-connected-battery": "{icon} {num_connections}",
     // "format-connected-battery": "{icon} {device_alias}-{device_battery_percentage}%",
-    "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+    "format-icons": [
+      "󰥇",
+      "󰤾",
+      "󰤿",
+      "󰥀",
+      "󰥁",
+      "󰥂",
+      "󰥃",
+      "󰥄",
+      "󰥅",
+      "󰥆",
+      "󰥈"
+    ],
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%",
   },
   "network": {
@@ -206,5 +231,11 @@
         "tooltip-icon-size": 24,
       },
     ],
+  },
+  "hyprland/submap": {
+    "format": " {}",
+    "max-length": 12,
+    "tooltip": false,
+    "on-click": "hyprctl dispatch submap reset",
   },
 }

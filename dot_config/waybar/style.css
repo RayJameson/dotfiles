@@ -64,6 +64,7 @@ window#waybar.hidden {
 #bluetooth,
 #network,
 #custom-notification,
+#submap,
 #custom-gpu {
     min-height: 0;
     padding: 2px 10px;
@@ -76,6 +77,10 @@ window#waybar.hidden {
 #custom-sep {
     padding: 0px;
     color: #585b70;
+}
+
+#submap {
+    color: #ff9640;
 }
 
 window#waybar.empty #window {
