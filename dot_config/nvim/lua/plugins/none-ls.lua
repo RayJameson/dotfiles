@@ -84,6 +84,21 @@ return {
         },
         factory = h.generator_factory,
       },
+      h.make_builtin {
+        name = "kulala-fmt",
+        meta = {
+          url = "https://github.com/mistweaverco/kulala-fmt",
+          description = "An opinionated .http and .rest files linter and formatter",
+        },
+        method = nls.methods.FORMATTING,
+        filetypes = { "http" },
+        generator_opts = {
+          command = "kulala-fmt",
+          to_stdin = true,
+          args = { "format", "--stdin" },
+        },
+        factory = h.formatter_factory,
+      },
     }
     return opts -- return final config table
   end,
