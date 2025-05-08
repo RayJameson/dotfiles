@@ -1,4 +1,4 @@
-if not vim.fn.executable("systemd_ls") then return {} end
+if vim.fn.executable("systemd_ls") == 0 then return {} end
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
