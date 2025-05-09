@@ -4,27 +4,30 @@
 # ~/.config/i3/theme/polybar/decor.ini [module/i3LD] [module/i3RD]
 # ~/.config/i3/scripts/i3_autostart
 
-is_last_or_first_ws() {
+ws_position() {
     ws=$(i3-msg -t get_workspaces)
     current_ws="$1"
     first_ws=$(echo "$ws" | jq 'min_by(.num) | .num')
-
-    if [[ $first_ws -eq current_ws ]]; then
-        echo first
-    fi
-
     last_ws=$(echo "$ws" | jq 'max_by(.num) | .num')
-    if [[ $last_ws -eq current_ws ]]; then
+
+    if [[ first_ws -eq last_ws ]]; then
+        echo single
+    elif [[ first_ws -eq current_ws ]]; then
+        echo first
+    elif [[ last_ws -eq current_ws ]]; then
         echo last
     fi
 }
 
 polybar_hook() {
-    last_or_first=$(is_last_or_first_ws "$@")
-    if [[ $last_or_first = "last" ]]; then
+    current_ws_position=$(ws_position "$@")
+    if [[ $current_ws_position = "single" ]]; then
+        polybar-msg action i3LD hook 1 & # set left separator color to selected ws color
+        polybar-msg action i3RD hook 1 & # set right separator color to selected ws color
+    elif [[ $current_ws_position = "last" ]]; then
         polybar-msg action i3LD hook 0 & # set left separator color to altbackground
         polybar-msg action i3RD hook 1 & # set right separator color to selected ws color
-    elif [[ $last_or_first = "first" ]]; then
+    elif [[ $current_ws_position = "first" ]]; then
         polybar-msg action i3RD hook 0 & # set right separator color to altbackground
         polybar-msg action i3LD hook 1 & # set left separator color to selected ws color
     else
