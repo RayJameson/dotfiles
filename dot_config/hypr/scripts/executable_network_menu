@@ -36,7 +36,7 @@ ENV['LC_ALL'] = 'C'
 ENC = locale.getpreferredencoding()
 
 CONF = configparser.ConfigParser()
-CONF.read(expanduser("~/.config/i3/theme/networkmenu_config.ini"))
+CONF.read(expanduser("~/.config/hypr/rofi/networkmenu_config.ini"))
 
 
 def cli_args():
