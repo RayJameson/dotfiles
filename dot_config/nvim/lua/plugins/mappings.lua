@@ -170,8 +170,8 @@ return {
     end
 
     -- add more text objects for "in" and "around"
-    for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?" } do
-      for _, mode in ipairs { "x", "o" } do
+    for _, mode in ipairs { "x", "o" } do
+      for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?" } do
         maps[mode]["i" .. char] = {
           string.format(":<C-u>silent! normal! f%sF%slvt%s<CR>", char, char, char),
           desc = "inside " .. char,
