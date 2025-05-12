@@ -12,7 +12,18 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
       ensure_installed = {
-        -- servers
+        unpack(
+          vim
+            .iter({ "iferr", "delve", "goimports", "gopls", "gofumpt", "goimports", "gomodifytags" })
+            :map(function(tool) return { tool, condition = is_executable("go") } end)
+            :totable()
+        ),
+        unpack(
+          vim
+            .iter({ "basedpyright", "ruff", "debugpy" })
+            :map(function(tool) return { tool, condition = is_executable("python3") } end)
+            :totable()
+        ),
         "bash-language-server",
         "json-lsp",
         "taplo",
@@ -20,23 +31,10 @@ return {
         "vim-language-server",
         "yaml-language-server",
         "marksman",
-        { "goimports", condition = is_executable("go") },
-        { "basedpyright", condition = is_executable("python3") },
-        { "gopls", condition = is_executable("go") },
-        { "gofumpt", condition = is_executable("go") },
-        { "goimports", condition = is_executable("go") },
-        { "gomodifytags", condition = is_executable("go") },
-        { "ruff", condition = is_executable("python3") },
-        -- linters
         "hadolint",
         "luacheck",
         "selene",
-        -- formatters
         "stylua",
-        "kulala-fmt",
-        -- debuggers
-        { "debugpy", condition = is_executable("python3") },
-        { "delve", condition = is_executable("go") },
       },
     },
   },

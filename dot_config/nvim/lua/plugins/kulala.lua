@@ -28,4 +28,10 @@ return {
       current_dttm = function() return os.date("%Y-%m-%d %H:%M:%S.000000") end,
     },
   },
+  specs = {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = function(_, opts)
+      if opts.ensure_installed then table.insert(opts.ensure_installed, "kulala-fmt") end
+    end,
+  },
 }
