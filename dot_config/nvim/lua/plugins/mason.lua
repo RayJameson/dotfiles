@@ -46,7 +46,6 @@ return {
     opts = {
       registries = {
         "lua:custom-registry", -- custom user registry
-        "github:mason-org/mason-registry", -- make sure to add the default registry
       },
       ui = {
         border = "rounded",
