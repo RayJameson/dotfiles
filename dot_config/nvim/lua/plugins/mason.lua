@@ -42,6 +42,7 @@ return {
   },
   {
     "williamboman/mason.nvim",
+    tag = "v1.11.0",
     opts = {
       registries = {
         "lua:custom-registry", -- custom user registry
