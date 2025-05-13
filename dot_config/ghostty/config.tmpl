@@ -15,6 +15,7 @@ window-decoration = false
 quick-terminal-position = bottom
 quick-terminal-animation-duration = 0.0
 
+{{ if eq .chezmoi.os "linux" }}window-padding-y = 8,0{{ end }}
 # Font
 font-size = {{ if eq .chezmoi.os "linux" }}19{{ else if eq .chezmoi.os "darwin" }}24{{ end }}
 freetype-load-flags = false
