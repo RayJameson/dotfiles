@@ -3,7 +3,7 @@ return {
   "cbochs/grapple.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "Grapple" },
-  opts = function(_, opts) opts.scope = "git_branch" end,
+  opts = { scope = "git" },
   specs = {
     {
       "AstroNvim/astroui",
@@ -28,6 +28,10 @@ return {
         maps.n[prefix .. "s"] = {
           "<Cmd>Grapple toggle_scopes<CR>",
           desc = "Switch scope",
+        }
+        maps.n[prefix .. "l"] = {
+          "<Cmd>Grapple toggle_loaded<CR>",
+          desc = "Toggle loaded scopes",
         }
         maps.n["<C-n>"] = { "<Cmd>Grapple cycle forward<CR>", desc = "Select next tag" }
         maps.n["<C-p>"] = { "<Cmd>Grapple cycle backward<CR>", desc = "Select previous tag" }
