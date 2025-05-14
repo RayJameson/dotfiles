@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 36,
+  "height": 32,
   "spacing": 1,
   "exclusive": true,
   "passthrough": false,

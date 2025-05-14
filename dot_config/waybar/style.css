@@ -123,7 +123,7 @@ window#waybar.empty #window {
     color: #f38ba8;
     padding-right: 5px;
     padding-left: 2px;
-    font-size: 18px;
+    /* font-size: 18px; */
     background-color: transparent;
 }
 
@@ -131,7 +131,7 @@ window#waybar.empty #window {
     background-color: transparent;
     min-height: 0;
     padding-right: 6px;
-    font-size: 18px;
+    /* font-size: 18px; */
     color: #89b4fa;
 }
 #keyboard-state {
@@ -166,7 +166,7 @@ tooltip {
 #custom-notification {
     color: #e5c07b;
     font-family: "NotoSansMono Nerd Font";
-    font-size: 17px;
+    /* font-size: 17px; */
 }
 
 #mpris {
