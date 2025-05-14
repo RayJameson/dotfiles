@@ -41,7 +41,7 @@ return {
         softtabstop = 4,
         shiftwidth = 4,
         foldenable = true,
-        viewoptions = "cursor,folds",
+        viewoptions = "folds",
         smarttab = true,
         clipboard = "",
         autoindent = true,
