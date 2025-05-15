@@ -42,9 +42,6 @@ return {
     "mason-org/mason.nvim",
     version = "1.11.0",
     opts = {
-      registries = {
-        "lua:custom-registry", -- custom user registry
-      },
       ui = {
         border = "rounded",
         height = 0.8,
