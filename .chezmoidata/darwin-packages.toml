@@ -16,7 +16,6 @@ brews = [
     "glow",
     "gping",
     "jq",
-    "lazydocker",
     "llvm",
     "lnav",
     "lua",
@@ -27,7 +26,6 @@ brews = [
     "node",
     "nushell",
     "parallel",
-    "pipx",
     "ptpython",
     "pyenv",
     "rich",
@@ -36,6 +34,7 @@ brews = [
     "tealdeer",
     "timg",
     "tree-sitter",
+    "uv",
     "zoxide",
     "zsh",
 ]
@@ -56,6 +55,5 @@ casks = [
     "syncthing",
     "telegram",
     "todoist",
-    "wezterm@nightly",
-    "zen-browser",
+    "zen",
 ]
