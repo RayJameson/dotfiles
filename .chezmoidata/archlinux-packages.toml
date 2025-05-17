@@ -67,6 +67,7 @@ regular = [
     "qt5-wayland",
     "qt5ct",
     "ripgrep",
+    "rustup",
     "seahorse",
     "selectdefaultapplication-fork-git",
     "sesh-bin",

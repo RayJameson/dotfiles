@@ -30,6 +30,7 @@ brews = [
     "pyenv",
     "rich",
     "ripgrep",
+    "rustup",
     "sesh",
     "tealdeer",
     "timg",
