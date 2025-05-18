@@ -175,6 +175,7 @@ return {
         perl = run_with("perl"),
         html = run_with("xdg-open"),
         go = run_with { "go", "run" },
+        rust = run_with { "cargo", "run" },
       }
 
       ---@param run_in_foreground boolean
