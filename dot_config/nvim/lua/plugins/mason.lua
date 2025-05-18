@@ -114,7 +114,7 @@ return {
           require("mason-nvim-dap").default_setup(config) -- don't forget this!
           local path = vim.fn.exepath("python")
           local debugpy = require("mason-registry").get_package("debugpy")
-          if debugpy:is_installed() then path = debugpy:get_install_path() .. "/venv/bin/python" end
+          if debugpy:is_installed() then path = vim.env.MASON .. "/packages/debugpy/venv/bin/python" end
           require("dap-python").setup(path, opts)
         end,
       }
