@@ -33,9 +33,7 @@ return {
           if u.root_pattern(".stylua.toml")(params.root) then
             table.insert(args, 1, "--config-path")
             table.insert(args, 2, params.root .. "/.stylua.toml")
-          elseif
-            not u.root_pattern(".stylua.toml")(params.root) and not u.root_pattern(".editorconfig")(params.root)
-          then
+          else
             table.insert(args, 1, "--search-parent-directories")
           end
           return args
