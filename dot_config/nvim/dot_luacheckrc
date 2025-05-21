@@ -1,12 +1,7 @@
 -- Global objects
 globals = {
-  "PACKER_BOOTSTRAP",
-  "astronvim",
-  "astronvim_installation",
-  "vim",
-  "bit",
-  "C",
-  "packer_plugins",
+  Snacks = { other_fields = true },
+  vim = { other_fields = true },
 }
 
 -- Rerun tests only if their modification time changed
