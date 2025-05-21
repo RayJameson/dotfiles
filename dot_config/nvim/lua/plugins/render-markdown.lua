@@ -14,17 +14,13 @@ return {
     },
   },
   opts = {
-    completions = {
-      blink = { enabled = true },
-      lsp = { enabled = true },
-    },
-    render_modes = { "n", "c", "i", "v" },
+    render_modes = { "n", "c", "v" },
     win_options = {
       conceallevel = {
         rendered = 3,
       },
       concealcursor = {
-        rendered = "nci",
+        rendered = "nc",
       },
     },
     anti_conceal = {
