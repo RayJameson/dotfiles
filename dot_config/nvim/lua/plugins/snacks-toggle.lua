@@ -57,9 +57,9 @@ return {
       .new({
         name = "virtual lines",
         get = function() return vim.diagnostic.config().virtual_text end,
-        set = function(state)
+        set = function(should_enable)
           local new_virtual_text = false
-          if state then
+          if should_enable then
             new_virtual_text = previous_virtual_text or true
           else
             previous_virtual_text = vim.diagnostic.config().virtual_text
@@ -79,7 +79,7 @@ return {
       .new({
         name = "virtual text",
         get = function() return vim.diagnostic.config().virtual_text end,
-        set = function(state) require("astrocore.toggles").virtual_text(true) end,
+        set = function(should_enable) require("astrocore.toggles").virtual_text(true) end,
       })
       :map("<Leader>uv")
     toggle
@@ -103,8 +103,8 @@ return {
       .new({
         name = "diagnostics",
         get = function() return vim.diagnostic.is_enabled() end,
-        set = function(state)
-          if state then
+        set = function(should_enable)
+          if should_enable then
             vim.diagnostic.enable()
           else
             vim.diagnostic.enable(false)
@@ -218,9 +218,9 @@ return {
                 local filter = { bufnr = bufnr or 0 }
                 return vim.lsp.inlay_hint.is_enabled(filter)
               end,
-              set = function(state)
+              set = function(should_enable)
                 local filter = { bufnr = bufnr or 0 }
-                if state then
+                if should_enable then
                   vim.lsp.inlay_hint.enable(true, filter)
                 else
                   vim.lsp.inlay_hint.enable(false, filter)
@@ -232,8 +232,8 @@ return {
             .new({
               name = "LSP inlay hints (global)",
               get = function() return vim.lsp.inlay_hint.is_enabled() end,
-              set = function(state)
-                if state then
+              set = function(should_enable)
+                if should_enable then
                   vim.lsp.inlay_hint.enable(true)
                 else
                   vim.lsp.inlay_hint.enable(false)
