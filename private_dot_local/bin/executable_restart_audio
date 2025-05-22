@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 set -o pipefail
-set -e
 
 systemctl --user restart pipewire.service pipewire-pulse.service && \
-    pkill -15 easyeffects &&
-    daemon -- easyeffects --gapplication-service
+    killall -q easyeffects; hyprctl dispatch exec 'easyeffects --gapplication-service'
