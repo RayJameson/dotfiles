@@ -33,9 +33,11 @@ check_pyenv_init() {
 }
 uvnew() {
     local project_name="$1"
-    [[ -z $1 ]] && return
-    local python_version="$2"
-    uv init "$project_name" --python="$python_version"
+    shift
+    [[ -z $project_name ]] && return
+    local python_version="$1"
+    shift
+    uv init "$project_name" --python="$python_version" "$@"
     cd "$project_name"
     uv venv
     source .venv/bin/activate
