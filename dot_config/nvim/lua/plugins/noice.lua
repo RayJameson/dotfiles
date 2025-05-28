@@ -16,6 +16,14 @@ return {
       },
       routes = {
         {
+          view = "notify",
+          filter = {
+            event = "msg_show",
+            kind = { "", "echo", "echomsg", "lua_print", "list_cmd", "shell_out", "shell_err", "shell_ret" },
+          },
+          opts = { replace = true, merge = true, title = "Messages" },
+        },
+        {
           filter = { event = "msg_show", find = "%d+L,%s%d+B" },
           opts = { skip = true },
         }, -- skip save notifications
