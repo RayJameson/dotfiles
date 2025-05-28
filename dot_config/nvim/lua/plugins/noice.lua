@@ -16,14 +16,6 @@ return {
       },
       routes = {
         {
-          view = "notify",
-          filter = {
-            event = "msg_show",
-            kind = { "", "echo", "echomsg", "lua_print", "list_cmd", "shell_out", "shell_err", "shell_ret" },
-          },
-          opts = { replace = true, merge = true, title = "Messages" },
-        },
-        {
           filter = { event = "msg_show", find = "%d+L,%s%d+B" },
           opts = { skip = true },
         }, -- skip save notifications
@@ -58,6 +50,14 @@ return {
         { filter = { event = "msg_show", cmdline = "^:lua" }, view = "messages" }, -- send lua output to split
         { filter = { event = "msg_show", cmdline = "^:=" }, view = "messages" }, -- send lua output to split
         { filter = { event = "msg_show", min_height = 20 }, view = "messages" }, -- send long messages to split
+        {
+          view = "notify",
+          filter = {
+            event = "msg_show",
+            kind = { "", "echo", "echomsg", "lua_print", "list_cmd", "shell_out", "shell_err", "shell_ret" },
+          },
+          opts = { replace = true, merge = true, title = "Messages" },
+        },
       },
     },
     specs = {
