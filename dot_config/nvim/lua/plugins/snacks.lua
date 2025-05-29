@@ -96,7 +96,10 @@ return {
         maps.n["<Leader>un"] = { function() require("snacks").notifier.hide() end, desc = "Dismiss all notifications" }
         maps.n["<Leader>fN"] =
           { function() require("snacks").notifier.show_history() end, desc = "Notifications buffer" }
-        maps.n["<Leader>fn"] = { function() require("snacks").picker.notifications() end, desc = "Notifications" }
+        maps.n["<Leader>fn"] = {
+          function() require("snacks").picker.notifications { confirm = "focus_preview" } end,
+          desc = "Notifications",
+        }
         maps.n["<Leader>fP"] = {
           function() require("snacks").picker.grep { ft = { "lua", "vim" }, cwd = vim.fn.stdpath("data") .. "/lazy" } end,
           desc = "Words in plugins",
