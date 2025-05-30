@@ -2,7 +2,11 @@
 return {
   "linux-cultist/venv-selector.nvim",
   branch = "regexp",
-  enabled = vim.fn.executable("fd") == 1 or vim.fn.executable("fdfind") == 1 or vim.fn.executable("fd-find") == 1,
+  enabled = vim.tbl_contains(
+    { "fd", "fdfind", "fd-find" },
+    function(v) return vim.fn.executable(v) == 1 end,
+    { predicate = true }
+  ),
   ft = "python",
   opts = {},
   config = function(_, opts)
