@@ -8,6 +8,7 @@ brews = [
     "btop",
     "coreutils",
     "eza",
+    "entr",
     "fd",
     "fzf",
     "fzy",

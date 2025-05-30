@@ -21,6 +21,7 @@ regular = [
     "ddcutil-git",
     "diff-so-fancy",
     "eza",
+    "entr",
     "fd",
     "feh",
     "flatpak",
