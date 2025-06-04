@@ -1,4 +1,3 @@
----
 services:
   "github.qiwi.com": "github:github.qiwi.com"
 gui:
@@ -35,14 +34,13 @@ git:
   paging:
     colorArg: "always"
     pager: "diff-so-fancy"
-
 customCommands:
   - key: "F"
     loadingText: "Pruning & Fetching..."
     description: "prune deleted and fetched remote branches"
     command: "git fetch --prune"
     context: "remotes"
-    stream: true
+    output: log
   - key: "<c-c>"
     description: "commit as non-default author"
     command: 'git commit -m "{{index .PromptResponses 0}}" --author="{{index .PromptResponses 1}} <{{index .PromptResponses 2}}>"'
@@ -81,7 +79,7 @@ customCommands:
     context: "commits"
     loadingText: "Pushing commit..."
     description: "Push a specific commit (and any preceding)"
-    stream: true
+    output: log
   - key: "<c-p>"
     description: "Push to a specific remote branch"
     context: "remotes"
