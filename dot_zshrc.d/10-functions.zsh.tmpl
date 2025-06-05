@@ -12,9 +12,15 @@ nvm_init() {
 alias_source() {
     zsh -ixc : 2>&1 | grep $1
 }
+check_venv() {
+    if [[ -d .venv ]]; then
+        source .venv/bin/activate
+    fi
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd check_venv
 
 {{ if lookPath "pyenv" -}}
-
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 pyvenv() {
     local venv_name=${2:-$(basename $(pwd))}
@@ -31,6 +37,10 @@ check_pyenv_init() {
         pyenv_init
     fi
 }
+# add check_pyenv_init function to precmd_functions array
+add-zsh-hook precmd check_pyenv_init
+{{- end }}
+{{ if lookPath "uv" -}}
 uvnew() {
     local project_name="$1"
     shift
@@ -42,19 +52,7 @@ uvnew() {
     uv venv
     source .venv/bin/activate
 }
-# add check_pyenv_init function to precmd_functions array
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd check_pyenv_init
-
 {{- end }}
-
-check_venv() {
-    if [[ -d .venv ]]; then
-        source .venv/bin/activate
-    fi
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd check_venv
 
 tm() {
     local session_name=${1:-"main"}

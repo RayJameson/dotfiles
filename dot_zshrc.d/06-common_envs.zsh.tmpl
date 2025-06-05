@@ -16,11 +16,15 @@ export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export DOTFILES="$HOME/dotfiles"
 export EDITOR=nvim
 export PAGER=bat
+{{ if lookPath "poetry" -}}
 export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
 export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
 export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
 export POETRY_VIRTUALENVS_IN_PROJECT=true
+{{- end }}
+{{ if lookPath "pyenv" -}}
 export PYENV_ROOT="$HOME/.pyenv"
+{{- end }}
 [[ -f "$XDG_CONFIG_HOME/ptpython/config.py" ]] && export PYTHONSTARTUP="$XDG_CONFIG_HOME/ptpython/config.py"
 
 PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
