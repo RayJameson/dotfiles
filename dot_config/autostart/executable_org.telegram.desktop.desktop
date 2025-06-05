@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Telegram Desktop
-Comment=Official desktop version of Telegram messaging app
-TryExec=telegram-desktop
-Exec=telegram-desktop -autostart
-Icon=telegram
+Name=Telegram
+Comment=New era of messaging
+TryExec=Telegram
+Exec=Telegram -autostart
+Icon=org.telegram.desktop
 Terminal=false
 StartupWMClass=TelegramDesktop
 Type=Application
