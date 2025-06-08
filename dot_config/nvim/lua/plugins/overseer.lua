@@ -263,6 +263,51 @@ return {
           desc = "Run with `-m` flag",
         },
         {
+          name = "uv-virtualenv",
+          desc = "Setup uv environment for project",
+          params = function()
+            local stdout = vim
+              .system({ "uv", "python", "list", "--managed-python", "--all-versions", "--output-format", "json" })
+              :wait().stdout
+            assert(stdout)
+            local versions = vim.tbl_map(function(t) return t.version end, vim.json.decode(stdout))
+            return {
+              version = {
+                desc = "Python version to use for venv",
+                type = "enum",
+                choices = versions,
+              },
+            } --[[@as overseer.Params]]
+          end,
+          builder = function(params)
+            return {
+              name = "uv-virtualenv",
+              strategy = {
+                "orchestrator",
+                tasks = {
+                  { cmd = { "uv" }, args = { "venv", "-p", params.version } },
+                },
+              },
+            }
+          end,
+        } --[[@as overseer.TemplateDefinition]],
+        {
+          name = "setup-uv-dev",
+          desc = "Setup python uv venv and install packages",
+          builder = function()
+            return {
+              name = "setup-uv-dev",
+              strategy = {
+                "orchestrator",
+                tasks = {
+                  { "uv-virtualenv" },
+                  { cmd = "uv sync --no-install-project" },
+                },
+              },
+            }
+          end,
+        } --[[@as overseer.TemplateDefinition]],
+        {
           name = "pyenv-virtualenv",
           desc = "Setup pyenv environment for project",
           params = function()
@@ -296,11 +341,11 @@ return {
           end,
         } --[[@as overseer.TemplateDefinition]],
         {
-          name = "setup-python-dev",
-          desc = "Setup python venv and install packages",
+          name = "setup-pyenv-dev",
+          desc = "Setup python pyenv venv and install packages",
           builder = function()
             return {
-              name = "setup-python-dev",
+              name = "setup-pyenv-dev",
               strategy = {
                 "orchestrator",
                 tasks = {
