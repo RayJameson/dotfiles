@@ -124,6 +124,18 @@ return {
           })
         end,
       },
+      {
+        "Saghen/blink.cmp",
+        optional = true,
+        opts = {
+          sources = {
+            default = { "overseer" },
+            providers = {
+              overseer = { name = "overseer", module = "blink.compat.source", score_offset = -1 },
+            },
+          },
+        },
+      },
     },
     opts = {
       strategy = "toggleterm",
