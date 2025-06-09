@@ -138,7 +138,8 @@ return {
       function()
         vim.ui.input({ prompt = "Enter note name, use / for directories" }, function(input)
           if input == nil then return end
-          vim.cmd.edit(vim.fn.stdpath("data") .. "/notes/" .. vim.fn.fnameescape(input))
+          local note_path = vim.fn.fnameescape(input)
+          vim.cmd.edit(vim.env.HOME .. "/Obsidian/vault/" .. note_path .. ".md")
         end)
       end,
       desc = "New note",

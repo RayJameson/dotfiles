@@ -45,7 +45,7 @@ return {
         mappings = {
           n = {
             ["<Leader>No"] = {
-              function() require("oil").open(vim.fn.stdpath("data") .. "/notes") end,
+              function() require("oil").open( vim.env.HOME .. "/Obsidian/vault" ) end,
               desc = "Open notes directory",
             },
             ["-"] = { function() require("oil").open() end, desc = "Open parent directory" },

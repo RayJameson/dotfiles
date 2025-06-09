@@ -107,13 +107,14 @@ return {
         maps.n["<Leader>Nw"] = {
           function()
             require("snacks").picker.grep {
-              cwd = vim.fn.stdpath("data") .. "/notes/",
+              ft = "md",
+              cwd = vim.env.HOME .. "/Obsidian/vault",
             }
           end,
           desc = "Words in notes",
         }
         maps.n["<Leader>Nf"] = {
-          function() require("snacks").picker.files { cwd = vim.fn.stdpath("data") .. "/notes/" } end,
+          function() require("snacks").picker.files { ft = "md", cwd = vim.env.HOME .. "/Obsidian/vault" } end,
           desc = "Notes",
         }
         maps.x["<Leader>fw"] = {
