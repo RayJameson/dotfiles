@@ -9,13 +9,17 @@ return {
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = { -- a table of overrides/changes when applying the astrotheme theme
-        Cursor = { bg = "#ffffff" },
-        TermCursor = { bg = "#ffffff" },
+        Cursor = { fg = C.black, bg = "#ffffff" },
+        TermCursor = { fg = C.black, bg = "#ffffff" },
         CursorLineNr = { fg = C.blue_1 },
         CursorLine = { bg = C.bg },
         FoldColumn = { fg = C.grey_9, bg = C.none },
         LineNrAbove = { fg = C.pale_red },
         LineNrBelow = { fg = C.pale_green },
+        DiffText = { fg = C.black, bg = C.white_1 },
+        GitSignsAddInline = { fg = C.black, bg = C.white_1 },
+        GitSignsDeleteInline = { fg = C.black, bg = C.white_1 },
+        GitSignsChangeInline = { fg = C.black, bg = C.white_1 },
         DiagnosticVirtualTextHint = { fg = C.white, bg = C.none },
         DiagnosticVirtualTextWarn = { fg = C.equator, bg = C.none },
         DiagnosticVirtualTextInfo = { fg = C.wild_willow, bg = C.none },
