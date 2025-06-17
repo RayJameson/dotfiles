@@ -135,26 +135,6 @@ return {
           end,
         },
       },
-      RelativeNumberSwitch = {
-        {
-          event = "InsertEnter",
-          callback = function()
-            if vim.wo.relativenumber then
-              vim.wo.relativenumber = false
-              vim.w.adaptive_relative_number_state = true
-            end
-          end,
-        },
-        {
-          event = "InsertLeave",
-          callback = function()
-            if vim.w.adaptive_relative_number_state then
-              vim.wo.relativenumber = true
-              vim.w.adaptive_relative_number_state = nil
-            end
-          end,
-        },
-      },
       QuickFix = {
         {
           event = "FileType",
