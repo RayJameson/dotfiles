@@ -149,6 +149,8 @@ return {
     maps.n["<Leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
     -- Move Lines
+    maps.n["<CR>"] = { "o<Esc>k", desc = "Put empty line below" }
+    maps.n["<S-CR>"] = { "O<Esc>j", desc = "Put empty line above" }
     maps.n["<M-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
     maps.n["<M-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
     maps.i["<M-j>"] = { "<esc><cmd>m .+1<cr>==gi", desc = "Move down" }
