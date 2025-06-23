@@ -104,26 +104,6 @@ return {
           callback = function() vim.opt_local.formatprg = vim.fn.executable("jq") == 1 and "jq" or "" end,
         },
       },
-      RememberFolds = {
-        {
-          event = "BufWinLeave",
-          pattern = "?*",
-          callback = function(args)
-            if require("astrocore.buffer").is_valid(args.buf) then
-              vim.cmd.mkview { mods = { silent = true, emsg_silent = true } }
-            end
-          end,
-        },
-        {
-          event = "BufWinEnter",
-          pattern = "?*",
-          callback = function(args)
-            if require("astrocore.buffer").is_valid(args.buf) then
-              vim.cmd.loadview { mods = { silent = true, emsg_silent = true } }
-            end
-          end,
-        },
-      },
       TermNumbers = {
         {
           event = "TermOpen",
