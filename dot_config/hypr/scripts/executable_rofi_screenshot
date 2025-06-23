@@ -54,8 +54,12 @@ fi
 iDIR="$HOME/.config/hypr/mako/icons"
 notify_view() {
 	notify_cmd_shot="notify-send -h string:x-canonical-private-synchronous:sys-notify-shot -u low -i ${iDIR}/picture.png"
-	${notify_cmd_shot} "Copied to clipboard."
 	paplay --volume 40000 /usr/share/sounds/freedesktop/stereo/screen-capture.oga &>/dev/null &
+	result="$($notify_cmd_shot --action='open file' --action='open directory' 'Copied to clipboard.')"
+	case $result in
+		0) viewnior "${dir}/$file";;
+		1) xdg-open "$dir";;
+	esac
 }
 
 # countdown
