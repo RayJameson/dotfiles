@@ -14,6 +14,8 @@ return {
     toggle.option("lazyredraw"):map("<Leader>ur")
     toggle.option("spell", { name = "spellcheck" }):map("<Leader>us")
     toggle.option("tabline", { on = 2, off = 0 }):map("<Leader>ut")
+    toggle.option("sidescrolloff", { on = 999, off = 0, global = true }):map("<Leader>uO")
+    toggle.option("scrolloff", { on = 999, off = 0, global = true }):map("<Leader>uo")
     toggle
       .new({
         name = "notifications",
