@@ -31,13 +31,13 @@ return {
                 [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Open tasks" },
                 [prefix .. "<CR>"] = { "<Cmd>OverseerToggle<CR>", desc = "Open Panel" },
                 [prefix .. "s"] = { "<Cmd>OverseerRun shell<CR>", desc = "Run shell" },
-                [prefix .. "f"] = { "<Cmd>OverseerRun file-run<CR>", desc = "Run file" },
-                [prefix .. "F"] = { "<Cmd>OverseerRun file-run-background<CR>", desc = "Run file in background" },
+                [prefix .. "f"] = { "<Cmd>OverseerRun run\\ file<CR>", desc = "Run file" },
+                [prefix .. "F"] = { "<Cmd>OverseerRun run\\ file\\ in\\ background<CR>", desc = "Run file in background" },
                 [prefix .. "h"] = {
-                  "<Cmd>OverseerRun file-run-horizontal-split<CR>",
+                  "<Cmd>OverseerRun run file in horizontal split<CR>",
                   desc = "Run file in horizontal split",
                 },
-                [prefix .. "t"] = { "<Cmd>OverseerRun file-run-tab<CR>", desc = "Run file in new tab" },
+                [prefix .. "t"] = { "<Cmd>OverseerRun run\\ file\\ in\\ new\\ tab<CR>", desc = "Run file in new tab" },
                 [prefix .. "l"] = { "<Cmd>OverseerLoadBundle<CR>", desc = "Load task bundle" },
               },
             },
@@ -223,7 +223,7 @@ return {
       require("overseer").setup(opts)
       vim.tbl_map(require("overseer").register_template, {
         {
-          name = "file-run-background",
+          name = "run file inbackground",
           builder = create_builder(false, "dock", function() vim.cmd.stopinsert() end),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
@@ -231,7 +231,7 @@ return {
           desc = "Run single file in background",
         },
         {
-          name = "file-run",
+          name = "run file",
           builder = create_builder(true, "float", function() vim.cmd.stopinsert() end),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
@@ -239,7 +239,7 @@ return {
           desc = "Run single file",
         },
         {
-          name = "file-run-tab",
+          name = "run file in new tab",
           builder = create_builder(true, "tab", function() vim.cmd.stopinsert() end),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
@@ -247,7 +247,7 @@ return {
           desc = "Run single file in a new tab",
         },
         {
-          name = "file-run-horizontal-split",
+          name = "run file in horizontal split",
           builder = create_builder(true, "horizontal", function() vim.cmd.stopinsert() end),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
@@ -255,7 +255,7 @@ return {
           desc = "Run single file in a horizontal split",
         },
         {
-          name = "python run module",
+          name = "run python module",
           builder = function()
             local python_module, _ = vim.fn.expand("%:p:.:r"):gsub("/", ".")
             return {
@@ -275,7 +275,26 @@ return {
           desc = "Run with `-m` flag",
         },
         {
-          name = "uv-virtualenv",
+          name = "run python module in background",
+          builder = function()
+            local python_module, _ = vim.fn.expand("%:p:.:r"):gsub("/", ".")
+            return {
+              cmd = { "python3" },
+              args = { "-m", python_module },
+              env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
+              strategy = {
+                "toggleterm",
+                open_on_start = false,
+                direction = "tab",
+                hidden = true,
+              },
+            }
+          end,
+          condition = { filetype = "python" },
+          desc = "Run with `-m` flag",
+        },
+        {
+          name = "uv virtualenv",
           desc = "Setup uv environment for project",
           params = function()
             local stdout = vim
@@ -293,7 +312,7 @@ return {
           end,
           builder = function(params)
             return {
-              name = "uv-virtualenv",
+              name = "uv virtualenv",
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -304,15 +323,15 @@ return {
           end,
         } --[[@as overseer.TemplateDefinition]],
         {
-          name = "setup-uv-dev",
+          name = "setup uv dev",
           desc = "Setup python uv venv and install packages",
           builder = function()
             return {
-              name = "setup-uv-dev",
+              name = "setup uv dev",
               strategy = {
                 "orchestrator",
                 tasks = {
-                  { "uv-virtualenv" },
+                  { "uv virtualenv" },
                   { cmd = "uv sync --no-install-project" },
                 },
               },
@@ -320,7 +339,7 @@ return {
           end,
         } --[[@as overseer.TemplateDefinition]],
         {
-          name = "pyenv-virtualenv",
+          name = "pyenv virtualenv",
           desc = "Setup pyenv environment for project",
           params = function()
             local stdout = vim.system({ "pyenv", "versions", "--bare", "--skip-aliases", "--skip-envs" }):wait().stdout
@@ -341,7 +360,7 @@ return {
           end,
           builder = function(params)
             return {
-              name = "pyenv-virtualenv",
+              name = "pyenv virtualenv",
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -353,15 +372,15 @@ return {
           end,
         } --[[@as overseer.TemplateDefinition]],
         {
-          name = "setup-pyenv-dev",
+          name = "setup pyenv dev",
           desc = "Setup python pyenv venv and install packages",
           builder = function()
             return {
-              name = "setup-pyenv-dev",
+              name = "setup pyenv dev",
               strategy = {
                 "orchestrator",
                 tasks = {
-                  { "pyenv-virtualenv" },
+                  { "pyenv virtualenv" },
                   {
                     cmd = 'eval "$(pyenv init -)" && '
                       .. 'eval "$(pyenv virtualenv-init -)" && '
