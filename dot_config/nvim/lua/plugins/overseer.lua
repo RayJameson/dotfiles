@@ -223,7 +223,7 @@ return {
       require("overseer").setup(opts)
       vim.tbl_map(require("overseer").register_template, {
         {
-          name = "run file inbackground",
+          name = "run file in background",
           builder = create_builder(false, "dock", function() vim.cmd.stopinsert() end),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
