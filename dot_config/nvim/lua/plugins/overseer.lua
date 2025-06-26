@@ -32,7 +32,10 @@ return {
                 [prefix .. "<CR>"] = { "<Cmd>OverseerToggle<CR>", desc = "Open Panel" },
                 [prefix .. "s"] = { "<Cmd>OverseerRun shell<CR>", desc = "Run shell" },
                 [prefix .. "f"] = { "<Cmd>OverseerRun run\\ file<CR>", desc = "Run file" },
-                [prefix .. "F"] = { "<Cmd>OverseerRun run\\ file\\ in\\ background<CR>", desc = "Run file in background" },
+                [prefix .. "F"] = {
+                  "<Cmd>OverseerRun run\\ file\\ in\\ background<CR>",
+                  desc = "Run file in background",
+                },
                 [prefix .. "h"] = {
                   "<Cmd>OverseerRun run file in horizontal split<CR>",
                   desc = "Run file in horizontal split",
@@ -53,6 +56,7 @@ return {
                     },
                     strategy = {
                       "toggleterm",
+                      use_shell = true,
                       open_on_start = params.bang,
                       on_create = function() vim.cmd.stopinsert() end,
                     },
@@ -81,6 +85,7 @@ return {
                     },
                     strategy = {
                       "toggleterm",
+                      use_shell = true,
                       open_on_start = false,
                     },
                   }
@@ -111,6 +116,7 @@ return {
                     },
                     strategy = {
                       "toggleterm",
+                      use_shell = true,
                       open_on_start = false,
                     },
                   }
@@ -203,6 +209,7 @@ return {
             cmd = cmd,
             strategy = {
               "toggleterm",
+              use_shell = true,
               on_create = on_create,
               direction = direction,
               hidden = true,
@@ -264,6 +271,7 @@ return {
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
               strategy = {
                 "toggleterm",
+                use_shell = true,
                 on_create = function() vim.cmd.stopinsert() end,
                 open_on_start = true,
                 direction = "tab",
@@ -284,6 +292,7 @@ return {
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
               strategy = {
                 "toggleterm",
+                use_shell = true,
                 open_on_start = false,
                 direction = "tab",
                 hidden = true,
