@@ -20,6 +20,10 @@ return {
               autoImportCompletions = true,
               autoSearchPath = true,
               useLibraryCodeForTypes = true,
+              inlayHints = {
+                callArgumentNamesMatching = true,
+                genericTypes = true,
+              },
               diagnosticSeverityOverrides = {
                 reportUnusedImport = "information",
                 reportUnusedFunction = "information",
