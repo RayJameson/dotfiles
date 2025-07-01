@@ -37,7 +37,7 @@ print_status() {
 		
         paired_devices_cmd="devices Paired"
         # Check if an outdated version of bluetoothctl is used to preserve backwards compatibility
-        if (( $(echo "$(bluetoothctl version | cut -d ' ' -f 2) < 5.65" | bc -l) )); then
+        if (( $(echo "$(bluetoothctl version | head -n1 | cut -d ' ' -f 2) < 5.65" | bc -l) )); then
             paired_devices_cmd="paired-devices"
         fi
 
