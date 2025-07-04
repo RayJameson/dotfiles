@@ -33,6 +33,7 @@ return {
     { "<p", "<Plug>(YankyPutIndentAfterShiftLeft)", desc = "Put indent after shift left", mode = "n" },
     { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after filter", mode = "n" },
     { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before filter", mode = "n" },
+    { "<Leader>fy", "<Cmd>YankyRingHistory<CR>", desc = "Yanky history", mode = "n" },
   },
   specs = {
     {
