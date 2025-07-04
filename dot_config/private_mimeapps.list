@@ -26,6 +26,7 @@ application/x-extension-shtml=zen-beta.desktop;zen.desktop;
 application/xhtml+xml=zen-beta.desktop;zen.desktop;
 application/x-extension-xhtml=zen-beta.desktop;zen.desktop;
 application/x-extension-xht=zen-beta.desktop;zen.desktop;
+application/vnd.appimage=it.mijorus.gearlever.desktop;
 
 [Default Applications]
 application/zip=org.gnome.FileRoller.desktop
@@ -49,7 +50,7 @@ application/json=neovide.desktop
 application/json5=neovide.desktop
 x-scheme-handler/trash=xfce4-file-manager.desktop
 x-scheme-handler/discord-460807638964371468=discord-460807638964371468.desktop
-application/vnd.appimage=appimagelauncher.desktop
+application/vnd.appimage=it.mijorus.gearlever.desktop
 application/x-iso9660-appimage=appimagelauncher.desktop
 application/vnd.efi.iso=org.gnome.Boxes.desktop
 x-scheme-handler/cider=appimagekit_5e1120c541dda7033dad640ffd33b486-Cider.desktop
