@@ -17,6 +17,7 @@ regular = [
     "copyq",
     "cpio",
     "ddcutil-git",
+    "devtoolbox",
     "dex",
     "diff-so-fancy",
     "entr",
