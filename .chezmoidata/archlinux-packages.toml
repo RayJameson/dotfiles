@@ -27,7 +27,6 @@ regular = [
     "flatpak",
     "fzf",
     "fzy",
-    "gamescope-nvidia",
     "gearlever",
     "ghostty",
     "git",
