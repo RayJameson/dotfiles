@@ -93,9 +93,10 @@ configuration {
 
 	/*---------- File browser settings ----------*/
     filebrowser {
-/*	  directory: "/home";*/
+	  directory: "{{ .chezmoi.homeDir }}";
       directories-first: true;
       sorting-method:    "name";
+      command: "xdg-open";
     }
 
 	/*---------- Other settings ----------*/
