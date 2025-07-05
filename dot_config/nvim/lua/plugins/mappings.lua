@@ -44,12 +44,6 @@ return {
       expr = true,
     }
 
-    --[ command window
-    maps.n["q:"] = { "q:i", desc = "Command window" }
-    maps.n["q/"] = { "q/i", desc = "Command search down window" }
-    maps.n["q?"] = { "q?i", desc = "Command search up window" }
-    --]
-
     maps.n["<Leader>,"] = {
       function()
         if vim.bo[vim.api.nvim_get_current_buf()].filetype == "oil" then
