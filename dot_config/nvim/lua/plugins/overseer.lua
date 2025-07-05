@@ -42,6 +42,7 @@ return {
                 },
                 [prefix .. "t"] = { "<Cmd>OverseerRun run\\ file\\ in\\ new\\ tab<CR>", desc = "Run file in new tab" },
                 [prefix .. "l"] = { "<Cmd>OverseerLoadBundle<CR>", desc = "Load task bundle" },
+                [prefix .. "B"] = { "<Cmd>OverseerBuild<CR>", desc = "Create new task" },
               },
             },
             commands = {
