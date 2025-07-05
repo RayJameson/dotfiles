@@ -50,6 +50,15 @@ return {
           end,
           desc = "Conditional Breakpoint",
         }
+        maps.n["<F21>"] = false
+        maps.n["<F20>"] = { -- Shift+F8
+          function()
+            vim.ui.input({ prompt = "Condition: " }, function(condition)
+              if condition then require("dap").set_breakpoint(condition) end
+            end)
+          end,
+          desc = "Conditional Breakpoint",
+        }
 
         maps.n["<F11>"] = false
       end,
