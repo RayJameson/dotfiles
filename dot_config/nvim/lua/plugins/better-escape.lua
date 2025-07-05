@@ -15,22 +15,8 @@ return {
     return {
       create_default_mappings = false,
       mappings = {
-        i = {
-          j = {
-            k = esc_fn,
-          },
-          ["о"] = {
-            ["л"] = esc_fn,
-          },
-        },
-        c = {
-          j = {
-            k = esc_fn,
-          },
-          ["о"] = {
-            ["л"] = esc_fn,
-          },
-        },
+        i = { j = { k = esc_fn } },
+        c = { j = { k = esc_fn } },
         t = disabled,
         v = disabled,
         x = disabled,
