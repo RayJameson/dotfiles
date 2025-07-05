@@ -21,8 +21,8 @@ return {
     --]
 
     --[ jumplist for j/k number jumps
-    maps.n["k"] = { "(v:count > 1 ? \"m'\" . v:count : '') . 'k'", silent = true, expr = true }
-    maps.n["j"] = { "(v:count > 1 ? \"m'\" . v:count : '') . 'j'", silent = true, expr = true }
+    maps.n["k"] = { "(v:count > 1 ? \"m'\" . v:count : 'g') . 'k'", silent = true, expr = true }
+    maps.n["j"] = { "(v:count > 1 ? \"m'\" . v:count : 'g') . 'j'", silent = true, expr = true }
     --]
 
     --[ register + clipboard
