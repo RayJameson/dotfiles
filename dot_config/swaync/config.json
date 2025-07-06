@@ -40,7 +40,11 @@
     },
     "mpris": {
       "image-size": 80,
-      "image-radius": 10
+      "image-radius": 10,
+      "blacklist": [
+        "playerctld"
+      ],
+      "autohide": true
     }
   }
 }
