@@ -1,7 +1,7 @@
 * {
     min-height: 0;
     /* font-family: Lexend, "Font Awesome 6 Free Solid"; */
-    font-family: JetBrainsMono Nerd Font;
+    font-family: JetBrainsMono Nerd Font Propo;
     font-size: 14px;
     font-weight: 500;
 }
@@ -163,7 +163,7 @@ tooltip {
 
 #custom-notification {
     color: #e5c07b;
-    font-family: "NotoSansMono Nerd Font";
+    font-family: NotoSansMono Nerd Font Propo;
     /* font-size: 17px; */
 }
 

@@ -66,7 +66,7 @@
     "spacing": 10,
   },
   "clock": {
-    "format": "  {:%H:%M}",
+    "format": " {:%H:%M}",
     "format-alt": " {:L%a %d %b}",
     "tooltip-format": "\n<span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>",
     "calendar": {
@@ -88,18 +88,18 @@
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": " ",
+    "format-muted": "",
     "format-icons": {
-      "headphone": " ",
+      "headphone": "",
       "hands-free": "󰂑",
       "headset": "󰂑",
       "phone": "",
       "portable": "",
       "car": "",
       "default": [
-        " ",
-        " ",
-        " "
+        "",
+        "",
+        ""
       ],
     },
     "on-click": "pamixer -t",
@@ -109,7 +109,7 @@
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": " {volume}%",
-    "format-source-muted": " ",
+    "format-source-muted": "",
     "on-click": "~/.config/hypr/scripts/volume.sh --toggle-mic",
     "on-click-right": "pavucontrol -t 4",
     "on-scroll-up": "~/.config/hypr/scripts/volume.sh --mic-inc",
@@ -123,7 +123,7 @@
   "custom/power": {
     "tooltip": false,
     "on-click": "~/.config/hypr/scripts/rofi_powermenu",
-    "format": "⏻ ",
+    "format": "⏻",
   },
   "bluetooth": {
     "format": " {status}",
@@ -154,12 +154,12 @@
   "network": {
     "interface": "wlan0",
     "format": "{ifname}",
-    "format-wifi": "  {signalStrength}%",
-    "format-ethernet": "󰊗  {ipaddr}/{cidr}",
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰊗 {ipaddr}/{cidr}",
     "format-disconnected": "", //An empty format will hide the module.
-    "tooltip-format": "󰊗  {ifname} via {gwaddr}",
-    "tooltip-format-wifi": "  {essid} {signalStrength}%",
-    "tooltip-format-ethernet": "  {ifname}",
+    "tooltip-format": "󰊗 {ifname} via {gwaddr}",
+    "tooltip-format-wifi": " {essid} {signalStrength}%",
+    "tooltip-format-ethernet": " {ifname}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
     "on-click": "~/.config/hypr/scripts/network_menu &",
