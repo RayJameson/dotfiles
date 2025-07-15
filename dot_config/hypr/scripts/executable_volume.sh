@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 toggle_mic() {
 	if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
 		pamixer --default-source -m
