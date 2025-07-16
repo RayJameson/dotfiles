@@ -34,7 +34,7 @@ start-at-login = true
 #---
 
 [mode.main.binding]
-alt-ctrl-enter = 'exec-and-forget open -na Ghostty --args -e zsh -ic "tmux new -A -s main"'
+alt-ctrl-enter = 'exec-and-forget open -na Ghostty --args -e tmux new -A -s main'
 alt-ctrl-e = 'exec-and-forget neovide'
 cmd-h = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
