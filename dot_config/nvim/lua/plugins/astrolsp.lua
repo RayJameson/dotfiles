@@ -43,15 +43,15 @@ return {
       -- customize lsp formatting options
       opts.formatting.format_on_save = extend_tbl(opts.formatting.format_on_save, {
         -- control auto formatting on save
-        enabled = false, -- enable or disable format on save globally
+        enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           "json",
           "yaml",
           "toml",
           "markdown",
-        },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
+          "python",
+          "go",
+          "lua",
         },
       })
       opts.formatting.disabled = { -- disable formatting capabilities for the listed language servers
