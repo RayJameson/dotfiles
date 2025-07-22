@@ -49,7 +49,6 @@ return {
         showbreak = "↪ ",
         timeoutlen = 300,
         title = true,
-        titlestring = "%<%F%=%l/%L - nvim",
         listchars = {
           tab = "→ ",
           nbsp = "␣",
