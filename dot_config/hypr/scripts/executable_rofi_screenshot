@@ -17,13 +17,15 @@ if [[ "$layout" == 'NO' ]]; then
 	option_2=" Capture Area"
 	option_3=" Capture Window"
 	option_4=" Capture in 5s"
-	option_5=" Capture in 10s"
+	option_6=" Capture in 10s"
+	option_6="Open flameshow"
 else
 	option_1=""
 	option_2=""
 	option_3=""
 	option_4=""
 	option_5=""
+	option_6=""
 fi
 
 # Rofi CMD
@@ -37,7 +39,7 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | rofi_cmd
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6" | rofi_cmd
 }
 
 # Screenshot
@@ -105,6 +107,11 @@ shotarea () {
 	notify_view
 }
 
+open_flameshot() {
+	sleep 0.2
+	XDG_CURRENT_DESKTOP=sway flameshot gui
+}
+
 # Execute Command
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
@@ -117,6 +124,8 @@ run_cmd() {
 		shot5
 	elif [[ "$1" == '--opt5' ]]; then
 		shot10
+	elif [[ "$1" == '--opt6' ]]; then
+		open_flameshot
 	fi
 }
 
@@ -137,5 +146,8 @@ case ${chosen} in
         ;;
     $option_5)
 		run_cmd --opt5
+        ;;
+    $option_6)
+		run_cmd --opt6
         ;;
 esac
