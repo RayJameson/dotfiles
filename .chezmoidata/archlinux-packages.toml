@@ -25,6 +25,7 @@ regular = [
     "fd",
     "feh",
     "flatpak",
+    "font-manager",
     "fzf",
     "fzy",
     "gearlever",
