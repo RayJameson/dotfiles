@@ -45,7 +45,6 @@ return {
             check = {
               command = "clippy",
               extraArgs = { "--no-deps" },
-              features = "all",
             },
             checkOnSave = true,
           },
