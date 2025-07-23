@@ -10,6 +10,10 @@ desired_y=$(( y - 45 ))
 active_monitor=$(hyprctl monitors -j | jq -r 'map(select(.focused == true)).[]')
 active_monitor_width="$(echo "$active_monitor" | jq -r '.width')"
 active_monitor_height="$(echo "$active_monitor" | jq -r '.height')"
+active_monitor_name=$(echo "$active_monitor" | jq -r '.name')
+
+waybar_properties=$(hyprctl -j layers | jq -r ".\"$active_monitor_name\".levels | map(select(.[].namespace == \"waybar\")) | .[].[]")
+waybar_height=$(echo "$waybar_properties" | jq -r '.h')
 
 copyq_x_size=672
 copyq_y_size=702
@@ -23,7 +27,7 @@ fi
 if [[ $(( desired_y + copyq_y_size )) -gt active_monitor_height ]]; then
     desired_y=$(( active_monitor_height - copyq_y_size ))
 elif [[ $(( desired_y + copyq_y_size )) -lt active_monitor_height ]]; then
-    desired_y=$y
+    desired_y=$(( y + waybar_height ))
 fi
 
 desired_pos="$desired_x $desired_y"
