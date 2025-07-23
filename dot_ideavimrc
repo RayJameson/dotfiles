@@ -33,9 +33,6 @@ imap jj <Esc>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gr :action FindUsages<CR>
 nnoremap <leader>/ :action CommentByLineComment<CR>
-" Tab navigation
-nnoremap L gt<CR>
-nnoremap H gT<CR>
 " Popup navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
 inoremap <C-k> <Action>(PopupMenu-selectPrev)
