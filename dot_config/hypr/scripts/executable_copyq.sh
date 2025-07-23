@@ -7,9 +7,9 @@ y=$(echo "$cursorpos" | jq '.y')
 desired_x=$(( x - 50 ))
 desired_y=$(( y - 45 ))
 
-active_monitor=$(hyprctl monitors -j | jq -r 'map(select(.focused == true))')
-active_monitor_width="$(echo "$active_monitor" | jq -r '.[].width')"
-active_monitor_height="$(echo "$active_monitor" | jq -r '.[].height')"
+active_monitor=$(hyprctl monitors -j | jq -r 'map(select(.focused == true)).[]')
+active_monitor_width="$(echo "$active_monitor" | jq -r '.width')"
+active_monitor_height="$(echo "$active_monitor" | jq -r '.height')"
 
 copyq_x_size=672
 copyq_y_size=702
