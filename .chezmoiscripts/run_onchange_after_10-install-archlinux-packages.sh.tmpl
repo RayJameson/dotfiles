@@ -1,13 +1,13 @@
 {{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch")) -}}
 #!/usr/bin/env bash
 
-cat <<EOF | xargs -ro yay -Syu --needed
+cat <<EOF | xargs -ro yay -S --needed
 {{ range .packages.archlinux.regular -}}
 {{ . | quote }}
 {{ end -}}
 EOF
 
-cat <<EOF | xargs -ro yay -Syu --needed --rebuild --rebuildall --rebuildtree
+cat <<EOF | xargs -ro yay -S --needed --rebuild --rebuildall --rebuildtree
 {{ range .packages.archlinux.clean_build -}}
 {{ . | quote }}
 {{ end -}}
@@ -15,7 +15,7 @@ EOF
 
 is_nvidia_gpu=$(lspci | grep VGA | grep -i nvidia --quiet)
 if $is_nvidia_gpu; then
-cat <<EOF | xargs -ro yay -Syu --needed
+cat <<EOF | xargs -ro yay -S --needed
 {{ range .packages.archlinux.nvidia -}}
 {{ . | quote }}
 {{ end -}}
