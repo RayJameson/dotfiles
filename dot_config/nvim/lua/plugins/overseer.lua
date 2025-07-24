@@ -29,7 +29,13 @@ return {
                 [prefix] = { desc = require("astroui").get_icon("Overseer", 1, false) .. "Overseer" },
                 [prefix .. "i"] = { "<Cmd>OverseerInfo<CR>", desc = "Open Info" },
                 [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Open tasks" },
-                [prefix .. "<CR>"] = { "<Cmd>OverseerToggle<CR>", desc = "Open Panel" },
+                [prefix .. "<CR>"] = {
+                  function()
+                    vim.cmd([[OverseerToggle]])
+                    vim.defer_fn(vim.cmd.stopinsert, 10)
+                  end,
+                  desc = "Open Panel",
+                },
                 [prefix .. "s"] = { "<Cmd>OverseerRun shell<CR>", desc = "Run shell" },
                 [prefix .. "f"] = { "<Cmd>OverseerRun run\\ file<CR>", desc = "Run file" },
                 [prefix .. "F"] = {
