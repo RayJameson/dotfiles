@@ -151,7 +151,11 @@ return {
       },
     },
     opts = {
-      strategy = "toggleterm",
+      strategy = {
+        "toggleterm",
+        use_shell = true,
+        open_on_start = false,
+      },
       task_list = {
         direction = "bottom",
         max_height = { 100, 0.99 },
