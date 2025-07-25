@@ -163,7 +163,7 @@ return {
           event = "BufEnter",
           callback = function(args)
             if vim.bo[args.buf].buftype == "help" or vim.bo[args.buf].filetype == "man" then
-              vim.cmd.wincmd { "T", mods = { silent = true } }
+              vim.defer_fn(function() vim.cmd.wincmd { "T", mods = { silent = true } } end, 10)
             end
           end,
         },
