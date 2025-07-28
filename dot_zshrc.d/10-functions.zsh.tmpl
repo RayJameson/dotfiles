@@ -19,6 +19,14 @@ check_venv() {
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd check_venv
+{{ if lookPath "mise" -}}
+check_mise() {
+    if [[ -f mise.toml ]]; then
+        eval "$(mise activate zsh)"
+    fi
+}
+add-zsh-hook precmd check_mise
+{{- end}}
 
 {{ if lookPath "pyenv" -}}
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
