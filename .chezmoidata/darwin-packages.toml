@@ -23,6 +23,7 @@ brews = [
     "luajit",
     "luarocks",
     "man-db",
+    "mise",
     "ncdu",
     "node",
     "nushell",
