@@ -5,14 +5,14 @@ return {
   lazy = true,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    "nvim-neotest/neotest-go",
+    "fredrikaverpil/neotest-golang",
     "nvim-neotest/neotest-python",
     "rouge8/neotest-rust",
   },
   opts = function()
     return {
       adapters = {
-        require("neotest-go"),
+        require("neotest-golang") { warn_test_not_executed = false, go_test_args = { "-count=1", "-tags=testing" } },
         require("neotest-rust"),
         require("neotest-python") {
           args = function(runner) return runner == "pytest" and { "-vv", "-s" } or {} end,
