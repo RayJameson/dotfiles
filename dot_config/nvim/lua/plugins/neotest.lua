@@ -18,21 +18,33 @@ return {
           args = function(runner) return runner == "pytest" and { "-vv", "-s" } or {} end,
         },
       },
+      running = {
+        concurrent = true,
+      },
+      discovery = {
+        -- Drastically improve performance in ginormous projects by
+        -- only AST-parsing the currently opened buffer.
+        enabled = true,
+        -- Number of workers to parse files concurrently.
+        -- A value of 0 automatically assigns number based on CPU.
+        -- Set to 1 if experiencing lag.
+        concurrent = 0,
+      },
     }
   end,
-  config = function(_, opts)
-    -- get neotest namespace (api call creates or returns namespace)
-    local neotest_ns = vim.api.nvim_create_namespace("neotest")
-    vim.diagnostic.config({
-      virtual_text = {
-        format = function(diagnostic)
-          local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-          return message
-        end,
-      },
-    }, neotest_ns)
-    require("neotest").setup(opts)
-  end,
+  -- config = function(_, opts)
+  --   -- get neotest namespace (api call creates or returns namespace)
+  --   local neotest_ns = vim.api.nvim_create_namespace("neotest")
+  --   vim.diagnostic.config({
+  --     virtual_text = {
+  --       format = function(diagnostic)
+  --         local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+  --         return message
+  --       end,
+  --     },
+  --   }, neotest_ns)
+  --   require("neotest").setup(opts)
+  -- end,
   specs = {
     { "AstroNvim/astroui", opts = { icons = { Neotest = "" } } },
     {
