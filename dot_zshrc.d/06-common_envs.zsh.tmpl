@@ -88,7 +88,8 @@ if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 fi
 {{- end }}
 {{ if lookPath "mise" -}}
-PATH="$HOME/.local/share/mise/shims:$PATH"
+# PATH="$HOME/.local/share/mise/shims:$PATH"
+eval "$(mise activate zsh)"
 {{- end }}
 
 # remove duplicate entries from $PATH
