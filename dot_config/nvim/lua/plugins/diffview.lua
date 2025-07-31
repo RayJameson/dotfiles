@@ -483,7 +483,7 @@ return {
       "AstroNvim/astrocore",
       ---@param opts AstroCoreOpts
       opts = function(_, opts)
-        if opts.mappings == nil then opts.mappings = {} end
+        if opts.mappings == nil then opts.mappings = { n = {} } end
         local maps, prefix = opts.mappings, "<leader>D" ---@cast maps -nil
         maps.n[prefix] = { desc = require("astroui").get_icon("DiffView", 1, true) .. "Diff View" }
         maps.n[prefix .. "<CR>"] = {

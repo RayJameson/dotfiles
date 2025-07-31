@@ -163,5 +163,15 @@ return {
         maps.n["[r"] = { function() require("snacks").words.jump(-vim.v.count1) end, desc = "Prev reference" }
       end,
     },
+    {
+      "AstroNvim/astrolsp",
+      ---@param opts AstroLSPOpts
+      opts = function(_, opts)
+        if opts.mappings == nil then opts.mappings = { n = {} } end
+        local maps = opts.mappings ---@cast maps -nil
+        maps.n["<Leader>lG"] =
+          { function() require("snacks").picker.lsp_workspace_symbols() end, desc = "Search workspace symbols" }
+      end,
+    },
   },
 }

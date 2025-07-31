@@ -14,7 +14,7 @@ return {
       "AstroNvim/astrocore",
       ---@param opts AstroCoreOpts
       opts = function(_, opts)
-        if opts.mappings == nil then opts.mappings = {} end
+        if opts.mappings == nil then opts.mappings = { n = {} } end
         local maps, prefix = opts.mappings, "<Leader><Leader>" ---@cast maps -nil
         maps.n[prefix] = { desc = require("astroui").get_icon("Grapple", 1, true) .. "Grapple" }
         maps.n[prefix .. "e"] = { "<Cmd>Grapple toggle_tags<CR>", desc = "Select from tags" }
