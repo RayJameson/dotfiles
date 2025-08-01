@@ -125,7 +125,6 @@ linters:
         source: "^\\s*defer\\s+"
 formatters:
   enable:
-    - gofumpt
     - goimports
   exclusions:
     paths:
