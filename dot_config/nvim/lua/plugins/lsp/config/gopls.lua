@@ -27,6 +27,8 @@ return {
               rangeVariableTypes = true,
             },
             semanticTokens = true,
+            buildFlags = { "-tags", "integration", "testing" },
+            usePlaceholders = false,
           },
         },
       },
