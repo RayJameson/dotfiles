@@ -8,6 +8,9 @@ return {
       gopls = {
         settings = {
           gopls = {
+            analyses = {
+              unusedfunc = false, -- covered by golangci-lint
+            },
             completeFunctionCalls = false,
             codelenses = {
               generate = true, -- show the `go generate` lens.
