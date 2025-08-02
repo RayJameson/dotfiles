@@ -1,0 +1,18 @@
+[Unit]
+Description=Easyeffects
+After=pipewire.service dbus.service
+BindsTo=pipewire.service
+
+[Service]
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+Type=simple
+ExecStart=/usr/bin/easyeffects --gapplication-service
+Restart=on-failure
+Slice=session.slice
+
+[Install]
+WantedBy=pipewire.service
