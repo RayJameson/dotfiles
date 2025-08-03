@@ -8,10 +8,10 @@ RASI="$DIR/rofi/screenshot.rasi"
 
 # Theme Elements
 prompt='Screenshot'
-mesg="Directory :: `xdg-user-dir PICTURES`/Screenshots"
+mesg="Directory :: $(xdg-user-dir PICTURES)/Screenshots"
 
 # Options
-layout=`cat ${RASI} | grep 'USE_ICON' | cut -d'=' -f2`
+layout=$(grep 'USE_ICON' "${RASI}" | cut -d'=' -f2)
 if [[ "$layout" == 'NO' ]]; then
 	option_1=" Capture Desktop"
 	option_2=" Capture Area"
@@ -131,23 +131,25 @@ run_cmd() {
 
 # Actions
 chosen="$(run_rofi)"
+"$DIR"/scripts/toggle_screenshare
 case ${chosen} in
-    $option_1)
+    "$option_1")
 		run_cmd --opt1
         ;;
-    $option_2)
+    "$option_2")
 		run_cmd --opt2
         ;;
-    $option_3)
+    "$option_3")
 		run_cmd --opt3
         ;;
-    $option_4)
+    "$option_4")
 		run_cmd --opt4
         ;;
-    $option_5)
+    "$option_5")
 		run_cmd --opt5
         ;;
-    $option_6)
+    "$option_6")
 		run_cmd --opt6
         ;;
 esac
+"$DIR"/scripts/toggle_screenshare
