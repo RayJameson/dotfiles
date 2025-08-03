@@ -29,6 +29,7 @@ tabbar tabbox tab {
 
 tabbar tabbox tab:selected {
   background-color: #292e39;
+  color: #B874E8;
 }
 
 tabbar tabbox tab label {
