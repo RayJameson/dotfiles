@@ -7,7 +7,7 @@ run:
     - testing
   modules-download-mode: readonly
   allow-parallel-runners: false
-  relative-path-mode: gitroot
+  relative-path-mode: gomod
   go: ""
 linters:
   enable:
