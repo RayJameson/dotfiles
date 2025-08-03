@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
-hyprctl clients -j \
-    | jq -r '.[] | select(.tags != null and any(.tags[]; . == "private*")) | .address' \
-    | xargs -I{} hyprctl dispatch setprop address:{} noscreenshare toggle
+media="$HOME/.local/share/chezmoi/.assets"
+notify="notify-send -u low -i $media/hyprland_logo.png -h string:wayland-notify-tag:hyprland-screenshare"
+should_notify=$1
+
+hyprctl clients -j | \
+    jq -r '.[] | select(.tags != null and any(.tags[]; . == "private*")) | .address' | \
+    xargs -I{} hyprctl dispatch setprop address:{} noscreenshare toggle
+
+if [[ $should_notify -eq 1 ]]; then
+    $notify "Toggled screenshare."
+fi
