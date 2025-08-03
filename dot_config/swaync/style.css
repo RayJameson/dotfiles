@@ -328,6 +328,7 @@ scale slider {
   background-color: @button_bg;
   border-radius: 12px;
   padding: 8px 18px;
+  margin: 2px;
   transition: background-color 0.15s ease;
 }
 .floating-notifications .notification-action button:hover,
