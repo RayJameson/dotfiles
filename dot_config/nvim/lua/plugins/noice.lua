@@ -6,9 +6,10 @@ return {
       "MunifTanjim/nui.nvim",
     },
     event = "VeryLazy",
+    ---@type NoiceConfig
     opts = {
       messages = { view_search = false },
-      popupmenu = { enabled = false },
+      presets = { command_palette = true },
       lsp = {
         progress = { enabled = false },
         hover = { enabled = false },
