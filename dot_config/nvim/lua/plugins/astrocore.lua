@@ -93,6 +93,24 @@ return {
         nargs = "?",
       },
     },
+    on_keys = {
+      auto_hlsearch = {
+        function(char)
+          if mid_mapping then return end
+          local new_hlsearch
+          if vim.fn.mode() == "n" then
+            new_hlsearch = vim.tbl_contains({ "<CR>", "n", "N", "*", "#", "?", "/" }, vim.fn.keytrans(char))
+          elseif vim.fn.mode() == "c" then
+            new_hlsearch = vim.tbl_contains({ "<C-Y>", "<C-E>", "n", "y" }, vim.fn.keytrans(char))
+          else
+            return
+          end
+          if vim.o.hlsearch ~= new_hlsearch then vim.opt.hlsearch = new_hlsearch end
+          mid_mapping = true
+          vim.schedule(function() mid_mapping = false end)
+        end,
+      },
+    },
     autocmds = {
       bufferline = false,
       JsonFormatprg = {
