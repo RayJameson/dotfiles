@@ -1,3 +1,4 @@
+local mid_mapping = false
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
@@ -93,6 +94,19 @@ return {
         nargs = "?",
       },
     },
+    on_keys = {
+      auto_hlsearch = {
+        function(char)
+          if vim.tbl_contains({ "n", "c" }, vim.fn.mode()) and not mid_mapping then
+            local new_hlsearch = vim.tbl_contains({ "<CR>", "n", "N", "*", "#", "?", "/" }, vim.fn.keytrans(char))
+            if vim.o.hlsearch ~= new_hlsearch then vim.opt.hlsearch = new_hlsearch end
+            mid_mapping = true
+            vim.schedule(function() mid_mapping = false end)
+          end
+        end,
+      },
+    },
+
     autocmds = {
       bufferline = false,
       JsonFormatprg = {
