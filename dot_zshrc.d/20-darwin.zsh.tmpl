@@ -22,6 +22,9 @@ PATH="$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/gnu-which/libexec/gnubin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/util-linux/bin:$PATH"
+PATH="/opt/homebrew/opt/util-linux/sbin:$PATH"
+
 {{- end }}
 {{ if lookPath "ggrep" -}}
 alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
