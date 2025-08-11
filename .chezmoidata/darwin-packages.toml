@@ -17,6 +17,7 @@ brews = [
     "glow",
     "gping",
     "jq",
+    "lazygit",
     "llvm",
     "lnav",
     "lua",
@@ -42,7 +43,7 @@ brews = [
     "zoxide",
     "zsh",
 ]
-brews_head = ["tmux", "yazi", "lazygit"]
+brews_head = ["tmux", "yazi"]
 casks = [
     "docker",
     "keepassxc",
