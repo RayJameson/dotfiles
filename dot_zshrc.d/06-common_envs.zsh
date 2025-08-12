@@ -35,15 +35,6 @@ export FZF_CTRL_R_OPTS="
   --header 'Press CTRL-Y to copy command into clipboard'"
 # Add colors to Terminal
 export LSCOLORS=ExFxBxDxCxegedabagacad
-{{ if lookPath "poetry" -}}
-export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
-export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
-export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
-export POETRY_VIRTUALENVS_IN_PROJECT=true
-{{- end }}
-{{ if lookPath "pyenv" -}}
-export PYENV_ROOT="$HOME/.pyenv"
-{{- end }}
 [[ -f "$XDG_CONFIG_HOME/ptpython/config.py" ]] && export PYTHONSTARTUP="$XDG_CONFIG_HOME/ptpython/config.py"
 
 PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
@@ -52,45 +43,6 @@ PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 PATH="$HOME/.kube:$PATH"
 PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 PATH="$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
-
-{{ if lookPath "nvim" -}}
-export MANPAGER="nvim +Man! $@"
-{{ end -}}
-{{ if lookPath "pipx" -}}
-eval "$(register-python-argcomplete pipx)"
-{{ end -}}
-
-{{ with $fd_command := (or (lookPath "fd") (lookPath "fdfind") (lookPath "fd-find") ) -}}
-{{- if $fd_command -}}
-
-export FZF_DEFAULT_COMMAND='{{ $fd_command }} --strip-cwd-prefix --hidden --follow --exclude .git'
-# Use fd (https://github.com/sharkdp/fd) instead of the default find
-# command for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-    {{ $fd_command }} --hidden --follow --exclude ".git" . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-    {{ $fd_command }} --type d --hidden --follow --exclude ".git" . "$1"
-}
-
-{{- end -}}
-{{- end }}
-
-{{ if lookPath "gpg" -}}
-export GPG_TTY="$TTY"
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
-{{- end }}
-{{ if lookPath "mise" -}}
-# PATH="$HOME/.local/share/mise/shims:$PATH"
-eval "$(mise activate zsh)"
-{{- end }}
 
 # remove duplicate entries from $PATH
 # zsh uses $path array along with $PATH 
