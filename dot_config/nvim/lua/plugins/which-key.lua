@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
-  "folke/which-key.nvim",
+  "RayJameson/which-key.nvim",
+  name = "which-key.nvim",
   optional = true,
   opts = {
     preset = "modern",
