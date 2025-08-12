@@ -19,6 +19,7 @@ export PAGER=bat
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000000
 export SAVEHIST=10000000
+export HISTORY_IGNORE="(exit|clear|pwd|ls|cd)*"
 export FZF_TMUX_OPTS="-p80%,60%"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t=f"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t=d"
