@@ -60,6 +60,8 @@
     },
     "icon": true,
     "icon-size": 22,
+    "tooltip": true,
+    "tooltip-format": "{title}"
   },
   "tray": {
     "show-passive-items": true,
