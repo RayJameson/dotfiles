@@ -13,7 +13,7 @@ if [ ! -d "$dir_path" ]; then
     exit 1
 fi
 
-cd "$dir_path"
+cd "$dir_path" || exit 1
 
 # Check .keystore.jks files count
 jks_count=$(ls *.keystore.jks 2>/dev/null | wc -l)
@@ -26,7 +26,7 @@ fi
 for jks_file in *.keystore.jks; do
     # Get client alias name from .keystore.jks name
     alias=$(echo $jks_file | cut -d '.' -f 2)
-    
+
     # Check password file existence
     passwd_file="${jks_file%.jks}.passwd"
     if [ ! -f "$passwd_file" ]; then
@@ -35,7 +35,7 @@ for jks_file in *.keystore.jks; do
     fi
 
     keystore_pass=$(<"$passwd_file")
-    
+
     # If there is only one .keystore.jks file, then use default names
     if [ "$jks_count" -eq 1 ]; then
         root_cert_file="caroot.pem"
@@ -53,14 +53,14 @@ for jks_file in *.keystore.jks; do
         -keystore "$jks_file" \
         -storepass "$keystore_pass" \
         -rfc -file "$root_cert_file"
-    
+
     # Get client certificate
     keytool -exportcert \
         -alias "$alias" \
         -keystore "$jks_file" \
         -storepass "$keystore_pass" \
         -rfc -file "$client_cert_file"
-    
+
     # Convert JKS into PKCS#12
     pkcs12_file="${jks_file%.jks}.p12"
     keytool -importkeystore \
@@ -71,7 +71,7 @@ for jks_file in *.keystore.jks; do
             -deststorepass "$keystore_pass" \
             -srcalias "$alias" \
             -destalias "$alias"
-    
+
     # Get client private key
     openssl pkcs12 -in "$pkcs12_file" \
             -nodes -nocerts \
