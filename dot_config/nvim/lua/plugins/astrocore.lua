@@ -83,7 +83,7 @@ return {
     commands = {
       S = {
         function(params)
-          vim.cmd.split { range = { 15 } }
+          vim.cmd.tabnew()
           vim.cmd.enew { mods = { hide = true, noswapfile = true } }
           vim.opt_local.buftype = "nofile"
           vim.opt_local.buflisted = false
