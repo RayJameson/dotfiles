@@ -26,8 +26,10 @@ fi
 
 if [[ $(( desired_y + copyq_height )) -gt active_monitor_height ]]; then
     desired_y=$(( active_monitor_height - copyq_height ))
+elif [[ $(( desired_y )) -lt waybar_height ]]; then
+    desired_y=$waybar_height
 elif [[ $(( desired_y + copyq_height )) -lt active_monitor_height ]]; then
-    desired_y=$(( y + waybar_height ))
+    desired_y=$y
 fi
 
 desired_pos="$desired_x $desired_y"
