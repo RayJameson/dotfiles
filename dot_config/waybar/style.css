@@ -72,6 +72,10 @@ window#waybar.hidden {
     background-color: #292e39;
 }
 
+#network.disabled {
+    color: #585b70;
+}
+
 #custom-sep {
     padding: 0px;
     color: #585b70;
