@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "linux-cultist/venv-selector.nvim",
-  branch = "regexp",
   enabled = vim.tbl_contains(
     { "fd", "fdfind", "fd-find" },
     function(v) return vim.fn.executable(v) == 1 end,
