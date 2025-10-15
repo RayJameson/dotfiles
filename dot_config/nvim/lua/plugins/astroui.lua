@@ -117,8 +117,8 @@ return {
     },
     status = {
       separators = {
-        breadcrumbs = "  ",
-        path = "  ",
+        breadcrumbs = "  ",
+        path = "  ",
       },
     },
   },

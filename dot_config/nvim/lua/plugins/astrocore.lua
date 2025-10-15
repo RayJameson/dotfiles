@@ -59,8 +59,8 @@ return {
         fillchars = {
           eob = " ",
           fold = " ",
-          foldopen = "",
-          foldclose = "",
+          foldopen = "",
+          foldclose = "",
         },
       },
       g = { -- vim.g.<key>
