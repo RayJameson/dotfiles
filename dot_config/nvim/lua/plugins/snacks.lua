@@ -12,6 +12,7 @@ return {
     notifier = {},
     statuscolumn = { enabled = false },
     picker = {
+      prompt = " ",
       layouts = {
         custom_ivy_split = (function()
           local custom_ivy_split = vim.deepcopy(require("snacks.picker.config.layouts").ivy_split)
