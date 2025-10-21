@@ -43,16 +43,7 @@ return {
       -- customize lsp formatting options
       opts.formatting.format_on_save = extend_tbl(opts.formatting.format_on_save, {
         -- control auto formatting on save
-        enabled = true, -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          "json",
-          "yaml",
-          "toml",
-          "markdown",
-          "python",
-          "go",
-          "lua",
-        },
+        enabled = false, -- enable or disable format on save globally
       })
       opts.formatting.disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
