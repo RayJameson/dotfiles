@@ -9,7 +9,8 @@ zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:*' fzf-flags --bind=ctrl-u:preview-up,ctrl-d:preview-down --bind=ctrl-j:down,ctrl-k:up --no-multi --prompt="$FZF_PROMPT_SYMBOL " --marker=⇒ --pointer= --reverse --color=dark \
   --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f \
-  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+  --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7 \
+  --gutter=' '
 
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons --color=always $realpath'
