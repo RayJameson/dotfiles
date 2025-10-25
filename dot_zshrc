@@ -31,7 +31,7 @@ function zvm_config() {
 export ZSH="$HOME/.oh-my-zsh"
 source "$ZSH/oh-my-zsh.sh"
 function zvm_after_init() {
-    if command_exists fzf; then
+    if command -v fzf &> /dev/null; then
         source <(fzf --zsh)
     fi
 }
