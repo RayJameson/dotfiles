@@ -30,7 +30,6 @@ brews = [
     "nushell",
     "parallel",
     "ptpython",
-    "pyenv",
     "rich",
     "ripgrep",
     "rustup",
