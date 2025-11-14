@@ -3,11 +3,7 @@ return {
   "mistweaverco/kulala.nvim",
   ft = { "http" },
   opts = {
-    additional_curl_options = {
-      "-L",
-      "-A",
-      "Mozilla/5.0 (U; Linux x86_64) AppleWebKit/533.48 (KHTML, like Gecko) Chrome/55.0.1978.323 Safari/600",
-    },
+    additional_curl_options = { "-L" },
     ui = {
       win_opts = {
         width = 105,
