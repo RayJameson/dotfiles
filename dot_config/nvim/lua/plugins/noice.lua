@@ -10,6 +10,7 @@ return {
     opts = {
       messages = { view_search = false },
       presets = { command_palette = true },
+      cmdline = { format = { cmdline = { icon = "" } } },
       lsp = {
         progress = { enabled = false },
         hover = { enabled = false },
