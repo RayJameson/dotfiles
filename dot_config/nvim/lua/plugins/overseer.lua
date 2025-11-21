@@ -18,7 +18,7 @@ return {
       "OverseerTaskAction",
       "OverseerClearCache",
     },
-    version = "1.6.0",
+    commit = "9334595f850a301ef8bd1d19fc46dca688f677b3",
     specs = {
       { "AstroNvim/astroui", opts = { icons = { Overseer = "󰜎" } } },
       {
