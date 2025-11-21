@@ -44,7 +44,7 @@ return {
                   desc = "Run file in background",
                 },
                 [prefix .. "h"] = {
-                  "<Cmd>OverseerRun run file in horizontal split<CR>",
+                  "<Cmd>OverseerRun run\\ file\\ in\\ horizontal\\ split<CR>",
                   desc = "Run file in horizontal split",
                 },
                 [prefix .. "t"] = { "<Cmd>OverseerRun run\\ file\\ in\\ new\\ tab<CR>", desc = "Run file in new tab" },
