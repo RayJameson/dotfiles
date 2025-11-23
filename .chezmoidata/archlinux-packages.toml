@@ -34,6 +34,7 @@ regular = [
     "git",
     "github-cli",
     "glfw",
+    "gnome-system-monitor",
     "gpa-git",
     "gping",
     "grim",
