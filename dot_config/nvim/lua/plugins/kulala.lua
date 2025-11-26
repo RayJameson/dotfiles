@@ -20,8 +20,8 @@ return {
       },
     },
     custom_dynamic_variables = {
-      timestamp_ms = function() return tostring(math.floor(os.time() * 1000)) end,
-      current_dttm = function() return os.date("%Y-%m-%d %H:%M:%S.000000") end,
+      ["$timestamp_ms"] = function() return tostring(math.floor(os.time() * 1000)) end,
+      ["$current_dttm"] = function() return os.date("%Y-%m-%d %H:%M:%S.000000") end,
     },
   },
   specs = {
