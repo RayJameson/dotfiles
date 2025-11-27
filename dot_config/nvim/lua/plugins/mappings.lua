@@ -10,6 +10,7 @@ return {
     -- disable defaults:
     if maps.n["<Leader>fo"] then maps.n["<Leader>fo"].desc = "Recent files" end
     maps.n["<Leader>b"] = false
+    maps.i["<D-Space>"] = { "<Nop>", noremap = true, silent = true }
     for _, char in ipairs { "b", "d", "C", "c", "l", "r", "s", "p", "\\", "|" } do
       maps.n["<Leader>b" .. char] = false
       if char == "s" then
