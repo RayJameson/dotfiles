@@ -53,13 +53,15 @@ return {
                 function(params)
                   local cmd = params.args ~= "" and params.args or nil
                   local components = {
-                    { "on_complete_dispose", timeout = 30 },
-                    "default",
                     "shell_hook.interactive",
+                    "on_exit_set_status",
+                    { "on_complete_dispose", timeout = 30 },
                   }
                   if not cmd then return end
                   if params.bang then
                     table.insert(components, { "open_output", direction = "horizontal", focus = true })
+                  else
+                    table.insert(components, "on_complete_notify")
                   end
                   local task = require("overseer").new_task {
                     cmd = cmd,
@@ -97,21 +99,25 @@ return {
                   -- Insert args at the '$*' in the grepprg
                   local cmd, num_subs = vim.o.grepprg:gsub("%$%*", params.args)
                   if num_subs == 0 then cmd = cmd .. " " .. params.args end
+                  local components = {
+                    {
+                      "on_output_quickfix",
+                      errorformat = vim.o.grepformat,
+                      open = not params.bang,
+                      focus = not params.bang,
+                      open_height = 8,
+                      items_only = true,
+                    },
+                    -- We don't care to keep this around as long as most tasks
+                    { "on_complete_dispose", timeout = 30 },
+                    "on_exit_set_status",
+                  }
+                  if params.bang then
+                    table.insert(components, "on_complete_notify")
+                  end
                   local task = require("overseer").new_task {
                     cmd = vim.fn.expandcmd(cmd),
-                    components = {
-                      {
-                        "on_output_quickfix",
-                        errorformat = vim.o.grepformat,
-                        open = not params.bang,
-                        focus = not params.bang,
-                        open_height = 8,
-                        items_only = true,
-                      },
-                      -- We don't care to keep this around as long as most tasks
-                      { "on_complete_dispose", timeout = 30 },
-                      "default",
-                    },
+                    components = components,
                     strategy = { "jobstart", use_terminal = true },
                   }
                   task:start()
@@ -203,6 +209,7 @@ return {
           local components = {
             "shell_hook.interactive",
             "on_exit_set_status",
+            "on_complete_notify",
           }
           if run_in_foreground then table.insert(components, { "open_output", direction = direction, focus = true }) end
           local task = {
@@ -277,7 +284,7 @@ return {
             local python_module, _ = vim.fn.expand("%:p:.:r"):gsub("/", ".")
             return {
               cmd = { "python3" },
-              components = { "shell_hook.interactive", "on_exit_set_status" },
+              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
               args = { "-m", python_module },
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
               strategy = { "jobstart", use_terminal = true },
@@ -289,7 +296,7 @@ return {
         {
           name = "uv virtualenv",
           desc = "Setup uv environment for project",
-          components = { "shell_hook.interactive", "on_exit_set_status" },
+          components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
           params = function()
             local stdout = vim
               .system({ "uv", "python", "list", "--managed-python", "--all-versions", "--output-format", "json" })
@@ -307,7 +314,7 @@ return {
           builder = function(params)
             return {
               name = "uv virtualenv",
-              components = { "shell_hook.interactive", "on_exit_set_status" },
+              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -323,7 +330,7 @@ return {
           builder = function()
             return {
               name = "setup uv dev",
-              components = { "shell_hook.interactive", "on_exit_set_status" },
+              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -337,7 +344,7 @@ return {
         {
           name = "pyenv virtualenv",
           desc = "Setup pyenv environment for project",
-          components = { "shell_hook.interactive", "on_exit_set_status" },
+          components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
           params = function()
             local stdout = vim.system({ "pyenv", "versions", "--bare", "--skip-aliases", "--skip-envs" }):wait().stdout
             assert(stdout)
@@ -358,7 +365,7 @@ return {
           builder = function(params)
             return {
               name = "pyenv virtualenv",
-              components = { "shell_hook.interactive", "on_exit_set_status" },
+              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -375,7 +382,7 @@ return {
           builder = function()
             return {
               name = "setup pyenv dev",
-              components = { "shell_hook.interactive", "on_exit_set_status" },
+              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
               strategy = {
                 "orchestrator",
                 tasks = {
