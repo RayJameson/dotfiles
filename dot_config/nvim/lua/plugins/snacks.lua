@@ -36,25 +36,6 @@ return {
         wo = { wrap = true }, -- Wrap notifications
       },
     },
-    scratch = {
-      win = {
-        keys = {
-          source = {
-            "<CR>",
-            function(self)
-              if vim.bo[self.buf].filetype == "lua" then
-                local name = "scratch." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.buf), ":e")
-                require("snacks").debug.run { buf = self.buf, name = name }
-              else
-                vim.cmd.OverseerRun { args = { "file-run" } }
-              end
-            end,
-            desc = "Run code",
-            mode = { "n", "x" },
-          },
-        },
-      },
-    },
   }, --[[@as snacks.plugins.Config]]
   specs = {
     { "RRethy/vim-illuminate", enabled = false },
@@ -149,16 +130,6 @@ return {
         maps.n["<Leader>c"] = { function() require("snacks").bufdelete.delete() end, desc = "Delete current buffer" }
         maps.n["<Leader>a"] = { function() require("snacks").bufdelete.all() end, desc = "Delete all buffers" }
         maps.n["<Leader>C"] = { function() require("snacks").bufdelete.other() end, desc = "Delete all other buffers" }
-        maps.n["<Leader>rb"] = {
-          function()
-            require("snacks").scratch.open { ft = vim.bo[vim.api.nvim_get_current_buf()].filetype, template = "" }
-          end,
-          desc = "Open scratch buffer with current ft",
-        }
-        maps.n["<Leader>rl"] = {
-          function() require("snacks").scratch.select() end,
-          desc = "Select scratch buffer",
-        }
         maps.n["<Leader>R"] = { function() require("snacks").rename.rename_file() end, desc = "Rename current file" }
         maps.n["]r"] = { function() require("snacks").words.jump(vim.v.count1) end, desc = "Next reference" }
         maps.n["[r"] = { function() require("snacks").words.jump(-vim.v.count1) end, desc = "Prev reference" }
