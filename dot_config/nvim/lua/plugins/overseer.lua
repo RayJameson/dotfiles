@@ -49,7 +49,7 @@ return {
               },
             },
             commands = {
-              C = {
+              S = {
                 function(params)
                   local cmd = params.args ~= "" and params.args or nil
                   local components = {
