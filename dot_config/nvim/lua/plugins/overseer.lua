@@ -18,7 +18,6 @@ return {
       "OverseerTaskAction",
       "OverseerClearCache",
     },
-    commit = "9334595f850a301ef8bd1d19fc46dca688f677b3",
     specs = {
       { "AstroNvim/astroui", opts = { icons = { Overseer = "󰜎" } } },
       {
@@ -37,7 +36,6 @@ return {
                   end,
                   desc = "Open Panel",
                 },
-                [prefix .. "s"] = { "<Cmd>OverseerRun shell<CR>", desc = "Run shell" },
                 [prefix .. "f"] = { "<Cmd>OverseerRun run\\ file<CR>", desc = "Run file" },
                 [prefix .. "F"] = {
                   "<Cmd>OverseerRun run\\ file\\ in\\ background<CR>",
@@ -48,32 +46,27 @@ return {
                   desc = "Run file in horizontal split",
                 },
                 [prefix .. "t"] = { "<Cmd>OverseerRun run\\ file\\ in\\ new\\ tab<CR>", desc = "Run file in new tab" },
-                [prefix .. "l"] = { "<Cmd>OverseerLoadBundle<CR>", desc = "Load task bundle" },
-                [prefix .. "B"] = { "<Cmd>OverseerBuild<CR>", desc = "Create new task" },
               },
             },
             commands = {
               C = {
                 function(params)
-                  local tmpl_params = {
-                    cmd = params.args ~= "" and params.args or nil,
-                    components = {
-                      "on_output_summarize",
-                      { "on_complete_dispose", timeout = 30 },
-                      "default",
-                    },
-                    strategy = {
-                      "toggleterm",
-                      use_shell = true,
-                      open_on_start = params.bang,
-                      on_create = function() vim.cmd.stopinsert() end,
-                    },
+                  local cmd = params.args ~= "" and params.args or nil
+                  local components = {
+                    { "on_complete_dispose", timeout = 30 },
+                    "default",
+                    "shell_hook.interactive",
                   }
-                  if not tmpl_params.cmd then return end
-                  require("overseer").run_template {
-                    name = "shell",
-                    params = tmpl_params,
+                  if not cmd then return end
+                  if params.bang then
+                    table.insert(components, { "open_output", direction = "horizontal", focus = true })
+                  end
+                  local task = require("overseer").new_task {
+                    cmd = cmd,
+                    components = components,
+                    strategy = { "jobstart", use_terminal = true },
                   }
+                  task:start()
                 end,
                 nargs = "*",
                 bang = true,
@@ -91,11 +84,7 @@ return {
                       { "on_output_quickfix", open = not params.bang, open_height = 8 },
                       "default",
                     },
-                    strategy = {
-                      "toggleterm",
-                      use_shell = true,
-                      open_on_start = false,
-                    },
+                    strategy = { "jobstart", use_terminal = true },
                   }
                   task:start()
                 end,
@@ -115,6 +104,7 @@ return {
                         "on_output_quickfix",
                         errorformat = vim.o.grepformat,
                         open = not params.bang,
+                        focus = not params.bang,
                         open_height = 8,
                         items_only = true,
                       },
@@ -122,11 +112,7 @@ return {
                       { "on_complete_dispose", timeout = 30 },
                       "default",
                     },
-                    strategy = {
-                      "toggleterm",
-                      use_shell = true,
-                      open_on_start = false,
-                    },
+                    strategy = { "jobstart", use_terminal = true },
                   }
                   task:start()
                 end,
@@ -152,11 +138,6 @@ return {
       },
     },
     opts = {
-      strategy = {
-        "toggleterm",
-        use_shell = true,
-        open_on_start = false,
-      },
       task_list = {
         direction = "bottom",
         max_height = { 100, 0.99 },
@@ -178,6 +159,9 @@ return {
           ["dd"] = "<Cmd>OverseerQuickAction dispose<CR>",
         },
       },
+      task_win = {
+        border = "rounded",
+      },
     },
     config = function(_, opts)
       --- Run with runner
@@ -195,7 +179,7 @@ return {
       end
 
       local filetype_to_cmd = {
-        python = run_with("python"),
+        python = run_with("python3"),
         sh = run_with("sh"),
         zsh = run_with("zsh"),
         bash = run_with("bash"),
@@ -209,31 +193,26 @@ return {
       }
 
       ---@param run_in_foreground boolean
-      ---@param direction "dock"|"float"|"tab"|"vertical"|"horizontal"
-      ---@param on_create? function
+      ---@param direction? "dock"|"float"|"tab"|"vertical"|"horizontal"
       ---@return fun(): overseer.TaskDefinition
-      local function create_builder(run_in_foreground, direction, on_create)
+      local function create_builder(run_in_foreground, direction)
         ---@return overseer.TaskDefinition
         local function builder()
           local file = vim.fn.expand("%:p")
           local cmd = filetype_to_cmd[vim.bo.filetype](file)
+          local components = {
+            "shell_hook.interactive",
+            "on_exit_set_status",
+          }
+          if run_in_foreground then table.insert(components, { "open_output", direction = direction, focus = true }) end
           local task = {
             cmd = cmd,
+            components = components,
             strategy = {
-              "toggleterm",
-              use_shell = true,
-              on_create = on_create,
-              direction = direction,
-              hidden = true,
-            },
-            components = {
-              { "display_duration", detail_level = 2 },
-              "on_output_summarize",
-              "on_exit_set_status",
-              { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
+              "jobstart",
+              use_terminal = true,
             },
           }
-          task.strategy.open_on_start = run_in_foreground and true or false
           return task
         end
 
@@ -243,7 +222,7 @@ return {
       vim.tbl_map(require("overseer").register_template, {
         {
           name = "run file in background",
-          builder = create_builder(false, "dock", function() vim.cmd.stopinsert() end),
+          builder = create_builder(false),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
@@ -251,7 +230,7 @@ return {
         },
         {
           name = "run file",
-          builder = create_builder(true, "float", function() vim.cmd.stopinsert() end),
+          builder = create_builder(true, "float"),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
@@ -259,7 +238,7 @@ return {
         },
         {
           name = "run file in new tab",
-          builder = create_builder(true, "tab", function() vim.cmd.stopinsert() end),
+          builder = create_builder(true, "tab"),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
@@ -267,7 +246,7 @@ return {
         },
         {
           name = "run file in horizontal split",
-          builder = create_builder(true, "horizontal", function() vim.cmd.stopinsert() end),
+          builder = create_builder(true, "horizontal"),
           condition = {
             filetype = vim.tbl_keys(filetype_to_cmd),
           },
@@ -281,14 +260,12 @@ return {
               cmd = { "python3" },
               args = { "-m", python_module },
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
-              strategy = {
-                "toggleterm",
-                use_shell = true,
-                on_create = function() vim.cmd.stopinsert() end,
-                open_on_start = true,
-                direction = "tab",
-                hidden = true,
+              components = {
+                "shell_hook.interactive",
+                "on_exit_set_status",
+                { "open_output", direction = "tab", focus = true },
               },
+              strategy = { "jobstart", use_terminal = true },
             }
           end,
           condition = { filetype = "python" },
@@ -300,15 +277,10 @@ return {
             local python_module, _ = vim.fn.expand("%:p:.:r"):gsub("/", ".")
             return {
               cmd = { "python3" },
+              components = { "shell_hook.interactive", "on_exit_set_status" },
               args = { "-m", python_module },
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
-              strategy = {
-                "toggleterm",
-                use_shell = true,
-                open_on_start = false,
-                direction = "tab",
-                hidden = true,
-              },
+              strategy = { "jobstart", use_terminal = true },
             }
           end,
           condition = { filetype = "python" },
@@ -317,6 +289,7 @@ return {
         {
           name = "uv virtualenv",
           desc = "Setup uv environment for project",
+          components = { "shell_hook.interactive", "on_exit_set_status" },
           params = function()
             local stdout = vim
               .system({ "uv", "python", "list", "--managed-python", "--all-versions", "--output-format", "json" })
@@ -334,6 +307,7 @@ return {
           builder = function(params)
             return {
               name = "uv virtualenv",
+              components = { "shell_hook.interactive", "on_exit_set_status" },
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -349,6 +323,7 @@ return {
           builder = function()
             return {
               name = "setup uv dev",
+              components = { "shell_hook.interactive", "on_exit_set_status" },
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -362,6 +337,7 @@ return {
         {
           name = "pyenv virtualenv",
           desc = "Setup pyenv environment for project",
+          components = { "shell_hook.interactive", "on_exit_set_status" },
           params = function()
             local stdout = vim.system({ "pyenv", "versions", "--bare", "--skip-aliases", "--skip-envs" }):wait().stdout
             assert(stdout)
@@ -382,6 +358,7 @@ return {
           builder = function(params)
             return {
               name = "pyenv virtualenv",
+              components = { "shell_hook.interactive", "on_exit_set_status" },
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -398,6 +375,7 @@ return {
           builder = function()
             return {
               name = "setup pyenv dev",
+              components = { "shell_hook.interactive", "on_exit_set_status" },
               strategy = {
                 "orchestrator",
                 tasks = {
