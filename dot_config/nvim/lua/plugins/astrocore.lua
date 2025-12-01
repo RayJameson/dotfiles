@@ -80,19 +80,7 @@ return {
         -- This can be found in the `lua/lazy_setup.lua` file
       },
     },
-    commands = {
-      S = {
-        function(params)
-          vim.cmd.tabnew()
-          vim.cmd.enew { mods = { hide = true, noswapfile = true } }
-          vim.opt_local.buftype = "nofile"
-          vim.opt_local.buflisted = false
-          vim.opt_local.bufhidden = "wipe"
-          if params.args then vim.opt_local.filetype = params.args end
-        end,
-        nargs = "?",
-      },
-    },
+    commands = {},
     on_keys = {
       auto_hlsearch = {
         function(char)
@@ -120,14 +108,24 @@ return {
           callback = function() vim.opt_local.formatprg = vim.fn.executable("jq") == 1 and "jq" or "" end,
         },
       },
-      TermNumbers = {
+      Terminal = {
         {
           event = "TermOpen",
+          desc = "Disable numbers in terminal window",
           callback = function()
             vim.opt_local.number = false
             vim.opt_local.relativenumber = false
             vim.opt_local.foldcolumn = "0"
             vim.opt_local.signcolumn = "no"
+          end,
+        },
+        {
+          event = "BufEnter",
+          desc = "Create q keymap to close terminal window",
+          callback = function(args)
+            if vim.bo[args.buf].buftype == "terminal" then
+              vim.api.nvim_buf_set_keymap(args.buf, "n", "q", ":close<CR>", { noremap = true, silent = true })
+            end
           end,
         },
       },
