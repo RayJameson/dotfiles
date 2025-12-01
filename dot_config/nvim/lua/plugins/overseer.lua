@@ -339,63 +339,6 @@ return {
             }
           end,
         } --[[@as overseer.TemplateDefinition]],
-        {
-          name = "pyenv virtualenv",
-          desc = "Setup pyenv environment for project",
-          components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
-          params = function()
-            local stdout = vim.system({ "pyenv", "versions", "--bare", "--skip-aliases", "--skip-envs" }):wait().stdout
-            assert(stdout)
-            local versions = vim.split(stdout, "\n", { trimempty = true })
-            return {
-              version = {
-                desc = "Python version to use for venv",
-                type = "enum",
-                choices = versions,
-              },
-              virtualenv_name = {
-                desc = "Name for virtual environment, default: project dir name",
-                type = "string",
-                default = vim.fn.expand("%:p:h:t"),
-              },
-            } --[[@as overseer.Params]]
-          end,
-          builder = function(params)
-            return {
-              name = "pyenv virtualenv",
-              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
-              strategy = {
-                "orchestrator",
-                tasks = {
-                  { cmd = { "pyenv" }, args = { "virtualenv", params.version, params.virtualenv_name } },
-                  { cmd = { "pyenv" }, args = { "local", params.virtualenv_name } },
-                },
-              },
-            }
-          end,
-        } --[[@as overseer.TemplateDefinition]],
-        {
-          name = "setup pyenv dev",
-          desc = "Setup python pyenv venv and install packages",
-          builder = function()
-            return {
-              name = "setup pyenv dev",
-              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
-              strategy = {
-                "orchestrator",
-                tasks = {
-                  { "pyenv virtualenv" },
-                  {
-                    cmd = 'eval "$(pyenv init -)" && '
-                      .. 'eval "$(pyenv virtualenv-init -)" && '
-                      .. "pyenv activate && "
-                      .. "poetry install --no-root",
-                  },
-                },
-              },
-            }
-          end,
-        } --[[@as overseer.TemplateDefinition]],
       })
     end,
   },
