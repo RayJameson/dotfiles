@@ -134,7 +134,7 @@ return {
           local oil = require("oil")
           local cwd = oil.get_current_dir()
           local entry = oil.get_cursor_entry()
-          if cwd and entry then require("astrocore").system_open(string.format("%s/%s", cwd, entry.name)) end
+          if cwd and entry then vim.ui.open(string.format("%s/%s", cwd, entry.name)) end
         end,
         desc = "Open file under cursor",
         nowait = true,
