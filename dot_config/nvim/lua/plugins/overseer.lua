@@ -59,9 +59,9 @@ return {
                   }
                   if not cmd then return end
                   if params.bang then
-                    table.insert(components, { "open_output", direction = "horizontal", focus = true })
-                  else
                     table.insert(components, "on_complete_notify")
+                  else
+                    table.insert(components, { "open_output", direction = "horizontal", focus = true })
                   end
                   local task = require("overseer").new_task {
                     cmd = cmd,
@@ -112,9 +112,7 @@ return {
                     { "on_complete_dispose", timeout = 30 },
                     "on_exit_set_status",
                   }
-                  if params.bang then
-                    table.insert(components, "on_complete_notify")
-                  end
+                  if params.bang then table.insert(components, "on_complete_notify") end
                   local task = require("overseer").new_task {
                     cmd = vim.fn.expandcmd(cmd),
                     components = components,
