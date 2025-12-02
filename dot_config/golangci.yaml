@@ -24,7 +24,6 @@ linters:
     - gochecksumtype
     - goconst
     - gocritic
-    - godot
     - gomoddirectives
     - gosmopolitan
     - govet
@@ -52,7 +51,6 @@ linters:
     - rowserrcheck
     - sqlclosecheck
     - staticcheck
-    - tagliatelle
     - testableexamples
     - testifylint
     - testpackage
