@@ -56,7 +56,7 @@ return {
         ),
         unpack(
           vim
-            .iter({ "basedpyright", "ruff", "debugpy" })
+            .iter({ "basedpyright", "ruff", "debugpy", "pyink" })
             :map(function(tool) return { tool, condition = is_executable("python3") } end)
             :totable()
         ),
