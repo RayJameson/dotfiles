@@ -50,7 +50,7 @@ return {
       ensure_installed = {
         unpack(
           vim
-            .iter({ "iferr", "delve", "goimports", "gopls", "gofumpt", "goimports", "gomodifytags" })
+            .iter({ "iferr", "delve", "goimports", "gopls", "goimports", "gomodifytags" })
             :map(function(tool) return { tool, condition = is_executable("go") } end)
             :totable()
         ),
