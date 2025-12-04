@@ -32,7 +32,7 @@
     "custom/power",
   ],
   "mpris": {
-    "format": "<span foreground=\"#e06c75\">{player_icon}</span>  {artist} — {title}",
+    "format": "<span foreground=\"#e06c75\">{player_icon}</span> {artist} — {title}",
     "format-paused": "<span foreground=\"#e06c75\">{status_icon}</span> {artist} — {title}",
     "artist-len": 20,
     "title-len": 20,
