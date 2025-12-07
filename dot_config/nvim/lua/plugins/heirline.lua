@@ -21,15 +21,17 @@ return {
           },
           provider = function(self)
             local mapped_debugger_status = require("dap").session().stopped_thread_id == nil and "RUNNING" or "STOPPED"
-            vim.g.dap_debugger_last_status = mapped_debugger_status
             return self.symbols[mapped_debugger_status]
           end,
-          hl = function(self) return { fg = self.color } end,
-          update = function(self)
+          hl = function(self)
             local mapped_debugger_status = require("dap").session().stopped_thread_id == nil and "RUNNING" or "STOPPED"
-            self.color = self.colors[mapped_debugger_status]
-            return mapped_debugger_status ~= vim.g.dap_debugger_last_status
+            return { fg = self.colors[mapped_debugger_status] }
           end,
+          update = {
+            "User",
+            pattern = "DapProgressUpdate",
+            callback = vim.schedule_wrap(function() vim.cmd("redrawstatus") end),
+          },
         },
       }
     end
