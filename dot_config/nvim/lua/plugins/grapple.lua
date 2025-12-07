@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "cbochs/grapple.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "Grapple" },
   opts = { scope = "git", win_opts = { border = "rounded" } },
   specs = {
