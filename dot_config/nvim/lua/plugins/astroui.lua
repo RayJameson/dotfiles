@@ -53,6 +53,8 @@ return {
         ["@lsp.type.class"] = { fg = C.blue },
         ["@lsp.type.namespace.python"] = { link = "Identifier" },
         ["@lsp.type.parameter.python"] = { link = "Hlargs" },
+        ["@lsp.typemod.selfParameter.parameter.python"] = { link = "Hlargs" },
+        ["@lsp.typemod.selfParameter.declaration.python"] = { link = "Hlargs" },
         ["@lsp.type.parameter.go"] = { link = "Hlargs" },
         ["@variable.parameter"] = { link = "Hlargs" },
         ["@function.builtin"] = { fg = C.blue_1 },
