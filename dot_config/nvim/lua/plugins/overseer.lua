@@ -84,6 +84,7 @@ return {
                     cmd = vim.fn.expandcmd(cmd),
                     components = {
                       { "on_output_quickfix", open = not params.bang, open_height = 8 },
+                      { "on_complete_dispose", timeout = 15 * 60 },
                       "default",
                     },
                     strategy = { "jobstart", use_terminal = true },
@@ -208,6 +209,7 @@ return {
             "shell_hook.interactive",
             "on_exit_set_status",
             "on_complete_notify",
+            { "on_complete_dispose", timeout = 15 * 60 },
           }
           if run_in_foreground then table.insert(components, { "open_output", direction = direction, focus = true }) end
           local task = {
@@ -269,6 +271,7 @@ return {
                 "shell_hook.interactive",
                 "on_exit_set_status",
                 { "open_output", direction = "tab", focus = true },
+                { "on_complete_dispose", timeout = 15 * 60 },
               },
               strategy = { "jobstart", use_terminal = true },
             }
@@ -282,7 +285,12 @@ return {
             local python_module, _ = vim.fn.expand("%:p:.:r"):gsub("/", ".")
             return {
               cmd = { "python3" },
-              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
+              components = {
+                "shell_hook.interactive",
+                "on_exit_set_status",
+                "on_complete_notify",
+                { "on_complete_dispose", timeout = 15 * 60 },
+              },
               args = { "-m", python_module },
               env = { PYTHONPATH = "src" .. ":" .. vim.uv.cwd() },
               strategy = { "jobstart", use_terminal = true },
@@ -312,7 +320,12 @@ return {
           builder = function(params)
             return {
               name = "uv virtualenv",
-              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
+              components = {
+                "shell_hook.interactive",
+                "on_exit_set_status",
+                "on_complete_notify",
+                { "on_complete_dispose", timeout = 15 * 60 },
+              },
               strategy = {
                 "orchestrator",
                 tasks = {
@@ -328,7 +341,12 @@ return {
           builder = function()
             return {
               name = "setup uv dev",
-              components = { "shell_hook.interactive", "on_exit_set_status", "on_complete_notify" },
+              components = {
+                "shell_hook.interactive",
+                "on_exit_set_status",
+                "on_complete_notify",
+                { "on_complete_dispose", timeout = 15 * 60 },
+              },
               strategy = {
                 "orchestrator",
                 tasks = {
