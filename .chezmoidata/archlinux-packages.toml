@@ -70,6 +70,8 @@ regular = [
     "npm",
     "nushell",
     "nwg-look",
+    "mpv",
+    "mpv-mpris",
     "pamac-aur",
     "pamixer",
     "pipewire",
