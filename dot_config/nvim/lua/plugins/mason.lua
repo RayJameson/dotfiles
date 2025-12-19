@@ -89,7 +89,6 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = function(_, opts)
       opts.handlers = {
-        luacheck = function() end,
         stylua = function() end,
         mypy = function() end,
       }

@@ -1,6 +1,9 @@
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
+  dependencies = {
+    "gbprod/none-ls-luacheck.nvim",
+  },
   opts = function(_, opts)
     -- config variable is the default configuration table for the setup function call
     local nls = require("null-ls")
@@ -17,6 +20,7 @@ return {
       --     "--line-length=120",
       --   },
       -- },
+      require("none-ls-luacheck.diagnostics.luacheck"),
       nls.builtins.diagnostics.mypy.with {
         extra_args = function()
           local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
