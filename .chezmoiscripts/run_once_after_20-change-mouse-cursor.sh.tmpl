@@ -12,6 +12,8 @@ if ask_user "Change default user's cursor to elementary?"; then
 [Icon Theme]
 Inherits=elementary
 EOF
+mkdir "$HOME/.icons" || echo "$HOME/.icons directory already exists"
+ln -s /usr/share/icons/elementary "$HOME/.icons"
 fi
 
 {{ end -}}
