@@ -18,6 +18,7 @@ regular = [
     "devtoolbox",
     "dex",
     "diff-so-fancy",
+    "elementary-icon-theme",
     "entr",
     "eza",
     "fd",
