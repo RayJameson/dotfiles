@@ -43,7 +43,7 @@ regular = [
     "hyprland",
     "hyprland-preview-share-picker-git",
     "hyprland-qt-support",
-    "hyprland-qtutils",
+    "hyprland-guiutils",
     "hyprlang",
     "hyprlock",
     "hyprpaper",
