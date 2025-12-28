@@ -8,7 +8,7 @@ if grep -q elementary /usr/share/icons/default/index.theme; then
 fi
 if ask_user "Change default user's cursor to elementary?"; then
     echo "Changing cursor for current user to elementary"
-    sudo cat <<EOF >> /usr/share/icons/default/index.theme
+    cat <<EOF | sudo tee /usr/share/icons/default/index.theme > /dev/null
 [Icon Theme]
 Inherits=elementary
 EOF

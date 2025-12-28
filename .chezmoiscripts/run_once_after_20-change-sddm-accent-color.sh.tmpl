@@ -9,7 +9,7 @@
 
 
 if ask_user "Change accent color for sddm to magenta?"; then
-    sudo cat <<EOF > /usr/share/sddm/themes/archcraft/theme.conf.user
+    cat <<EOF | sudo tee /usr/share/sddm/themes/archcraft/theme.conf.user > /dev/null
 [General]
 AccentColor="#b874e8"
 EOF
