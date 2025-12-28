@@ -1,0 +1,23 @@
+{{ if (and (eq .chezmoi.os "linux") (lookPath "rofi") (not (stat "/etc/pacman.d/hooks/rofi-desktop-refresh.hook"))) -}}
+#!/usr/bin/env bash
+
+{{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") -}}
+
+if ask_user "Add pacman hook for rofi to refresh cache on desktop entries update?"; then
+    echo "Adding pacman hook /etc/pacman.d/hooks/rofi-desktop-refresh.hook"
+    cat <<EOF | sudo tee /etc/pacman.d/hooks/rofi-desktop-refresh.hook > /dev/null
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Refresh dekstop shortcuts in rofi cache
+When = PostTransaction
+Exec = /usr/bin/rm -f /home/$USER/.cache/rofi-drun-desktop.cache
+EOF
+fi
+
+{{ end -}}
