@@ -77,7 +77,6 @@ vim.filetype.add {
     ["%.gitconfig.*"] = "gitconfig",
     [".*/%.vscode/.+%.json"] = "jsonc",
     [".*/i3/config%.d/.+%.conf"] = "i3config",
-    [".*/hypr/**/.+%.conf"] = "hyprlang",
     [".*/uwsm/env"] = "sh",
   },
 }
