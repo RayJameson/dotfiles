@@ -3,7 +3,18 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   {{ if lookPath "rustc" -}} { import = "astrocommunity.pack.rust" }, {{- end }} -- rust
-  {{ if lookPath "go" -}} { import = "astrocommunity.pack.go" }, {{- end }} -- go
+  {{ if lookPath "go" -}}
+  { import = "astrocommunity.pack.go" },
+  { import = "astrocommunity.pack.templ" },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    optional = true,
+    opts = function(_, opts)
+      opts.ensure_installed =
+        require("astrocore").list_insert_unique(opts.ensure_installed, { "golangci-lint-langserver" })
+    end,
+  },
+  {{- end }} -- go
   {{ if lookPath "docker" -}} { import = "astrocommunity.pack.docker" }, {{- end }} -- docker
   {{ if lookPath "npm" -}}
   { import = "astrocommunity.pack.yaml" }, -- npm
@@ -16,6 +27,9 @@ return {
   { import = "astrocommunity.quickfix.quicker-nvim" },
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.pack.hyprlang" },
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.xml" },
+  { import = "astrocommunity.pack.nginx" },
   {
     "nvim-bqf",
     optional = true,
