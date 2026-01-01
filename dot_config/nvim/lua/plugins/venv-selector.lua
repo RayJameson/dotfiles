@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "linux-cultist/venv-selector.nvim",
+  commit = "4550d0b5a80757caf5ced9658b2d9d171b5c02d8",
   enabled = vim.tbl_contains(
     { "fd", "fdfind", "fd-find" },
     function(v) return vim.fn.executable(v) == 1 end,
