@@ -6,7 +6,7 @@ should_notify=$1
 
 hyprctl clients -j | \
     jq -r '.[] | select(.tags != null and any(.tags[]; . == "private*")) | .address' | \
-    xargs -I{} hyprctl dispatch setprop address:{} noscreenshare toggle
+    xargs -I{} hyprctl dispatch setprop address:{} no_screen_share toggle
 
 if [[ $should_notify -eq 1 ]]; then
     $notify "Toggled screenshare."
