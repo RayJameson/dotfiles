@@ -16,7 +16,7 @@ return {
           basedpyright = {
             analysis = {
               diagnosticMode = "workspace",
-              typeCheckingMode = "basic",
+              typeCheckingMode = "standard",
               autoImportCompletions = true,
               autoSearchPath = true,
               useLibraryCodeForTypes = true,
