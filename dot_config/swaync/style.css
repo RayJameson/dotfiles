@@ -43,8 +43,8 @@
 /* ── 2. Control Center Container ─────────────────────────────────── */
 .control-center {
   background-color: @theme_bg;
-  border: 1px solid @border_medium;
-  border-top-color: @border_light;
+  /* border: 1px solid @border_medium; */
+  /* border-top-color: @border_light; */
   border-bottom-color: @border_dark;
   border-radius: 12px;
   padding: 18px;
@@ -276,7 +276,7 @@ scale slider {
 }
 .floating-notifications .notification-background {
   background-color: @popup_bg;
-  border: 1px solid @border_light;
+  /* border: 1px solid @border_light; */
   border-radius: 18px;
   padding: 18px;
   margin: 8px 14px;
