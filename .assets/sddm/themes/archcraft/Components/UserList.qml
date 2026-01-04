@@ -59,7 +59,7 @@ Item {
             contentItem: Text {
                 text: model.name
                 font.pointSize: root.font.pointSize * 0.8
-                font.capitalization: Font.Capitalize
+                // font.capitalization: Font.Capitalize
                 color: selectUser.highlightedIndex === index ? "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight : "white"
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -165,7 +165,7 @@ Item {
     TextField {
         id: username
         text: config.ForceLastUser == "true" ? selectUser.currentText : null
-        font.capitalization: Font.Capitalize
+        // font.capitalization: Font.Capitalize
         anchors.centerIn: parent
         height: root.font.pointSize * 3
         width: parent.width
