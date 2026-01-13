@@ -1,0 +1,4 @@
+[Unit]
+Description=Hyprland session target
+BindsTo=graphical-session.target
+Wants=xdg-desktop-autostart.target
