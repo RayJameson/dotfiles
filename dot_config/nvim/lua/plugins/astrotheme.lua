@@ -8,7 +8,7 @@ return {
       astrodark = {
         ui = {
           base = C.bg,
-          statusline = C.grey_11,
+          statusline = C.grey_12,
           green = C.green_1,
           inactive_base = C.surface0,
           float = C.bg,
@@ -32,7 +32,7 @@ return {
     },
     highlights = {
       astrodark = {
-        ColorColumn = { fg = C.none, bg = C.grey_11 },
+        ColorColumn = { fg = C.none, bg = C.grey_12 },
         BufferLineTab = { fg = C.fg, bg = C.none },
         RenderMarkdownCode = { bg = C.surface0 },
       },
