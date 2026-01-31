@@ -43,7 +43,8 @@
       "paused": "",
     },
     "ignored-players": [
-      "firefox"
+      "firefox",
+      "mpv"
     ],
   },
   "wlr/workspaces": {
