@@ -20,7 +20,10 @@ return {
             if
               not util.root_pattern(unpack { ".golangci.yaml", ".golangci.yml", ".golangci.toml", ".golangci.json" })()
             then
-              table.insert(args, "--config=" .. vim.env.XDG_CONFIG_HOME .. "/golangci.yaml")
+              table.insert(
+                args,
+                "--config=" .. (vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config") .. "/golangci.yaml"
+              )
             end
             return args
           end)(),
