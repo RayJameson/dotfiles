@@ -56,7 +56,6 @@ regular = [
     "lib32-vulkan-icd-loader",
     "libva",
     "libxml2-legacy",
-    "libxnvctrl",
     "linux-headers",
     "linux-zen-headers",
     "luarocks",
@@ -123,9 +122,10 @@ regular = [
     "zoxide",
 ]
 nvidia = [
-    "lib32-nvidia-utils",
+    "lib32-nvidia-580xx-utils",
     "libva-nvidia-driver",
-    "nvidia-open-dkms",
-    "nvidia-settings",
-    "nvidia-utils",
+    "nvidia-580xx-dkms",
+    "nvidia-580xx-settings",
+    "nvidia-580xx-utils",
+    "libxnvctrl-580xx",
 ]
