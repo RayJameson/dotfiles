@@ -6,14 +6,6 @@ return {
   {{ if lookPath "go" -}}
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.templ" },
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    optional = true,
-    opts = function(_, opts)
-      opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "golangci-lint-langserver" })
-    end,
-  },
   {{- end }} -- go
   {{ if lookPath "docker" -}} { import = "astrocommunity.pack.docker" }, {{- end }} -- docker
   {{ if lookPath "npm" -}}
