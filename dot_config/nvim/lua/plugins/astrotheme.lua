@@ -17,6 +17,7 @@ return {
           split = C.border,
           cyan = C.blue,
           selection = C.grey_1,
+          highlight = C.grey_12,
         },
         syntax = {
           red = C.red,
