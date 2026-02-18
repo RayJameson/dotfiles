@@ -10,6 +10,7 @@ return {
           gopls = {
             analyses = {
               unusedfunc = false, -- covered by golangci-lint
+              ST1000 = false,
             },
             completeFunctionCalls = false,
             codelenses = {
