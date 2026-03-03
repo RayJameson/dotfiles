@@ -114,10 +114,6 @@ return {
     preview_win = {
       preview_method = "fast_scratch",
     },
-    columns = {
-      "icon",
-      "permissions",
-    },
     view_options = {
       show_hidden = true,
     },
