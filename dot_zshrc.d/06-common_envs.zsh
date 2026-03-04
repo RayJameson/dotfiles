@@ -38,7 +38,6 @@ export FZF_CTRL_R_OPTS="
   --header 'Press CTRL-Y to copy command into clipboard'"
 # Add colors to Terminal
 export LSCOLORS=ExFxBxDxCxegedabagacad
-[[ -f "$XDG_CONFIG_HOME/ptpython/config.py" ]] && export PYTHONSTARTUP="$XDG_CONFIG_HOME/ptpython/config.py"
 
 PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:" # default stuff
 PATH="$HOME:$LOCAL_BIN:$HOME/go/bin:$HOME/.cargo/bin:$XDG_CONFIG_HOME/emacs/bin:$PATH"
