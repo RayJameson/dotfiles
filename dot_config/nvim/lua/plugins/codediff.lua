@@ -70,18 +70,6 @@ return {
           end,
           desc = "Open CodeDiff line(s) history",
         }
-        -- simulate DiffView jump to first entry in history
-        opts.autocmds.CodeView = {
-          {
-            event = "User",
-            pattern = "CodeDiffOpen",
-            callback = function(args)
-              if args.data.mode == "history" then
-                vim.defer_fn(function() require("codediff").next_file() end, 20)
-              end
-            end,
-          },
-        }
       end,
     },
   },
