@@ -99,7 +99,7 @@ return {
           function() require("snacks").picker.files { ft = "md", cwd = vim.env.HOME .. "/Obsidian/vault" } end,
           desc = "Notes",
         }
-        maps.x["<Leader>fw"] = {
+        maps.x["<Leader>f"] = {
           function() require("snacks").picker.grep_word() end,
           desc = "Words within selection",
         }
