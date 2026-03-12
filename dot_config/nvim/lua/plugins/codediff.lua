@@ -11,7 +11,10 @@ return {
   cmd = "CodeDiff",
   dependencies = { "MunifTanjim/nui.nvim" },
   opts = {
-    explorer = { view_mode = "tree" },
+    explorer = {
+      width = 25,
+      view_mode = "tree"
+    },
     diff = {
       hide_merge_artifacts = true,
       jump_to_first_change = false,
