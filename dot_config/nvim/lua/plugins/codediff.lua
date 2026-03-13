@@ -45,25 +45,25 @@ return {
         maps.n[prefix] = { desc = require("astroui").get_icon("Diff", 1, true) .. "CodeDiff" }
         maps.n[prefix .. "<CR>"] = {
           function() vim.cmd.CodeDiff() end,
-          desc = "Open CodeDiff",
+          desc = "Explorer",
         }
         maps.n[prefix .. "f"] = {
           function() vim.cmd.CodeDiff("history", "%") end,
-          desc = "Open file diff history",
+          desc = "File history",
         }
         maps.n[prefix .. "b"] = {
           function()
             local branch = get_default_branch()
             if branch then vim.cmd.CodeDiff("history", branch .. "..HEAD") end
           end,
-          desc = "Open CodeDiff branch history",
+          desc = "Branch history",
         }
         maps.n[prefix .. "o"] = {
           function()
             local branch = get_default_branch()
             if branch then vim.cmd.CodeDiff(branch) end
           end,
-          desc = "Open CodeDiff origin branch history",
+          desc = "Origin branch history",
         }
         maps.x[prefix] = {
           function()
@@ -71,7 +71,7 @@ return {
             local end_line = vim.fn.getpos(".")[2]
             vim.cmd.CodeDiff { "history", range = { start_line, end_line } }
           end,
-          desc = "Open CodeDiff line(s) history",
+          desc = "CodeDiff line(s) history",
         }
       end,
     },
