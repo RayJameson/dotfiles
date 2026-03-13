@@ -58,6 +58,10 @@ return {
           end,
           desc = "Branch history",
         }
+        maps.n[prefix .. "r"] = {
+          function() vim.cmd.CodeDiff("history") end,
+          desc = "Repo history",
+        }
         maps.n[prefix .. "o"] = {
           function()
             local branch = get_default_branch()
