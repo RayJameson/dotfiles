@@ -19,7 +19,7 @@ plugins=(
     git
     gitfast
     zsh-vi-mode
-    fast-syntax-highlighting
+    zsh-syntax-highlighting
     fzf-tab
 )
 function zvm_config() {
