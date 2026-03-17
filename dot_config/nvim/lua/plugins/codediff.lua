@@ -22,6 +22,18 @@ return {
       hide_merge_artifacts = true,
       jump_to_first_change = false,
     },
+    keymaps = {
+      conflict = {
+        accept_incoming = "<LocalLeader>t", -- Accept incoming (theirs/left) change
+        accept_current = "<LocalLeader>o", -- Accept current (ours/right) change
+        accept_both = "<LocalLeader>b", -- Accept both changes (incoming first)
+        discard = "<LocalLeader>x", -- Discard both, keep base
+        accept_all_incoming = "<LocalLeader>T", -- Accept ALL incoming changes
+        accept_all_current = "<LocalLeader>O", -- Accept ALL current changes
+        accept_all_both = "<LocalLeader>B", -- Accept ALL both changes
+        discard_all = "<LocalLeader>X", -- Discard ALL, reset to base
+      },
+    },
   },
   specs = {
     {
