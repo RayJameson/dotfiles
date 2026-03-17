@@ -13,7 +13,10 @@ return {
   opts = {
     explorer = {
       width = 25,
-      view_mode = "tree"
+      view_mode = "tree",
+    },
+    history = {
+      height = 10,
     },
     diff = {
       hide_merge_artifacts = true,
