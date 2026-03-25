@@ -63,7 +63,7 @@ return {
           desc = "Explorer",
         }
         maps.n[prefix .. "f"] = {
-          function() vim.cmd.CodeDiff("history", "%") end,
+          function() vim.cmd.CodeDiff("history", vim.fn.expand("%")) end,
           desc = "File history",
         }
         maps.n[prefix .. "b"] = {
