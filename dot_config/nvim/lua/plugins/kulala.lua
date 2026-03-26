@@ -9,6 +9,11 @@ return {
         width = 105,
       },
     },
+    lsp = {
+      formatter = {
+        quote_json_variables = false, -- add quotes around {{variable}} in JSON bodies
+      },
+    },
     global_keymaps = true,
     global_keymaps_prefix = ",",
     timeout = 15,
