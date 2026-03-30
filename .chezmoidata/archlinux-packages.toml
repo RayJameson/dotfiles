@@ -124,7 +124,7 @@ regular = [
 nvidia = [
     "lib32-nvidia-utils",
     "libva-nvidia-driver",
-    "nvidia-dkms",
+    "nvidia-open-dkms",
     "nvidia-settings",
     "nvidia-utils",
 ]
