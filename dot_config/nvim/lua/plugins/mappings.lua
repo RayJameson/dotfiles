@@ -97,6 +97,8 @@ return {
     maps.x["gl"] = { "$", desc = "go to end of the line ($)" }
     --]
 
+    maps.x["/"] = { "<Esc>/\\%V", desc = "search within visual selection" }
+
     maps.n["<Leader>C"] = {
       "<Cmd>%bdelete!|edit#<Cr>",
       desc = "Close all other buffers",
