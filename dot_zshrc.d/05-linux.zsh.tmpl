@@ -24,3 +24,6 @@ alias paci='pacman --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\
 export LD_PRELOAD="/usr/\$LIB/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 {{- end }}
 alias man='man -L ru.UTF-8'
+{{ if lookPath "flatpak" -}}
+export XDG_DATA_DIRS="$XDG_DATA_DIRS":/var/lib/flatpak/exports/share:"$HOME"/.local/share/flatpak/exports/share
+{{- end }}
