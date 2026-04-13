@@ -105,6 +105,8 @@ alt-ctrl-b = 'workspace-back-and-forth'
 
 alt-ctrl-shift-right = ['move-node-to-workspace next', 'workspace next']
 alt-ctrl-shift-left = ['move-node-to-workspace prev', 'workspace prev']
+alt-ctrl-shift-cmd-right = 'move-node-to-monitor next'
+alt-ctrl-shift-cmd-left = 'move-node-to-monitor prev'
 
 alt-ctrl-right = 'workspace next'
 alt-ctrl-left = 'workspace prev'
