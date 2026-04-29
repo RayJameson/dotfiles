@@ -10,6 +10,7 @@ return {
     toggle.option("wrap"):map("<Leader>uw")
     toggle.option("background", { name = "light theme", on = "light", off = "dark" }):map("<Leader>ub")
     toggle.option("conceallevel", { on = 2, off = 0, name = "conceal" }):map("<Leader>uS")
+    toggle.option("showtabline", { on = 2, off = 0, name = "tabline" }):map("<Leader>ut")
     toggle.option("paste"):map("<Leader>up")
     toggle.option("lazyredraw"):map("<Leader>ur")
     toggle.option("spell", { name = "spellcheck" }):map("<Leader>us")
