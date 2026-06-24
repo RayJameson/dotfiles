@@ -155,10 +155,9 @@
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%",
   },
   "network": {
-    "interface": "wlan0",
     "format": "{ifname}",
     "format-wifi": " {signalStrength}%",
-    "format-ethernet": "󰊗 {ipaddr}/{cidr}",
+    "format-ethernet": "󰊗",
     "format-disconnected": "",
     "format-disabled": "",
     "tooltip-format": "󰊗 {ifname} via {gwaddr}",
