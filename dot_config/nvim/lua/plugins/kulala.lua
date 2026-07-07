@@ -10,9 +10,13 @@ return {
       },
     },
     lsp = {
+      enable = true,
       formatter = {
         quote_json_variables = false, -- add quotes around {{variable}} in JSON bodies
       },
+    },
+    treesitter = {
+      enable = true,
     },
     global_keymaps = true,
     global_keymaps_prefix = ",",
