@@ -1,0 +1,15 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+{{ include (joinPath .chezmoi.sourceDir ".chezmoitemplates/scripts-library.sh") -}}
+
+{{ if stat "/etc/udev/rules.d/70-pulsar.rules" -}}
+    exit 0
+{{ end }}
+
+
+if ask_user "Link pulsar udev rule to /etc/udev/rules.d/70-pulsar.rules ?"; then
+    sudo ln -s "$HOME/.local/share/chezmoi/.assets/udev/70-pulsar.rules" /etc/udev/rules.d
+fi
+
+{{ end -}}

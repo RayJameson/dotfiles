@@ -1,0 +1,4 @@
+# Pulsar
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3710", MODE="0660", TAG+="uaccess"
+SUBSYSTEMS=="usb*", ATTRS{idVendor}=="3710", MODE="0660", TAG+="uaccess"
+ACTION=="add", ENV{DEVTYPE}=="usb_device", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="3710", ATTR{power/wakeup}="disabled"
