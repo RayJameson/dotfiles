@@ -109,7 +109,7 @@ regular = [
     "vulkan-icd-loader",
     "vulkan-validation-layers",
     "warehouse-git",
-    "waybar",
+    "waybar-git",
     "wdisplays",
     "wezterm-git",
     "wikiman",
