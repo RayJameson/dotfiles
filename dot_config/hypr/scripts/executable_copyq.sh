@@ -35,4 +35,4 @@ fi
 desired_pos="$desired_x $desired_y"
 
 hyprctl keyword windowrule "move $desired_pos, class:^com.github.hluk.copyq$"
-hyprctl dispatch exec copyq toggle
+hyprctl dispatch 'hl.dsp.exec_cmd("copyq toggle")'

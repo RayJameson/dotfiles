@@ -1,0 +1,8 @@
+---
+# Hyprland Lua config API
+# Defines the `hl` global injected by Hyprland into its Lua runtime.
+# See: https://wiki.hypr.land/Configuring/Start/
+# Stubs: /usr/share/hypr/stubs/hl.meta.lua
+globals:
+  hl:
+    any: true

@@ -6,15 +6,15 @@ shift
 
 while [[ "$#" -gt 0 ]]; do
     if [[ $1 == -m || $1 == --move ]]; then
-        hyprctl dispatch movetoworkspacesilent $switch_to_ws
+        hyprctl dispatch "hl.dsp.window.move({workspace=$switch_to_ws, follow=false})"
         shift
     fi
     if [[ $1 == -j || $1 == --jump ]]; then
-        hyprctl dispatch workspace $switch_to_ws
+        hyprctl dispatch "hl.dsp.focus({workspace=$switch_to_ws})"
         shift
     fi
     if [[ $1 == -mj || $1 == -jm ]]; then
-        hyprctl dispatch movetoworkspace $switch_to_ws
+        hyprctl dispatch "hl.dsp.window.move({workspace=$switch_to_ws})"
         shift
     fi
 done

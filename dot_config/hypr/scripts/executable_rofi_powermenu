@@ -92,7 +92,7 @@ run_cmd() {
 		elif [[ "$DESKTOP_SESSION" == xfce* ]]; then
 			killall xfce4-session
 		elif [[ "$DESKTOP_SESSION" == hyprland* ]]; then
-			hyprctl dispatch exit
+			command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'
 		fi
 	elif [[ "$1" == '--opt3' ]]; then
 		confirm_run 'systemctl suspend'
