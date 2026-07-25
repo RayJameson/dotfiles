@@ -16,6 +16,8 @@ regular = [
     "cpio",
     "ddcutil-git",
     "devtoolbox",
+    "portproton",
+    "faugus-launcher",
     "dex",
     "diff-so-fancy",
     "elementary-icon-theme",
