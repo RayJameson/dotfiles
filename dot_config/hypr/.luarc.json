@@ -1,7 +1,1 @@
-{
-  "workspace": {
-    "library": [
-      "/usr/share/hypr/stubs"
-    ]
-  }
-}
+dot_luarc.json
