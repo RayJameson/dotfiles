@@ -54,6 +54,9 @@
     "disable-scroll": false,
     "active-only": false,
   },
+  "hyprland/workspaces": {
+	  "tooltip": false
+	},
   "hyprland/window": {
     "format": "{}",
     "rewrite": {
