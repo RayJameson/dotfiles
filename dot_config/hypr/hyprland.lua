@@ -118,8 +118,6 @@ hl.animation { leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "a
 hl.config {
   dwindle = {
     force_split = 2,
-    preserve_split = true,
-    smart_split = true,
   },
 }
 
