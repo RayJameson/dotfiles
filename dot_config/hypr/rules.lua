@@ -149,7 +149,7 @@ hl.window_rule {
 hl.window_rule {
   name = "private-windows",
   tag = "+private",
-  match = { class = "(^org.keepassxc.KeePassXC$|^vesktop$|^com.github.hluk.copyq$)" },
+  match = { class = "(^org.keepassxc.KeePassXC$|^com.github.hluk.copyq$)" },
 }
 
 hl.window_rule {
@@ -333,4 +333,15 @@ hl.window_rule {
   match = { content = "3" },
   fullscreen = true,
   workspace = "4",
+}
+
+hl.window_rule {
+  name = "xwaylandvideobridge",
+  match = { class = "xwaylandvideobridge" },
+  no_initial_focus = true,
+  no_focus = true,
+  no_anim = true,
+  no_blur = true,
+  max_size = { 1, 1 },
+  opacity = "0.0",
 }

@@ -20,9 +20,10 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("hypridle")
   hl.exec_cmd("uxplay -vs 0 -async -p -reset 0 -nh -n 'Archcraft audio'")
   hl.exec_cmd("sleep 5 && easyeffects --gapplication-service")
+  hl.exec_cmd("xwaylandvideobridge")
   hl.exec_cmd("sleep 5 && systemctl --user start hyprland-session.target")
 end)
-hl.on("hyprland.shutdown", function() hl.exec_cmd("systemctl --user stop hyprland-session.target") end)
+hl.on("hyprland.shutdown", function() os.execute("systemctl --user stop hyprland-session.target && sleep 0.1") end)
 hl.on("config.reloaded", function() start_waybar() end)
 
 --------------
@@ -227,8 +228,9 @@ hl.config {
 }
 
 hl.permission { binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow" }
+hl.permission { binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-wlr", type = "screencopy", mode = "allow" }
 hl.permission { binary = "/usr/bin/hyprland-preview-share-picker", type = "screencopy", mode = "allow" }
-hl.permission { binary = "/usr/bin/vesktop", type = "screencopy", mode = "allow" }
+hl.permission { binary = "/usr/lib/vesktop/vesktop", type = "screencopy", mode = "allow" }
 hl.permission { binary = "/usr/bin/flameshot", type = "screencopy", mode = "allow" }
 hl.permission { binary = "/usr/bin/obs", type = "screencopy", mode = "allow" }
 hl.permission { binary = "/usr/bin/grim", type = "screencopy", mode = "allow" }

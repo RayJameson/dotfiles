@@ -3,4 +3,4 @@
 set -o pipefail
 
 systemctl --user restart pipewire.service pipewire-pulse.service && \
-    killall -q easyeffects; hyprctl dispatch exec 'easyeffects --gapplication-service'
+    killall -q easyeffects; hyprctl dispatch 'hl.dsp.exec_cmd("easyeffects --gapplication-service")'
