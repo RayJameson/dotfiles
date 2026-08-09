@@ -54,6 +54,7 @@ regular = [
     "keepassxc",
     "kitty",
     "lazygit-git",
+    "lib32-extest",
     "lib32-vulkan-icd-loader",
     "libva",
     "libxml2-legacy",
