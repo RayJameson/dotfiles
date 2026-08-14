@@ -12,6 +12,17 @@ if ask_user "Change accent color for sddm to magenta?"; then
     cat <<EOF | sudo tee /usr/share/sddm/themes/archcraft/theme.conf.user > /dev/null
 [General]
 AccentColor="#b874e8"
+HighlightBackgroundColor="#b874e8"
+HighlightBorderColor="#b874e8"
+
+DropdownSelectedBackgroundColor="#b874e8"
+LoginButtonBackgroundColor="#b874e8"
+
+HoverUserIconColor="#b874e8"
+HoverPasswordIconColor="#b874e8"
+HoverSystemButtonsIconsColor="#b874e8"
+HoverSessionButtonTextColor="#b874e8"
+HoverVirtualKeyboardButtonTextColor="#b874e8"
 EOF
 fi
 
