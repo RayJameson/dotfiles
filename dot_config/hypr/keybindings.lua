@@ -98,8 +98,8 @@ for i = 1, 10 do
   local key = i % 10
   hl.bind(K.SUPER + K.CTRL + key, hl.dsp.window.move { workspace = i })
 end
-hl.bind(K.SUPER + K.CTRL + K.left, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -mj"))
-hl.bind(K.SUPER + K.CTRL + K.right, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -mj"))
+hl.bind(K.SUPER + K.CTRL + K.left, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -mj"))
+hl.bind(K.SUPER + K.CTRL + K.right, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -mj"))
 hl.bind(K.SUPER + K.CTRL + K.mouse_down, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -mj"))
 hl.bind(K.SUPER + K.CTRL + K.mouse_up, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -mj"))
 hl.bind(K.SUPER + K.CTRL + K.B, hl.dsp.window.move { workspace = "previous" })
