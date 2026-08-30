@@ -182,6 +182,8 @@ hl.config {
 -- See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
 hl.device { name = "logitech-g102-prodigy-gaming-mouse", sensitivity = 1 }
 
+hl.device { name = "pulsar-pulsar-8k-dongle", scroll_factor = 1.5 }
+
 hl.config {
   cursor = {
     zoom_disable_aa = true,
