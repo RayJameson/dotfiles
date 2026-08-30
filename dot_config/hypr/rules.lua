@@ -315,27 +315,6 @@ hl.window_rule {
 }
 
 hl.window_rule {
-  name = "steam-games",
-  match = { class = "^steam_app_\\d+$" },
-  fullscreen = true,
-  workspace = "4",
-}
-
-hl.window_rule {
-  name = "proton-games",
-  match = { xdg_tag = "^proton-game$" },
-  fullscreen = true,
-  workspace = "4",
-}
-
-hl.window_rule {
-  name = "content-games",
-  match = { content = "3" },
-  fullscreen = true,
-  workspace = "4",
-}
-
-hl.window_rule {
   name = "xwaylandvideobridge",
   match = { class = "xwaylandvideobridge" },
   no_initial_focus = true,
