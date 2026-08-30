@@ -2,6 +2,7 @@ services:
   "github.qiwi.com": "github:github.qiwi.com"
 gui:
   showNumstatInFilesView: true
+  useHunkModeInStagingView: false
   mouseEvents: false
   nerdFontsVersion: "3"
   showBottomLine: false
@@ -31,9 +32,9 @@ git:
   log:
     showGraph: "always"
     showWholeGraph: false
-  pagers:
+  diffRenderers:
     - colorArg: "always"
-      pager: "diff-so-fancy"
+      command: "diff-so-fancy"
 customCommands:
   - key: "F"
     loadingText: "Pruning & Fetching..."
