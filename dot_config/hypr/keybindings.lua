@@ -23,7 +23,10 @@ hl.bind(K.SUPER + K.D, hl.dsp.exec_cmd(scripts .. "/toggle_screenshare 1"))
 hl.bind(K.SUPER + K.V, hl.dsp.exec_cmd(scripts .. "/copyq.sh"))
 hl.bind(
   K.SUPER + K.SHIFT + K.Return,
-  hl.dsp.exec_cmd("[float; group deny; center; size (monitor_w*0.75) (monitor_h*0.75);] " .. terminal .. " --float")
+  hl.dsp.exec_cmd(
+    terminal .. " --float",
+    { float = true, group = "deny", center = true, size = { "monitor_w*0.75", "monitor_h*0.75" } }
+  )
 )
 hl.bind(K.SUPER + K.Q, hl.dsp.window.close())
 hl.bind(K.SUPER + "mouse:274", hl.dsp.window.close())
