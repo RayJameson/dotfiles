@@ -15,8 +15,10 @@ hl.window_rule {
 hl.window_rule {
   name = "copyq",
   float = true,
+  allows_input = true,
   center = true,
   no_dim = true,
+  pin = true,
   group = "deny",
   size = { "monitor_w*0.35", "monitor_h*0.65" },
   match = { class = "^com.github.hluk.copyq$" },

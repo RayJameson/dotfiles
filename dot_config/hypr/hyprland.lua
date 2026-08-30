@@ -25,7 +25,9 @@ hl.on("hyprland.start", function()
 end)
 hl.on("hyprland.shutdown", function() os.execute("systemctl --user stop hyprland-session.target && sleep 0.1") end)
 hl.on("config.reloaded", function() start_waybar() end)
-
+hl.on("window.open", function(w)
+  if w.class == "com.github.hluk.copyq" then hl.dispatch(hl.dsp.focus { window = w }) end
+end)
 --------------
 --- MONITORS
 --------------
