@@ -94,6 +94,8 @@ for i = 1, 10 do
 end
 hl.bind(K.SUPER + K.left, hl.dsp.focus { workspace = "e-1" })
 hl.bind(K.SUPER + K.right, hl.dsp.focus { workspace = "e+1" })
+hl.bind(K.SUPER + K.SHIFT + K.left, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -j"))
+hl.bind(K.SUPER + K.SHIFT + K.right, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -j"))
 hl.bind(K.SUPER + K.B, hl.dsp.focus { workspace = "previous" })
 
 -- Move active window to a workspace with mod + CTRL + [0-9]
@@ -117,6 +119,10 @@ hl.bind(K.SUPER + K.CTRL + K.equal, hl.dsp.window.move { workspace = "special:sc
 -- Scroll through existing workspaces with mod + scroll
 hl.bind(K.SUPER + K.mouse_down, hl.dsp.focus { workspace = "e-1" })
 hl.bind(K.SUPER + K.mouse_up, hl.dsp.focus { workspace = "e+1" })
+
+-- Scroll incrementally even if workspace doesn't exist with mod + scroll
+hl.bind(K.SUPER + K.SHIFT + K.mouse_down, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -j"))
+hl.bind(K.SUPER + K.SHIFT + K.mouse_up, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -j"))
 
 -- Move/resize windows with mod + LMB/RMB and dragging
 hl.bind(K.SUPER + "mouse:272", hl.dsp.window.drag(), { mouse = true })
