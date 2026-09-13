@@ -1,17 +1,17 @@
 -- keybindings.lua
 local K = require("keys")
-local scripts = "~/.config/hypr/scripts"
-local media = "~/.local/share/chezmoi/.assets"
+local scripts = "~/.config/hypr/scripts/"
+local media = "~/.local/share/chezmoi/.assets/"
 local fileManager = "nautilus"
 local webBrowser = "zen-browser"
-local terminal = scripts .. "/ghostty"
+local terminal = scripts .. "ghostty"
 
 ---@param msg string
 ---@param opts? { urgency?: string, icon?: string }
 local function notify(msg, opts)
   opts = opts or {}
   local urgency = opts.urgency or "low"
-  local icon = opts.icon or media .. "/hyprland_logo.png"
+  local icon = opts.icon or media .. "hyprland_logo.png"
   hl.exec_cmd("notify-send -u " .. urgency .. " -i " .. icon .. ' -h string:wayland-stack:hyprland "' .. msg .. '"')
 end
 
@@ -19,8 +19,8 @@ end
 
 -- Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 hl.bind(K.SUPER + K.Return, hl.dsp.exec_cmd(terminal))
-hl.bind(K.SUPER + K.D, hl.dsp.exec_cmd(scripts .. "/toggle_screenshare 1"))
-hl.bind(K.SUPER + K.V, hl.dsp.exec_cmd(scripts .. "/copyq.sh"))
+hl.bind(K.SUPER + K.D, hl.dsp.exec_cmd(scripts .. "toggle_screenshare 1"))
+hl.bind(K.SUPER + K.V, hl.dsp.exec_cmd(scripts .. "copyq.sh"))
 hl.bind(
   K.SUPER + K.SHIFT + K.Return,
   hl.dsp.exec_cmd(
@@ -46,7 +46,7 @@ hl.bind(K.SUPER + K.SHIFT + K.P, function()
   hl.dispatch(hl.dsp.window.pseudo())
   notify("Toggle pseudo tiling")
 end)
-hl.bind(K.SUPER + K.SHIFT + K.S, hl.dsp.exec_cmd(scripts .. "/toggle_swallow.sh"))
+hl.bind(K.SUPER + K.SHIFT + K.S, hl.dsp.exec_cmd(scripts .. "toggle_swallow.sh"))
 hl.bind(K.SUPER + K.SHIFT + K.R, function()
   hl.exec_cmd("hyprctl reload")
   hl.exec_cmd("rm -f ~/.cache/rofi-drun-desktop.cache")
@@ -54,14 +54,14 @@ hl.bind(K.SUPER + K.SHIFT + K.R, function()
 end)
 
 hl.bind(K.SUPER + K.P, hl.dsp.exec_cmd("hyprpicker -a"))
-hl.bind(K.CTRL + K.SPACE, hl.dsp.exec_cmd(scripts .. "/rofi_launcher"))
-hl.bind(K.SUPER + K.N, hl.dsp.exec_cmd(scripts .. "/network_menu"))
+hl.bind(K.CTRL + K.SPACE, hl.dsp.exec_cmd(scripts .. "rofi_launcher"))
+hl.bind(K.SUPER + K.N, hl.dsp.exec_cmd(scripts .. "network_menu"))
 hl.bind(K.SUPER + K.M, hl.dsp.exec_cmd("missioncenter"))
 hl.bind(K.SUPER + K.SHIFT + K.N, hl.dsp.exec_cmd("swaync-client -t"))
-hl.bind(K.SUPER + K.Z, hl.dsp.exec_cmd(scripts .. "/rofi_powermenu"))
-hl.bind(K.SUPER + K.W, hl.dsp.exec_cmd(scripts .. "/rofi_windows"))
-hl.bind(K.SUPER + K.A, hl.dsp.exec_cmd(scripts .. "/rofi_ghostty_windows"))
-hl.bind(K.SUPER + K.S, hl.dsp.exec_cmd(scripts .. "/rofi_screenshot"))
+hl.bind(K.SUPER + K.Z, hl.dsp.exec_cmd(scripts .. "rofi_powermenu"))
+hl.bind(K.SUPER + K.W, hl.dsp.exec_cmd(scripts .. "rofi_windows"))
+hl.bind(K.SUPER + K.A, hl.dsp.exec_cmd(scripts .. "rofi_ghostty_windows"))
+hl.bind(K.SUPER + K.S, hl.dsp.exec_cmd(scripts .. "rofi_screenshot"))
 hl.bind(K.SUPER + K.SHIFT + K.L, hl.dsp.exec_cmd("hyprlock"))
 
 hl.bind(K.CTRL + K.ALT + K.F, hl.dsp.exec_cmd(fileManager))
@@ -94,8 +94,8 @@ for i = 1, 10 do
 end
 hl.bind(K.SUPER + K.left, hl.dsp.focus { workspace = "e-1" })
 hl.bind(K.SUPER + K.right, hl.dsp.focus { workspace = "e+1" })
-hl.bind(K.SUPER + K.SHIFT + K.left, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -j"))
-hl.bind(K.SUPER + K.SHIFT + K.right, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -j"))
+hl.bind(K.SUPER + K.SHIFT + K.left, hl.dsp.exec_cmd(scripts .. "switch_workspace -1 -j"))
+hl.bind(K.SUPER + K.SHIFT + K.right, hl.dsp.exec_cmd(scripts .. "switch_workspace +1 -j"))
 hl.bind(K.SUPER + K.B, hl.dsp.focus { workspace = "previous" })
 
 -- Move active window to a workspace with mod + CTRL + [0-9]
@@ -103,10 +103,10 @@ for i = 1, 10 do
   local key = i % 10
   hl.bind(K.SUPER + K.CTRL + key, hl.dsp.window.move { workspace = i })
 end
-hl.bind(K.SUPER + K.CTRL + K.left, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -mj"))
-hl.bind(K.SUPER + K.CTRL + K.right, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -mj"))
-hl.bind(K.SUPER + K.CTRL + K.mouse_down, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -mj"))
-hl.bind(K.SUPER + K.CTRL + K.mouse_up, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -mj"))
+hl.bind(K.SUPER + K.CTRL + K.left, hl.dsp.exec_cmd(scripts .. "switch_workspace -1 -mj"))
+hl.bind(K.SUPER + K.CTRL + K.right, hl.dsp.exec_cmd(scripts .. "switch_workspace +1 -mj"))
+hl.bind(K.SUPER + K.CTRL + K.mouse_down, hl.dsp.exec_cmd(scripts .. "switch_workspace -1 -mj"))
+hl.bind(K.SUPER + K.CTRL + K.mouse_up, hl.dsp.exec_cmd(scripts .. "switch_workspace +1 -mj"))
 hl.bind(K.SUPER + K.CTRL + K.B, hl.dsp.window.move { workspace = "previous" })
 hl.bind(K.SUPER + K.CTRL + K.n, hl.dsp.window.move { workspace = "emptym" })
 
@@ -121,8 +121,8 @@ hl.bind(K.SUPER + K.mouse_down, hl.dsp.focus { workspace = "e-1" })
 hl.bind(K.SUPER + K.mouse_up, hl.dsp.focus { workspace = "e+1" })
 
 -- Scroll incrementally even if workspace doesn't exist with mod + scroll
-hl.bind(K.SUPER + K.SHIFT + K.mouse_down, hl.dsp.exec_cmd(scripts .. "/switch_workspace -1 -j"))
-hl.bind(K.SUPER + K.SHIFT + K.mouse_up, hl.dsp.exec_cmd(scripts .. "/switch_workspace +1 -j"))
+hl.bind(K.SUPER + K.SHIFT + K.mouse_down, hl.dsp.exec_cmd(scripts .. "switch_workspace -1 -j"))
+hl.bind(K.SUPER + K.SHIFT + K.mouse_up, hl.dsp.exec_cmd(scripts .. "switch_workspace +1 -j"))
 
 -- Move/resize windows with mod + LMB/RMB and dragging
 hl.bind(K.SUPER + "mouse:272", hl.dsp.window.drag(), { mouse = true })
