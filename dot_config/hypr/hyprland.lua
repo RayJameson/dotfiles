@@ -3,6 +3,8 @@ require("environment")
 require("keybindings")
 require("rules")
 
+local scripts = "~/.config/hypr/scripts/"
+
 ------------------
 --- AUTOSTART
 ------------------
@@ -21,6 +23,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("uxplay -vs 0 -async -p -nh -n 'Archcraft audio'")
   hl.exec_cmd("sleep 5 && easyeffects --gapplication-service")
   hl.exec_cmd("sleep 5 && systemctl --user start hyprland-session.target")
+  hl.exec_cmd(scripts .. "fullscreen_dnd.sh")
 end)
 hl.on("hyprland.shutdown", function() os.execute("systemctl --user stop hyprland-session.target && sleep 0.1") end)
 hl.on("config.reloaded", function() start_waybar() end)
