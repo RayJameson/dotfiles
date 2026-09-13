@@ -7,7 +7,7 @@
   "passthrough": false,
   "fixed-center": true,
   "modules-left": [
-    "hyprland/workspaces",
+    "ext/workspaces",
     "custom/sep",
     "hyprland/window",
     "hyprland/submap",
@@ -55,8 +55,11 @@
     "active-only": false,
   },
   "hyprland/workspaces": {
-	  "tooltip": false
-	},
+    "tooltip": false
+  },
+  "ext/workspaces": {
+    "on-click": "activate"
+  },
   "hyprland/window": {
     "format": "{}",
     "rewrite": {
