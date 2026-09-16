@@ -68,6 +68,12 @@ hl.window_rule {
 }
 
 hl.window_rule {
+  name = "steam keyboard",
+  match = { class = "^steam$", title = "^Steam Input On-screen Keyboard$"},
+  no_dim = true,
+}
+
+hl.window_rule {
   name = "pdf-reader",
   tag = "+popup",
   match = { class = "^pdf$" },
