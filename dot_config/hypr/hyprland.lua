@@ -3,8 +3,6 @@ require("environment")
 require("keybindings")
 require("rules")
 
-local scripts = "~/.config/hypr/scripts/"
-
 ------------------
 --- AUTOSTART
 ------------------
@@ -23,13 +21,25 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("uxplay -vs 0 -async -p -nh -n 'Archcraft audio'")
   hl.exec_cmd("sleep 5 && easyeffects --gapplication-service")
   hl.exec_cmd("sleep 5 && systemctl --user start hyprland-session.target")
-  hl.exec_cmd(scripts .. "fullscreen_dnd.sh")
 end)
 hl.on("hyprland.shutdown", function() os.execute("systemctl --user stop hyprland-session.target && sleep 0.1") end)
 hl.on("config.reloaded", function() start_waybar() end)
 hl.on("window.open", function(w)
   if w.class == "com.github.hluk.copyq" then hl.dispatch(hl.dsp.focus { window = w }) end
 end)
+hl.on(
+  "window.active",
+  ---@param w HL.Window
+  function(w)
+    if w == nil then return end
+    local is_fullscreen = w.fullscreen > 0
+    if is_fullscreen then
+      hl.exec_cmd("swaync-client -dn")
+    else
+      hl.exec_cmd("swaync-client -df")
+    end
+  end
+)
 --------------
 --- MONITORS
 --------------
