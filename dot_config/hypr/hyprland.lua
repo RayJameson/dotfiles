@@ -24,9 +24,13 @@ hl.on("hyprland.start", function()
 end)
 hl.on("hyprland.shutdown", function() os.execute("systemctl --user stop hyprland-session.target && sleep 0.1") end)
 hl.on("config.reloaded", function() start_waybar() end)
-hl.on("window.open", function(w)
-  if w.class == "com.github.hluk.copyq" then hl.dispatch(hl.dsp.focus { window = w }) end
-end)
+hl.on(
+  "window.open",
+  ---@param w HL.Window
+  function(w)
+    if w.class == "com.github.hluk.copyq" then hl.dispatch(hl.dsp.focus { window = w }) end
+  end
+)
 hl.on(
   "window.active",
   ---@param w HL.Window
@@ -37,6 +41,16 @@ hl.on(
       hl.exec_cmd("swaync-client -dn")
     else
       hl.exec_cmd("swaync-client -df")
+    end
+  end
+)
+hl.on(
+  "window.active",
+  ---@param w HL.Window
+  function(w)
+    if w == nil then return end
+    if w.class == "steam" and w.title == "Steam Big Picture Mode" then
+      hl.dispatch(hl.dsp.window.fullscreen { action = "set", mode = "fullscreen" })
     end
   end
 )
