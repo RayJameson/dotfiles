@@ -23,7 +23,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("sleep 5 && systemctl --user start hyprland-session.target")
 end)
 hl.on("hyprland.shutdown", function() os.execute("systemctl --user stop hyprland-session.target && sleep 0.1") end)
-hl.on("config.reloaded", function() start_waybar() end)
+hl.on("config.reloaded", start_waybar)
 hl.on(
   "window.open",
   ---@param w HL.Window
