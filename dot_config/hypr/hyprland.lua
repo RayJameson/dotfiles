@@ -35,8 +35,7 @@ hl.on(
   "window.active",
   ---@param w HL.Window
   function(w)
-    if w == nil then return end
-    local is_fullscreen = w.fullscreen > 0
+    local is_fullscreen = w ~= nil and w.fullscreen > 0
     if is_fullscreen then
       hl.exec_cmd("swaync-client -dn")
     else
