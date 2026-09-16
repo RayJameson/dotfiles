@@ -36,6 +36,7 @@ hl.bind(
   hl.dsp.exec_cmd("hyprctl activewindow | grep -oP '(?<=pid: )\\d+' | xargs kill -9")
 )
 hl.bind(K.SUPER + K.T, hl.dsp.window.float { action = "toggle" })
+hl.bind(K.SUPER + K.SHIFT + K.T, hl.dsp.exec_cmd(scripts .. "always_float"))
 hl.bind(K.SUPER + K.SHIFT + K.G, hl.dsp.group.toggle())
 hl.bind(K.SUPER + K.SHIFT + K.O, function()
   hl.dispatch(hl.dsp.window.pin())

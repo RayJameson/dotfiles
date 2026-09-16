@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+TARGET = Path.home() / ".config/hypr/rules.lua"
+ICON = Path.home() / ".local/share/chezmoi/.assets/hyprland_logo.png"
+
+
+def exact_regex(value):
+    return "^" + re.sub(r"([\\.^$|?*+()\[\]{}])", r"\\\1", value) + "$"
+
+
+def notify(summary, window):
+    body = f"Class: {window['class']}\nTitle: {window['title']}"
+    subprocess.run(["notify-send", "-i", str(ICON), summary, body], check=False)
+
+
+def main():
+    window = json.loads(subprocess.check_output(["hyprctl", "-j", "activewindow"], text=True))
+    if not window.get("address"):
+        raise RuntimeError("No active window")
+
+    match = {key: exact_regex(window.get(key, "")) for key in ("class", "title")}
+    rule = (
+        "hl.window_rule { float = true, match = { class = "
+        + json.dumps(match["class"], ensure_ascii=False)
+        + ", title = "
+        + json.dumps(match["title"], ensure_ascii=False)
+        + " } }"
+    )
+    source = Path(subprocess.check_output(["chezmoi", "source-path", str(TARGET)], text=True).strip())
+
+    if rule in source.read_text():
+        notify("Always-float rule already exists", window)
+        return
+
+    with source.open("a") as rules:
+        rules.write("\n" + rule + "\n")
+
+    subprocess.run(["chezmoi", "apply", str(TARGET)], check=True)
+    subprocess.run(["hyprctl", "reload"], check=True)
+    subprocess.run(
+        [
+            "hyprctl",
+            "dispatch",
+            f'hl.dsp.window.float({{action="set",window="address:{window["address"]}"}})',
+        ],
+        check=True,
+    )
+    notify("Always-float rule added", window)
+
+
+if __name__ == "__main__":
+    if "--self-test" in sys.argv:
+        assert exact_regex(r"a.b[1]\x") == r"^a\.b\[1\]\\x$"
+    else:
+        try:
+            main()
+        except Exception as error:
+            subprocess.run(
+                ["notify-send", "-i", str(ICON), "Failed to add always-float rule", str(error)], check=False
+            )
+            raise
