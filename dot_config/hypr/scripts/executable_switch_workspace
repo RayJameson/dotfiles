@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-current_ws=$(hyprctl activeworkspace -j | jq '.id')
+current_ws=$(hyprctl activeworkspace -j | jq -r '.address')
 switch_to_ws=$(( $current_ws + $1 ))
 shift
 
