@@ -59,6 +59,9 @@ keybind = ctrl+shift+minus=decrease_font_size:0.5
 keybind = ctrl+shift+left=unbind
 keybind = ctrl+shift+right=unbind
 
+# Fix ctrl+backspace not working in ghostty
+keybind = ctrl+backspace=csi:127;5u
+
 gtk-custom-css = tab-style.css
 
 env = NERD_FONT=Iosevka
