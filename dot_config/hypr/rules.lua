@@ -2,6 +2,25 @@
 -- WINDOWS AND WORKSPACES
 local waybar_gap = 30
 
+-- tag rules must come before rules matching the tag: dynamic tags are re-added in rule order on each recheck
+hl.window_rule {
+  name = "ghostty-blur",
+  match = { class = "^com\\.mitchellh\\.ghostty|ghostty\\.float$" },
+  tag = "+blurry",
+}
+
+hl.window_rule {
+  name = "kitty-blur",
+  match = { class = "^kitty$" },
+  tag = "+blurry",
+}
+
+hl.window_rule {
+  name = "wezterm-blur",
+  match = { class = "^org\\.wezfurlong\\.wezterm$" },
+  tag = "+blurry",
+}
+
 hl.window_rule {
   name = "default-no-blur",
   no_blur = true,
@@ -226,24 +245,6 @@ hl.window_rule {
   name = "steam-main-window",
   float = true,
   match = { class = "^[Ss]team$", title = "negative:^([Ss]team|Список друзей|Friends List).*$" },
-}
-
-hl.window_rule {
-  name = "ghostty-blur",
-  match = { class = "^com\\.mitchellh\\.ghostty|ghostty\\.float$" },
-  tag = "+blurry",
-}
-
-hl.window_rule {
-  name = "kitty-blur",
-  match = { class = "^kitty$" },
-  tag = "+blurry",
-}
-
-hl.window_rule {
-  name = "wezterm-blur",
-  match = { class = "^org\\.wezfurlong\\.wezterm$" },
-  tag = "+blurry",
 }
 
 -- Ignore maximize requests from apps. You'll probably like this.
