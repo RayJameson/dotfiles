@@ -109,6 +109,7 @@ hl.config {
       size = 2,
       passes = 3,
       special = true,
+      new_optimizations = true,
       vibrancy = 0.1696,
     },
   },
