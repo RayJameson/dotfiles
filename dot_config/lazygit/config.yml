@@ -2,7 +2,7 @@ services:
   "github.qiwi.com": "github:github.qiwi.com"
 gui:
   showNumstatInFilesView: true
-  useHunkModeInStagingView: false
+  useHunkModeInDiffView: false
   mouseEvents: false
   nerdFontsVersion: "3"
   showBottomLine: false
@@ -14,19 +14,19 @@ gui:
   theme:
     selectedLineBgColor:
       - "#3e4452"
-  authorColors:
-    "Dmitriev Mikhail": "#ff00ff"
-    "Ray Jameson": "#ff00ff"
-  branchColors:
-    "master": "#c678dd"
-    "feat": "#61afef"
-    "fix": "#7bc99c"
-    "remove": "#ec5f67"
-    "refactor": "#ffcc00"
-    "perf": "#1BF9C4"
-    "docs": "#abb2bf"
-    "chore": "#abb2bf"
-    "test": "#abb2bf"
+    authorColors:
+      "Dmitriev Mikhail": "#ff00ff"
+      "Ray Jameson": "#ff00ff"
+    branchColorPatterns:
+      "^master(/|$)": "#c678dd"
+      "^feat(/|$)": "#61afef"
+      "^fix(/|$)": "#7bc99c"
+      "^remove(/|$)": "#ec5f67"
+      "^refactor(/|$)": "#ffcc00"
+      "^perf(/|$)": "#1BF9C4"
+      "^docs(/|$)": "#abb2bf"
+      "^chore(/|$)": "#abb2bf"
+      "^test(/|$)": "#abb2bf"
 git:
   overrideGpg: true
   log:
