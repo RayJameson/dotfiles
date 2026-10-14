@@ -166,6 +166,7 @@ hl.config {
     enable_swallow = false,
     swallow_regex = "^.*ghostty.*$",
     focus_on_activate = false,
+    render_unfocused_fps = 60,
   },
 }
 
