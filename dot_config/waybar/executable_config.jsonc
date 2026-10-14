@@ -7,7 +7,7 @@
   "passthrough": false,
   "fixed-center": true,
   "modules-left": [
-    "ext/workspaces",
+    "hyprland/workspaces",
     "custom/sep",
     "hyprland/window",
     "hyprland/submap",
