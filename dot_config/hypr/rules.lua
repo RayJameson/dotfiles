@@ -69,7 +69,7 @@ hl.window_rule {
 
 hl.window_rule {
   name = "steam keyboard",
-  match = { class = "^steam$", title = "^Steam Input On-screen Keyboard$"},
+  match = { class = "^steam$", title = "^Steam Input On-screen Keyboard$" },
   no_dim = true,
 }
 
@@ -331,4 +331,11 @@ hl.window_rule {
   no_blur = true,
   max_size = { 1, 1 },
   opacity = "0.0",
+}
+
+hl.window_rule {
+  name = "render unfocused",
+  match = { class = [[^steam_app_\d+$]] },
+  render_unfocused = true,
+  float = true,
 }
