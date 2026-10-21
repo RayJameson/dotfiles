@@ -1,6 +1,7 @@
 [packages.archlinux]
 regular = [
     "adw-gtk-theme",
+    "amethyst-mod-manager",
     "aquamarine",
     "archlinux-keyring",
     "asciinema",
@@ -70,7 +71,7 @@ regular = [
     "neovide",
     "neovim",
     "nodejs",
-    "nordvpn-bin",
+    "nordvpn-gui-bin",
     "npm",
     "nushell",
     "nwg-look",
