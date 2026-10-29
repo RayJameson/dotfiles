@@ -34,6 +34,7 @@ return {
         colorcolumn = "120",
         foldcolumn = "auto:1",
         diffopt = { "vertical" },
+        scrollopt = { "ver", "jump", "hor" }, -- sync horizontal scroll in scrollbind windows (codediff)
         tabstop = 4,
         guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor",
         softtabstop = 4,
