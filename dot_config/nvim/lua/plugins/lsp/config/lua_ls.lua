@@ -27,7 +27,7 @@ return {
               disable = { "lowercase-global" },
             },
             codelens = {
-              enable = true,
+              enable = false,
             },
             telemetry = {
               enable = false,
