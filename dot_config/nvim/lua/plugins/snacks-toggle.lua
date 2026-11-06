@@ -161,6 +161,23 @@ return {
       :map("<Leader>u(")
     toggle.option("foldcolumn", { on = "auto:1", off = "0", global = false }):map("<Leader>u>")
     toggle.indent():map("<Leader>u|")
+    -- same flags conform.nvim's format_on_save reads (astrocommunity conform-nvim)
+    toggle
+      .new({
+        name = "autoformatting (buffer)",
+        get = function() return vim.F.if_nil(vim.b.autoformat, vim.g.autoformat, true) end,
+        set = function(state) vim.b.autoformat = state end,
+      })
+      :map("<Leader>uf")
+    toggle
+      .new({
+        name = "autoformatting (global)",
+        get = function() return vim.F.if_nil(vim.g.autoformat, true) end,
+        set = function(state)
+          vim.g.autoformat, vim.b.autoformat = state, nil
+        end,
+      })
+      :map("<Leader>uF")
   end,
   specs = {
     "AstroNvim/astrolsp",
@@ -179,28 +196,6 @@ return {
               notify = false,
             })
             :map("<Leader>uL")
-        end
-        if
-          client:supports_method("textDocument/formatting")
-          and opts.formatting.disabled ~= true
-          and not vim.tbl_contains(opts.formatting.disabled, client.name)
-        then
-          toggle
-            .new({
-              name = "autoformatting (buffer)",
-              get = function() return vim.b[bufnr].autoformat end,
-              set = function() require("astrolsp.toggles").buffer_autoformat() end,
-              notify = false,
-            })
-            :map("<Leader>uf")
-          toggle
-            .new({
-              name = "autoformatting (global)",
-              get = function() return require("astrolsp").config.formatting.format_on_save.enabled end,
-              set = function() require("astrolsp.toggles").autoformat() end,
-              notify = false,
-            })
-            :map("<Leader>uF")
         end
         if client:supports_method("textDocument/signatureHelp") then
           toggle

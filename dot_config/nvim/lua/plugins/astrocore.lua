@@ -69,6 +69,7 @@ return {
         loaded_ruby_provider = false,
         loaded_node_provider = false,
         loaded_python3_provider = false,
+        autoformat = false, -- conform.nvim format on save
         rustaceanvim = {
           tools = {
             float_win_config = {

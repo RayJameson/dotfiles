@@ -38,15 +38,9 @@ return {
         init = false,
         config = function(_, opts) setup_without_ensure_installed("mason-lspconfig", opts) end,
       },
-      {
-        "jay-babu/mason-null-ls.nvim",
-        optional = true,
-        init = false,
-        config = function(_, opts) setup_without_ensure_installed("mason-null-ls", opts) end,
-      },
     },
     opts = {
-      integrations = { ["mason-lspconfig"] = false, ["mason-null-ls"] = false, ["mason-nvim-dap"] = false },
+      integrations = { ["mason-lspconfig"] = false, ["mason-nvim-dap"] = false },
       ensure_installed = {
         unpack(
           vim
@@ -83,16 +77,6 @@ return {
         backdrop = 100,
       },
     },
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    -- overrides `require("mason-null-ls").setup(...)`
-    opts = function(_, opts)
-      opts.handlers = {
-        stylua = function() end,
-        mypy = function() end,
-      }
-    end,
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
