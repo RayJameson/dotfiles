@@ -22,6 +22,21 @@ return {
         end)(),
       },
       layout = { preset = function(source) return source == "select" and "select" or "custom_ivy_split" end },
+      sources = {
+        buffers = {
+          -- preview a copy: showing the real buffer bumps its `lastused` and reshuffles the list
+          preview = function(ctx)
+            local buf = ctx.item.buf
+            if buf and vim.api.nvim_buf_is_loaded(buf) then
+              ctx.item.preview = {
+                text = table.concat(vim.api.nvim_buf_get_lines(buf, 0, -1, false), "\n"),
+                ft = vim.bo[buf].filetype,
+              }
+            end
+            return require("snacks.picker.preview").preview(ctx)
+          end,
+        },
+      },
     },
     image = { doc = { enabled = true } },
     dashboard = { enabled = false },
