@@ -9,6 +9,9 @@ return {
       -- never fall back to lua_ls formatting (conform ignores `filter` in default_format_opts)
       lua = { "stylua", lsp_format = "never" },
     },
+    formatters = {
+      pyink = { prepend_args = { "--line-length", "120" } },
+    },
   },
   specs = {
     "AstroNvim/astrocore",
