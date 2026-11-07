@@ -8,7 +8,7 @@ function M.call(fargs, orientation, size, focus)
   local file = fargs[1] or "%"
   orientation = orientation or "horizontal"
   size = size or 15
-  focus = focus or true
+  if focus == nil then focus = true end
   local error = vim.log.levels.ERROR
   -- Get code run output
   local original_window_number = vim.api.nvim_get_current_win()
