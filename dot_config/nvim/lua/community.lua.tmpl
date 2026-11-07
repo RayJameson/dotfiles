@@ -10,10 +10,11 @@ return {
   {{ if lookPath "docker" -}} { import = "astrocommunity.pack.docker" }, {{- end }} -- docker
   {{ if lookPath "npm" -}}
   { import = "astrocommunity.pack.yaml" }, -- npm
-  { import = "astrocommunity.pack.toml" }, -- npm
-  { import = "astrocommunity.pack.markdown" }, -- npm
   { import = "astrocommunity.pack.json" }, -- npm
+  { import = "astrocommunity.pack.html-css" }, -- npm
   {{ end -}}
+  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.editing-support.conform-nvim" },
   { import = "astrocommunity.lsp.nvim-lint" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
@@ -21,7 +22,6 @@ return {
   { import = "astrocommunity.quickfix.quicker-nvim" },
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.pack.hyprlang" },
-  { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.xml" },
   {
     "nvim-bqf",

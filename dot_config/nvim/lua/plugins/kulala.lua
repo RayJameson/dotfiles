@@ -36,7 +36,12 @@ return {
   specs = {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
-      if opts.ensure_installed then table.insert(opts.ensure_installed, "kulala-fmt") end
+      if opts.ensure_installed then
+        table.insert(
+          opts.ensure_installed,
+          { "kulala-fmt", condition = function() return vim.fn.executable("npm") == 1 end }
+        )
+      end
     end,
   },
   dependencies = {

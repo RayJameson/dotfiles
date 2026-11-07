@@ -1,3 +1,4 @@
+local mid_mapping = false
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
@@ -113,21 +114,13 @@ return {
       Terminal = {
         {
           event = "TermOpen",
-          desc = "Disable numbers in terminal window",
-          callback = function()
+          desc = "Disable numbers in terminal window and map q to close it",
+          callback = function(args)
             vim.opt_local.number = false
             vim.opt_local.relativenumber = false
             vim.opt_local.foldcolumn = "0"
             vim.opt_local.signcolumn = "no"
-          end,
-        },
-        {
-          event = "BufEnter",
-          desc = "Create q keymap to close terminal window",
-          callback = function(args)
-            if vim.bo[args.buf].buftype == "terminal" then
-              vim.api.nvim_buf_set_keymap(args.buf, "n", "q", ":close<CR>", { noremap = true, silent = true })
-            end
+            vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = args.buf, silent = true })
           end,
         },
       },

@@ -54,22 +54,6 @@ return {
         end,
       })
       :map("<Leader>uA")
-    local previous_virtual_text
-    toggle
-      .new({
-        name = "virtual lines",
-        get = function() return vim.diagnostic.config().virtual_text end,
-        set = function(should_enable)
-          local new_virtual_text = false
-          if should_enable then
-            new_virtual_text = previous_virtual_text or true
-          else
-            previous_virtual_text = vim.diagnostic.config().virtual_text
-          end
-          vim.diagnostic.config { virtual_text = new_virtual_text }
-        end,
-      })
-      :map("<Leader>uv")
     toggle
       .new({
         name = "virtual lines",
@@ -81,7 +65,7 @@ return {
       .new({
         name = "virtual text",
         get = function() return vim.diagnostic.config().virtual_text end,
-        set = function(should_enable) require("astrocore.toggles").virtual_text(true) end,
+        set = function() require("astrocore.toggles").virtual_text(true) end,
       })
       :map("<Leader>uv")
     toggle
@@ -195,7 +179,7 @@ return {
               set = function() require("astrolsp.toggles").codelens() end,
               notify = false,
             })
-            :map("<Leader>uL")
+            :map("<Leader>uL", { buffer = bufnr })
         end
         if client:supports_method("textDocument/signatureHelp") then
           toggle
@@ -205,18 +189,18 @@ return {
               set = function() require("astrolsp.toggles").signature_help() end,
               notify = false,
             })
-            :map("<Leader>u?")
+            :map("<Leader>u?", { buffer = bufnr })
         end
         if vim.lsp.inlay_hint and client:supports_method("textDocument/inlayHint") then
           toggle
             .new({
               name = "LSP inlay hints (buffer)",
               get = function()
-                local filter = { bufnr = bufnr or 0 }
+                local filter = { bufnr = bufnr }
                 return vim.lsp.inlay_hint.is_enabled(filter)
               end,
               set = function(should_enable)
-                local filter = { bufnr = bufnr or 0 }
+                local filter = { bufnr = bufnr }
                 if should_enable then
                   vim.lsp.inlay_hint.enable(true, filter)
                 else
@@ -224,7 +208,7 @@ return {
                 end
               end,
             })
-            :map("<Leader>uh")
+            :map("<Leader>uh", { buffer = bufnr })
           toggle
             .new({
               name = "LSP inlay hints (global)",
@@ -237,7 +221,7 @@ return {
                 end
               end,
             })
-            :map("<Leader>uH")
+            :map("<Leader>uH", { buffer = bufnr })
         end
         if client:supports_method("textDocument/semanticTokens/full", bufnr) then
           toggle
@@ -247,7 +231,7 @@ return {
               set = function() require("astrolsp.toggles").buffer_semantic_tokens(bufnr) end,
               notify = false,
             })
-            :map("<Leader>uY")
+            :map("<Leader>uY", { buffer = bufnr })
         end
         old_on_attach(client, bufnr)
       end

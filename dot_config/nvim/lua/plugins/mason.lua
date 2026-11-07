@@ -1,70 +1,26 @@
--- helper function to setup a plugin without an `ensure_installed` table
-local setup_without_ensure_installed = function(main, opts)
-  opts = vim.deepcopy(opts)
-  opts.ensure_installed = nil
-  require(main).setup(opts)
-end
-
 ---@return fun(): boolean
 local function is_executable(binary)
   return function() return vim.fn.executable(binary) == 1 end
 end
-if not is_executable("npm")() then return {} end
 
 local list_insert_unique = require("astrocore").list_insert_unique
 -- customize mason plugins
+-- tools from community packs (lua, go, docker, json, yaml, ...) are installed by the packs themselves
 ---@type LazySpec
 return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    init = function(plugin) require("astrocore").on_load("mason.nvim", plugin.name) end,
-    opts_extend = { "ensure_installed" },
-    config = function(_, opts)
-      local mason_tool_installer = require("mason-tool-installer")
-      mason_tool_installer.setup(opts)
-      if opts.run_on_start ~= false then mason_tool_installer.run_on_start() end
-    end,
-    specs = {
-      -- disable init and ensure installed of other plugins
-      {
-        "jay-babu/mason-nvim-dap.nvim",
-        optional = true,
-        init = false,
-        config = function(_, opts) setup_without_ensure_installed("mason-nvim-dap", opts) end,
-      },
-      {
-        "williamboman/mason-lspconfig.nvim",
-        optional = true,
-        init = false,
-        config = function(_, opts) setup_without_ensure_installed("mason-lspconfig", opts) end,
-      },
-    },
     opts = {
-      integrations = { ["mason-lspconfig"] = false, ["mason-nvim-dap"] = false },
       ensure_installed = {
-        unpack(
-          vim
-            .iter({ "iferr", "delve", "goimports", "gopls", "goimports", "gomodifytags" })
-            :map(function(tool) return { tool, condition = is_executable("go") } end)
-            :totable()
-        ),
-        unpack(
-          vim
-            .iter({ "basedpyright", "ruff", "debugpy", "pyink" })
-            :map(function(tool) return { tool, condition = is_executable("python3") } end)
-            :totable()
-        ),
-        "bash-language-server",
-        "json-lsp",
-        "taplo",
-        "lua-language-server",
-        "vim-language-server",
-        "yaml-language-server",
-        "marksman",
-        "hadolint",
-        "luacheck",
-        "selene",
-        "stylua",
+        { "basedpyright", condition = is_executable("python3") },
+        { "ruff", condition = is_executable("python3") },
+        { "debugpy", condition = is_executable("python3") },
+        { "pyink", condition = is_executable("python3") },
+        { "bash-language-server", condition = is_executable("npm") },
+        { "vim-language-server", condition = is_executable("npm") },
+        { "gh-actions-language-server", condition = is_executable("npm") },
+        { "luacheck", condition = is_executable("luarocks") },
+        "hadolint", -- docker pack only adds it when docker is installed
       },
     },
   },

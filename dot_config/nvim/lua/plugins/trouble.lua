@@ -127,17 +127,20 @@ return {
               desc = "Create jump mappings for trouble view",
               pattern = "trouble",
               callback = function()
-                maps.n["j"] = {
-                  ---@diagnostic disable-next-line: missing-parameter
-                  function() require("trouble").next() end,
-                  desc = "Jump to next entry",
-                }
-                maps.n["k"] = {
-                  ---@diagnostic disable-next-line: missing-parameter
-                  function() require("trouble").prev() end,
-                  desc = "Jump to previous entry",
-                }
-                require("astrocore").set_mappings(maps, { buffer = 0 })
+                require("astrocore").set_mappings({
+                  n = {
+                    j = {
+                      ---@diagnostic disable-next-line: missing-parameter
+                      function() require("trouble").next() end,
+                      desc = "Jump to next entry",
+                    },
+                    k = {
+                      ---@diagnostic disable-next-line: missing-parameter
+                      function() require("trouble").prev() end,
+                      desc = "Jump to previous entry",
+                    },
+                  },
+                }, { buffer = 0 })
               end,
             },
           }

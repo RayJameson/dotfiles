@@ -5,6 +5,7 @@ return {
   opts = {
     formatters_by_ft = {
       http = { "kulala-fmt" },
+      python = { "pyink" },
       -- never fall back to lua_ls formatting (conform ignores `filter` in default_format_opts)
       lua = { "stylua", lsp_format = "never" },
     },

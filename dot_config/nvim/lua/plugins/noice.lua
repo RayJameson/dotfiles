@@ -74,29 +74,6 @@ return {
           end
         end,
       },
-      {
-        "AstroNvim/astrolsp",
-        opts = function(_, opts)
-          if not opts.mappings then opts.mappings = {} end
-          local maps = opts.mappings
-          maps.i["<c-f>"] = {
-            function()
-              if not require("noice.lsp").scroll(4) then return "<c-f>" end
-            end,
-            desc = "Scroll down signature help",
-            silent = true,
-            expr = true,
-          }
-          maps.i["<c-b>"] = {
-            function()
-              if not require("noice.lsp").scroll(-4) then return "<c-f>" end
-            end,
-            desc = "Scroll up signature help",
-            silent = true,
-            expr = true,
-          }
-        end,
-      },
     },
   },
 }

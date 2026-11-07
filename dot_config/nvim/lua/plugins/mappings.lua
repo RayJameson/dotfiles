@@ -6,7 +6,6 @@ return {
     opts --[[@as AstroCoreOpts]]
   )
     local maps = opts.mappings
-    local is_available = require("astrocore").is_available
     -- disable defaults:
     if maps.n["<Leader>fo"] then maps.n["<Leader>fo"].desc = "Recent files" end
     maps.n["<Leader>b"] = false
@@ -99,37 +98,6 @@ return {
 
     maps.x["/"] = { "<Esc>/\\%V", desc = "search within visual selection" }
 
-    maps.n["<Leader>C"] = {
-      "<Cmd>%bdelete!|edit#<Cr>",
-      desc = "Close all other buffers",
-    }
-    maps.n["<Leader>a"] = {
-      "<Cmd>%bdelete!<Cr>",
-      desc = "Close all buffers",
-    }
-    maps.n["<Leader>c"] = {
-      function()
-        require("astrocore.buffer").close()
-        local bufs = vim.fn.getbufinfo { buflisted = true }
-        if is_available("alpha-nvim") and not bufs[2] then
-          require("alpha").start(false, require("alpha").default_config)
-        end
-      end,
-      desc = "Close current buffer",
-    }
-
-    --]
-    local function ui_notify(str)
-      if vim.g.ui_notifications_enabled then require("astrocore").notify(str) end
-    end
-
-    local function bool2str(bool) return bool and "on" or "off" end
-
-    local function toggle_lazyreadraw()
-      vim.opt.lazyredraw = not vim.opt.lazyredraw:get()
-      ui_notify(("lazy redraw %s"):format(bool2str(vim.opt.lazyredraw:get())))
-    end
-
     maps.n["<Leader>N"] = { desc = " Notes" }
     maps.n["<Leader>Nn"] = {
       function()
@@ -141,8 +109,6 @@ return {
       end,
       desc = "New note",
     }
-    maps.n["<Leader>ur"] = { toggle_lazyreadraw, desc = "Toggle lazyredraw" }
-
     maps.n["<Leader>rn"] = { "<CMD>BetterLuafile<CR>", desc = "Run lua file with nvim-lua" }
 
     -- Move Lines
@@ -153,19 +119,6 @@ return {
     maps.x["<M-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
     maps.x["<M-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
     maps.t["<Esc><Esc>"] = { "<C-\\><C-n>", desc = "Enter Normal Mode" }
-    -- Smart Splits (remapped on Meta key)
-    if is_available("smart-splits.nvim") then
-      -- Resize with arrows
-      maps.n["<M-Up>"] = { function() require("smart-splits").resize_up() end, desc = "Resize split up" }
-      maps.n["<M-Down>"] = { function() require("smart-splits").resize_down() end, desc = "Resize split down" }
-      maps.n["<M-Left>"] = { function() require("smart-splits").resize_left() end, desc = "Resize split left" }
-      maps.n["<M-Right>"] = { function() require("smart-splits").resize_right() end, desc = "Resize split right" }
-    else
-      maps.n["<M-Up>"] = { "<CMD>resize -2<CR>", desc = "Resize split up" }
-      maps.n["<M-Down>"] = { "<CMD>resize +2<CR>", desc = "Resize split down" }
-      maps.n["<M-Left>"] = { "<CMD>vertical resize -2<CR>", desc = "Resize split left" }
-      maps.n["<M-Right>"] = { "<CMD>vertical resize +2<CR>", desc = "Resize split right" }
-    end
 
     -- add more text objects for "in" and "around"
     for _, mode in ipairs { "x", "o" } do
