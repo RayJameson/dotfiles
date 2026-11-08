@@ -21,6 +21,7 @@ return {
       hide_merge_artifacts = true,
       jump_to_first_change = false,
       ignore_trim_whitespace = true,
+      compact = true,
     },
     keymaps = {
       conflict = {
