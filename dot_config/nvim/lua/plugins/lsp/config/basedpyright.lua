@@ -39,4 +39,9 @@ return {
       },
     },
   },
+  specs = {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    optional = true,
+    opts = { ensure_installed = { { "basedpyright", condition = function() return vim.fn.executable("python3") == 1 end } } },
+  },
 }

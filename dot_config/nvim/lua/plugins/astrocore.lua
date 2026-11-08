@@ -70,14 +70,6 @@ return {
         loaded_ruby_provider = false,
         loaded_node_provider = false,
         loaded_python3_provider = false,
-        autoformat = false, -- conform.nvim format on save
-        rustaceanvim = {
-          tools = {
-            float_win_config = {
-              border = "rounded",
-            },
-          },
-        },
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file

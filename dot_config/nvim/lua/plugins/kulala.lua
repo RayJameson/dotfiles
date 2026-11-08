@@ -34,15 +34,18 @@ return {
     },
   },
   specs = {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    opts = function(_, opts)
-      if opts.ensure_installed then
-        table.insert(
-          opts.ensure_installed,
-          { "kulala-fmt", condition = function() return vim.fn.executable("npm") == 1 end }
-        )
-      end
-    end,
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      opts = function(_, opts)
+        if opts.ensure_installed then
+          table.insert(
+            opts.ensure_installed,
+            { "kulala-fmt", condition = function() return vim.fn.executable("npm") == 1 end }
+          )
+        end
+      end,
+    },
+    { "stevearc/conform.nvim", optional = true, opts = { formatters_by_ft = { http = { "kulala-fmt" } } } },
   },
   dependencies = {
     {

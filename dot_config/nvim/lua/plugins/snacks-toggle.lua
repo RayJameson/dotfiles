@@ -28,13 +28,6 @@ return {
       :map("<Leader>uN")
     toggle
       .new({
-        name = "transparency",
-        get = function() return vim.g.transparent_enabled end,
-        set = function() vim.cmd.TransparentToggle() end,
-      })
-      :map("<Leader>uT")
-    toggle
-      .new({
         name = "autopairs",
         get = function()
           local autopairs = require("nvim-autopairs")
@@ -130,38 +123,8 @@ return {
       })
       :map("<Leader>uz")
     toggle.zen():map("<Leader>uZ")
-    toggle
-      .new({
-        name = "rainbow delimiters (buffer)",
-        get = function()
-          local bufnr = vim.api.nvim_get_current_buf()
-          return require("rainbow-delimiters").is_enabled(bufnr)
-        end,
-        set = function()
-          local bufnr = vim.api.nvim_get_current_buf()
-          return require("rainbow-delimiters").toggle(bufnr)
-        end,
-      })
-      :map("<Leader>u(")
     toggle.option("foldcolumn", { on = "auto:1", off = "0", global = false }):map("<Leader>u>")
     toggle.indent():map("<Leader>u|")
-    -- same flags conform.nvim's format_on_save reads (astrocommunity conform-nvim)
-    toggle
-      .new({
-        name = "autoformatting (buffer)",
-        get = function() return vim.F.if_nil(vim.b.autoformat, vim.g.autoformat, true) end,
-        set = function(state) vim.b.autoformat = state end,
-      })
-      :map("<Leader>uf")
-    toggle
-      .new({
-        name = "autoformatting (global)",
-        get = function() return vim.F.if_nil(vim.g.autoformat, true) end,
-        set = function(state)
-          vim.g.autoformat, vim.b.autoformat = state, nil
-        end,
-      })
-      :map("<Leader>uF")
   end,
   specs = {
     "AstroNvim/astrolsp",

@@ -74,4 +74,17 @@ return {
     exclude_groups = {},
     on_clear = function() vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = require("colors").bg_1 }) end,
   },
+  specs = {
+    "folke/snacks.nvim",
+    optional = true,
+    opts = function()
+      require("snacks.toggle")
+        .new({
+          name = "transparency",
+          get = function() return vim.g.transparent_enabled end,
+          set = function() vim.cmd.TransparentToggle() end,
+        })
+        :map("<Leader>uT")
+    end,
+  },
 }

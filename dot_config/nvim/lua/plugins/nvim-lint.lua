@@ -49,21 +49,33 @@ return {
     opts.linters.mypy = vim.tbl_extend("force", opts.linters.mypy or {}, { args = mypy_args })
   end,
   specs = {
-    "AstroNvim/astrocore",
-    opts = function(_, opts)
-      opts.mappings.n["<Leader>ln"] = {
-        function()
-          local lint = require("lint")
-          vim.g.lint_enabled = not vim.F.if_nil(vim.g.lint_enabled, true)
-          for _, names in pairs(lint.linters_by_ft) do
-            for _, name in ipairs(names) do
-              vim.diagnostic.enable(vim.g.lint_enabled, { ns_id = lint.get_namespace(name) })
+    {
+      "AstroNvim/astrocore",
+      opts = function(_, opts)
+        opts.mappings.n["<Leader>ln"] = {
+          function()
+            local lint = require("lint")
+            vim.g.lint_enabled = not vim.F.if_nil(vim.g.lint_enabled, true)
+            for _, names in pairs(lint.linters_by_ft) do
+              for _, name in ipairs(names) do
+                vim.diagnostic.enable(vim.g.lint_enabled, { ns_id = lint.get_namespace(name) })
+              end
             end
-          end
-          require("astrocore").notify(("Linting %s"):format(vim.g.lint_enabled and "on" or "off"))
-        end,
-        desc = "Toggle linting",
-      }
-    end,
+            require("astrocore").notify(("Linting %s"):format(vim.g.lint_enabled and "on" or "off"))
+          end,
+          desc = "Toggle linting",
+        }
+      end,
+    },
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      optional = true,
+      opts = {
+        ensure_installed = {
+          { "luacheck", condition = function() return vim.fn.executable("luarocks") == 1 end },
+          "hadolint", -- docker pack only adds it when docker is installed
+        },
+      },
+    },
   },
 }

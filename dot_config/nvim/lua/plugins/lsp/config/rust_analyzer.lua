@@ -52,4 +52,9 @@ return {
       },
     },
   },
+  specs = {
+    "mrcjkb/rustaceanvim",
+    optional = true,
+    opts = { tools = { float_win_config = { border = "rounded" } } },
+  },
 }

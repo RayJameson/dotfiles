@@ -1,26 +1,12 @@
----@return fun(): boolean
-local function is_executable(binary)
-  return function() return vim.fn.executable(binary) == 1 end
-end
-
-local list_insert_unique = require("astrocore").list_insert_unique
 -- customize mason plugins
--- tools from community packs (lua, go, docker, json, yaml, ...) are installed by the packs themselves
+-- tools are installed by the plugin/LSP files that use them, and by community packs (lua, go, docker, json, yaml, ...)
 ---@type LazySpec
 return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
       ensure_installed = {
-        { "basedpyright", condition = is_executable("python3") },
-        { "ruff", condition = is_executable("python3") },
-        { "debugpy", condition = is_executable("python3") },
-        { "pyink", condition = is_executable("python3") },
-        { "bash-language-server", condition = is_executable("npm") },
-        { "vim-language-server", condition = is_executable("npm") },
-        { "gh-actions-language-server", condition = is_executable("npm") },
-        { "luacheck", condition = is_executable("luarocks") },
-        "hadolint", -- docker pack only adds it when docker is installed
+        { "vim-language-server", condition = function() return vim.fn.executable("npm") == 1 end },
       },
     },
   },
@@ -33,66 +19,5 @@ return {
         backdrop = 100,
       },
     },
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    dependencies = {
-      { "mfussenegger/nvim-dap-python", lazy = true },
-      -- HACK: to ignore crash prompt on MacOS after terminating debugger, run this command:
-      -- defaults write com.apple.CrashReporter DialogType none
-      -- to enable it back, run this:
-      -- defaults write com.apple.CrashReporter DialogType prompt
-      -- credit: https://github.com/mfussenegger/nvim-dap-python/issues/151#issuecomment-2221639990
-    },
-    opts = function(_, opts)
-      opts.handlers = {
-        python = function(config)
-          config.configurations = list_insert_unique(config.configurations, {
-            {
-              type = "python",
-              request = "launch",
-              name = "Python: Debug Current File",
-              program = "${file}",
-              justMyCode = false,
-              console = "integratedTerminal",
-              cwd = vim.uv.cwd(),
-              args = {
-                "-m",
-                "debugpy.adapter",
-              },
-              env = {
-                PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":"),
-                PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "4",
-              },
-              pythonPath = function() return "python" end,
-            },
-            {
-              type = "python",
-              request = "launch",
-              name = "Python: Debug FastAPI web application",
-              module = "uvicorn",
-              cwd = vim.uv.cwd(),
-              env = {
-                PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":"),
-                PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "4",
-              },
-              args = {
-                "-m",
-                "debugpy.adapter",
-                "main:app",
-                "--use-colors",
-              },
-              pythonPath = function() return "python" end,
-              console = "integratedTerminal",
-            },
-          })
-          require("mason-nvim-dap").default_setup(config) -- don't forget this!
-          local path = vim.fn.exepath("python")
-          local debugpy = require("mason-registry").get_package("debugpy")
-          if debugpy:is_installed() then path = vim.env.MASON .. "/packages/debugpy/venv/bin/python" end
-          require("dap-python").setup(path, opts)
-        end,
-      }
-    end,
   },
 }

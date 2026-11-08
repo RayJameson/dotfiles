@@ -72,6 +72,65 @@ return {
         end
       end,
     },
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      optional = true,
+      opts = { ensure_installed = { { "debugpy", condition = function() return vim.fn.executable("python3") == 1 end } } },
+    },
+    {
+      "jay-babu/mason-nvim-dap.nvim",
+      dependencies = { { "mfussenegger/nvim-dap-python", lazy = true } },
+      opts = function(_, opts)
+        opts.handlers = {
+          python = function(config)
+            config.configurations = require("astrocore").list_insert_unique(config.configurations, {
+              {
+                type = "python",
+                request = "launch",
+                name = "Python: Debug Current File",
+                program = "${file}",
+                justMyCode = false,
+                console = "integratedTerminal",
+                cwd = vim.uv.cwd(),
+                args = {
+                  "-m",
+                  "debugpy.adapter",
+                },
+                env = {
+                  PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":"),
+                  PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "4",
+                },
+                pythonPath = function() return "python" end,
+              },
+              {
+                type = "python",
+                request = "launch",
+                name = "Python: Debug FastAPI web application",
+                module = "uvicorn",
+                cwd = vim.uv.cwd(),
+                env = {
+                  PYTHONPATH = table.concat({ vim.uv.cwd(), "src" }, ":"),
+                  PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT = "4",
+                },
+                args = {
+                  "-m",
+                  "debugpy.adapter",
+                  "main:app",
+                  "--use-colors",
+                },
+                pythonPath = function() return "python" end,
+                console = "integratedTerminal",
+              },
+            })
+            require("mason-nvim-dap").default_setup(config) -- don't forget this!
+            local path = vim.fn.exepath("python")
+            local debugpy = require("mason-registry").get_package("debugpy")
+            if debugpy:is_installed() then path = vim.env.MASON .. "/packages/debugpy/venv/bin/python" end
+            require("dap-python").setup(path, opts)
+          end,
+        }
+      end,
+    },
   },
   dependencies = {
     { "theHamsta/nvim-dap-virtual-text", config = true },
