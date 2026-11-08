@@ -1,4 +1,4 @@
-local term_opts = { win = { position = "right", enter = false } }
+local term_opts = { win = { position = "right", width = 0.7, enter = false } }
 
 ---@type LazySpec
 return {
