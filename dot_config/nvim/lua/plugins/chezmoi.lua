@@ -1,3 +1,5 @@
+local source_dir = vim.env.HOME .. "/.local/share/chezmoi"
+
 ---@type LazySpec
 return {
   "alker0/chezmoi.vim",
@@ -9,10 +11,31 @@ return {
         options = {
           g = {
             ["chezmoi#use_tmp_buffer"] = 1,
-            ["chezmoi#source_dir_path"] = vim.env.HOME .. "/.local/share/chezmoi",
+            ["chezmoi#source_dir_path"] = source_dir,
+          },
+        },
+        -- AstroNvim replays filetype detection after lazy-loading, which resets chezmoi.vim's *.chezmoitmpl to `template`
+        filetypes = {
+          pattern = {
+            [vim.pesc(source_dir) .. "/.*%.tmpl"] = function(_, bufnr)
+              local ft = vim.bo[bufnr].filetype
+              if ft:find("chezmoitmpl", 1, true) then return ft end
+            end,
           },
         },
       },
+    },
+    -- chezmoi templates aren't valid Lua: skip lua linters/formatters
+    {
+      "mfussenegger/nvim-lint",
+      optional = true,
+      opts = { linters_by_ft = { ["lua.chezmoitmpl"] = {} } },
+    },
+    {
+      "stevearc/conform.nvim",
+      optional = true,
+      -- an empty `{}` would fall through to `lua` in conform
+      opts = { formatters_by_ft = { ["lua.chezmoitmpl"] = { lsp_format = "never" } } },
     },
     {
       "echasnovski/mini.icons",
