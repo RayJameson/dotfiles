@@ -19,6 +19,7 @@ require("lazy").setup({
     border = "rounded",
     backdrop = 100,
   },
+  rocks = { hererocks = true },
   performance = {
     rtp = {
       -- disable some rtp plugins, add more to your liking
