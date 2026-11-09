@@ -48,6 +48,19 @@ return {
                 [prefix .. "t"] = { "<Cmd>OverseerRun run\\ file\\ in\\ new\\ tab<CR>", desc = "Run file in new tab" },
               },
             },
+            autocmds = {
+              OverseerTerminal = {
+                {
+                  -- overseer creates its terminals with eventignore=all, so TermOpen never fires for them
+                  event = "BufWinEnter",
+                  desc = "Map q to close overseer terminal windows",
+                  callback = function(args)
+                    if vim.bo[args.buf].buftype ~= "terminal" then return end
+                    vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = args.buf, silent = true })
+                  end,
+                },
+              },
+            },
             commands = {
               S = {
                 function(params)
