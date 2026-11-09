@@ -103,6 +103,17 @@ return {
           callback = function() vim.opt_local.formatprg = vim.fn.executable("jq") == 1 and "jq" or "" end,
         },
       },
+      ShellFilterCursor = {
+        {
+          event = "ShellFilterPost",
+          desc = "Reset cursor shape: nvim leaves the operator-pending shape after !{motion}",
+          callback = function()
+            vim.schedule(function()
+              if vim.api.nvim_get_mode().mode == "n" then vim.cmd.normal { args = { ":\27" }, bang = true } end
+            end)
+          end,
+        },
+      },
       Terminal = {
         {
           event = "TermOpen",
