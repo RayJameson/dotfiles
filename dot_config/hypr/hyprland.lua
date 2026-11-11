@@ -167,6 +167,9 @@ hl.config {
     swallow_regex = "^.*ghostty.*$",
     focus_on_activate = false,
     render_unfocused_fps = 60,
+    key_press_enables_dpms = true,
+    mouse_move_enables_dpms = true,
+    vrr = 3,
   },
 }
 
