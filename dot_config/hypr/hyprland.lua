@@ -20,9 +20,8 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("hypridle")
   hl.exec_cmd("uxplay -vs 0 -p -nh -n 'Archcraft audio'")
   hl.exec_cmd("sleep 5 && easyeffects --gapplication-service")
-  hl.exec_cmd("sleep 5 && systemctl --user start hyprland-session.target")
 end)
-hl.on("hyprland.shutdown", function() os.execute("systemctl --user stop hyprland-session.target && sleep 0.1") end)
+-- Hyprland 0.56 handles the session targets natively; avoid os.execute here: config readers run callbacks.
 hl.on("config.reloaded", start_waybar)
 hl.on(
   "window.open",
