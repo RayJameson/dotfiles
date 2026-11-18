@@ -1,6 +1,6 @@
 ---@type LazySpec
 return {
-  "mistweaverco/kulala.nvim",
+  "andycowan/kulala.nvim",
   ft = { "http" },
   opts = {
     additional_curl_options = { "-L" },
