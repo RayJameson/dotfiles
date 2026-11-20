@@ -55,7 +55,13 @@ hl.bind(K.SUPER + K.SHIFT + K.R, function()
 end)
 
 hl.bind(K.SUPER + K.P, hl.dsp.exec_cmd("hyprpicker -a"))
-hl.bind(K.CTRL + K.SPACE, hl.dsp.exec_cmd(scripts .. "rofi_launcher"))
+hl.bind(K.CTRL + K.SPACE, function()
+  if hl.is_key_down("Control_R") then
+    hl.exec_cmd(scripts .. "rofi_launcher")
+  else
+    return { pass_event = true } -- left Ctrl+Space goes to the app as usual
+  end
+end)
 hl.bind(K.SUPER + K.N, hl.dsp.exec_cmd(scripts .. "network_menu"))
 hl.bind(K.SUPER + K.M, hl.dsp.exec_cmd("missioncenter"))
 hl.bind(K.SUPER + K.SHIFT + K.N, hl.dsp.exec_cmd("swaync-client -t"))
