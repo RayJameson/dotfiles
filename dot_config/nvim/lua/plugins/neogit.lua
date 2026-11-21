@@ -238,6 +238,9 @@ local function move_to_index(mode)
   if sha ~= head and not git(root, { "diff", "--quiet" }) then
     return fail("Commit or stash your unstaged changes first")
   end
+  if sha ~= head and not git(root, { "merge-base", "--is-ancestor", sha, "HEAD" }) then
+    return fail(short .. " is not an ancestor of HEAD")
+  end
 
   local sel, what
   local nfiles, nlines = count(state)
@@ -269,19 +272,21 @@ local function move_to_index(mode)
   local _, gitdir = git(root, { "rev-parse", "--absolute-git-dir" })
   local file = gitdir .. "/neogit-move-to-index.patch"
   vim.fn.writefile(vim.split(patch, "\n", { plain = true }), file, "b")
+  -- Git may have changed the repo before failing.
+  local function fail_and_refresh(msg, err)
+    require("neogit").dispatch_refresh()
+    fail(msg, err)
+  end
 
   if sha == head then
     -- Index-only, so a dirty worktree is left untouched.
     ok, _, err = git(root, { "apply", "--cached", "--reverse", file })
-    if not ok then return fail("Reverse apply failed (patch: " .. file .. ")", err) end
+    if not ok then return fail_and_refresh("Reverse apply failed (patch: " .. file .. ")", err) end
     ok, _, err = git(root, { "commit", "--amend", "--no-edit", "--allow-empty", "--allow-empty-message" })
-    if not ok then return fail("Amend failed (patch: " .. file .. ")", err) end
+    if not ok then return fail_and_refresh("Amend failed (patch: " .. file .. ")", err) end
     ok, _, err = git(root, { "apply", "--cached", file })
-    if not ok then return fail("Re-applying patch to index failed (patch: " .. file .. ")", err) end
+    if not ok then return fail_and_refresh("Re-applying patch to index failed (patch: " .. file .. ")", err) end
   else
-    if not git(root, { "merge-base", "--is-ancestor", sha, "HEAD" }) then
-      return fail(short .. " is not an ancestor of HEAD")
-    end
     local abbrev = select(2, git(root, { "rev-parse", "--short", sha }))
     local env = {
       GIT_SEQUENCE_EDITOR = ("sed -i -E 's/^(pick|p) (%s)( |$)/edit \\2\\3/'"):format(abbrev),
@@ -294,27 +299,25 @@ local function move_to_index(mode)
     local _, stopped = git(root, { "rev-parse", "HEAD" })
     if stopped ~= sha then
       git(root, { "rebase", "--abort" })
-      return fail("Could not stop rebase at " .. short, err)
+      return fail_and_refresh("Could not stop rebase at " .. short, err)
     end
 
     ok, _, err = git(root, { "apply", "--3way", "--index", "--reverse", file })
     if not ok then
       git(root, { "rebase", "--abort" })
-      return fail("Reverse apply failed, rebase aborted (patch: " .. file .. ")", err)
+      return fail_and_refresh("Reverse apply failed, rebase aborted (patch: " .. file .. ")", err)
     end
     ok, _, err = git(root, { "commit", "--amend", "--no-edit", "--allow-empty", "--allow-empty-message" })
     if not ok then
       git(root, { "rebase", "--abort" })
-      return fail("Amend failed, rebase aborted", err)
+      return fail_and_refresh("Amend failed, rebase aborted", err)
     end
     ok, _, err = git(root, { "rebase", "--continue" }, { env = { GIT_EDITOR = ":" } })
     if not ok then
-      state = { files = {}, lines = {} }
-      require("neogit").dispatch_refresh()
-      return fail("Rebase stopped (conflict?). Resolve it, then run: git apply --3way --index " .. file, err)
+      return fail_and_refresh("Rebase stopped (conflict?). Resolve it, then run: git apply --3way --index " .. file, err)
     end
     ok, _, err = git(root, { "apply", "--3way", "--index", file })
-    if not ok then return fail("Re-applying patch to index failed (patch: " .. file .. ")", err) end
+    if not ok then return fail_and_refresh("Re-applying patch to index failed (patch: " .. file .. ")", err) end
   end
 
   vim.fn.delete(file)
