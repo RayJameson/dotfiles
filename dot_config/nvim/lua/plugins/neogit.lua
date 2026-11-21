@@ -64,6 +64,8 @@ local function target(view, mode)
   local hc = view.buffer.ui:get_component_under_cursor(function(c) return c.options.hunk ~= nil end)
   if hc then
     local d, row0 = diff_of(view, hc.options.filepath), hc.position.row_start
+    -- A partial patch can't apply against a file the commit deletes.
+    if d.kind == "deleted file" then return { file = d.file } end
     return { file = d.file, diff = d, hunk = hc.options.hunk, hi = hunk_idx(d, hc.options.hunk), from = a - row0, to = b - row0 }
   end
   local dc = view.buffer.ui:get_component_under_cursor(function(c) return c.options.diff ~= nil end)
@@ -153,7 +155,12 @@ end
 -- unselected `-` lines are dropped, so it reverse-applies onto the commit and forward-applies on top of the result.
 local function build_patch(view, root, sel)
   local out = {}
-  local whole = vim.tbl_keys(sel.files)
+  local whole = {}
+  for file in pairs(sel.files) do
+    -- Renames are keyed "old -> new"; with --no-renames both paths are needed to move the whole rename.
+    local old, new = file:match("^(.-) %-> (.+)$")
+    vim.list_extend(whole, old and { old, new } or { file })
+  end
   if sel.all or #whole > 0 then
     local args = { "show", "--format=", "--binary", "--no-color", "--no-ext-diff", "--no-renames", view.commit_info.oid }
     if not sel.all then vim.list_extend(args, vim.list_extend({ "--" }, whole)) end
@@ -197,8 +204,9 @@ local function build_patch(view, root, sel)
         end
       end
       if #body > 0 then
-        table.insert(out, "--- a/" .. file)
-        table.insert(out, "+++ b/" .. file)
+        local path = file:match(" %-> (.+)$") or file
+        table.insert(out, "--- a/" .. path)
+        table.insert(out, "+++ b/" .. path)
         vim.list_extend(out, body)
       end
     end
@@ -218,6 +226,18 @@ local function move_to_index(mode)
   local _, parents = git(root, { "rev-list", "--parents", "-n1", sha })
   parents = vim.split(parents, " ")
   if #parents > 2 then return fail("Merge commits are not supported") end
+
+  for _, p in ipairs({ "rebase-merge", "rebase-apply", "MERGE_HEAD", "CHERRY_PICK_HEAD" }) do
+    local _, path = git(root, { "rev-parse", "--path-format=absolute", "--git-path", p })
+    if vim.uv.fs_stat(path) then return fail("Finish the in-progress rebase/merge/cherry-pick first") end
+  end
+  -- Staged changes would be swallowed by the amend.
+  if not git(root, { "diff", "--cached", "--quiet" }) then return fail("Unstage your changes first") end
+  local _, head = git(root, { "rev-parse", "HEAD" })
+  -- The rebase path applies with --index, which fails on files with unstaged edits.
+  if sha ~= head and not git(root, { "diff", "--quiet" }) then
+    return fail("Commit or stash your unstaged changes first")
+  end
 
   local sel, what
   local nfiles, nlines = count(state)
@@ -245,10 +265,11 @@ local function move_to_index(mode)
   if not patch or vim.trim(patch) == "" then return fail("Could not build patch", perr) end
   if vim.fn.confirm(("Move %s out of %s into the index?"):format(what, short), "&Yes\n&No", 2) ~= 1 then return end
 
-  local file = vim.fn.tempname() .. ".patch"
+  -- Kept in the git dir (not tempname) so the recovery commands in error messages survive quitting nvim.
+  local _, gitdir = git(root, { "rev-parse", "--absolute-git-dir" })
+  local file = gitdir .. "/neogit-move-to-index.patch"
   vim.fn.writefile(vim.split(patch, "\n", { plain = true }), file, "b")
 
-  local _, head = git(root, { "rev-parse", "HEAD" })
   if sha == head then
     -- Index-only, so a dirty worktree is left untouched.
     ok, _, err = git(root, { "apply", "--cached", "--reverse", file })
@@ -268,7 +289,7 @@ local function move_to_index(mode)
     }
     local base = parents[2] or "--root"
     ok, _, err = git(root, {
-      "rebase", "--interactive", "--autostash", "--keep-empty", "--no-autosquash", "--rebase-merges", base,
+      "rebase", "--interactive", "--keep-empty", "--no-autosquash", "--rebase-merges", base,
     }, { env = env })
     local _, stopped = git(root, { "rev-parse", "HEAD" })
     if stopped ~= sha then
