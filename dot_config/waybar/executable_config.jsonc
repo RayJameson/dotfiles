@@ -67,7 +67,7 @@
       "(.{42}).*": "$1..",
     },
     "icon": true,
-    "icon-size": 22,
+    "icon-size": 20,
     "tooltip": true,
     "tooltip-format": "{title}"
   },
