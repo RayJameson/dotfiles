@@ -1,6 +1,6 @@
 -- rules.lua
 -- WINDOWS AND WORKSPACES
-local waybar_gap = 30
+local waybar_gap = 25
 
 -- tag rules must come before rules matching the tag: dynamic tags are re-added in rule order on each recheck
 hl.window_rule {
