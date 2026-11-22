@@ -25,6 +25,7 @@ return {
     disable_builtin_notifications = true, -- noice + snacks.notifier handle notifications
     disable_signs = true,
     integrations = { snacks = true },
+    sections = { recent = { folded = false } },
   },
   init = function()
     vim.api.nvim_create_autocmd("FileType", {
