@@ -17,9 +17,14 @@ return {
         -- AstroNvim replays filetype detection after lazy-loading, which resets chezmoi.vim's *.chezmoitmpl to `template`
         filetypes = {
           pattern = {
-            [vim.pesc(source_dir) .. "/.*%.tmpl"] = function(_, bufnr)
+            [vim.pesc(source_dir) .. "/.*%.tmpl"] = function(path, bufnr)
               local ft = vim.bo[bufnr].filetype
               if ft:find("chezmoitmpl", 1, true) then return ft end
+              -- oil fast_scratch preview: chezmoi.vim's autocmds don't run there
+              if ft == "" and vim.bo[bufnr].buftype == "nofile" then
+                local name = vim.fs.basename(path):gsub("%.tmpl$", ""):gsub("^.*dot_", ".")
+                return vim.filetype.match { filename = name, buf = bufnr }
+              end
             end,
           },
         },
