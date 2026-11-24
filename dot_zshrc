@@ -22,6 +22,7 @@ plugins=(
     zsh-syntax-highlighting
     fzf-tab
 )
+fpath+=~/.zfunc # must be set before oh-my-zsh runs compinit
 function zvm_config() {
     ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
     ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
