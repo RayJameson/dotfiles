@@ -42,7 +42,7 @@ brews = [
     "zoxide",
     "zsh",
 ]
-brews_head = ["tmux", "yazi"]
+brews_head = ["tmux"]
 casks = [
     "docker",
     "keepassxc",

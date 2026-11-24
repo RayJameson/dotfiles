@@ -44,3 +44,28 @@
     url = "https://raw.githubusercontent.com/RayJameson/rdt/refs/heads/master/completion/zsh/_rdt"
     exact = false
     refreshPeriod = "168h"
+{{ if eq .chezmoi.os "darwin" -}}
+{{ $yazi := "https://github.com/sxyazi/yazi/releases/download/nightly/yazi-aarch64-apple-darwin.zip" -}}
+[".local/bin/yazi"]
+    type = "archive-file"
+    url = {{ $yazi | quote }}
+    path = "yazi-aarch64-apple-darwin/yazi"
+    executable = true
+    refreshPeriod = "168h"
+[".local/bin/ya"]
+    type = "archive-file"
+    url = {{ $yazi | quote }}
+    path = "yazi-aarch64-apple-darwin/ya"
+    executable = true
+    refreshPeriod = "168h"
+[".zfunc/_yazi"]
+    type = "archive-file"
+    url = {{ $yazi | quote }}
+    path = "yazi-aarch64-apple-darwin/completions/_yazi"
+    refreshPeriod = "168h"
+[".zfunc/_ya"]
+    type = "archive-file"
+    url = {{ $yazi | quote }}
+    path = "yazi-aarch64-apple-darwin/completions/_ya"
+    refreshPeriod = "168h"
+{{ end -}}
