@@ -10,7 +10,8 @@ README.md
 .config/sketchybar
 .gitconfig_work
 .local/bin/open_little_arc
-.zshrc.d/20-darwin.zsh
+.zshrc.d/05-darwin.zsh
+.zshrc.d/30-darwin.zsh
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
@@ -34,7 +35,7 @@ README.md
 .local/bin/restart_audio
 .local/share/applications/*.desktop
 .xprofile
-.zshrc.d/20-linux.zsh
+.zshrc.d/30-linux.zsh
 .zfunc/_winetricks
 .zfunc/_pw-cli
 .gtkrc-2.0
