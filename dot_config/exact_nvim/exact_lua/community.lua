@@ -2,17 +2,13 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  {{ if lookPath "rustc" -}} { import = "astrocommunity.pack.rust" }, {{- end }} -- rust
-  {{ if lookPath "go" -}}
-  { import = "astrocommunity.pack.go" },
-  { import = "astrocommunity.pack.templ" },
-  {{- end }} -- go
-  {{ if lookPath "docker" -}} { import = "astrocommunity.pack.docker" }, {{- end }} -- docker
-  {{ if lookPath "npm" -}}
-  { import = "astrocommunity.pack.yaml" }, -- npm
-  { import = "astrocommunity.pack.json" }, -- npm
-  { import = "astrocommunity.pack.html-css" }, -- npm
-  {{ end -}}
+  { import = "astrocommunity.pack.rust", enabled = vim.fn.executable("rustc") == 1 },
+  { import = "astrocommunity.pack.go", enabled = vim.fn.executable("go") == 1 },
+  { import = "astrocommunity.pack.templ", enabled = vim.fn.executable("go") == 1 },
+  { import = "astrocommunity.pack.docker", enabled = vim.fn.executable("docker") == 1 },
+  { import = "astrocommunity.pack.yaml", enabled = vim.fn.executable("npm") == 1 },
+  { import = "astrocommunity.pack.json", enabled = vim.fn.executable("npm") == 1 },
+  { import = "astrocommunity.pack.html-css", enabled = vim.fn.executable("npm") == 1 },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.editing-support.conform-nvim" },
@@ -52,7 +48,7 @@ return {
           alt = { "INFO" },
         },
         PERF = { icon = "󱁤 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-        TODO = { alt = { "ToDo"} },
+        TODO = { alt = { "ToDo" } },
       },
       colors = {
         error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
