@@ -6,10 +6,6 @@ if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 fi
 {{- end }}
 
-{{ if lookPath "mise" -}}
-eval "$(mise activate zsh)"
-{{- end }}
-
 {{ if lookPath "nvim" -}}
 export MANPAGER="nvim +Man! $@"
 {{ end -}}

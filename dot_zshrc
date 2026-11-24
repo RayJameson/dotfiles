@@ -15,7 +15,6 @@ plugins=(
     gh
     extract
     gnu-utils
-    gpg-agent
     git
     gitfast
     zsh-vi-mode
