@@ -20,7 +20,7 @@ check_venv() {
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd check_venv
 
-{{ if lookPath "pyenv" -}}
+if (( $+commands[pyenv] )); then
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 pyvenv() {
     local venv_name=${2:-$(basename $(pwd))}
@@ -39,8 +39,7 @@ check_pyenv_init() {
 }
 # add check_pyenv_init function to precmd_functions array
 add-zsh-hook precmd check_pyenv_init
-{{- end }}
-{{ if lookPath "uv" -}}
+fi
 uvnew() {
     local project_name="$1"
     shift
@@ -52,7 +51,6 @@ uvnew() {
     uv venv
     source .venv/bin/activate
 }
-{{- end }}
 
 tm() {
     local session_name=${1:-"main"}
@@ -81,7 +79,6 @@ function czde() {
 function czf() {
     chezmoi forget --interactive $(chezmoi managed --path-style absolute | fzf-tmux $FZF_TMUX_OPTS --multi --header='Forget: remove only in source (chezmoi)')
 }
-{{- if lookPath "yazi" }}
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
@@ -90,12 +87,9 @@ function y() {
     fi
     rm -f -- "$tmp"
 }
-{{- end }}
-{{ if lookPath "rsync" -}}
 function cpr() {
   rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 "$@"
 }
 function mvr() {
   rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
 }
-{{- end }}

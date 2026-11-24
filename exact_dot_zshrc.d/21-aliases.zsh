@@ -22,7 +22,7 @@ alias czu='chezmoi update'
 alias czua='chezmoi update --exclude=scripts --apply'
 alias czuas='chezmoi update --apply'
 # make functions for commands which could be used in piping
-{{- if lookPath "eza" -}}
+if (( $+commands[eza] )); then
 alias l="eza --long --icons --header --octal-permissions --all --sort name --git --group-directories-first"
 alias la="eza --icons --header --all --sort name --git --group-directories-first"
 alias lr="eza --long --icons --header --octal-permissions --all --sort name --git --group-directories-first --total-size"
@@ -30,25 +30,17 @@ alias ls="eza --icons --sort name --group-directories-first --git"
 alias lo="eza --icons --sort name -1"
 alias tree="eza --icons --header --sort name --group-directories-first --tree --ignore-glob __pycache__"
 export FZF_ALT_C_OPTS="--preview 'eza --icons --header --sort name --group-directories-first --tree {}'"
-{{ end }}
-{{- if lookPath "python3" -}}
+fi
 alias p="python"
 alias p3="python3"
-{{ end }}
-{{- if lookPath "keepassxc-cli" -}}
 alias kp="keepassxc-cli"
-{{ end }}
-{{- if lookPath "asciinema" -}}
 alias asc=asciinema
-{{ end }}
-{{- if lookPath "zoxide" -}}
+if (( $+commands[zoxide] )); then
 eval "$(zoxide init zsh)"
 alias cd="z"
 alias cdi="zi"
-{{ end }}
-{{- if lookPath "fastfetch" -}}
+fi
 alias ff='fastfetch'
-{{- end }}
 [[ -n "$TMUX" ]] && alias clear="clear && tmux clear-history"
 alias lg=lazygit
 alias lzd=lazydocker
