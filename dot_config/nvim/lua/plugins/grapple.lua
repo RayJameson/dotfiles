@@ -32,6 +32,14 @@ return {
           "<Cmd>Grapple toggle_loaded<CR>",
           desc = "Toggle loaded scopes",
         }
+        maps.n[prefix .. "w"] = {
+          function()
+            local tags = require("grapple").tags() or {}
+            if #tags == 0 then return vim.notify("No Grapple tags", vim.log.levels.WARN) end
+            require("snacks").picker.grep { dirs = vim.tbl_map(function(t) return t.path end, tags) }
+          end,
+          desc = "Words in tagged files",
+        }
         maps.n["<C-n>"] = { "<Cmd>Grapple cycle forward<CR>", desc = "Select next tag" }
         maps.n["<C-p>"] = { "<Cmd>Grapple cycle backward<CR>", desc = "Select previous tag" }
       end,
