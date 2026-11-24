@@ -2,6 +2,12 @@
 return {
   "cbochs/grapple.nvim",
   cmd = { "Grapple" },
+  -- load early only in projects that already have tags, so the statusline indicator shows up
+  event = function()
+    local root = vim.fs.root(vim.fn.getcwd(), ".git") or vim.fn.getcwd()
+    local name = root:gsub("[^%w]", function(c) return ("%%%02X"):format(c:byte()) end)
+    if vim.uv.fs_stat(vim.fn.stdpath "data" .. "/grapple/" .. name .. ".json") then return { "VeryLazy" } end
+  end,
   opts = { scope = "git", win_opts = { border = "rounded" } },
   specs = {
     {
