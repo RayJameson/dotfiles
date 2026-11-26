@@ -1,6 +1,8 @@
 ---@type LazySpec
 return {
-  "mrjones2014/smart-splits.nvim",
+  "smart-splits-nvim/smart-splits.nvim",
+  dependencies = { { "smart-splits-nvim/backend-tmux", main = "smart-splits-backend-tmux" } },
+  opts = { mux = { backend = "smart-splits-backend-tmux" } },
   ---@type LazySpec
   specs = {
     "AstroNvim/astrocore",
