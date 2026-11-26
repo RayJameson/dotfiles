@@ -39,14 +39,14 @@ return {
         toggle
           .new({
             name = "autoformatting (buffer)",
-            get = function() return vim.F.if_nil(vim.b.autoformat, vim.g.autoformat, true) end,
+            get = function() return vim.nonnil(vim.b.autoformat, vim.g.autoformat, true) end,
             set = function(state) vim.b.autoformat = state end,
           })
           :map("<Leader>uf")
         toggle
           .new({
             name = "autoformatting (global)",
-            get = function() return vim.F.if_nil(vim.g.autoformat, true) end,
+            get = function() return vim.nonnil(vim.g.autoformat, true) end,
             set = function(state)
               vim.g.autoformat, vim.b.autoformat = state, nil
             end,

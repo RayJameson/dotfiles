@@ -55,7 +55,7 @@ return {
         opts.mappings.n["<Leader>ln"] = {
           function()
             local lint = require("lint")
-            vim.g.lint_enabled = not vim.F.if_nil(vim.g.lint_enabled, true)
+            vim.g.lint_enabled = not vim.nonnil(vim.g.lint_enabled, true)
             for _, names in pairs(lint.linters_by_ft) do
               for _, name in ipairs(names) do
                 vim.diagnostic.enable(vim.g.lint_enabled, { ns_id = lint.get_namespace(name) })
